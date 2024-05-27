@@ -1,0 +1,51 @@
+---
+import { Picture, getImage } from "astro:assets";
+import myBackground from "../assets/bg.webp";
+import hero from "../assets/hero.webp";
+import Button from "./reusable/Button.astro";
+
+const optimizedBackground = await getImage({
+  src: myBackground,
+  format: "webp",
+});
+---
+
+<section
+  style={`background-image: url(${optimizedBackground.src});`}
+  class="py-12 pb-24 flex flex-col gap-8 lg:gap-20 items-center justify-center bg-white bg-cover bg-no-repeat bg-[50%_100%]"
+>
+  <div class="mx-auto max-w-3xl px-4">
+    <div class="text-center">
+      <h1
+        class="mt-6 text-3xl sm:text-5xl font-bold leading-[4rem] text-gray-900"
+      >
+        AI-driven ATS & CRM developed for recruitment agencies
+      </h1>
+      <p class="mt-6 text-xl leading-relaxed text-slate-500">
+        Airhire unlocks the power of your recruitment team. We automate the
+        busywork, letting you focus on what matters most - finding great
+        candidates. Experience recruitment that's efficient and revolutionary.
+      </p>
+    </div>
+
+    <div class="mt-6 flex items-center justify-center gap-4">
+      <Button link="#" buttonText="Try for free" type="filled" />
+      <Button
+        link="#"
+        buttonText="Request a demo"
+        type="outline"
+        arrow={true}
+      />
+    </div>
+  </div>
+  <div class="max-w-6xl">
+    <Picture
+      src={hero}
+      formats={["avif", "webp"]}
+      alt="A prototype of the app."
+      widths={[400, 800, 1200, hero.width]}
+      loading="eager"
+      class="h-full w-auto shadow-[0px_20px_50px_10px_rgba(209,249,244,1)] rounded-xl"
+    />
+  </div>
+</section>

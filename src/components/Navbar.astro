@@ -1,12 +1,10 @@
 ---
-import { Image } from "astro:assets";
 import Button from "./reusable/Button.astro";
 import { Icon } from "astro-icon/components";
-import logo from "../assets/logo.svg";
 
 const menu = [
   {
-    Product: {
+    Company: {
       link: "/product",
       values: [
         { text: "Verify Anywhere", link: "/anywhere" },
@@ -32,10 +30,7 @@ const menu = [
       link: "/blog",
       values: [
         { text: "Case Studies", link: "/studies" },
-        { text: "White Papers", link: "/white-papers" },
-        { text: "Api Docs", link: "/docs" },
         { text: "Blog", link: "/blog" },
-        { text: "FAQ", link: "/faq" },
       ],
     },
   },
@@ -56,19 +51,11 @@ const menu = [
 
 <header class="w-screen">
   <nav
-    class="flex flex-wrap max-w-7xl mx-auto
-       items-center
-       justify-between
-       w-full
-       py-4
-       lg:py-0
-       px-4
-       text-lg text-gray-700
-       bg-white"
+    class="flex flex-wrap max-w-7xl mx-auto items-center justify-between w-full py-4 lg:py-0 px-12 text-gray-700 bg-white"
   >
     <div class="z-[50]">
       <a href="/">
-        <Icon name="logo" size={40} />
+        <Icon name="logo" size={120} />
       </a>
     </div>
     <div class="lg:hidden">
@@ -113,7 +100,7 @@ const menu = [
       </button>
     </div>
     <div
-      class="translate-x-full hidden lg:shadow-none lg:translate-x-0 absolute w-screen top-20 left-0 lg:w-auto lg:static lg:flex lg:items-center bg-white z-50 transition-all duration-500 ease-in-out shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
+      class="justify-between translate-x-full hidden lg:shadow-none lg:translate-x-0 absolute w-screen top-20 left-0 lg:w-auto lg:static lg:flex lg:items-center bg-white z-50 transition-all duration-500 ease-in-out shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
       id="menu"
     >
       <ul
@@ -125,7 +112,7 @@ const menu = [
               <div class="flex items-center justify-center lg:justify-between space-x-2 px-2 xl:px-4">
                 <a
                   href={Object.values(item)[0].link}
-                  class="item my-2 py-2 text-lg text-sky-950 hover:text-blue-500 transition duration-300 ease-in-out font-bold"
+                  class="item my-2 py-2 text-sky-950 hover:text-blue-500 transition duration-300 ease-in-out font-bold"
                 >
                   {Object.keys(item)}
                 </a>
@@ -138,7 +125,7 @@ const menu = [
                   (subItem: { text: string; link: string }) => (
                     <a
                       href={subItem.link}
-                      class="px-2 my-0.5 block whitespace-nowrap border-b border-white py-1 text-lg font-normal text-gray-500 hover:bg-blue-500 hover:text-white"
+                      class="px-2 my-0.5 block whitespace-nowrap border-b border-white py-1 font-normal text-gray-500 hover:bg-blue-500 hover:text-white"
                     >
                       {subItem.text}
                     </a>
@@ -148,21 +135,11 @@ const menu = [
             </li>
           ))
         }
-        <li>
-          <Button
-            buttonText="Sign In"
-            link="https://dashboard.lemverify.io/#/signin"
-            width="w-32"
-          />
-        </li>
-        <li>
-          <Button
-            buttonText="Start Now"
-            link="https://dashboard.lemverify.io/#/signup"
-            width="w-32"
-          />
-        </li>
       </ul>
+    </div>
+    <div class="hidden lg:flex gap-1">
+      <Button type="outline" buttonText="Log in" link="/login" />
+      <Button buttonText="Get Started" link="/" type="filled" />
     </div>
   </nav>
 </header>

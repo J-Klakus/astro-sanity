@@ -2,7 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 let path = Astro.url.pathname;
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts.ts";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
 interface Props {
   metaTitle: string;
@@ -20,7 +20,7 @@ const {
 
 let title = "";
 if (path === "/") {
-  title = `Know Your Customer (KYC) Solutions | ${SITE_TITLE}`;
+  title = `Home | ${SITE_TITLE}`;
 } else {
   title = metaTitle
     ? `${metaTitle} | ${SITE_TITLE}`.trim()

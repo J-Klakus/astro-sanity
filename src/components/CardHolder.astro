@@ -1,0 +1,89 @@
+---
+import { getImage } from "astro:assets";
+import myBackground from "../assets/meshbg2.webp";
+import { Icon } from "astro-icon/components";
+
+const optimizedBackground = await getImage({
+  src: myBackground,
+  format: "webp",
+});
+
+const cards = [
+  {
+    name: "Browser Extension",
+    description:
+      "Easily source top talent directly from professional networks like LinkedIn, Outlook, Gmail, Xing, and more.",
+    icon: "graph",
+    link: "/",
+  },
+  {
+    name: "Website Widget",
+    description:
+      "Enhance your company's career page with a customizable widget. Display open positions and allow candidates to apply directly from your site.",
+    icon: "graph",
+    link: "/",
+  },
+  {
+    name: "CV Parser",
+    description:
+      "Save time by automatically extracting key information from resumes with our AI-powered CV parser. Seamlessly integrated into your workflow.",
+    icon: "graph",
+    link: "/",
+  },
+  {
+    name: "Email Integration",
+    description:
+      "Airhire automatically syncs with your email for a smoother recruitment experience. Send and receive emails directly from your Airhire dashboard.",
+    icon: "graph",
+    link: "/",
+  },
+];
+---
+
+<section
+  style={`background-image: url(${optimizedBackground.src});`}
+  class="bg-cover bg-no-repeat"
+>
+  <div class="text-center max-w-2xl mx-auto px-4">
+    <p
+      class="text-highlight bg-verylight rounded-lg w-fit px-2 py-1 uppercase font-semibold tracking-wide mb-3 mx-auto"
+    >
+      Features
+    </p>
+    <h2
+      class="mt-3 text-4xl font-bold leading-[4rem] tracking-tight text-black"
+    >
+      Work more efficiently with Airhire
+    </h2>
+    <p class="mt-3 text-lg leading-relaxed text-slate-500">
+      Explore our tailored 360-degree solution to gain speed, boost productivity
+      and match all your agency’s unique recruitment needs.
+    </p>
+  </div>
+  <div
+    class="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 max-w-7xl mx-auto px-6 sm:px-0"
+  >
+    {
+      cards.map((card) => (
+        <div class="group flex flex-col justify-between p-6 my-2 sm:my-14 bg-primary hover:bg-light transition-colors duration-300 ease-in-out rounded-xl h-[400px]">
+          <Icon name={card.icon} size={30} />
+          <div>
+            <h2 class="text-xl font-bold text-white ">{card.name}</h2>
+            <p class="mt-3 text-lg leading-relaxed text-white">
+              {card.description}
+            </p>
+          </div>
+          <a href={card.link}>
+            <button class="inline-flex items-center text-white">
+              Learn More{" "}
+              <Icon
+                name="arrowRight"
+                class="ml-2 text-white group-hover:ml-4 transition-all duration-300 ease-in-out"
+              />
+            </button>
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</section>

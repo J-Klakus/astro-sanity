@@ -1,0 +1,70 @@
+---
+import { Picture } from "astro:assets";
+import Button from "./reusable/Button.astro";
+import { getImage } from "astro:assets";
+import myBackground from "../assets/bg-center.webp";
+
+const optimizedBackground = await getImage({
+  src: myBackground,
+  format: "webp",
+});
+
+import cardL from "../assets/card-l.webp";
+import cardR from "../assets/card-r.webp";
+---
+
+<div
+  style={`background-image: url(${optimizedBackground.src});`}
+  class="bg-cover bg-no-repeat pb-8 sm:pb-40"
+>
+  <div
+    class="mx-auto max-w-7xl grid lg:grid-cols-7 gap-4 px-4 place-items-center"
+  >
+    <div class="max-w-xl mx-auto flex flex-col mb-8 col-span-3">
+      <p
+        class="text-highlight bg-verylight rounded-lg w-fit px-2 py-1 uppercase font-semibold tracking-wide my-1"
+      >
+        Numbers
+      </p>
+      <h2
+        class="mt-3 text-4xl font-bold leading-[4rem] tracking-tight text-black"
+      >
+        Proven results, data-driven insights
+      </h2>
+      <p class="my-6 text-lg leading-relaxed text-slate-500">
+        Harnessing the latest technological advancements, Airhire transforms
+        your recruitment experience. See how our platform delivers measurable
+        improvements in recruitment efficiency and success.
+      </p>
+      <Button
+        link="#"
+        buttonText="Try For Free"
+        type="filled"
+        class="w-fit"
+        arrow={true}
+      />
+    </div>
+    <div class="col-span-4 grid grid-cols-2 max-w-3xl w-full mx-auto gap-4">
+      <div>
+        <Picture
+          src={cardL}
+          formats={["avif", "webp"]}
+          alt="A prototype of the app."
+          sizes="30vw"
+          widths={[400, 800, cardL.width]}
+          class="h-auto w-full shadow-[rgba(0,_0,_0,_0.1)_0px_24px_30px_-10px]"
+        />
+      </div>
+      <div>
+        <Picture
+          src={cardR}
+          formats={["avif", "webp"]}
+          alt="A prototype of the app."
+          sizes="30vw"
+          widths={[400, 800, cardR.width]}
+          class="h-auto w-full shadow-[rgba(0,_0,_0,_0.1)_0px_24px_30px_-10px]"
+        />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+---
+import { Picture } from "astro:assets";
+import banner from "../assets/banner.webp";
+---
+
+<div class="max-w-7xl mx-auto relative h-screen sm:h-auto">
+  <Picture
+    src={banner}
+    formats={["avif", "webp"]}
+    alt="A prototype of the app."
+    widths={[400, 800, banner.width]}
+    class="h-full w-auto rounded-xl object-cover"
+  />
+  <div class="absolute bottom-0 left-0 text-white p-10 sm:w-1/2">
+    <p class="text-2xl font-medium mb-6">
+      “Thanks to Airhire, our recruitment process has become a well-oiled
+      machine. It has automated all the tedious tasks, saving us valuable time
+      and resources. It's not just another ATS, it's a game-changer that has
+      transformed the way we work."
+    </p>
+    <p>
+      <span class="font-bold">Karim Pfeil</span>
+      / CEO at Undivi
+    </p>
+  </div>
+</div>

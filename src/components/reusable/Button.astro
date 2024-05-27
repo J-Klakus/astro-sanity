@@ -1,6 +1,44 @@
+---
+const {
+  class: className,
+  type,
+  buttonText,
+  link,
+  arrow,
+} = Astro.props as Props;
+import { Icon } from "astro-icon/components";
+import { twMerge } from "tailwind-merge";
+
+interface Props {
+  buttonText: string;
+  link: string;
+  class?: string;
+  type: "filled" | "outline";
+  arrow?: boolean;
+}
+
+const filledClasses = `
+  hover:opacity-90 relative inline-flex items-center justify-center p-4 px-5 py-3 overflow-hidden font-medium text-white rounded-xl shadow-2xl transition duration-2 ease-in-out
+`;
+const outlineClasses = `
+  inline-flex items-center justify-center px-4 py-3 font-medium leading-6 text-primary border border-transparent hover:border-primary rounded-xl hover:bg-primary/10 transition duration-2 ease-in-out
+`;
+
+const typeClasses = type === "filled" ? filledClasses : outlineClasses;
+
+const combinedClasses = twMerge(typeClasses, className);
+const filledStyle = {
+  background: "linear-gradient(112.79deg, #4B3AB3 46.42%, #9FFFF3 96.76%)",
+};
+---
+
 <a
-  href="#_"
-  class="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-blue-600 border border-blue-700 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+  style={type === "filled" ? filledStyle : undefined}
+  href={link}
+  class={combinedClasses}
 >
-  Button Text
+  <button class="inline-flex items-center">
+    {buttonText}
+    {arrow && <Icon name="arrowRight" class="ml-2 text-inherit" />}
+  </button>
 </a>

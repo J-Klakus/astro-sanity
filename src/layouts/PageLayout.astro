@@ -1,0 +1,11 @@
+---
+// component imports
+import Page from "../shared/Page.astro";
+import Layout from "./Layout.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.metaTitle} description={frontmatter.metaDescription}>
+  <Page contentBlocks={frontmatter.content_blocks} />
+</Layout>

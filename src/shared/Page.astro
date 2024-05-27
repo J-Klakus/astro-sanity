@@ -1,0 +1,30 @@
+---
+// Type for contentBlocks
+interface ContentBlock {
+  _component_name: string; // Assuming _component_name is a string property
+  [key: string]: any; // Other properties of content blocks
+}
+
+const { contentBlocks } = Astro.props;
+const components: Record<string, any> = {};
+const componentImports = import.meta.glob("../components/**/*.astro", {
+  eager: true,
+});
+Object.entries(componentImports).forEach(([path, obj]) => {
+  const parts = path.replace("../components/", "").split(".")[0].split("/");
+  if (parts[parts.length - 1] === parts[parts.length - 2]) {
+    parts.pop();
+  }
+  const componentName = parts.join("/");
+  components[componentName] = (obj as any).default;
+});
+---
+
+<main>
+  {
+    contentBlocks.map((block: ContentBlock) => {
+      const Component = components[block._component_name];
+      return <Component {...block} />;
+    })
+  }
+</main>
