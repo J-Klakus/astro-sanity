@@ -1,0 +1,37 @@
+---
+import { Picture, getImage } from "astro:assets";
+import myBackground from "../assets/bg2.webp";
+import logobig from "../assets/logobig.webp";
+import Button from "./reusable/Button.astro";
+
+const optimizedBackground = await getImage({
+  src: myBackground,
+  format: "webp",
+});
+const optimizedLogoBackground = await getImage({
+  src: logobig,
+  format: "webp",
+});
+---
+
+<section
+  style={`background-image:url(${optimizedBackground.src})`}
+  class="bg-cover bg-no-repeat bg-top flex flex-col justify-center"
+>
+  <div
+    style={`background-image:url(${optimizedLogoBackground.src})`}
+    class="my-52 bg-white bg-contain bg-no-repeat bg-[100%_100%] border border-verylight max-w-6xl mx-auto p-8 flex flex-col"
+  >
+    <h2
+      class="text-4xl w-2/3 font-heading group-hover:to-primary bg-gradient-to-r from-primary from-[1%] to-secondary to-[80%] inline-block text-transparent font-bold bg-clip-text"
+    >
+      Discover our competitive offer tailored to recruitment agencies.
+    </h2>
+    <Button
+      link="#"
+      buttonText="Try for free"
+      type="filled"
+      class="w-fit my-6"
+    />
+  </div>
+</section>

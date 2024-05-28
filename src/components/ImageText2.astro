@@ -1,0 +1,103 @@
+---
+import { Picture, getImage } from "astro:assets";
+import myBackground from "../assets/bg-bottom.webp";
+import candidatepipeline from "../assets/search.webp";
+import Button from "./reusable/Button.astro";
+
+// Define the interface for the button props
+interface ButtonProps {
+  link: string;
+  buttonText: string;
+  type: "filled" | "outline";
+  arrow?: boolean;
+}
+
+// Define the interface for the component props
+interface CustomSectionProps {
+  tagline: string;
+  first: boolean;
+  largeImage: boolean;
+  imageSide: "left" | "right";
+  background: boolean;
+  title: string;
+  description: string;
+  buttons?: ButtonProps[];
+  heroSrc?: ImageMetadata;
+  imageAlt?: string;
+}
+
+const {
+  tagline = "featured",
+  largeImage = false,
+  imageSide = "left",
+  first = false,
+  background = true,
+  title,
+  description,
+  buttons = [
+    {
+      link: "#",
+      buttonText: "Request a demo",
+      type: "filled",
+      arrow: true,
+    },
+  ],
+  heroSrc = candidatepipeline,
+  imageAlt = "A prototype of the app.",
+} = Astro.props as CustomSectionProps;
+
+const optimizedBackground = await getImage({
+  src: myBackground,
+  format: "webp",
+});
+---
+
+<section
+  style={`background-image: ${background ? `url(${optimizedBackground.src})` : "none"};`}
+  class={`py-8 ${first ? "sm:pt-44 pb-20" : "sm:py-20"} ${background ? "bg-cover bg-no-repeat bg-[100%_-200px]" : ""}`}
+>
+  <div
+    class={`max-w-7xl flex flex-col ${imageSide === "left" ? "md:flex-row-reverse " : "md:flex-row "} gap-8 lg:gap-20 items-center justify-center mx-auto px-4 `}
+  >
+    <div class={`${largeImage ? "md:w-2/5" : "md:w-1/2"} max-w-xl`}>
+      <div class="text-center md:text-start">
+        <p
+          class="text-highlight bg-verylight rounded-lg w-fit px-2 py-1 uppercase font-semibold tracking-wide my-3"
+        >
+          {tagline}
+        </p>
+        <h1
+          class={`font-heading mt-6 ${first ? "text-3xl sm:text-6xl" : "text-3xl sm:text-4xl"} font-bold leading-[4rem] tracking-tight text-black`}
+        >
+          {title}
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-500">
+          {description}
+        </p>
+      </div>
+
+      <div class="mt-6 flex items-center justify-center md:justify-start gap-4">
+        {
+          buttons.map((button) => (
+            <Button
+              link={button.link}
+              buttonText={button.buttonText}
+              type={button.type}
+              arrow={button.arrow}
+            />
+          ))
+        }
+      </div>
+    </div>
+    <div class={`${largeImage ? "md:h-[70vh] md:w-3/5" : "md:w-1/2"} `}>
+      <Picture
+        src={candidatepipeline}
+        formats={["avif", "webp"]}
+        alt={imageAlt}
+        sizes="(max-width: 640px) 50vw, 100vw"
+        widths={[400, 800, candidatepipeline.width]}
+        class="h-full w-auto object-cover object-left max-w-2xl"
+      />
+    </div>
+  </div>
+</section>

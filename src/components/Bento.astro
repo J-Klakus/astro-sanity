@@ -1,0 +1,98 @@
+---
+import flexible from "../assets/flexible.webp";
+import chat from "../assets/chat.webp";
+import learn from "../assets/learn.webp";
+import stage from "../assets/stage.webp";
+import { Picture } from "astro:assets";
+import Pill from "./Pill.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<section class="max-w-7xl mx-auto py-20">
+  <div class="text-center max-w-4xl mx-auto px-4">
+    <p
+      class="text-highlight bg-verylight rounded-lg w-fit px-2 py-1 uppercase font-semibold tracking-wide mb-3 mx-auto"
+    >
+      Features
+    </p>
+    <h2
+      class="font-heading mt-3 text-4xl font-bold leading-[4rem] tracking-tight text-black"
+    >
+      Discover more tools to ease your workload
+    </h2>
+  </div>
+  <div
+    class="grid grid-cols-10 md:grid-cols-11 md:grid-rows-6 gap-4 mx-auto px-4 xl:px-0 py-8"
+  >
+    <div
+      class="col-span-10 md:col-span-7 md:row-span-2 relative group hover:cursor-pointer"
+    >
+      <Picture
+        src={flexible}
+        formats={["avif", "webp"]}
+        alt={"infographic"}
+        sizes="(max-width: 640px) 50vw, 100vw"
+        widths={[400, 800, flexible.width]}
+        class="h-auto w-full object-contain group-hover:brightness-75 transition duration-300 ease-in-out"
+      />
+      <div
+        class="absolute inset-0 w-full h-full flex flex-col justify-between p-2 md:p-4"
+      >
+        <p
+          class="font-heading mt-3 text-xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white lg:w-1/2"
+        >
+          Flexible & easy to the extreme
+        </p>
+        <p class="text-sm md:text-lg text-white lg:w-1/2">
+          Customize every part of the platform to fit your needs.
+        </p>
+      </div>
+      <Pill text="Customizable" position="top-right" />
+    </div>
+    <div
+      class="col-span-10 md:col-span-4 md:row-span-3 relative group hover:cursor-pointer"
+    >
+      <Picture
+        src={learn}
+        formats={["avif", "webp"]}
+        alt={"infographic"}
+        sizes="(max-width: 640px) 50vw, 100vw"
+        widths={[400, 800, learn.width]}
+        class="h-auto w-full object-contain group-hover:brightness-75 transition duration-300 ease-in-out"
+      />
+      <Pill text="AI" position="top-left" color="purple" />
+      <p
+        class="absolute bottom-4 -right-10 text-sm md:text-lg text-white md:w-1/2"
+      >
+        Learn More
+        <Icon name="arrowRight" class="ml-2 inline-block text-inherit" />
+      </p>
+    </div>
+    <div
+      class="col-span-10 md:col-span-7 md:row-span-10 md:-mt-5 relative hover:cursor-pointer group"
+    >
+      <Picture
+        src={chat}
+        formats={["avif", "webp"]}
+        alt={"infographic"}
+        sizes="(max-width: 640px) 50vw, 100vw"
+        widths={[400, 800, chat.width]}
+        class="h-auto w-full object-contain group-hover:brightness-75 transition duration-300 ease-in-out"
+      />
+      <Pill text="Chat Navigation" position="top-left" />
+    </div>
+    <div
+      class="col-span-10 md:col-span-4 md:row-span-6 md:mt-1 relative hover:cursor-pointer group"
+    >
+      <Picture
+        src={stage}
+        formats={["avif", "webp"]}
+        alt={"infographic"}
+        sizes="(max-width: 640px) 50vw, 100vw"
+        widths={[400, 800, stage.width]}
+        class="h-auto w-full object-contain group-hover:brightness-75 transition duration-300 ease-in-out"
+      />
+      <Pill text="Automation" position="top-left" />
+    </div>
+  </div>
+</section>

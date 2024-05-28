@@ -17,6 +17,11 @@ const optimizedCardBackground = await getImage({
 
 const items = [
   {
+    id: "meetings",
+    description:
+      "Efficiently schedule and manage recruitment meetings within our ATS. Keep track of interviews, client calls, and team discussions with automated reminders and integrated calendar syncing. ",
+  },
+  {
     id: "opportunities",
     description:
       "Effectively manage recruitment opportunities from start to finish. Work on opportunities before they become active jobs and convert them seamlessly when ready, staying ahead in your recruitment efforts.",
@@ -57,9 +62,29 @@ const items = [
       "Capture and track potential clients effectively. Keep all calls, tasks, meetings, and emails in one place, and convert leads into contacts and companies with ease, ensuring smooth business development.",
   },
   {
-    id: "contact",
+    id: "contacts",
     description:
       "Find the right person fast and keep all emails associated with each contact easily accessible. Centralize and streamline communication with candidates, clients, and partners.",
+  },
+  {
+    id: "notes",
+    description:
+      "Maintain comprehensive records by adding notes to candidate profiles, job listings, and client interactions. Document important details and insights directly within our ATS, ensuring you have all the information you need at your fingertips.",
+  },
+  {
+    id: "task",
+    description:
+      "Keep your recruitment process on track by managing tasks efficiently. Assign tasks to team members, set deadlines, and monitor progress within our ATS. Ensure that every step of your recruitment workflow is completed on time.",
+  },
+  {
+    id: "meetings",
+    description:
+      "Efficiently schedule and manage recruitment meetings within our ATS. Keep track of interviews, client calls, and team discussions with automated reminders and integrated calendar syncing. ",
+  },
+  {
+    id: "opportunities",
+    description:
+      "Effectively manage recruitment opportunities from start to finish. Work on opportunities before they become active jobs and convert them seamlessly when ready, staying ahead in your recruitment efforts.",
   },
 ];
 ---
@@ -78,30 +103,31 @@ const items = [
         Designed for business teams
       </h2>
     </div>
-    <div class="w-[90vw] xl:w-auto flex items-center gap-4 mx-auto pb-6">
-      <button class="prev-button">
+    <div
+      class="w-[90vw] xl:w-[80vw] flex justify-between items-center mx-auto pb-6 relative"
+    >
+      <button class="prev-button z-50">
         <Icon
           name="prev"
-          size={60}
-          class="border border-gray-200 rounded-full p-4"
+          class="border border-[#E3E0F3] rounded-full p-4 w-12 lg:w-16 h-auto"
         />
       </button>
-      <ul class="scroll flex snap-x snap-mandatory overflow-x-auto">
+      <div
+        class="top-0 left-0 before:z-20 after:z-20 absolute w-full h-full before:h-full before:w-[20%] before:absolute before:content-[''] before:bg-gradient-to-r before:from-white before:from-[50%] before:to-transparent after:top-0 after:h-full after:w-[20%] after:right-0 after:absolute after:content-[''] after:bg-gradient-to-l after:from-white after:from-[50%] after:to-transparent"
+      >
+      </div>
+      <ul class="scroll flex flex-grow snap-x snap-mandatory overflow-x-auto">
         {
           items.map((item) => (
             <li
               id={`${item.id}Button`}
-              class="w-1/3 lg:w-2/12 flex-grow flex-shrink-0 snap-center cursor-pointer group "
+              class="snap-start w-1/2 sm:w-1/3 lg:w-2/12 flex-grow flex-shrink-0 cursor-pointer group z-10"
             >
-              <div class="space-y-2 flex flex-col justify-center items-center rounded-lg py-2">
-                <div class="bg-verylight rounded-full p-2.5">
-                  <Icon
-                    name={item.id}
-                    size={36}
-                    class=" group-hover:scale-105 transition duration ease-in-out m-1"
-                  />
+              <div class="space-y-2 flex flex-col justify-center items-center rounded-lg py-2.5">
+                <div class="group-hover:bg-[#F3F3FB] border-verylight border-[1px] rounded-full p-4">
+                  <Icon name={item.id} size={24} class="m-1" />
                 </div>
-                <p class="text-sm sm:text-base font-medium capitalize group-hover:text-primary">
+                <p class="text-xs sm:text-base font-medium capitalize group-hover:text-primary">
                   {item.id}
                 </p>
               </div>
@@ -109,11 +135,10 @@ const items = [
           ))
         }
       </ul>
-      <button class="next-button">
+      <button class="next-button z-50">
         <Icon
           name="next"
-          size={60}
-          class="border border-gray-200 rounded-full p-4"
+          class="border border-[#E3E0F3] rounded-full p-4 w-12 lg:w-16 h-auto"
         /></button
       >
     </div>
@@ -121,20 +146,22 @@ const items = [
 </section>
 <div
   style={`background-image: url(${optimizedBackground.src});`}
-  class="flex pb-44 flex-col gap-8 lg:gap-20 items-center justify-center bg-white bg-cover bg-no-repeat bg-[50%_100%]"
+  class="flex pb-32 flex-col gap-8 lg:gap-20 items-center justify-center bg-white bg-cover bg-no-repeat bg-[50%_100%]"
 >
-  <div class="max-w-4xl relative">
+  <div
+    class="max-w-3xl flex flex-col-reverse lg:block relative py-10 px-4 lg:px-0"
+  >
     <Picture
       src={hero}
       formats={["avif", "webp"]}
       alt="A prototype of the app."
       widths={[400, 800, 1200, hero.width]}
       loading="eager"
-      class="h-full w-auto shadow-[0px_20px_50px_10px_rgba(209,249,244,1)] rounded-xl px-4 lg:px-0"
+      class="h-full w-auto shadow-[0px_20px_50px_10px_rgba(209,249,244,1)] rounded-xl"
     />
     <div
-      style={`background-image: url(${cardBackground.src})`}
-      class="absolute w-1/3 h-2/3 -bottom-1/4 right-0 border-2 border-[#E3E0F3] group rounded-xl"
+      style={`background-image: url(${optimizedCardBackground.src})`}
+      class="lg:absolute lg:w-3/6 lg:h-[70%] lg:-bottom-[20%] lg:-right-[20%] border-2 border-[#E3E0F3] group rounded-xl"
     >
       {
         items.map((item, index) => (
@@ -174,18 +201,18 @@ const items = [
 </style>
 <script>
   const items = [
-    "candidates",
-    "companies",
-    "contact",
-    "jobs",
-    "leads",
-    "meetings",
-    "notes",
     "opportunities",
+    "companies",
+    "candidates",
     "reports",
-    "settings",
     "shortlist",
+    "jobs",
+    "settings",
+    "leads",
+    "contacts",
+    "notes",
     "task",
+    "meetings",
   ];
 
   items.forEach((item) => {
@@ -200,7 +227,9 @@ const items = [
             element.classList.add("hidden");
           }
           if (btn) {
-            btn.classList.remove("bg-verylight");
+            (
+              btn.firstElementChild?.firstElementChild as HTMLElement
+            )?.classList.remove("bg-verylight");
           }
         });
 
@@ -209,16 +238,18 @@ const items = [
         if (element) {
           element.classList.remove("hidden");
         }
-        button.classList.add("bg-verylight");
+        (
+          button.firstElementChild?.firstElementChild as HTMLElement
+        )?.classList.add("bg-verylight");
       });
     }
   });
-  // Define the number of elements visible based on screen width
-  let elementsPerPage = 3; // Default number of elements visible
+  const totalElements = 12;
+  let elementsPerPage = 2;
   if (window.innerWidth > 1024) {
-    elementsPerPage = 6; // Adjust for larger screens
-  }
-  // via https://github.com/tootsuite/mastodon/blob/f59ed3a4fafab776b4eeb92f805dfe1fecc17ee3/app/javascript/mastodon/scroll.js
+    elementsPerPage = 6;
+  } else if (window.innerWidth > 640) elementsPerPage = 3;
+
   const easingOutQuint = (
     x: number,
     t: number,
@@ -295,8 +326,6 @@ const items = [
     topOrLeft: number,
     horizontal: boolean
   ): void | (() => void) {
-    console.log(topOrLeft);
-
     if (hasNativeSmoothScroll) {
       return node.scrollTo({
         [horizontal ? "left" : "top"]: topOrLeft,
@@ -350,14 +379,9 @@ const items = [
   }
 
   function getIndex(): number {
-    const numElements = 12; // Total number of elements in the slider
-    const totalWidth = scroller.scrollWidth; // Total width of the scrollable content
-
-    // Calculate the width of a single element
-    const elementWidth = totalWidth / numElements;
-    // Calculate the current index based on the scroll position
-    const currentIndex = Math.floor(scroller.scrollLeft / elementWidth);
-
+    const totalWidth = scroller.scrollWidth;
+    const elementWidth = totalWidth / totalElements;
+    const currentIndex = Math.round(scroller.scrollLeft / elementWidth);
     return currentIndex;
   }
 
@@ -365,23 +389,18 @@ const items = [
     const currentIndex = getIndex();
     let targetIndex = currentIndex;
 
-    const numElements = 12; // Total number of elements in the slider
-
-    // Calculate the maximum allowable target index based on screen width
-    const maxTargetIndex = numElements - elementsPerPage;
+    const maxTargetIndex = totalElements - 1;
 
     if (direction === "prev" && currentIndex > 0) {
-      targetIndex -= elementsPerPage;
+      targetIndex -= 1;
     } else if (direction === "next" && currentIndex < maxTargetIndex) {
-      targetIndex += elementsPerPage;
+      targetIndex += 1;
     }
 
-    setAriaPressed(targetIndex / elementsPerPage);
+    setAriaPressed(targetIndex);
 
-    // Calculate the scrollLeft value based on the targetIndex
-    const scrollLeft = Math.floor(
-      (scroller.scrollWidth / numElements) * targetIndex
-    );
+    const elementWidth = scroller.scrollWidth / totalElements;
+    const scrollLeft = elementWidth * targetIndex;
     smoothScroll(scroller, scrollLeft, true);
   }
 
