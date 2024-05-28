@@ -1,0 +1,408 @@
+---
+import { Icon } from "astro-icon/components";
+import { Picture, getImage } from "astro:assets";
+import myBackground from "../assets/bg.webp";
+import cardBackground from "../assets/card-bg.webp";
+import hero from "../assets/hero.webp";
+
+const optimizedBackground = await getImage({
+  src: myBackground,
+  format: "webp",
+});
+
+const optimizedCardBackground = await getImage({
+  src: cardBackground,
+  format: "webp",
+});
+
+const items = [
+  {
+    id: "opportunities",
+    description:
+      "Effectively manage recruitment opportunities from start to finish. Work on opportunities before they become active jobs and convert them seamlessly when ready, staying ahead in your recruitment efforts.",
+  },
+  {
+    id: "companies",
+    description:
+      "Get a comprehensive view of all your clients and their job openings in one place. Quickly access associated contacts and have all client communications automatically linked within your ATS for seamless management.",
+  },
+  {
+    id: "candidates",
+    description:
+      "Effortlessly manage your candidates with a user-friendly interface that displays all essential information—assigned jobs, tasks, notes, and CVs—on one page. Customize the data layout to highlight what matters most to your company.",
+  },
+  {
+    id: "reports",
+    description:
+      "Gain valuable insights into your recruitment process. Identify team strengths and weaknesses, track client revenue, time to hire, and more.",
+  },
+  {
+    id: "shortlist",
+    description:
+      "Save and quickly access your top candidates. Share shortlists within your team or keep them private to ensure efficient collaboration and candidate management.",
+  },
+  {
+    id: "jobs",
+    description:
+      "Streamline your hiring process with customizable Kanban boards for each job, visualizing candidate stages at a glance. Our AI suggests top candidates from your database, saving you time.",
+  },
+  {
+    id: "settings",
+    description:
+      "Customize your UI and workflow to suit your agency's unique needs. Adjust settings, manage user permissions, and integrate seamlessly with your existing tools and systems for maximum flexibility.",
+  },
+  {
+    id: "leads",
+    description:
+      "Capture and track potential clients effectively. Keep all calls, tasks, meetings, and emails in one place, and convert leads into contacts and companies with ease, ensuring smooth business development.",
+  },
+  {
+    id: "contact",
+    description:
+      "Find the right person fast and keep all emails associated with each contact easily accessible. Centralize and streamline communication with candidates, clients, and partners.",
+  },
+];
+---
+
+<section class="flex items-center px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto flex flex-col mb-4">
+      <p
+        class="text-highlight bg-verylight rounded-lg w-fit px-2 py-1 uppercase font-semibold tracking-wide my-1 mx-auto"
+      >
+        Features
+      </p>
+      <h2
+        class="font-heading mt-3 text-4xl font-bold leading-[4rem] tracking-tight text-black"
+      >
+        Designed for business teams
+      </h2>
+    </div>
+    <div class="w-[90vw] xl:w-auto flex items-center gap-4 mx-auto pb-6">
+      <button class="prev-button">
+        <Icon
+          name="prev"
+          size={60}
+          class="border border-gray-200 rounded-full p-4"
+        />
+      </button>
+      <ul class="scroll flex snap-x snap-mandatory overflow-x-auto">
+        {
+          items.map((item) => (
+            <li
+              id={`${item.id}Button`}
+              class="w-1/3 lg:w-2/12 flex-grow flex-shrink-0 snap-center cursor-pointer group "
+            >
+              <div class="space-y-2 flex flex-col justify-center items-center rounded-lg py-2">
+                <div class="bg-verylight rounded-full p-2.5">
+                  <Icon
+                    name={item.id}
+                    size={36}
+                    class=" group-hover:scale-105 transition duration ease-in-out m-1"
+                  />
+                </div>
+                <p class="text-sm sm:text-base font-medium capitalize group-hover:text-primary">
+                  {item.id}
+                </p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+      <button class="next-button">
+        <Icon
+          name="next"
+          size={60}
+          class="border border-gray-200 rounded-full p-4"
+        /></button
+      >
+    </div>
+  </div>
+</section>
+<div
+  style={`background-image: url(${optimizedBackground.src});`}
+  class="flex pb-44 flex-col gap-8 lg:gap-20 items-center justify-center bg-white bg-cover bg-no-repeat bg-[50%_100%]"
+>
+  <div class="max-w-4xl relative">
+    <Picture
+      src={hero}
+      formats={["avif", "webp"]}
+      alt="A prototype of the app."
+      widths={[400, 800, 1200, hero.width]}
+      loading="eager"
+      class="h-full w-auto shadow-[0px_20px_50px_10px_rgba(209,249,244,1)] rounded-xl px-4 lg:px-0"
+    />
+    <div
+      style={`background-image: url(${cardBackground.src})`}
+      class="absolute w-1/3 h-2/3 -bottom-1/4 right-0 border-2 border-[#E3E0F3] group rounded-xl"
+    >
+      {
+        items.map((item, index) => (
+          <div
+            id={item.id}
+            class={`h-full flex flex-col justify-start pt-4 p-4 ${index > 0 && "hidden"}`}
+          >
+            <Icon name={item.id} size={36} class="text-primary z-10 mb-12" />
+            <div>
+              <h2 class="text-xl font-bold text-primary capitalize">
+                {item.id}
+              </h2>
+              <p class="mt-3 text-base leading-relaxed text-gray-900">
+                {item.description}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+      <!-- <a href={card.link}>
+        <button class="inline-flex items-center text-white">
+          Learn More{" "}
+          <Icon
+            name="arrowRight"
+            class="ml-2 text-white group-hover:ml-4 transition-all duration-300 ease-in-out"
+          />
+        </button>
+      </a> -->
+    </div>
+  </div>
+</div>
+
+<style>
+  ul::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+<script>
+  const items = [
+    "candidates",
+    "companies",
+    "contact",
+    "jobs",
+    "leads",
+    "meetings",
+    "notes",
+    "opportunities",
+    "reports",
+    "settings",
+    "shortlist",
+    "task",
+  ];
+
+  items.forEach((item) => {
+    const button = document.getElementById(`${item}Button`);
+    if (button) {
+      button.addEventListener("click", () => {
+        // Hide all elements and remove button background class
+        items.forEach((i) => {
+          const element = document.getElementById(i);
+          const btn = document.getElementById(`${i}Button`);
+          if (element) {
+            element.classList.add("hidden");
+          }
+          if (btn) {
+            btn.classList.remove("bg-verylight");
+          }
+        });
+
+        // Show the clicked element and add button background class
+        const element = document.getElementById(item);
+        if (element) {
+          element.classList.remove("hidden");
+        }
+        button.classList.add("bg-verylight");
+      });
+    }
+  });
+  // Define the number of elements visible based on screen width
+  let elementsPerPage = 3; // Default number of elements visible
+  if (window.innerWidth > 1024) {
+    elementsPerPage = 6; // Adjust for larger screens
+  }
+  // via https://github.com/tootsuite/mastodon/blob/f59ed3a4fafab776b4eeb92f805dfe1fecc17ee3/app/javascript/mastodon/scroll.js
+  const easingOutQuint = (
+    x: number,
+    t: number,
+    b: number,
+    c: number,
+    d: number
+  ) => c * ((t = t / d - 1) * t * t * t * t + 1) + b;
+
+  function smoothScrollPolyfill(
+    node: HTMLElement,
+    key: "scrollTop" | "scrollLeft",
+    target: number
+  ): () => void {
+    const startTime = Date.now();
+    const offset = node[key];
+    const gap = target - offset;
+    const duration = 1000;
+    let interrupt = false;
+
+    const step = () => {
+      const elapsed = Date.now() - startTime;
+      const percentage = elapsed / duration;
+
+      if (interrupt) {
+        return;
+      }
+
+      if (percentage > 1) {
+        cleanup();
+        return;
+      }
+
+      node[key] = easingOutQuint(0, elapsed, offset, gap, duration);
+      requestAnimationFrame(step);
+    };
+
+    const cancel = () => {
+      interrupt = true;
+      cleanup();
+    };
+
+    const cleanup = () => {
+      node.removeEventListener("wheel", cancel);
+      node.removeEventListener("touchstart", cancel);
+    };
+
+    node.addEventListener("wheel", cancel, { passive: true });
+    node.addEventListener("touchstart", cancel, { passive: true });
+
+    step();
+
+    return cancel;
+  }
+
+  function testSupportsSmoothScroll(): boolean {
+    let supports = false;
+    try {
+      const div = document.createElement("div");
+      div.scrollTo({
+        top: 0,
+        get behavior(): ScrollBehavior | undefined {
+          supports = true;
+          return "smooth";
+        },
+      });
+    } catch (err) {}
+    return supports;
+  }
+
+  const hasNativeSmoothScroll = testSupportsSmoothScroll();
+
+  function smoothScroll(
+    node: HTMLElement,
+    topOrLeft: number,
+    horizontal: boolean
+  ): void | (() => void) {
+    console.log(topOrLeft);
+
+    if (hasNativeSmoothScroll) {
+      return node.scrollTo({
+        [horizontal ? "left" : "top"]: topOrLeft,
+        behavior: "smooth",
+      });
+    } else {
+      return smoothScrollPolyfill(
+        node,
+        horizontal ? "scrollLeft" : "scrollTop",
+        topOrLeft
+      );
+    }
+  }
+
+  function debounce(func: () => void, ms: number): () => void {
+    let timeout: any = null;
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+      timeout = setTimeout(() => {
+        timeout = null;
+        func();
+      }, ms);
+    };
+  }
+
+  const prevButton = document.querySelector(
+    ".prev-button"
+  ) as HTMLButtonElement;
+  const nextButton = document.querySelector(
+    ".next-button"
+  ) as HTMLButtonElement;
+  const scroller = document.querySelector(".scroll") as HTMLElement;
+
+  function setAriaLabels() {
+    if (prevButton && nextButton) {
+      prevButton.setAttribute("aria-label", "Scroll to previous item");
+      nextButton.setAttribute("aria-label", "Scroll to next item");
+    }
+  }
+
+  function setAriaPressed(index: number) {
+    if (prevButton && nextButton) {
+      prevButton.setAttribute("aria-pressed", (index === 0).toString());
+      nextButton.setAttribute(
+        "aria-pressed",
+        (index === elementsPerPage).toString()
+      );
+    }
+  }
+
+  function getIndex(): number {
+    const numElements = 12; // Total number of elements in the slider
+    const totalWidth = scroller.scrollWidth; // Total width of the scrollable content
+
+    // Calculate the width of a single element
+    const elementWidth = totalWidth / numElements;
+    // Calculate the current index based on the scroll position
+    const currentIndex = Math.floor(scroller.scrollLeft / elementWidth);
+
+    return currentIndex;
+  }
+
+  function handleScroll(direction: "prev" | "next") {
+    const currentIndex = getIndex();
+    let targetIndex = currentIndex;
+
+    const numElements = 12; // Total number of elements in the slider
+
+    // Calculate the maximum allowable target index based on screen width
+    const maxTargetIndex = numElements - elementsPerPage;
+
+    if (direction === "prev" && currentIndex > 0) {
+      targetIndex -= elementsPerPage;
+    } else if (direction === "next" && currentIndex < maxTargetIndex) {
+      targetIndex += elementsPerPage;
+    }
+
+    setAriaPressed(targetIndex / elementsPerPage);
+
+    // Calculate the scrollLeft value based on the targetIndex
+    const scrollLeft = Math.floor(
+      (scroller.scrollWidth / numElements) * targetIndex
+    );
+    smoothScroll(scroller, scrollLeft, true);
+  }
+
+  prevButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    handleScroll("prev");
+  });
+
+  nextButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    handleScroll("next");
+  });
+
+  scroller.addEventListener(
+    "scroll",
+    debounce(() => {
+      setAriaPressed(getIndex());
+    }, 200)
+  );
+
+  setAriaLabels();
+</script>
