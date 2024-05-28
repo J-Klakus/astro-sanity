@@ -1,61 +1,63 @@
 ---
 import Button from "./reusable/Button.astro";
 import { Icon } from "astro-icon/components";
+import { getImage } from "astro:assets";
+import navbg from "../assets/nav-bg.webp";
 
+const optimizedBackground = await getImage({
+  src: navbg,
+  format: "webp",
+});
 const menu = [
   {
-    Company: {
+    Product: {
       link: "/product",
       values: [
-        { text: "Verify Anywhere", link: "/anywhere" },
-        { text: "KYC", link: "/kyc" },
-        { text: "AML & PEP", link: "/aml-and-peps" },
+        { text: "AI", link: "/ai" },
+        { text: "Chat Navigation", link: "/chat" },
+        { text: "Automation", link: "/automation" },
+        { text: "Customisation", link: "/automation" },
+        { text: "Email Integration", link: "/automation" },
+        { text: "Browser Extension", link: "/automation" },
+        { text: "Website Widget", link: "/automation" },
+        { text: "CV Parser", link: "/automation" },
       ],
+      header: "Recruitment Suite",
+      headerLinkText:
+        "View our all-in-one ATS & CRM platform and its powerful features.",
+      headerLink: "/recruitment-automation",
     },
   },
   {
     Solutions: {
       link: "/solutions",
-      values: [
-        { text: "Legal", link: "/legal" },
-        { text: "Property", link: "/property" },
-        { text: "Telecommunications", link: "/telecommunications" },
-        { text: "Finance", link: "/finance" },
-        { text: "Online Gambling", link: "/online-gambling" },
-      ],
     },
   },
   {
     Resources: {
       link: "/blog",
-      values: [
-        { text: "Case Studies", link: "/studies" },
-        { text: "Blog", link: "/blog" },
-      ],
     },
   },
   {
     Pricing: {
       link: "/about-us",
-      values: [{ text: "About Us", link: "/about-us" }],
     },
   },
   {
     Contact: {
       link: "/about-us",
-      values: [{ text: "About Us", link: "/about-us" }],
     },
   },
 ];
 ---
 
-<header class="w-screen">
+<header class="w-screen lg:fixed z-[999] border-b border-verylight bg-white">
   <nav
     class="flex flex-wrap max-w-7xl mx-auto items-center justify-between w-full py-4 lg:py-0 px-12 text-gray-700 bg-white"
   >
     <div class="z-[50]">
       <a href="/">
-        <Icon name="logo" size={120} />
+        <Icon name="logo" class="h-auto w-28" />
       </a>
     </div>
     <div class="lg:hidden">
@@ -109,29 +111,68 @@ const menu = [
         {
           menu.map((item) => (
             <li class="group menu relative cursor-pointer py-2">
-              <div class="flex items-center justify-center lg:justify-between space-x-2 px-2 xl:px-4">
+              <div class="flex items-center justify-center lg:justify-between space-x-2 px-2 xl:px-4 group">
                 <a
                   href={Object.values(item)[0].link}
-                  class="item my-2 py-2 text-sky-950 hover:text-blue-500 transition duration-300 ease-in-out font-bold"
+                  class="item my-2 py-2 text-sky-950 hover:text-primary transition duration-300 ease-in-out font-bold"
                 >
                   {Object.keys(item)}
                 </a>
-                <span>
-                  <Icon name="chevronDown" />
-                </span>
-              </div>
-              <ul class="dropdown max-h-0 h-fit transition-all duration-500 ease-in-out overflow-hidden lg:overflow-visible lg:max-h-fit lg:hidden lg:absolute top-14 z-50 min-w-48 w-fit flex-col bg-white py-1 text-gray-800 shadow-xl lg:group-hover:flex group-aria-expanded-within:flex">
-                {Object.values(item)[0].values.map(
-                  (subItem: { text: string; link: string }) => (
-                    <a
-                      href={subItem.link}
-                      class="px-2 my-0.5 block whitespace-nowrap border-b border-white py-1 font-normal text-gray-500 hover:bg-blue-500 hover:text-white"
-                    >
-                      {subItem.text}
-                    </a>
-                  )
+                {Object.values(item)[0].values && (
+                  <span>
+                    <Icon
+                      name="chevronDown"
+                      class="group-hover:rotate-180 transition-transform duration-300 ease-in-out"
+                    />
+                  </span>
                 )}
-              </ul>
+              </div>
+              <div>
+                {Object.values(item)[0].values && (
+                  <ul
+                    style={`background-image: url(${optimizedBackground.src});`}
+                    class="lg:p-6 dropdown bg-right-top bg-no-repeat lg:w-[55vw] max-h-0 h-fit transition-all duration-500 ease-in-out overflow-hidden lg:overflow-visible lg:max-h-fit lg:hidden lg:absolute top-14 z-50 flex-col bg-white text-gray-800 shadow-[0_3px_10px_rgb(0,0,0,0.2)] lg:group-hover:grid lg:group-focus-within:grid lg:grid-cols-3 "
+                  >
+                    <li class="px-2 lg:pr-6 my-0.5">
+                      <div class="flex flex-col h-full justify-between">
+                        <p class="text-xl text-gray-900 font-semibold cursor-auto">
+                          {Object.values(item)[0].header}
+                        </p>
+                        <a
+                          href={Object.values(item)[0].headerLink}
+                          class="text-primary hover:opacity-70 text-xs lg:text-sm max-w-52"
+                        >
+                          {Object.values(item)[0].headerLinkText}
+                        </a>
+                      </div>
+                    </li>
+                    <li class="lg:grid lg:px-6 lg:grid-rows-4">
+                      {Object.values(item)[0]
+                        .values.slice(0, 4)
+                        .map((subItem: { text: string; link: string }) => (
+                          <a
+                            href={subItem.link}
+                            class="px-2 block w-full border-b text-sm border-white py-1 font-normal text-gray-500 hover:bg-primary hover:text-white"
+                          >
+                            {subItem.text}
+                          </a>
+                        ))}
+                    </li>
+                    <div class="lg:grid lg:px-6 lg:grid-rows-4">
+                      {Object.values(item)[0]
+                        .values.slice(4, 8)
+                        .map((subItem: { text: string; link: string }) => (
+                          <a
+                            href={subItem.link}
+                            class="px-2 block whitespace-nowrap border-b border-white py-1 font-normal text-gray-500 hover:bg-primary hover:text-white"
+                          >
+                            {subItem.text}
+                          </a>
+                        ))}
+                    </div>
+                  </ul>
+                )}
+              </div>
             </li>
           ))
         }
@@ -160,10 +201,10 @@ const menu = [
 
       allDropdowns.forEach((dropdown) => {
         if (dropdown !== currentDropdown) {
-          dropdown.classList.remove("max-h-72");
+          dropdown.classList.remove("max-h-80");
         }
       });
-      currentDropdown!.classList.toggle("max-h-72");
+      currentDropdown!.classList.toggle("max-h-80");
     });
   });
 
