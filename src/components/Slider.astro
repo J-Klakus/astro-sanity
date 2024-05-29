@@ -367,8 +367,6 @@ const items = [
   ) as HTMLButtonElement;
   const scroller = document.querySelector(".scroll") as HTMLElement;
 
-  if (!prevButton || !nextButton || !scroller) return;
-
   function setAriaLabels() {
     if (prevButton && nextButton) {
       prevButton.setAttribute("aria-label", "Scroll to previous item");
@@ -412,30 +410,32 @@ const items = [
     smoothScroll(scroller, scrollLeft, true);
   }
 
-  prevButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    handleScroll("prev");
-  });
+  if (prevButton || nextButton || scroller) {
+    prevButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      handleScroll("prev");
+    });
 
-  nextButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    handleScroll("next");
-  });
+    nextButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      handleScroll("next");
+    });
 
-  scroller.addEventListener(
-    "scroll",
-    debounce(() => {
-      setAriaPressed(getIndex());
-    }, 200)
-  );
+    scroller.addEventListener(
+      "scroll",
+      debounce(() => {
+        setAriaPressed(getIndex());
+      }, 200)
+    );
 
-  setAriaLabels();
+    setAriaLabels();
 
-  window.addEventListener("load", () => {
-    const elementWidth = scroller.scrollWidth / totalElements;
-    const initialScrollLeft = elementWidth * 1; // Index 1 for the second element
-    smoothScroll(scroller, initialScrollLeft, true);
-  });
+    window.addEventListener("load", () => {
+      const elementWidth = scroller.scrollWidth / totalElements;
+      const initialScrollLeft = elementWidth * 1; // Index 1 for the second element
+      smoothScroll(scroller, initialScrollLeft, true);
+    });
+  }
 </script>
