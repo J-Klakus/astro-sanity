@@ -97,9 +97,11 @@ const optimizedBackground = await getImage({
         src={candidatepipeline}
         formats={["avif", "webp"]}
         alt={imageAlt}
-        sizes="(max-width: 640px) 100vw, 672px"
+        sizes={largeImage
+          ? "(max-width: 1024px) 100vw, (max-width: 1280px) 60vw, 900px"
+          : "(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 900px"}
         widths={[400, 800, 1200, candidatepipeline.width]}
-        class="h-full w-full object-cover object-left max-w-2xl mx-auto"
+        class="h-full w-full object-cover object-left"
       />
     </div>
   </div>
