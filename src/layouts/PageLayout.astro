@@ -6,6 +6,6 @@ import Layout from "./Layout.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title={frontmatter.metaTitle} description={frontmatter.metaDescription}>
-  <Page contentBlocks={frontmatter.content_blocks} />
+<Layout title={frontmatter.title} description={frontmatter.title}>
+  <Page contentBlocks={frontmatter.sections} />
 </Layout>

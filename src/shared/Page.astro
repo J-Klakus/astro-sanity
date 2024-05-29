@@ -23,7 +23,7 @@ Object.entries(componentImports).forEach(([path, obj]) => {
 <main>
   {
     contentBlocks.map((block: ContentBlock) => {
-      const Component = components[block._component_name];
+      const Component = components[block._type];
       return <Component {...block} />;
     })
   }

@@ -1,10 +1,47 @@
 ---
-import { getCollection } from "astro:content";
-import IndexLayout from "../layouts/PageLayout.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+import { sanityClient } from "sanity:client";
+
+interface Props {
+  page?: {
+    url?: {
+      next?: string;
+      prev?: string;
+    };
+    data?: any;
+    lastPage?: number;
+    currentPage?: number;
+  };
+}
+
+interface Slug {
+  current: string;
+  _type: string;
+}
+
+interface Section {
+  _type: string;
+  _key: string;
+  title: string;
+}
+
+interface Page {
+  slug: Slug;
+  _createdAt: string;
+  _rev: string;
+  _type: string;
+  _id: string;
+  title: string;
+  _updatedAt: string;
+  sections: Section[];
+}
+
 export async function getStaticPaths() {
-  const pages = await getCollection("pages", ({ data }) => !data.hidden);
-  return pages.map((page) => {
-    const slug = page.slug.replace(/index$/, "");
+  const posts = await sanityClient.fetch(
+    `*[_type == "page" && defined(slug)] | order(publishedAt desc)`
+  );
+  return posts.map((page: Page) => {
+    const slug = page.slug.current.replace(/index$/, "");
     if (slug.length === 0)
       return { params: { slug: undefined }, props: { page } };
     return { params: { slug }, props: { page } };
@@ -12,9 +49,9 @@ export async function getStaticPaths() {
 }
 
 const page = Astro.props.page;
-if (!page.data) {
+if (!page) {
   throw new Error(`Could not find page data`);
 }
 ---
 
-<IndexLayout frontmatter={page.data} />
+<PageLayout frontmatter={page} />

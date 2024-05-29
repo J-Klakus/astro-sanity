@@ -1,8 +1,9 @@
 ---
 import { Picture, getImage } from "astro:assets";
 import myBackground from "../assets/bg2.webp";
-import hero from "../assets/hero.webp";
 import Button from "./reusable/Button.astro";
+import imageHelper from "../utils/imageHelper";
+import type { ImageRef } from "../utils/imageHelper";
 
 // Define the interface for the button props
 interface ButtonProps {
@@ -21,8 +22,8 @@ interface CustomSectionProps {
   description: string;
   button1?: ButtonProps;
   button2?: ButtonProps;
-  heroSrc?: ImageMetadata;
-  heroAlt?: string;
+  image: ImageRef;
+  imageAlt: string;
 }
 
 const {
@@ -38,8 +39,8 @@ const {
     arrow: true,
   },
   button2 = { link: "#", buttonText: "Contact Sales", type: "outline" },
-  heroSrc = hero,
-  heroAlt = "A prototype of the app.",
+  image,
+  imageAlt,
 } = Astro.props as CustomSectionProps;
 
 const optimizedBackground = await getImage({
@@ -86,14 +87,15 @@ const optimizedBackground = await getImage({
     >
       <Picture
         fallbackFormat="jpg"
-        src={heroSrc}
+        src={imageHelper(image).url()}
         formats={["avif", "webp"]}
-        alt={heroAlt}
+        alt={imageAlt}
         sizes={largeImage
           ? "(max-width: 1024px) 100vw, (max-width: 1152px) 60vw, 624px"
           : "(max-width: 1024px) 100vw, (max-width: 1152px) 30vw, 624px"}
-        widths={[400, 800, 1200, heroSrc.width]}
+        widths={[400, 800, 1200]}
         class="h-full w-full object-cover object-left"
+        inferSize={true}
       />
     </div>
   </div>

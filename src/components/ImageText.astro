@@ -3,6 +3,8 @@ import { Picture, getImage } from "astro:assets";
 import myBackground from "../assets/bg-center.webp";
 import candidatepipeline from "../assets/candidate-pipeline.webp";
 import Button from "./reusable/Button.astro";
+import type { ImageRef } from "../utils/imageHelper";
+import imageHelper from "../utils/imageHelper";
 
 // Define the interface for the button props
 interface ButtonProps {
@@ -22,7 +24,7 @@ interface CustomSectionProps {
   title: string;
   description: string;
   buttons?: ButtonProps[];
-  heroSrc?: ImageMetadata;
+  image: ImageRef;
   imageAlt?: string;
 }
 
@@ -42,7 +44,7 @@ const {
       arrow: true,
     },
   ],
-  heroSrc = candidatepipeline,
+  image,
   imageAlt = "A prototype of the app.",
 } = Astro.props as CustomSectionProps;
 
@@ -94,7 +96,7 @@ const optimizedBackground = await getImage({
     >
       <Picture
         fallbackFormat="jpg"
-        src={candidatepipeline}
+        src={imageHelper(image).url()}
         formats={["avif", "webp"]}
         alt={imageAlt}
         sizes={largeImage
@@ -102,6 +104,7 @@ const optimizedBackground = await getImage({
           : "(max-width: 1024px) 100vw, (max-width: 1152px) 30vw, 624px"}
         widths={[400, 800, 1200, candidatepipeline.width]}
         class="h-full w-full object-cover object-left"
+        inferSize={true}
       />
     </div>
   </div>
