@@ -158,9 +158,11 @@ const items = [
     class="max-w-3xl flex flex-col-reverse lg:block relative sm:py-10 px-4 lg:px-0"
   >
     <Picture
+      fallbackFormat="jpg"
       src={hero}
       formats={["avif", "webp"]}
       alt="A prototype of the app."
+      sizes="(max-width: 768px) 100vw, 768px"
       widths={[400, 800, 1200, hero.width]}
       loading="eager"
       class="h-full w-auto shadow-[0px_20px_50px_10px_rgba(209,249,244,1)] rounded-xl pt-2 lg:pt-0"

@@ -105,11 +105,12 @@ Learn more`,
   </div>
   <div class="max-w-6xl md:w-1/2">
     <Picture
+    fallbackFormat="jpg"
       src={features}
       formats={["avif", "webp"]}
       alt="A prototype of the app."
-      sizes="100vw"
-      widths={[400, 800, features.width]}
+      sizes="(max-width: 768px) 100vw, 50vw"
+      widths={[400, 800, 1200, features.width]}
       class="h-auto w-full object-cover object-left shadow-[rgba(0,_0,_0,_0.1)_0px_24px_30px_-10px]"
     />
   </div>

@@ -90,14 +90,15 @@ const optimizedBackground = await getImage({
       </div>
     </div>
     <div
-      class={`${largeImage ? "lg:h-[70vh] lg:w-3/5 w-full h-auto" : "lg:w-1/2 h-auto"} `}
+      class={`${largeImage ? "lg:h-full 2xl:h-3/4 w-full h-auto" : "lg:w-1/2 h-auto"} `}
     >
       <Picture
+        fallbackFormat="jpg"
         src={candidatepipeline}
         formats={["avif", "webp"]}
         alt={imageAlt}
-        sizes="(max-width: 640px) 50vw, 100vw"
-        widths={[400, 800, candidatepipeline.width]}
+        sizes="(max-width: 640px) 100vw, 672px"
+        widths={[400, 800, 1200, candidatepipeline.width]}
         class="h-full w-full object-cover object-left max-w-2xl mx-auto"
       />
     </div>

@@ -28,10 +28,11 @@ import { Icon } from "astro-icon/components";
       class="h-fit lg:h-auto col-span-10 md:col-span-7 md:row-span-2 relative group hover:cursor-pointer"
     >
       <Picture
+        fallbackFormat="jpg"
         src={flexible}
         formats={["avif", "webp"]}
         alt={"infographic"}
-        sizes="(max-width: 640px) 50vw, 100vw"
+        sizes="(max-width: 768px) 100vw, (max-width: 1298px) 60vw, 779px"
         widths={[400, 800, flexible.width]}
         class="h-auto w-full object-contain group-hover:brightness-75 transition duration-300 ease-in-out"
       />
@@ -55,10 +56,11 @@ import { Icon } from "astro-icon/components";
       class="col-span-10 md:col-span-4 md:row-span-3 relative group hover:cursor-pointer"
     >
       <Picture
+        fallbackFormat="jpg"
         src={learn}
         formats={["avif", "webp"]}
         alt={"infographic"}
-        sizes="(max-width: 640px) 50vw, 100vw"
+        sizes="(max-width: 768px) 100vw, (max-width: 1298px) 30vw, 455px"
         widths={[400, 800, learn.width]}
         class="h-auto w-full object-contain group-hover:brightness-75 transition duration-300 ease-in-out"
       />
@@ -74,10 +76,11 @@ import { Icon } from "astro-icon/components";
       class="col-span-10 md:col-span-7 md:row-span-10 md:-mt-5 relative hover:cursor-pointer group"
     >
       <Picture
+        fallbackFormat="jpg"
         src={chat}
         formats={["avif", "webp"]}
         alt={"infographic"}
-        sizes="(max-width: 640px) 50vw, 100vw"
+        sizes="(max-width: 768px) 100vw, (max-width: 1298px) 60vw, 779px"
         widths={[400, 800, chat.width]}
         class="h-auto w-full object-contain group-hover:brightness-75 transition duration-300 ease-in-out"
       />
@@ -87,12 +90,13 @@ import { Icon } from "astro-icon/components";
       class="col-span-10 md:col-span-4 md:row-span-6 md:mt-1 relative hover:cursor-pointer group"
     >
       <Picture
+        fallbackFormat="jpg"
         src={stage}
         formats={["avif", "webp"]}
         alt={"infographic"}
-        sizes="(max-width: 640px) 50vw, 100vw"
+        sizes="(max-width: 768px) 100vw, (max-width: 1298px) 30vw, 455px"
         widths={[400, 800, stage.width]}
-        class="h-auto w-full object-contain group-hover:brightness-75 transition duration-300 ease-in-out"
+        class="h-auto w-full object-contain md:-mt-1 group-hover:brightness-75 transition duration-300 ease-in-out"
       />
       <Pill text="Automation" position="top-left" />
     </div>

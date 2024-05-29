@@ -32,6 +32,7 @@ const optimizedBackground = await getImage({
     </div>
     <div class="h-full w-auto">
       <Picture
+        fallbackFormat="jpg"
         src={logobig}
         formats={["avif", "webp"]}
         alt="A prototype of the app."

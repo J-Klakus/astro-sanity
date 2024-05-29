@@ -29,10 +29,12 @@ import info from "../assets/infographic.webp";
     />
   </div>
   <Picture
+    fallbackFormat="jpg"
     src={info}
     formats={["avif", "webp"]}
     alt="A prototype of the app."
-    widths={[400, 800, info.width]}
+    sizes="(max-width: 1280px) 100vw, 1200px"
+    widths={[400, 800, 1200, info.width]}
     class="h-full w-auto my-4"
   />
 </div>

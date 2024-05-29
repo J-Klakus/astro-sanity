@@ -81,13 +81,18 @@ const optimizedBackground = await getImage({
         />
       </div>
     </div>
-    <div class={`${largeImage && "lg:h-[70vh] lg:w-3/5 w-full h-auto"} `}>
+    <div
+      class={`${largeImage && "lg:h-full 2xl:h-3/4 lg:w-3/5 w-full h-auto"} `}
+    >
       <Picture
+        fallbackFormat="jpg"
         src={heroSrc}
         formats={["avif", "webp"]}
         alt={heroAlt}
-        sizes="(max-width: 640px) 50vw, 100vw"
-        widths={[400, 800, heroSrc.width]}
+        sizes={largeImage
+          ? "(max-width: 1024px) 100vw, (max-width: 1152px) 60vw, 624px"
+          : "(max-width: 1024px) 100vw, (max-width: 1152px) 30vw, 624px"}
+        widths={[400, 800, 1200, heroSrc.width]}
         class="h-full w-full object-cover object-left"
       />
     </div>
