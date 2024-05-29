@@ -1,7 +1,12 @@
 import {defineType, defineField, defineArrayMember} from 'sanity'
 
-export const heroBlock = defineType({
+export const LogoBanner = defineType({
   type: 'object',
   name: 'LogoBanner',
-  fields: [],
+  fields: [
+    defineField({
+      type: "string",
+      name: "title",
+    }),
+  ],
 })

@@ -1,8 +1,8 @@
 import {defineType, defineField} from 'sanity'
 
-export const button = defineType({
+export const Button = defineType({
   type: 'object',
-  name: 'button',
+  name: 'Button',
   title: 'Button',
   fields: [
     defineField({
@@ -10,7 +10,7 @@ export const button = defineType({
       name: 'buttonText',
     }),
     defineField({
-      type: 'url',
+      type: 'string',
       name: 'link',
     }),
     defineField({

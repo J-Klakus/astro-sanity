@@ -1,7 +1,12 @@
 import {defineType, defineField, defineArrayMember} from 'sanity'
 
-export const heroBlock = defineType({
+export const TwoCards = defineType({
   type: 'object',
   name: 'TwoCards',
-  fields: [],
+  fields: [
+    defineField({
+      type: 'string',
+      name: 'title',
+    }),
+  ],
 })
