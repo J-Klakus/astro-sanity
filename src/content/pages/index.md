@@ -2,7 +2,7 @@
 title: Home
 description: Home
 content_blocks:
-  - _component_name: Hero
+  - _component_name: HeroVideo
   - _component_name: Features
   - _component_name: Brands
   - _component_name: CardHolder
