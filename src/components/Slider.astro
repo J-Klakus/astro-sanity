@@ -204,6 +204,7 @@ const items = [
     display: none;
   }
 </style>
+
 <script>
   const items = [
     "opportunities",
@@ -365,6 +366,8 @@ const items = [
     ".next-button"
   ) as HTMLButtonElement;
   const scroller = document.querySelector(".scroll") as HTMLElement;
+
+  if (!prevButton || !nextButton || !scroller) return;
 
   function setAriaLabels() {
     if (prevButton && nextButton) {
