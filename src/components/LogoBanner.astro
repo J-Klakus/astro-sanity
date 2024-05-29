@@ -8,10 +8,6 @@ const optimizedBackground = await getImage({
   src: myBackground,
   format: "webp",
 });
-const optimizedLogoBackground = await getImage({
-  src: logobig,
-  format: "webp",
-});
 ---
 
 <section
@@ -19,19 +15,30 @@ const optimizedLogoBackground = await getImage({
   class="bg-cover bg-no-repeat bg-top flex flex-col justify-center"
 >
   <div
-    style={`background-image:url(${optimizedLogoBackground.src})`}
-    class="my-52 bg-white bg-contain bg-no-repeat bg-[100%_100%] border border-verylight max-w-6xl mx-auto p-8 flex flex-col"
+    class="flex flex-col-reverse md:flex-row justify-between items-center my-[15vw] bg-white border border-verylight w-[90vw] md:max-w-6xl mx-auto"
   >
-    <h2
-      class="text-4xl w-2/3 font-heading group-hover:to-primary bg-gradient-to-r from-primary from-[1%] to-secondary to-[80%] inline-block text-transparent font-bold bg-clip-text"
-    >
-      Discover our competitive offer tailored to recruitment agencies.
-    </h2>
-    <Button
-      link="#"
-      buttonText="Try for free"
-      type="filled"
-      class="w-fit my-6"
-    />
+    <div class="flex flex-col p-8">
+      <h2
+        class="text-2xl md:text-4xl md:w-4/5 leading-10 pb-1 font-heading group-hover:to-primary bg-gradient-to-r from-primary from-[1%] to-secondary to-[80%] inline-block text-transparent font-bold bg-clip-text"
+      >
+        Discover our competitive offer tailored to recruitment agencies.
+      </h2>
+      <Button
+        link="#"
+        buttonText="Show Pricing"
+        type="filled"
+        class="w-fit mt-8"
+      />
+    </div>
+    <div class="h-full w-auto">
+      <Picture
+        src={logobig}
+        formats={["avif", "webp"]}
+        alt="A prototype of the app."
+        widths={[400, 800, 1200, logobig.width]}
+        loading="eager"
+        class="h-auto w-10/12 object-contain pt-2 md:pt-0"
+      />
+    </div>
   </div>
 </section>

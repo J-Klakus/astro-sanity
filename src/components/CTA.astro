@@ -50,13 +50,13 @@ const optimizedBackground = await getImage({
 
 <section
   style={`background-image: ${background ? `url(${optimizedBackground.src})` : "none"};`}
-  class={`py-8 ${first ? "sm:pt-44 pb-20" : "sm:py-40"}  ${background ? "bg-cover bg-no-repeat" : ""}`}
+  class={`py-8 ${first ? "lg:pt-44 pb-20" : "sm:py-40"}  ${background ? "bg-cover bg-no-repeat" : ""}`}
 >
   <div
-    class="max-w-6xl flex flex-col md:flex-row gap-8 lg:gap-20 items-center justify-center mx-auto px-4"
+    class="max-w-6xl flex flex-col lg:flex-row gap-8 lg:gap-20 items-center justify-center mx-auto px-4"
   >
-    <div class={`${largeImage && "md:w-2/5"} max-w-xl`}>
-      <div class="text-center md:text-start">
+    <div class={`${largeImage && "lg:w-2/5"} max-w-xl`}>
+      <div class="text-center lg:text-start">
         <h1
           class={`font-heading mt-3 ${first ? "text-3xl sm:text-6xl" : "text-3xl sm:text-4xl"} font-bold leading-[4rem] tracking-tight text-black`}
         >
@@ -67,7 +67,7 @@ const optimizedBackground = await getImage({
         </p>
       </div>
 
-      <div class="mt-6 flex items-center justify-center md:justify-start gap-4">
+      <div class="mt-6 flex items-center justify-center lg:justify-start gap-4">
         <Button
           link={button1.link}
           buttonText={button1.buttonText}
@@ -81,14 +81,14 @@ const optimizedBackground = await getImage({
         />
       </div>
     </div>
-    <div class={`${largeImage && "md:h-[70vh] md:w-3/5"} `}>
+    <div class={`${largeImage && "lg:h-[70vh] lg:w-3/5 w-full h-auto"} `}>
       <Picture
         src={heroSrc}
         formats={["avif", "webp"]}
         alt={heroAlt}
         sizes="(max-width: 640px) 50vw, 100vw"
         widths={[400, 800, heroSrc.width]}
-        class="h-full w-auto object-cover object-left"
+        class="h-full w-full object-cover object-left"
       />
     </div>
   </div>

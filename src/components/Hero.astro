@@ -3,6 +3,7 @@ import { Picture, getImage } from "astro:assets";
 import myBackground from "../assets/bg.webp";
 import hero from "../assets/hero.webp";
 import Button from "./reusable/Button.astro";
+import Video from "./Video.astro";
 
 const optimizedBackground = await getImage({
   src: myBackground,
@@ -38,14 +39,7 @@ const optimizedBackground = await getImage({
       />
     </div>
   </div>
-  <div class="max-w-6xl">
-    <Picture
-      src={hero}
-      formats={["avif", "webp"]}
-      alt="A prototype of the app."
-      widths={[400, 800, 1200, hero.width]}
-      loading="eager"
-      class="h-full w-auto shadow-[0px_20px_50px_10px_rgba(209,249,244,1)] rounded-xl px-4"
-    />
+  <div class="max-w-4xl">
+    <Video video="./video.mov" />
   </div>
 </section>

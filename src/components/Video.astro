@@ -1,0 +1,23 @@
+---
+const { video, text } = Astro.props;
+import { YouTube } from "@astro-community/astro-embed-youtube";
+---
+
+<div class="video bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="overflow-hidden rounded-lg">
+      {
+        video.includes("youtu.be") ? (
+          <>
+            <YouTube id={video} />
+            <p class="text-center mt-2 text-lg">{text}</p>
+          </>
+        ) : (
+          <video autoplay="" playsinline="" loop="" muted="">
+            <source src={video} />
+          </video>
+        )
+      }
+    </div>
+  </div>
+</div>

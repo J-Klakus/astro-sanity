@@ -8,10 +8,10 @@ const { text, position, color } = Astro.props as {
 // Function to map position prop to CSS classes
 const positionClasses =
   {
-    "top-left": "top-3 left-3",
-    "top-right": "top-3 right-3",
-    "bottom-left": "bottom-3 left-3",
-    "bottom-right": "bottom-3 right-3",
+    "top-left": "top-2 left-1 top-3 sm:left-3",
+    "top-right": "top-2 right-1 sm:top-3 sm:right-3",
+    "bottom-left": "bottom-2 left-1 sm:bottom-3 left-3",
+    "bottom-right": "bottom-2 right-1 sm:bottom-3 right-3",
   }[position] || "";
 
 // Function to map color prop to CSS classes
@@ -23,7 +23,7 @@ const colorClasses =
 ---
 
 <div
-  class={`absolute ${positionClasses} ${colorClasses} px-4 py-2 text-sm font-medium rounded-full`}
+  class={`absolute ${positionClasses} ${colorClasses} px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold rounded-full`}
 >
   {text}
 </div>

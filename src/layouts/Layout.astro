@@ -1,6 +1,6 @@
 ---
 import "@fontsource/inter"; // Defaults to weight 400
-import '@fontsource/poppins';
+import "@fontsource/poppins";
 
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
@@ -20,7 +20,7 @@ const { metaTitle, metaDescription, metaImage } = Astro.props;
       metaImage={metaImage}
     />
   </head>
-  <body class="text-headline">
+  <body>
     <Navbar />
     <slot />
     <Footer />
