@@ -44,10 +44,12 @@ const generateClassBasedOnIndex = (index: number) => {
 <section
   class="bg-[url('/mesh-center-mobile.webp')] sm:bg-[url('/mesh-center.webp')] bg-cover bg-no-repeat bg-[100%_-50%]"
 >
-  <div class="lg:pl-10 pb-10">
+  <div class="pb-10">
     <div class="flex justify-between items-center py-2 px-4"></div>
     <div class="relative glide-06">
-      <div class="flex justify-between gap-4 items-center mb-6 md:mb-10 px-4">
+      <div
+        class="flex justify-between gap-4 items-center mb-6 md:mb-10 lg:mb-20 px-4"
+      >
         <div class="text-center max-w-2xl mx-auto px-4">
           <p
             class="text-highlight bg-verylight rounded-lg w-fit px-2 py-1 uppercase font-semibold tracking-wide mb-3 mx-auto"
@@ -109,7 +111,7 @@ const generateClassBasedOnIndex = (index: number) => {
           </button>
         </div> -->
       </div>
-      <div class="relative w-full glide-06">
+      <div class="pl-1.5 md:pl-[10vw] relative w-full glide-06">
         <!-- Slides -->
         <div class="overflow-hidden" data-glide-el="track">
           <ul
@@ -120,22 +122,22 @@ const generateClassBasedOnIndex = (index: number) => {
                 <li class="flex justify-center">
                   <a
                     href={post.slug + "/"}
-                    class="card w-80 lg:w-full shadow-lg group my-4 rounded-md hover:opacity-90"
+                    class="card w-[90vw] sm:w-full mx-auto shadow-lg group my-4 rounded-md hover:opacity-90"
                   >
-                    <figure class="relative aspect-video ">
+                    <figure class="relative">
                       <Image
                         src={post.image}
                         alt="Blog"
-                        class="group-hover:cursor-pointer object-cover h-auto w-full rounded-xl"
+                        class="group-hover:cursor-pointer object-cover h-auto w-full rounded-t-xl"
                       />
                       <div
-                        class={`${generateClassBasedOnIndex(i)} p-4 sm:p-6 rounded-b-xl absolute bottom-0 w-full h-2/5 lg:h-1/4 flex flex-col justify-start`}
+                        class={`${generateClassBasedOnIndex(i)} p-4 sm:p-6 rounded-b-xl w-full flex flex-col justify-start`}
                       >
                         <div class="flex w-full justify-between">
-                          <p class="text-sm lg:text-base font-medium mb-3">
+                          <p class="text-sm sm:text-base font-medium mb-3">
                             {post.category}
                           </p>
-                          <p class="text-sm lg:text-base font-medium mb-3">
+                          <p class="text-sm sm:text-base font-medium mb-3">
                             {post.date}
                           </p>
                         </div>
@@ -145,7 +147,7 @@ const generateClassBasedOnIndex = (index: number) => {
                       </div>
                       <Icon
                         name="diagonalArrow"
-                        class="absolute top-2 right-1 sm:top-3 sm:right-3 h-auto w-12 sm:w-16"
+                        class="absolute top-2 right-1 sm:top-3 sm:right-3 h-auto w-12"
                       />
                     </figure>
                   </a>
@@ -205,13 +207,14 @@ const generateClassBasedOnIndex = (index: number) => {
       import Glide from "@glidejs/glide";
       var glide06 = new Glide(".glide-06", {
         type: "carousel",
-        focusAt: 0,
+        focusAt: "center",
         breakpoints: {
-          768: {
+          640: {
             perView: 1,
           },
-          1024: {
+          768: {
             perView: 2,
+            focusAt: 0,
           },
         },
         startAt: 0,
