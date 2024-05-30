@@ -16,11 +16,11 @@ const menu = [
         { text: "AI", link: "/ai" },
         { text: "Chat Navigation", link: "/chat" },
         { text: "Automation", link: "/automation" },
-        { text: "Customisation", link: "/automation" },
+        { text: "Customization", link: "/customization" },
         { text: "Email Integration", link: "/email-integration" },
-        { text: "Browser Extension", link: "/automation" },
-        { text: "Website Widget", link: "/automation" },
-        { text: "CV Parser", link: "/automation" },
+        { text: "Browser Extension", link: "/browser-extension" },
+        { text: "Website Widget", link: "/website-widget" },
+        { text: "CV Parser", link: "/cv-parser" },
       ],
       header: "Recruitment Suite",
       headerLinkText:
@@ -51,7 +51,7 @@ const menu = [
 ];
 ---
 
-<header class="w-screen lg:fixed z-[999] border-b border-verylight bg-white">
+<header class="w-screen fixed z-[999] border-b border-verylight bg-white">
   <nav
     class="flex flex-wrap max-w-7xl mx-auto items-center justify-between w-full py-4 lg:py-0 px-6 lg:px-12 text-gray-700 bg-white"
   >
@@ -129,48 +129,50 @@ const menu = [
               </div>
               <div>
                 {Object.values(item)[0].values && (
-                  <ul
-                    style={`background-image: url(${optimizedBackground.src});`}
-                    class="lg:p-6 dropdown bg-right-top bg-no-repeat lg:w-[55vw] max-h-0 h-fit transition-all duration-500 ease-in-out overflow-hidden lg:overflow-visible lg:max-h-fit lg:hidden lg:absolute top-[73px] z-50 flex-col bg-white text-gray-800 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] lg:group-hover:grid lg:group-focus-within:grid lg:grid-cols-3 "
-                  >
-                    <li class="px-2 lg:pr-6 my-0.5">
-                      <div class="flex flex-col h-full justify-between">
-                        <p class="text-xl text-gray-900 font-semibold cursor-auto">
-                          {Object.values(item)[0].header}
-                        </p>
-                        <a
-                          href={Object.values(item)[0].headerLink}
-                          class="text-primary hover:opacity-70 text-xs lg:text-sm max-w-52"
-                        >
-                          {Object.values(item)[0].headerLinkText}
-                        </a>
+                  <div class="lg:p-6 dropdown lg:w-[55vw] max-h-0 h-fit transition-all duration-500 ease-in-out overflow-hidden lg:overflow-visible lg:max-h-fit lg:hidden lg:absolute top-[48px] z-50 lg:group-hover:grid lg:group-focus-within:grid ">
+                    <ul
+                      style={`background-image: url(${optimizedBackground.src});`}
+                      class="lg:p-6 lg:w-[55vw]  bg-right-top bg-no-repeat flex-col bg-white text-gray-800 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] lg:group-hover:grid lg:group-focus-within:grid lg:grid-cols-3 "
+                    >
+                      <li class="px-2 lg:pr-6 my-0.5">
+                        <div class="flex flex-col h-full justify-between">
+                          <p class="text-xl text-gray-900 font-semibold cursor-auto">
+                            {Object.values(item)[0].header}
+                          </p>
+                          <a
+                            href={Object.values(item)[0].headerLink}
+                            class="text-primary hover:opacity-70 text-xs lg:text-sm max-w-52"
+                          >
+                            {Object.values(item)[0].headerLinkText}
+                          </a>
+                        </div>
+                      </li>
+                      <li class="lg:grid lg:px-6 lg:grid-rows-4">
+                        {Object.values(item)[0]
+                          .values.slice(0, 4)
+                          .map((subItem: { text: string; link: string }) => (
+                            <a
+                              href={subItem.link}
+                              class="px-2 block w-full border-b text-sm border-white py-1 font-normal text-gray-500 hover:bg-primary hover:text-white"
+                            >
+                              {subItem.text}
+                            </a>
+                          ))}
+                      </li>
+                      <div class="lg:grid lg:px-6 lg:grid-rows-4">
+                        {Object.values(item)[0]
+                          .values.slice(4, 8)
+                          .map((subItem: { text: string; link: string }) => (
+                            <a
+                              href={subItem.link}
+                              class="px-2 block whitespace-nowrap border-b border-white py-1 font-normal text-gray-500 hover:bg-primary hover:text-white"
+                            >
+                              {subItem.text}
+                            </a>
+                          ))}
                       </div>
-                    </li>
-                    <li class="lg:grid lg:px-6 lg:grid-rows-4">
-                      {Object.values(item)[0]
-                        .values.slice(0, 4)
-                        .map((subItem: { text: string; link: string }) => (
-                          <a
-                            href={subItem.link}
-                            class="px-2 block w-full border-b text-sm border-white py-1 font-normal text-gray-500 hover:bg-primary hover:text-white"
-                          >
-                            {subItem.text}
-                          </a>
-                        ))}
-                    </li>
-                    <div class="lg:grid lg:px-6 lg:grid-rows-4">
-                      {Object.values(item)[0]
-                        .values.slice(4, 8)
-                        .map((subItem: { text: string; link: string }) => (
-                          <a
-                            href={subItem.link}
-                            class="px-2 block whitespace-nowrap border-b border-white py-1 font-normal text-gray-500 hover:bg-primary hover:text-white"
-                          >
-                            {subItem.text}
-                          </a>
-                        ))}
-                    </div>
-                  </ul>
+                    </ul>
+                  </div>
                 )}
               </div>
             </li>

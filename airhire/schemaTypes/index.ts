@@ -31,5 +31,6 @@ export const schemaTypes = [
   TwoCards,
   ThreeImages,
   BlogSlider,
+  SignUpForm,
   page,
 ]

@@ -67,6 +67,9 @@ export const page = defineType({
         defineArrayMember({
           type: 'BlogSlider',
         }),
+        defineArrayMember({
+          type: 'SignUpForm',
+        }),
       ],
     }),
   ],
