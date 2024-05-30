@@ -8,7 +8,7 @@ content_blocks:
   - _component_name: CardHolder
   - _component_name: Infographic
   - _component_name: TwoCards
-  - _component_name: Banner
+  - _component_name: TestimonialSlider
   - _component_name: CTA
     background: true
     title: "Ready to transform your recruitment? Try for free!"

@@ -26,7 +26,7 @@ export const page = defineType({
       title: 'Page sections',
       of: [
         defineArrayMember({
-          type: 'Banner',
+          type: 'TestimonialSlider',
         }),
         defineArrayMember({
           type: 'Bento',

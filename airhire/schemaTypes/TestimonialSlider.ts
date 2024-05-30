@@ -1,12 +1,12 @@
 import {defineType, defineField, defineArrayMember} from 'sanity'
 
-export const Banner = defineType({
+export const TestimonialSlider = defineType({
   type: 'object',
-  name: 'Banner',
+  name: 'TestimonialSlider',
   fields: [
     defineField({
-      type: "string",
-      name: "title",
+      type: 'string',
+      name: 'title',
     }),
   ],
 })

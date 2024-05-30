@@ -1,6 +1,22 @@
 ---
 import { Picture } from "astro:assets";
-import banner from "../assets/banner.webp";
+import { sanityClient } from "sanity:client";
+import imageHelper from "../utils/imageHelper";
+
+interface Testimonial {
+  image: string;
+  testimonial: string;
+  author: string;
+  position: string;
+}
+
+interface Props {
+  testimonials: Testimonial[];
+}
+
+const testimonials = await sanityClient.fetch(
+  `*[_type == "testimonials" && defined(author)] | order(publishedAt desc)`
+);
 ---
 
 <div class="max-w-7xl mx-auto relative glide-05 px-4 sm:py-14">
@@ -11,29 +27,27 @@ import banner from "../assets/banner.webp";
         class="relative w-full overflow-hidden p-0 whitespace-no-wrap flex flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform]"
       >
         {
-          [1, 2, 3].map((img: any, index: number) => (
-            <div class="relative">
+          testimonials.map((testimonial: any, index: number) => (
+            <li class="relative">
               <Picture
                 fallbackFormat="jpg"
-                src={banner}
+                src={imageHelper(testimonial.image).url()}
                 formats={["avif", "webp"]}
                 alt="A prototype of the app."
-                widths={[400, 800, banner.width]}
+                widths={[400, 800, 1200]}
                 class="h-full aspect-square md:aspect-auto w-auto rounded-xl object-cover"
+                inferSize={true}
               />
               <div class="absolute bottom-0 left-0 text-white p-4 sm:p-10 md:w-1/2">
                 <p class="font-heading [font-size:_clamp(0.875em,1.7vw,2.5em)] leading-normal font-medium mb-6">
-                  “Thanks to Airhire, our recruitment process has become a
-                  well-oiled machine. It has automated all the tedious tasks,
-                  saving us valuable time and resources. It's not just another
-                  ATS, it's a game-changer that has transformed the way we
-                  work."
+                  “{testimonial.testimonial}"
                 </p>
                 <p>
-                  <span class="font-bold">Karim Pfeil</span>/ CEO at Undivi
+                  <span class="font-bold">{testimonial.author}</span> /{" "}
+                  {testimonial.position}
                 </p>
               </div>
-            </div>
+            </li>
           ))
         }
       </ul>
@@ -44,7 +58,7 @@ import banner from "../assets/banner.webp";
       data-glide-el="controls[nav]"
     >
       {
-        [1, 2, 3].map((_: any, index: number) => (
+        testimonials.map((_: any, index: number) => (
           <button
             class="p-1 group "
             data-glide-dir={`=${index}`}

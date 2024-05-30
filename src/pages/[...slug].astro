@@ -37,10 +37,10 @@ interface Page {
 }
 
 export async function getStaticPaths() {
-  const posts = await sanityClient.fetch(
+  const pages = await sanityClient.fetch(
     `*[_type == "page" && defined(slug)] | order(publishedAt desc)`
   );
-  return posts.map((page: Page) => {
+  return pages.map((page: Page) => {
     const slug = page.slug.current.replace(/index$/, "");
     if (slug.length === 0)
       return { params: { slug: undefined }, props: { page } };

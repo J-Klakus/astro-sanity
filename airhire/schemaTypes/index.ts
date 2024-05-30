@@ -1,5 +1,5 @@
 import {Button} from './Button'
-import {Banner} from './Banner'
+import {TestimonialSlider} from './TestimonialSlider'
 import {Bento} from './Bento'
 import {Brands} from './Brands'
 import {CardHolder} from './CardHolder'
@@ -14,10 +14,12 @@ import {TwoCards} from './TwoCards'
 import {ThreeImages} from './ThreeImages'
 import {page} from './page'
 import {BlogSlider} from './BlogSlider'
+import {SignUpForm} from './SignUpForm'
+import {testimonials} from './testimonials'
 
 export const schemaTypes = [
   Button,
-  Banner,
+  TestimonialSlider,
   Bento,
   Brands,
   CardHolder,
@@ -32,5 +34,6 @@ export const schemaTypes = [
   ThreeImages,
   BlogSlider,
   SignUpForm,
+  testimonials,
   page,
 ]
