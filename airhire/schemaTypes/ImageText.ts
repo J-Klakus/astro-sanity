@@ -21,8 +21,11 @@ export const ImageText = defineType({
       name: 'description',
     }),
     defineField({
-      type: 'boolean',
+      type: 'string',
       name: 'background',
+      options: {
+        list: ['none', 'bg center', 'bg bottom'],
+      },
     }),
     defineField({
       type: 'array',

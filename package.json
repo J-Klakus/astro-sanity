@@ -17,6 +17,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/inter": "^5.0.18",
     "@fontsource/poppins": "^5.0.14",
+    "@glidejs/glide": "^3.6.1",
     "@sanity/astro": "^3.1.2",
     "@sanity/client": "^6.19.0",
     "@types/react": "^18.3.3",

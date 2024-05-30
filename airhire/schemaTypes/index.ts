@@ -11,7 +11,9 @@ import {Infographic} from './Infographic'
 import {LogoBanner} from './LogoBanner'
 import {Slider} from './Slider'
 import {TwoCards} from './TwoCards'
+import {ThreeImages} from './ThreeImages'
 import {page} from './page'
+import {BlogSlider} from './BlogSlider'
 
 export const schemaTypes = [
   Button,
@@ -27,5 +29,7 @@ export const schemaTypes = [
   LogoBanner,
   Slider,
   TwoCards,
+  ThreeImages,
+  BlogSlider,
   page,
 ]

@@ -6,16 +6,10 @@ import myBackground from "../assets/meshbg.webp";
 const brands = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/brands/*"
 );
-
-const optimizedBackground = await getImage({
-  src: myBackground,
-  format: "webp",
-});
 ---
 
 <section
-  style={`background-image: url(${optimizedBackground.src});`}
-  class="bg-no-repeat bg-[length:100%_100%]"
+  class="bg-[url('/mesh-tr-mobile.webp')] sm:bg-[url('/mesh-tr.webp')] bg-no-repeat bg-[length:100%_100%]"
 >
   <div class="mx-auto max-w-7xl py-8 sm:py-40 px-4">
     <div class="text-center max-w-2xl mx-auto">

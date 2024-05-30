@@ -20,7 +20,7 @@ interface CustomSectionProps {
   first: boolean;
   largeImage: boolean;
   imageSide: "left" | "right";
-  background: boolean;
+  background: "none" | "bg center" | "bg bottom";
   title: string;
   description: string;
   buttons?: ButtonProps[];
@@ -33,7 +33,7 @@ const {
   largeImage = false,
   imageSide = "left",
   first = false,
-  background = true,
+  background = "none",
   title,
   description,
   buttons = [
@@ -48,15 +48,16 @@ const {
   imageAlt = "A prototype of the app.",
 } = Astro.props as CustomSectionProps;
 
-const optimizedBackground = await getImage({
-  src: myBackground,
-  format: "webp",
-});
+const styledBackground =
+  background === "bg center"
+    ? "bg-[url('/bg-center-mobile.webp')] sm:bg-[url('/bg-center.webp')] bg-cover bg-no-repeat bg-center"
+    : background === "bg bottom"
+      ? "bg-[url('/bg-bottom-mobile.webp')] sm:bg-[url('/bg-bottom.webp')] bg-cover bg-no-repeat"
+      : "";
 ---
 
 <section
-  style={`background-image: ${background ? `url(${optimizedBackground.src})` : "none"};`}
-  class={`py-8 ${first ? "sm:pt-44 pb-20" : "sm:py-20"} ${background ? "bg-cover bg-no-repeat" : ""}`}
+  class={`py-8 ${first ? "sm:pt-44 pb-20" : "sm:py-20"} ${background != "none" ? styledBackground : ""}`}
 >
   <div
     class={`max-w-7xl flex flex-col ${imageSide === "left" ? "lg:flex-row-reverse " : "lg:flex-row "} gap-8 lg:gap-20 items-center justify-center mx-auto px-4`}

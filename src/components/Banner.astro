@@ -3,25 +3,86 @@ import { Picture } from "astro:assets";
 import banner from "../assets/banner.webp";
 ---
 
-<div class="max-w-7xl mx-auto relative h-screen md:h-auto">
-  <Picture
-    fallbackFormat="jpg"
-    src={banner}
-    formats={["avif", "webp"]}
-    alt="A prototype of the app."
-    widths={[400, 800, banner.width]}
-    class="h-full w-auto rounded-xl object-cover"
-  />
-  <div class="absolute bottom-0 left-0 text-white p-10 md:w-1/2">
-    <p class="font-heading text-2xl font-medium mb-6">
-      “Thanks to Airhire, our recruitment process has become a well-oiled
-      machine. It has automated all the tedious tasks, saving us valuable time
-      and resources. It's not just another ATS, it's a game-changer that has
-      transformed the way we work."
-    </p>
-    <p>
-      <span class="font-bold">Karim Pfeil</span>
-      / CEO at Undivi
-    </p>
+<div class="max-w-7xl mx-auto relative glide-05 px-4 sm:py-14">
+  <div class="relative w-full glide-05">
+    <!-- Slides -->
+    <div class="overflow-hidden" data-glide-el="track">
+      <ul
+        class="relative w-full overflow-hidden p-0 whitespace-no-wrap flex flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform]"
+      >
+        {
+          [1, 2, 3].map((img: any, index: number) => (
+            <div class="relative">
+              <Picture
+                fallbackFormat="jpg"
+                src={banner}
+                formats={["avif", "webp"]}
+                alt="A prototype of the app."
+                widths={[400, 800, banner.width]}
+                class="h-full aspect-square md:aspect-auto w-auto rounded-xl object-cover"
+              />
+              <div class="absolute bottom-0 left-0 text-white p-4 sm:p-10 md:w-1/2">
+                <p class="font-heading [font-size:_clamp(0.875em,1.7vw,2.5em)] leading-normal font-medium mb-6">
+                  “Thanks to Airhire, our recruitment process has become a
+                  well-oiled machine. It has automated all the tedious tasks,
+                  saving us valuable time and resources. It's not just another
+                  ATS, it's a game-changer that has transformed the way we
+                  work."
+                </p>
+                <p>
+                  <span class="font-bold">Karim Pfeil</span>/ CEO at Undivi
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </ul>
+    </div>
+    <!-- Indicators -->
+    <div
+      class="flex items-center justify-center w-full gap-1 glide-bullets pt-8 3xl:pt-16"
+      data-glide-el="controls[nav]"
+    >
+      {
+        [1, 2, 3].map((_: any, index: number) => (
+          <button
+            class="p-1 group "
+            data-glide-dir={`=${index}`}
+            aria-label="goto slide 1"
+          >
+            <span class="block w-3 h-3 transition-colors duration-300 rounded-full bg-neutral-400/40 focus:outline-none" />
+          </button>
+        ))
+      }
+    </div>
   </div>
 </div>
+
+<script>
+  import Glide from "@glidejs/glide";
+  import { CustomActiveClass } from "./SliderUtils.js";
+  var glide05 = new Glide(".glide-05", {
+    type: "carousel",
+    focusAt: 0,
+    breakpoints: {
+      768: {
+        perView: 1,
+      },
+    },
+    startAt: 0,
+    perView: 1,
+    autoplay: false,
+    animationDuration: 1000,
+    gap: 2,
+  });
+
+  if (document.querySelector(".glide-05")) {
+    glide05.mount({ CustomActiveClass });
+  }
+</script>
+
+<style>
+  .is-active span {
+    background-color: rgb(163 163 163 / 0.8);
+  }
+</style>

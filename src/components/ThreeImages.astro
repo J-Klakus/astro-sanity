@@ -1,0 +1,98 @@
+---
+import purple from "../assets/purple.webp";
+import cv from "../assets/cv.webp";
+import { Picture } from "astro:assets";
+import Pill from "./Pill.astro";
+---
+
+<section class="overflow-hidden lg:max-w-7xl mx-auto pt-8 md:pt-20">
+  <div class="text-center max-w-4xl mx-auto">
+    <p
+      class="text-highlight bg-verylight rounded-lg w-fit px-2 py-1 uppercase font-semibold tracking-wide mb-3 mx-auto"
+    >
+      Features
+    </p>
+    <h2
+      class="font-heading mt-3 text-3xl md:text-4xl font-bold leading-10 md:leading-[4rem] tracking-tight text-black"
+    >
+      Discover more tools to boost your productivity
+    </h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-7 gap-4 mx-auto px-4 py-8">
+    <div
+      class="md:col-span-2 h-44 md:h-auto relative hover:cursor-pointer group rounded-xl"
+    >
+      <Picture
+        fallbackFormat="jpg"
+        src={purple}
+        formats={["avif", "webp"]}
+        alt={"infographic"}
+        sizes="(max-width: 768px) 100vw, (max-width: 1298px) 30vw, 455px"
+        widths={[400, 800, purple.width]}
+        class="h-auto w-full object-fit md:object-contain md:group-hover:brightness-75 transition duration-300 ease-in-out rounded-xl"
+      />
+      <Pill text="Website Widget" position="top-left" />
+      <div
+        class="p-6 rounded-b-xl absolute -bottom-0 w-full h-1/2 flex flex-col justify-end"
+      >
+        <p
+          class="[font-size:_clamp(0.875em,1vw,2.5em)] leading-tight md:leading-normal text-white"
+        >
+          This widget seamlessly integrates with your website, allowing you to
+          display open positions. It enables potential candidates to view and
+          apply to jobs directly from your site.
+        </p>
+      </div>
+    </div>
+    <div
+      class="md:col-span-3 h-44 md:h-auto relative hover:cursor-pointer group rounded-xl"
+    >
+      <Picture
+        fallbackFormat="jpg"
+        src={cv}
+        formats={["avif", "webp"]}
+        alt={"infographic"}
+        sizes="(max-width: 768px) 100vw, (max-width: 1298px) 30vw, 455px"
+        widths={[400, 800, cv.width]}
+        class="hidden md:block h-auto w-full object-fit md:object-contain md:group-hover:brightness-75 transition duration-300 ease-in-out rounded-xl"
+      />
+      <div
+        class="bg-[url('/mesh-card-bg.webp')] bg-no-repeat bg-cover p-6 rounded-xl absolute bottom-0 w-full h-full lg:h-1/3 flex flex-col justify-end"
+      >
+        <p
+          class="[font-size:_clamp(0.875em,1vw,2.5em)] leading-tight md:leading-normal text-white"
+        >
+          Our CV parser employs AI to sift through resumes and extract key
+          information. Seamlessly integrated into our system, it scans your
+          inbox for resumes, offering you the option to parse them effortlessly.
+        </p>
+      </div>
+      <Pill text="CV Parser" position="top-left" />
+    </div>
+    <div
+      class="md:col-span-2 h-44 md:h-auto relative hover:cursor-pointer group rounded-xl"
+    >
+      <Picture
+        fallbackFormat="jpg"
+        src={purple}
+        formats={["avif", "webp"]}
+        alt={"infographic"}
+        sizes="(max-width: 768px) 100vw, (max-width: 1298px) 30vw, 455px"
+        widths={[400, 800, purple.width]}
+        class="h-auto w-full object-fit md:object-contain md:group-hover:brightness-75 transition duration-300 ease-in-out rounded-xl"
+      />
+      <Pill text="Email Integration" position="top-left" />
+      <div
+        class="p-6 rounded-b-xl absolute -bottom-0 w-full h-1/2 flex flex-col justify-end"
+      >
+        <p
+          class="[font-size:_clamp(0.875em,1vw,2.5em)] leading-tight md:leading-normal text-white"
+        >
+          Airhire automatically syncs with your email for a smoother recruitment
+          experience. Send and receive emails directly from your Airhire
+          dashboard.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

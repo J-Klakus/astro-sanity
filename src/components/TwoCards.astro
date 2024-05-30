@@ -1,21 +1,13 @@
 ---
 import { Picture } from "astro:assets";
 import Button from "./reusable/Button.astro";
-import { getImage } from "astro:assets";
-import myBackground from "../assets/bg-center.webp";
-
-const optimizedBackground = await getImage({
-  src: myBackground,
-  format: "webp",
-});
 
 import cardL from "../assets/card-l.webp";
 import cardR from "../assets/card-r.webp";
 ---
 
 <div
-  style={`background-image: url(${optimizedBackground.src});`}
-  class="bg-cover bg-no-repeat pb-8 sm:pb-40"
+  class="bg-[url('/bg-center-mobile.webp')] sm:bg-[url('/bg-center.webp')] bg-cover bg-no-repeat pb-8 sm:pb-40"
 >
   <div
     class="mx-auto max-w-7xl grid lg:grid-cols-7 gap-4 px-4 place-items-center"

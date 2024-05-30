@@ -61,6 +61,12 @@ export const page = defineType({
         defineArrayMember({
           type: 'TwoCards',
         }),
+        defineArrayMember({
+          type: 'ThreeImages',
+        }),
+        defineArrayMember({
+          type: 'BlogSlider',
+        }),
       ],
     }),
   ],
