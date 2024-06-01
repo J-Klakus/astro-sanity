@@ -4,37 +4,41 @@ import Button from "./reusable/Button.astro";
 import info from "../assets/infographic.webp";
 ---
 
-<div class="mx-auto max-w-7xl py-8 sm:py-40 px-4">
-  <div class="text-center max-w-2xl mx-auto flex flex-col mb-8">
-    <p
-      class="text-highlight bg-verylight rounded-lg w-fit px-2 py-1 uppercase font-semibold tracking-wide my-1 mx-auto"
-    >
-      Features
-    </p>
-    <h2
-      class="font-heading mt-3 text-3xl sm:text-4xl sm:leading-[4rem] font-bold leading-10 tracking-tight text-black"
-    >
-      AI candidate matching at your fingertips
-    </h2>
-    <p class="my-3 text-lg leading-relaxed text-slate-500">
-      Our advanced AI search capabilities allow you to precisely look for
-      specific candidates like a CFO involved in an IPO, improving placement
-      rates and candidate quality without bias.
-    </p>
-    <Button
-      link="#"
-      buttonText="Learn More"
-      type="filled"
-      class="w-fit mx-auto"
+<div
+  class="bg-[url('/bg-center-mobile.webp')] sm:bg-[url('/bg-center.webp')] bg-cover bg-top bg-no-repeat py-8 sm:pb-20 px-4"
+>
+  <div class="mx-auto max-w-7xl">
+    <div class="text-center max-w-2xl mx-auto flex flex-col mb-8">
+      <p
+        class="text-highlight bg-verylight rounded-lg w-fit px-2 py-1 uppercase font-semibold tracking-wide my-1 mx-auto"
+      >
+        Features
+      </p>
+      <h2
+        class="font-heading mt-3 text-3xl sm:text-4xl sm:leading-[4rem] font-bold leading-10 tracking-tight text-black"
+      >
+        AI candidate matching at your fingertips
+      </h2>
+      <p class="my-3 text-lg leading-relaxed text-slate-500">
+        Our advanced AI search capabilities allow you to precisely look for
+        specific candidates like a CFO involved in an IPO, improving placement
+        rates and candidate quality without bias.
+      </p>
+      <Button
+        link="#"
+        buttonText="Learn More"
+        type="filled"
+        class="w-fit mx-auto"
+      />
+    </div>
+    <Picture
+      fallbackFormat="jpg"
+      src={info}
+      formats={["avif", "webp"]}
+      alt="A prototype of the app."
+      sizes="(max-width: 1280px) 100vw, 1200px"
+      widths={[400, 800, 1200, info.width]}
+      class="h-full w-auto my-4"
     />
   </div>
-  <Picture
-    fallbackFormat="jpg"
-    src={info}
-    formats={["avif", "webp"]}
-    alt="A prototype of the app."
-    sizes="(max-width: 1280px) 100vw, 1200px"
-    widths={[400, 800, 1200, info.width]}
-    class="h-full w-auto my-4"
-  />
 </div>

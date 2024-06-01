@@ -1,12 +1,11 @@
 ---
 import { Picture, getImage } from "astro:assets";
-import hero from "../assets/hero.webp";
 import Button from "./reusable/Button.astro";
 import Video from "./Video.astro";
 ---
 
 <section
-  class="bg-[url('/bg-mobile.webp')] sm:bg-[url('/bg.webp')] pt-32 pb-8 md:py-44 flex flex-col gap-8 lg:gap-20 items-center justify-center bg-white bg-cover bg-no-repeat bg-[50%_100%]"
+  class="bg-auto bg-no-repeat bg-[center_top_10rem] bg-[url('/bg-hero-mobile.webp')] sm:bg-[url('/bg-hero.webp')] pt-32 pb-8 md:py-44 flex flex-col gap-8 lg:gap-20 items-center justify-center bg-[#fafafe]"
 >
   <div class="mx-auto max-w-3xl px-4 lg:px-0">
     <div class="text-center">

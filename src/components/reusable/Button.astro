@@ -18,25 +18,18 @@ interface Props {
 }
 
 const filledClasses = `
-  hover:opacity-90 relative inline-flex items-center justify-center p-4 px-5 py-3 overflow-hidden font-medium text-white rounded-xl shadow-2xl transition duration-2 ease-in-out
+  bg-text-gradient hover:opacity-90 relative inline-flex items-center justify-center p-4 px-5 py-3 overflow-hidden font-medium text-white rounded-xl shadow-2xl transition duration-200 ease-in-out
 `;
 const outlineClasses = `
-  inline-flex items-center justify-center px-4 py-3 font-medium leading-6 text-primary border border-transparent hover:border-primary rounded-xl hover:bg-primary/10 transition duration-2 ease-in-out
+  bg-[#F3F3FB] inline-flex items-center justify-center px-4 py-3 font-medium leading-6 text-primary border border-transparent hover:border-primary rounded-xl transition duration-200 ease-in-out
 `;
 
 const typeClasses = type === "filled" ? filledClasses : outlineClasses;
 
 const combinedClasses = twMerge(typeClasses, className);
-const filledStyle = {
-  background: "linear-gradient(112.79deg, #4B3AB3 46.42%, #9FFFF3 96.76%)",
-};
 ---
 
-<a
-  style={type === "filled" ? filledStyle : undefined}
-  href={link}
-  class={combinedClasses}
->
+<a href={link} class={combinedClasses}>
   <span class="inline-flex items-center text-center">
     {buttonText}
     {arrow && <Icon name="arrowRight" class="ml-2 text-inherit" />}
