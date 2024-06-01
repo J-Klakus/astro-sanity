@@ -14,12 +14,22 @@ export default {
         secondary: "#9FFFF3",
         light: "#6e59ee",
         highlight: "#6F61C2",
-        verylight: "#f0f0f9", 
+        verylight: "#f0f0f9",
       },
       backgroundImage: ({ theme }) => ({
         "text-gradient":
           "linear-gradient(112.79deg, #4B3AB3 62%, #9FFFF3 96.76%)",
       }),
+      animation: {
+        text: "text 2s ease-in-out infinite",
+      },
+      keyframes: {
+        text: {
+          "0%": { backgroundPosition: "left" },
+          "50%": { backgroundPosition: "right" },
+          "100%": { backgroundPosition: "left" },
+        },
+      },
     },
   },
   plugins: [
