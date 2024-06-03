@@ -1,5 +1,5 @@
 ---
-import "@fontsource/inter"; // Defaults to weight 400
+import "@fontsource-variable/inter";
 import "@fontsource/poppins/400.css";
 import "@fontsource/poppins/500.css";
 import "@fontsource/poppins/600.css";
@@ -16,16 +16,16 @@ const { metaTitle, metaDescription, metaImage } = Astro.props;
 
 <!doctype html>
 <html lang="en" class="!scroll-smooth">
-  <head>
-    <BaseHead
-      metaTitle={metaTitle || SITE_TITLE}
-      metaDescription={metaDescription || SITE_DESCRIPTION}
-      metaImage={metaImage}
-    />
-  </head>
-  <body class="bg-[#fafafe]">
-    <Navbar />
-    <slot />
-    <Footer />
-  </body>
+	<head>
+		<BaseHead
+			metaTitle={metaTitle || SITE_TITLE}
+			metaDescription={metaDescription || SITE_DESCRIPTION}
+			metaImage={metaImage}
+		/>
+	</head>
+	<body class="bg-[#fafafe]">
+		<Navbar />
+		<slot />
+		<Footer />
+	</body>
 </html>
