@@ -2,174 +2,163 @@
 import { Icon } from "astro-icon/components";
 
 const footerLinks = [
-  {
-    section: "COMPANY",
-    items: [
-      { name: "About", link: "/about" },
-      { name: "Premium Support", link: "/premium" },
-      { name: "Blog", link: "/blog" },
-      {
-        name: "Affiliate Program",
-        link: "/affiliate-program",
-      },
-      { name: "Get Coupon", link: "/get-coupon" },
-    ],
-  },
-  {
-    section: "Help and Support",
-    items: [
-      { name: "Contact Us", link: "/contact" },
-      {
-        name: "Knowledge Center",
-        link: "/knowledge-center",
-      },
-      { name: "Premium Support", link: "/premium" },
-      { name: "Sponsorships", link: "/sponsorships" },
-    ],
-  },
-  {
-    section: "RESOURCES",
-    items: [
-      {
-        name: "Third-Party Tools",
-        link: "/third-party-tools",
-      },
-      { name: "Illustrations", link: "/illustrations" },
-      { name: "Themesberg", link: "/themesberg" },
-      { name: "Bluehost", link: "/bluehost" },
-      { name: "Stock Photos", link: "/stock-photos" },
-    ],
-  },
-  {
-    section: "LEGAL",
-    items: [
-      { name: "Privacy Policy", link: "/privacy-policy" },
-      {
-        name: "Terms & Conditions",
-        link: "/terms-and-conditions",
-      },
-      { name: "EULA", link: "/eula" },
-    ],
-  },
+	{
+		section: "COMPANY",
+		items: [
+			{ name: "About", link: "/about" },
+			{ name: "Premium Support", link: "/premium" },
+			{ name: "Blog", link: "/blog" },
+			{
+				name: "Affiliate Program",
+				link: "/affiliate-program",
+			},
+			{ name: "Get Coupon", link: "/get-coupon" },
+		],
+	},
+	{
+		section: "Help and Support",
+		items: [
+			{ name: "Contact Us", link: "/contact" },
+			{
+				name: "Knowledge Center",
+				link: "/knowledge-center",
+			},
+			{ name: "Premium Support", link: "/premium" },
+			{ name: "Sponsorships", link: "/sponsorships" },
+		],
+	},
+	{
+		section: "RESOURCES",
+		items: [
+			{
+				name: "Third-Party Tools",
+				link: "/third-party-tools",
+			},
+			{ name: "Illustrations", link: "/illustrations" },
+			{ name: "Themesberg", link: "/themesberg" },
+			{ name: "Bluehost", link: "/bluehost" },
+			{ name: "Stock Photos", link: "/stock-photos" },
+		],
+	},
+	{
+		section: "LEGAL",
+		items: [
+			{ name: "Privacy Policy", link: "/privacy-policy" },
+			{
+				name: "Terms & Conditions",
+				link: "/terms-and-conditions",
+			},
+			{ name: "EULA", link: "/eula" },
+		],
+	},
 ];
 ---
 
 <footer class="bg-white">
-  <div class="border-y-2 border-purple-100">
-    <ul
-      class="max-w-6xl px-2 py-5 divide-x-2 flex flex-wrap justify-evenly items-center mx-auto text-center font-medium text-gray-700"
-    >
-      <li
-        class="flex items-center font-medium flex-grow w-full sm:w-auto justify-center sm:justify-start"
-      >
-        <Icon name="logoNoText" class="w-6 h-auto mr-2" />
-        Your AI-driven ATS & CRM
-      </li>
-      <li class="flex-grow">24/7 Support</li>
-      <li class="flex-grow">Weekly updates</li>
-      <li class="flex-grow">Secure and compliant</li>
-      <li class="flex-grow">99,99% uptime</li>
-    </ul>
-  </div>
-  <div
-    class="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8"
-  >
-    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
-      <div>
-        <div>
-          <a href="/" aria-label="Home Page">
-            <Icon name="logoCapital" class="w-28 h-auto" />
-          </a>
-        </div>
+	<div class="border-y-2 border-purple-100">
+		<ul
+			class="mx-auto flex max-w-6xl flex-wrap items-center justify-evenly divide-x-2 px-2 py-5 text-center font-medium text-gray-700"
+		>
+			<li
+				class="flex w-full flex-grow items-center justify-center font-medium sm:w-auto sm:justify-start"
+			>
+				<Icon name="logoNoText" class="mr-2 h-auto w-6" />
+				Your AI-driven ATS & CRM
+			</li>
+			<li class="flex-grow">24/7 Support</li>
+			<li class="flex-grow">Weekly updates</li>
+			<li class="flex-grow">Secure and compliant</li>
+			<li class="flex-grow">99,99% uptime</li>
+		</ul>
+	</div>
+	<div class="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
+		<div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+			<div>
+				<div>
+					<a href="/" aria-label="Home Page">
+						<Icon name="logoCapital" class="h-auto w-28" />
+					</a>
+				</div>
 
-        <p class="mt-4 max-w-xs text-gray-500">
-          Airhire has been developed by seasoned recruiters together with AI
-          experts to combine industry expertise and finally create an ATS & CRM
-          that is intuitive, customisable, powerful and revolutionary.
-        </p>
+				<p class="mt-4 max-w-xs text-gray-500">
+					Airhire has been developed by seasoned recruiters together with AI experts to combine
+					industry expertise and finally create an ATS & CRM that is intuitive, customisable,
+					powerful and revolutionary.
+				</p>
 
-        <ul class="mt-8 flex gap-6">
-          <li>
-            <a
-              href="#"
-              rel="noreferrer"
-              target="_blank"
-              class="text-gray-700 transition hover:opacity-75"
-            >
-              <span class="sr-only">GitHub</span>
+				<ul class="mt-8 flex gap-6">
+					<li>
+						<a
+							href="#"
+							rel="noreferrer"
+							target="_blank"
+							class="text-gray-700 transition hover:opacity-75"
+						>
+							<span class="sr-only">GitHub</span>
 
-              <Icon name="github" size={28} />
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              rel="noreferrer"
-              target="_blank"
-              class="text-gray-700 transition hover:opacity-75"
-            >
-              <span class="sr-only">Twitter</span>
+							<Icon name="github" size={28} />
+						</a>
+					</li>
+					<li>
+						<a
+							href="#"
+							rel="noreferrer"
+							target="_blank"
+							class="text-gray-700 transition hover:opacity-75"
+						>
+							<span class="sr-only">Twitter</span>
 
-              <Icon name="twitter" size={28} />
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              rel="noreferrer"
-              target="_blank"
-              class="text-gray-700 transition hover:opacity-75"
-            >
-              <span class="sr-only">Dribble</span>
+							<Icon name="twitter" size={28} />
+						</a>
+					</li>
+					<li>
+						<a
+							href="#"
+							rel="noreferrer"
+							target="_blank"
+							class="text-gray-700 transition hover:opacity-75"
+						>
+							<span class="sr-only">Dribble</span>
 
-              <Icon name="dribbble" size={28} />
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              rel="noreferrer"
-              target="_blank"
-              class="text-gray-700 transition hover:opacity-75"
-            >
-              <span class="sr-only">Facebook</span>
+							<Icon name="dribbble" size={28} />
+						</a>
+					</li>
+					<li>
+						<a
+							href="#"
+							rel="noreferrer"
+							target="_blank"
+							class="text-gray-700 transition hover:opacity-75"
+						>
+							<span class="sr-only">Facebook</span>
 
-              <Icon name="facebook" size={28} />
-            </a>
-          </li>
-        </ul>
-      </div>
+							<Icon name="facebook" size={28} />
+						</a>
+					</li>
+				</ul>
+			</div>
 
-      <div
-        class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4"
-      >
-        {
-          footerLinks.map((section: any) => (
-            <div>
-              <p class="font-medium uppercase text-gray-900">
-                {section.section}
-              </p>
+			<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
+				{
+					footerLinks.map((section: any) => (
+						<div>
+							<p class="font-medium uppercase text-gray-900">{section.section}</p>
 
-              <ul class="mt-6 space-y-4 text-sm">
-                {section.items.map((item: any) => (
-                  <li>
-                    <a
-                      href={item.link}
-                      class="text-gray-700 transition hover:opacity-75"
-                    >
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
-      </div>
-    </div>
+							<ul class="mt-6 space-y-4 text-sm">
+								{section.items.map((item: any) => (
+									<li>
+										<a href={item.link} class="text-gray-700 transition hover:opacity-75">
+											{item.name}
+										</a>
+									</li>
+								))}
+							</ul>
+						</div>
+					))
+				}
+			</div>
+		</div>
 
-    <p class="text-sm text-gray-500 text-center">
-      &copy; Airhire All rights reserved.
-    </p>
-  </div>
+		<p class="text-center text-sm text-gray-500">&copy; Airhire All rights reserved.</p>
+	</div>
 </footer>

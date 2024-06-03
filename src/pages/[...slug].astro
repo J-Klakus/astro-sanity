@@ -3,54 +3,53 @@ import PageLayout from "../layouts/PageLayout.astro";
 import { sanityClient } from "sanity:client";
 
 interface Props {
-  page?: {
-    url?: {
-      next?: string;
-      prev?: string;
-    };
-    data?: any;
-    lastPage?: number;
-    currentPage?: number;
-  };
+	page?: {
+		url?: {
+			next?: string;
+			prev?: string;
+		};
+		data?: any;
+		lastPage?: number;
+		currentPage?: number;
+	};
 }
 
 interface Slug {
-  current: string;
-  _type: string;
+	current: string;
+	_type: string;
 }
 
 interface Section {
-  _type: string;
-  _key: string;
-  title: string;
+	_type: string;
+	_key: string;
+	title: string;
 }
 
 interface Page {
-  slug: Slug;
-  _createdAt: string;
-  _rev: string;
-  _type: string;
-  _id: string;
-  title: string;
-  _updatedAt: string;
-  sections: Section[];
+	slug: Slug;
+	_createdAt: string;
+	_rev: string;
+	_type: string;
+	_id: string;
+	title: string;
+	_updatedAt: string;
+	sections: Section[];
 }
 
 export async function getStaticPaths() {
-  const pages = await sanityClient.fetch(
-    `*[_type == "page" && defined(slug)] | order(publishedAt desc)`
-  );
-  return pages.map((page: Page) => {
-    const slug = page.slug.current.replace(/index$/, "");
-    if (slug.length === 0)
-      return { params: { slug: undefined }, props: { page } };
-    return { params: { slug }, props: { page } };
-  });
+	const pages = await sanityClient.fetch(
+		`*[_type == "page" && defined(slug)] | order(publishedAt desc)`,
+	);
+	return pages.map((page: Page) => {
+		const slug = page.slug.current.replace(/index$/, "");
+		if (slug.length === 0) return { params: { slug: undefined }, props: { page } };
+		return { params: { slug }, props: { page } };
+	});
 }
 
 const page = Astro.props.page;
 if (!page) {
-  throw new Error(`Could not find page data`);
+	throw new Error(`Could not find page data`);
 }
 ---
 

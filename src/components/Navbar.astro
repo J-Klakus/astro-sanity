@@ -5,231 +5,226 @@ import { getImage } from "astro:assets";
 import navbg from "../assets/nav-bg.webp";
 
 const optimizedBackground = await getImage({
-  src: navbg,
-  format: "webp",
+	src: navbg,
+	format: "webp",
 });
 const menu = [
-  {
-    Product: {
-      link: "/product",
-      values: [
-        { text: "AI", link: "/ai" },
-        { text: "Chat Navigation", link: "/chat" },
-        { text: "Automation", link: "/automation" },
-        { text: "Customization", link: "/customization" },
-        { text: "Email Integration", link: "/email-integration" },
-        { text: "Browser Extension", link: "/browser-extension" },
-        { text: "Website Widget", link: "/website-widget" },
-        { text: "CV Parser", link: "/cv-parser" },
-      ],
-      header: "Recruitment Suite",
-      headerLinkText:
-        "View our all-in-one ATS & CRM platform and its powerful features.",
-      headerLink: "/recruitment-suite",
-    },
-  },
-  {
-    Solutions: {
-      link: "/solutions",
-    },
-  },
-  {
-    Resources: {
-      link: "/blog",
-    },
-  },
-  {
-    Pricing: {
-      link: "/about-us",
-    },
-  },
-  {
-    Contact: {
-      link: "/about-us",
-    },
-  },
+	{
+		Product: {
+			link: "/product",
+			values: [
+				{ text: "AI", link: "/ai" },
+				{ text: "Chat Navigation", link: "/chat" },
+				{ text: "Automation", link: "/automation" },
+				{ text: "Customization", link: "/customization" },
+				{ text: "Email Integration", link: "/email-integration" },
+				{ text: "Browser Extension", link: "/browser-extension" },
+				{ text: "Website Widget", link: "/website-widget" },
+				{ text: "CV Parser", link: "/cv-parser" },
+			],
+			header: "Recruitment Suite",
+			headerLinkText: "View our all-in-one ATS & CRM platform and its powerful features.",
+			headerLink: "/recruitment-suite",
+		},
+	},
+	{
+		Solutions: {
+			link: "/solutions",
+		},
+	},
+	{
+		Resources: {
+			link: "/blog",
+		},
+	},
+	{
+		Pricing: {
+			link: "/about-us",
+		},
+	},
+	{
+		Contact: {
+			link: "/about-us",
+		},
+	},
 ];
 ---
 
-<header class="w-screen fixed z-[999] border-b border-verylight bg-white">
-  <nav
-    class="flex flex-wrap max-w-7xl mx-auto items-center justify-between w-full py-4 lg:py-0 px-6 lg:px-4 text-gray-700 bg-white"
-  >
-    <div class="z-[50]">
-      <a href="/" aria-label="Home Page">
-        <Icon name="logo" class="h-auto w-28" />
-      </a>
-    </div>
-    <div class="lg:hidden">
-      <button
-        id="hamburgerToggle"
-        aria-label="Toggle Hamburger Menu"
-        class="relative group mx-6"
-      >
-        <div
-          class="relative flex overflow-hidden items-center justify-end w-[50px] h-[50px] transform transition-all ring-0 ring-gray-300 ring-opacity-30 duration-200"
-        >
-          <div
-            class="flex flex-col justify-between w-[25px] h-[25px] transform transition-all duration-300 origin-center overflow-hidden"
-          >
-            <div
-              class="bg-sky-950 h-[3px] w-9 transform transition-all duration-300 origin-left group-aria-expanded:translate-y-7 delay-100"
-            >
-            </div>
-            <div
-              class="bg-sky-950 h-[3px] w-9 rounded transform transition-all duration-300 group-aria-expanded:translate-y-6 delay-75"
-            >
-            </div>
-            <div
-              class="bg-sky-950 h-[3px] w-9 transform transition-all duration-300 origin-left group-aria-expanded:translate-y-6"
-            >
-            </div>
+<header class="fixed z-[999] w-screen border-b border-verylight bg-white">
+	<nav
+		class="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between bg-white px-6 py-4 text-gray-700 lg:px-4 lg:py-0"
+	>
+		<div class="z-[50]">
+			<a href="/" aria-label="Home Page">
+				<Icon name="logo" class="h-auto w-28" />
+			</a>
+		</div>
+		<div class="lg:hidden">
+			<button id="hamburgerToggle" aria-label="Toggle Hamburger Menu" class="group relative mx-6">
+				<div
+					class="relative flex h-[50px] w-[50px] transform items-center justify-end overflow-hidden ring-0 ring-gray-300 ring-opacity-30 transition-all duration-200"
+				>
+					<div
+						class="flex h-[25px] w-[25px] origin-center transform flex-col justify-between overflow-hidden transition-all duration-300"
+					>
+						<div
+							class="h-[3px] w-9 origin-left transform bg-sky-950 transition-all delay-100 duration-300 group-aria-expanded:translate-y-7"
+						>
+						</div>
+						<div
+							class="h-[3px] w-9 transform rounded bg-sky-950 transition-all delay-75 duration-300 group-aria-expanded:translate-y-6"
+						>
+						</div>
+						<div
+							class="h-[3px] w-9 origin-left transform bg-sky-950 transition-all duration-300 group-aria-expanded:translate-y-6"
+						>
+						</div>
 
-            <div
-              class="absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 group-aria-expanded:translate-x-0 flex w-0 group-aria-expanded:w-12"
-            >
-              <div
-                class="absolute bg-sky-950 h-[3px] w-7 transform transition-all duration-500 rotate-0 delay-300 group-aria-expanded:rotate-45"
-              >
-              </div>
-              <div
-                class="absolute bg-sky-950 h-[3px] w-7 transform transition-all duration-500 -rotate-0 delay-300 group-aria-expanded:-rotate-45"
-              >
-              </div>
-            </div>
-          </div>
-        </div>
-      </button>
-    </div>
-    <div
-      class="justify-between translate-x-full hidden lg:shadow-none lg:translate-x-0 absolute w-screen top-20 left-0 lg:w-auto lg:static lg:flex lg:items-center bg-white z-50 transition-all duration-500 ease-in-out shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
-      id="menu"
-    >
-      <ul
-        class="max-w-6xl mx-auto flex flex-col lg:flex-row h-fit w-full items-center justify-evenly px-2 gap-2"
-      >
-        {
-          menu.map((item) => (
-            <li class="group menu relative cursor-pointer py-2">
-              <div class="flex items-center justify-center lg:justify-between space-x-2 px-2 xl:px-4 group">
-                <a
-                  href={Object.values(item)[0].link}
-                  class="item my-2 py-2 text-sky-950 hover:text-primary group-hover:text-primary transition duration-300 ease-in-out font-medium"
-                >
-                  {Object.keys(item)}
-                </a>
-                {Object.values(item)[0].values && (
-                  <span>
-                    <Icon
-                      name="chevronDown"
-                      class="group-hover:rotate-180 transition-transform duration-300 ease-in-out"
-                    />
-                  </span>
-                )}
-              </div>
-              <div>
-                {Object.values(item)[0].values && (
-                  <div class="lg:p-6 dropdown lg:w-[60vw] max-h-0 h-fit transition-all duration-500 ease-in-out overflow-hidden lg:overflow-visible lg:max-h-fit lg:hidden lg:absolute top-[48px] -left-32 z-50 lg:group-hover:grid lg:group-focus-within:grid ">
-                    <ul
-                      style={`background-image: url(${optimizedBackground.src});`}
-                      class="lg:p-4 lg:w-[60vw] bg-right-top bg-no-repeat flex-col bg-white text-gray-800 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] lg:group-hover:grid lg:group-focus-within:grid lg:grid-cols-3 "
-                    >
-                      <li class="px-2 my-0.5">
-                        <div class="flex flex-col h-full justify-between bg-[#FAFAFE] p-4">
-                          <p class="text-xl text-gray-900 font-medium cursor-auto">
-                            {Object.values(item)[0].header}
-                          </p>
-                          <a
-                            href={Object.values(item)[0].headerLink}
-                            class="text-primary hover:opacity-70 text-xs lg:text-sm "
-                          >
-                            {Object.values(item)[0].headerLinkText}
-                          </a>
-                        </div>
-                      </li>
-                      <li class="lg:grid lg:px-6 lg:grid-rows-4">
-                        {Object.values(item)[0]
-                          .values.slice(0, 4)
-                          .map((subItem: { text: string; link: string }) => (
-                            <a
-                              href={subItem.link}
-                              class="px-2 block w-full border-b text-sm border-white py-1 font-normal text-gray-500 hover:bg-primary hover:text-white"
-                            >
-                              {subItem.text}
-                            </a>
-                          ))}
-                      </li>
-                      <div class="lg:grid lg:px-6 lg:grid-rows-4">
-                        {Object.values(item)[0]
-                          .values.slice(4, 8)
-                          .map((subItem: { text: string; link: string }) => (
-                            <a
-                              href={subItem.link}
-                              class="px-2 block whitespace-nowrap border-b border-white py-1 font-normal text-gray-500 hover:bg-primary hover:text-white"
-                            >
-                              {subItem.text}
-                            </a>
-                          ))}
-                      </div>
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-    <div class="hidden lg:flex items-center gap-2 lg:gap-4">
-      <a
-        href="/"
-        class="item my-2 py-2 text-sky-950 hover:text-primary group-hover:text-primary transition duration-300 ease-in-out font-medium"
-      >
-        Log in
-      </a>
-      <Button buttonText="Get Started" link="/" type="filled" />
-    </div>
-  </nav>
+						<div
+							class="absolute top-2.5 flex w-0 -translate-x-10 transform items-center justify-between transition-all duration-500 group-aria-expanded:w-12 group-aria-expanded:translate-x-0"
+						>
+							<div
+								class="absolute h-[3px] w-7 rotate-0 transform bg-sky-950 transition-all delay-300 duration-500 group-aria-expanded:rotate-45"
+							>
+							</div>
+							<div
+								class="absolute h-[3px] w-7 -rotate-0 transform bg-sky-950 transition-all delay-300 duration-500 group-aria-expanded:-rotate-45"
+							>
+							</div>
+						</div>
+					</div>
+				</div>
+			</button>
+		</div>
+		<div
+			class="absolute left-0 top-20 z-50 hidden w-screen translate-x-full justify-between bg-white shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-all duration-500 ease-in-out lg:static lg:flex lg:w-auto lg:translate-x-0 lg:items-center lg:shadow-none"
+			id="menu"
+		>
+			<ul
+				class="mx-auto flex h-fit w-full max-w-6xl flex-col items-center justify-evenly gap-2 px-2 lg:flex-row"
+			>
+				{
+					menu.map((item) => (
+						<li class="menu group relative cursor-pointer py-2">
+							<div class="group flex items-center justify-center space-x-2 px-2 lg:justify-between xl:px-4">
+								<a
+									href={Object.values(item)[0].link}
+									class="item my-2 py-2 font-medium text-sky-950 transition duration-300 ease-in-out hover:text-primary group-hover:text-primary"
+								>
+									{Object.keys(item)}
+								</a>
+								{Object.values(item)[0].values && (
+									<span>
+										<Icon
+											name="chevronDown"
+											class="transition-transform duration-300 ease-in-out group-hover:rotate-180"
+										/>
+									</span>
+								)}
+							</div>
+							<div>
+								{Object.values(item)[0].values && (
+									<div class="dropdown -left-32 top-[48px] z-50 h-fit max-h-0 overflow-hidden transition-all duration-500 ease-in-out lg:absolute lg:hidden lg:max-h-fit lg:w-[60vw] lg:overflow-visible lg:p-6 lg:group-focus-within:grid lg:group-hover:grid">
+										<ul
+											style={`background-image: url(${optimizedBackground.src});`}
+											class="flex-col bg-white bg-right-top bg-no-repeat text-gray-800 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] lg:w-[60vw] lg:grid-cols-3 lg:p-4 lg:group-focus-within:grid lg:group-hover:grid"
+										>
+											<li class="my-0.5 px-2">
+												<div class="flex h-full flex-col justify-between bg-[#FAFAFE] p-4">
+													<p class="cursor-auto text-xl font-medium text-gray-900">
+														{Object.values(item)[0].header}
+													</p>
+													<a
+														href={Object.values(item)[0].headerLink}
+														class="text-xs text-primary hover:opacity-70 lg:text-sm"
+													>
+														{Object.values(item)[0].headerLinkText}
+													</a>
+												</div>
+											</li>
+											<li class="lg:grid lg:grid-rows-4 lg:px-6">
+												{Object.values(item)[0]
+													.values.slice(0, 4)
+													.map((subItem: { text: string; link: string }) => (
+														<a
+															href={subItem.link}
+															class="block w-full border-b border-white px-2 py-1 text-sm font-normal text-gray-500 hover:bg-primary hover:text-white"
+														>
+															{subItem.text}
+														</a>
+													))}
+											</li>
+											<div class="lg:grid lg:grid-rows-4 lg:px-6">
+												{Object.values(item)[0]
+													.values.slice(4, 8)
+													.map((subItem: { text: string; link: string }) => (
+														<a
+															href={subItem.link}
+															class="block whitespace-nowrap border-b border-white px-2 py-1 font-normal text-gray-500 hover:bg-primary hover:text-white"
+														>
+															{subItem.text}
+														</a>
+													))}
+											</div>
+										</ul>
+									</div>
+								)}
+							</div>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+		<div class="hidden items-center gap-2 lg:flex lg:gap-4">
+			<a
+				href="/"
+				class="item my-2 py-2 font-medium text-sky-950 transition duration-300 ease-in-out hover:text-primary group-hover:text-primary"
+			>
+				Log in
+			</a>
+			<Button buttonText="Get Started" link="/" type="filled" />
+		</div>
+	</nav>
 </header>
 
 <script>
-  document.querySelectorAll(".item").forEach((ahref) => {
-    if (window.innerWidth < 1024) {
-      // Add event parameter to the event listener function
-      ahref.addEventListener("click", (e) => {
-        e.preventDefault();
-      });
-    }
-  });
-  document.querySelectorAll(".group.menu").forEach((dropdown) => {
-    dropdown.addEventListener("click", () => {
-      const currentDropdown = dropdown.querySelector(".dropdown");
-      const allDropdowns = document.querySelectorAll(".dropdown");
+	document.querySelectorAll(".item").forEach((ahref) => {
+		if (window.innerWidth < 1024) {
+			// Add event parameter to the event listener function
+			ahref.addEventListener("click", (e) => {
+				e.preventDefault();
+			});
+		}
+	});
+	document.querySelectorAll(".group.menu").forEach((dropdown) => {
+		dropdown.addEventListener("click", () => {
+			const currentDropdown = dropdown.querySelector(".dropdown");
+			const allDropdowns = document.querySelectorAll(".dropdown");
 
-      allDropdowns.forEach((dropdown) => {
-        if (dropdown !== currentDropdown) {
-          dropdown.classList.remove("max-h-80");
-        }
-      });
-      currentDropdown!.classList.toggle("max-h-80");
-    });
-  });
+			allDropdowns.forEach((dropdown) => {
+				if (dropdown !== currentDropdown) {
+					dropdown.classList.remove("max-h-80");
+				}
+			});
+			currentDropdown!.classList.toggle("max-h-80");
+		});
+	});
 
-  document.getElementById("hamburgerToggle")!.addEventListener("click", () => {
-    const hamburgerToggle = document.getElementById("hamburgerToggle")!;
-    const menu = document.getElementById("menu")!;
-    const isExpanded = hamburgerToggle.getAttribute("aria-expanded") === "true";
-    if (isExpanded) {
-      menu.classList.add("translate-x-full");
-      setTimeout(() => {
-        menu.classList.add("hidden");
-      }, 200);
-    } else {
-      menu.classList.remove("hidden");
-      setTimeout(() => {
-        menu.classList.remove("translate-x-full");
-      }, 200);
-    }
-    hamburgerToggle.setAttribute("aria-expanded", String(!isExpanded));
-  });
+	document.getElementById("hamburgerToggle")!.addEventListener("click", () => {
+		const hamburgerToggle = document.getElementById("hamburgerToggle")!;
+		const menu = document.getElementById("menu")!;
+		const isExpanded = hamburgerToggle.getAttribute("aria-expanded") === "true";
+		if (isExpanded) {
+			menu.classList.add("translate-x-full");
+			setTimeout(() => {
+				menu.classList.add("hidden");
+			}, 200);
+		} else {
+			menu.classList.remove("hidden");
+			setTimeout(() => {
+				menu.classList.remove("translate-x-full");
+			}, 200);
+		}
+		hamburgerToggle.setAttribute("aria-expanded", String(!isExpanded));
+	});
 </script>

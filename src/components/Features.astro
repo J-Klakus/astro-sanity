@@ -4,163 +4,156 @@ import features from "../assets/features.webp";
 import { Icon } from "astro-icon/components";
 
 const items = [
-  {
-    icon: "ai",
-    title: "Artificial Intelligence",
-    list: [
-      {
-        text: `AI-powered Matchmaking: Forget sifting through countless profiles. Refine your search by simply asking questions using natural language. Airhire identifies and presents the ideal candidates for your open positions, all within seconds.`,
-      },
-      {
-        text: "Generative AI at Your Fingertips: leverage AI to craft compelling candidate briefings, job descriptions, interview questions, email templates and more.",
-      },
-    ],
-    link: "/",
-  },
-  {
-    icon: "globe",
-    title: "Recruitment Suite",
-    list: [
-      {
-        text: `Effortlessly manage your entire recruitment pipelines, from attracting talent to closing deals, with our comprehensive ATS and CRM solution. From advanced search to managing opportunities and creating candidate shortlists, Airhire streamlines your entire recruitment process.`,
-      },
-    ],
-    link: "/",
-  },
-  {
-    icon: "chat",
-    title: "Chat Navigation",
-    list: [
-      {
-        text: `Experience the first ever ATS with an intuitive navigation guided directly within the chat input field. You can use natural language to command what your ATS should do next, whether it's adding a new job or reviewing the latest applicants.
+	{
+		icon: "ai",
+		title: "Artificial Intelligence",
+		list: [
+			{
+				text: `AI-powered Matchmaking: Forget sifting through countless profiles. Refine your search by simply asking questions using natural language. Airhire identifies and presents the ideal candidates for your open positions, all within seconds.`,
+			},
+			{
+				text: "Generative AI at Your Fingertips: leverage AI to craft compelling candidate briefings, job descriptions, interview questions, email templates and more.",
+			},
+		],
+		link: "/",
+	},
+	{
+		icon: "globe",
+		title: "Recruitment Suite",
+		list: [
+			{
+				text: `Effortlessly manage your entire recruitment pipelines, from attracting talent to closing deals, with our comprehensive ATS and CRM solution. From advanced search to managing opportunities and creating candidate shortlists, Airhire streamlines your entire recruitment process.`,
+			},
+		],
+		link: "/",
+	},
+	{
+		icon: "chat",
+		title: "Chat Navigation",
+		list: [
+			{
+				text: `Experience the first ever ATS with an intuitive navigation guided directly within the chat input field. You can use natural language to command what your ATS should do next, whether it's adding a new job or reviewing the latest applicants.
 Learn more`,
-      },
-    ],
-    link: "/",
-  },
-  {
-    icon: "automation",
-    title: "Automation",
-    list: [
-      {
-        text: `Automate actions based on candidate stage or job status changes. Trigger personalised emails, update hiring managers, or schedule interviews instantly. This frees up your team to focus on building relationships with promising talent and closing deals.
+			},
+		],
+		link: "/",
+	},
+	{
+		icon: "automation",
+		title: "Automation",
+		list: [
+			{
+				text: `Automate actions based on candidate stage or job status changes. Trigger personalised emails, update hiring managers, or schedule interviews instantly. This frees up your team to focus on building relationships with promising talent and closing deals.
 Learn more`,
-      },
-    ],
-    link: "/",
-  },
-  {
-    icon: "customization",
-    title: "Customisation",
-    list: [
-      {
-        text: `You can customise everything from candidate profiles and job postings to pipelines and workflows. This means you can tailor the entire recruitment process to your specific needs, add custom fields for unique information, and create detailed views with preferred filters for efficient searching. Ultimately, our ATS empowers you to build a recruitment experience that perfectly reflects your company's unique approach to finding top talent.
+			},
+		],
+		link: "/",
+	},
+	{
+		icon: "customization",
+		title: "Customisation",
+		list: [
+			{
+				text: `You can customise everything from candidate profiles and job postings to pipelines and workflows. This means you can tailor the entire recruitment process to your specific needs, add custom fields for unique information, and create detailed views with preferred filters for efficient searching. Ultimately, our ATS empowers you to build a recruitment experience that perfectly reflects your company's unique approach to finding top talent.
 Learn more`,
-      },
-    ],
-    link: "/",
-  },
+			},
+		],
+		link: "/",
+	},
 ];
 ---
 
-<section
-  class="bg-gradient-to-b from-[#edebf8] via-white to-[#e5fcf8] flex flex-col md:flex-row"
->
-  <div class="grid place-items-start md:w-1/2">
-    <div class="md:ml-[12%] mx-auto">
-      <div class="p-4">
-        <p
-          class="text-highlight rounded-lg w-fit px-2 py-1 uppercase font-medium tracking-wide my-3"
-        >
-          Features
-        </p>
-        <h2 class="sm:text-3xl leading-10 text-4xl font-medium font-heading">
-          Meet our powerhouse features
-        </h2>
-        <div class="h-1 w-full mx-auto border-b my-5"></div>
-        {
-          items.map((item, index) => (
-            <div class="transition group">
-              {/* header */}
-              <div class="accordion-header cursor-pointer transition flex space-x-5 md:px-5 items-center h-16">
-                <Icon name={item.icon} size={30} />
-                <h2 class="font-heading group-hover:text-[rgba(0,0,0,0)] bg-text-gradient bg-[length:200%_200%] inline-block text-transparent font-medium text-2xl bg-clip-text group-hover:animate-text">
-                  {item.title}
-                </h2>
-              </div>
-              {/* Content */}
-              <ul class="accordion-content list-disc space-y-2 list-outside border-l border-l-neutral-400 text-slate-500 pl-6 ml-4 md:ml-9 md:pl-9 px-5 pt-0 mb-2 overflow-hidden max-h-0">
-                {item.list.map((listItem, i) => (
-                  <li class="leading-6 font-light text-justify py-2">
-                    {listItem.text}
-                  </li>
-                ))}
-                <li class="list-none text-primary my-3">
-                  <a href={item.link}>Learn more</a>
-                </li>
-              </ul>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </div>
-  <div class="max-w-6xl md:w-1/2">
-    <Picture
-      fallbackFormat="jpg"
-      src={features}
-      formats={["avif", "webp"]}
-      alt="A prototype of the app."
-      sizes="(max-width: 768px) 100vw, 50vw"
-      widths={[400, 800, 1200, features.width]}
-      class="h-auto w-full object-cover object-left shadow-[rgba(0,_0,_0,_0.1)_0px_24px_30px_-10px]"
-    />
-  </div>
+<section class="flex flex-col bg-gradient-to-b from-[#edebf8] via-white to-[#e5fcf8] md:flex-row">
+	<div class="grid place-items-start md:w-1/2">
+		<div class="mx-auto md:ml-[12%]">
+			<div class="p-4">
+				<p
+					class="my-3 w-fit rounded-lg px-2 py-1 font-medium uppercase tracking-wide text-highlight"
+				>
+					Features
+				</p>
+				<h2 class="font-heading text-4xl font-medium leading-10 sm:text-3xl">
+					Meet our powerhouse features
+				</h2>
+				<div class="mx-auto my-5 h-1 w-full border-b"></div>
+				{
+					items.map((item, index) => (
+						<div class="group transition">
+							{/* header */}
+							<div class="accordion-header flex h-16 cursor-pointer items-center space-x-5 transition md:px-5">
+								<Icon name={item.icon} size={30} />
+								<h2 class="inline-block bg-text-gradient bg-[length:200%_200%] bg-clip-text font-heading text-2xl font-medium text-transparent group-hover:animate-text group-hover:text-[rgba(0,0,0,0)]">
+									{item.title}
+								</h2>
+							</div>
+							{/* Content */}
+							<ul class="accordion-content mb-2 ml-4 max-h-0 list-outside list-disc space-y-2 overflow-hidden border-l border-l-neutral-400 px-5 pl-6 pt-0 text-slate-500 md:ml-9 md:pl-9">
+								{item.list.map((listItem, i) => (
+									<li class="py-2 text-justify font-light leading-6">{listItem.text}</li>
+								))}
+								<li class="my-3 list-none text-primary">
+									<a href={item.link}>Learn more</a>
+								</li>
+							</ul>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</div>
+	<div class="max-w-6xl md:w-1/2">
+		<Picture
+			fallbackFormat="jpg"
+			src={features}
+			formats={["avif", "webp"]}
+			alt="A prototype of the app."
+			sizes="(max-width: 768px) 100vw, 50vw"
+			widths={[400, 800, 1200, features.width]}
+			class="h-auto w-full object-cover object-left shadow-[rgba(0,_0,_0,_0.1)_0px_24px_30px_-10px]"
+		/>
+	</div>
 
-  <style>
-    .accordion-content {
-      transition:
-        max-height 0.3s ease-out,
-        padding 0.3s ease;
-    }
-  </style>
+	<style>
+		.accordion-content {
+			transition:
+				max-height 0.3s ease-out,
+				padding 0.3s ease;
+		}
+	</style>
 </section>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const accordionHeaders = document.querySelectorAll(
-      ".accordion-header"
-    ) as NodeListOf<HTMLElement>;
+	document.addEventListener("DOMContentLoaded", function () {
+		const accordionHeaders = document.querySelectorAll(
+			".accordion-header",
+		) as NodeListOf<HTMLElement>;
 
-    accordionHeaders.forEach((header, index) => {
-      header.addEventListener("click", function () {
-        const accordionContent = header.parentElement?.querySelector(
-          ".accordion-content"
-        ) as HTMLElement;
-        const currentlyOpenAccordion = document.querySelector(
-          ".accordion-content[style*='max-height']:not([style*='max-height: 0px'])"
-        ) as HTMLElement;
+		accordionHeaders.forEach((header, index) => {
+			header.addEventListener("click", function () {
+				const accordionContent = header.parentElement?.querySelector(
+					".accordion-content",
+				) as HTMLElement;
+				const currentlyOpenAccordion = document.querySelector(
+					".accordion-content[style*='max-height']:not([style*='max-height: 0px'])",
+				) as HTMLElement;
 
-        // Close the currently open accordion content if it exists and is not the one being clicked
-        if (
-          currentlyOpenAccordion &&
-          currentlyOpenAccordion !== accordionContent
-        ) {
-          currentlyOpenAccordion.style.maxHeight = `0px`;
-        }
+				// Close the currently open accordion content if it exists and is not the one being clicked
+				if (currentlyOpenAccordion && currentlyOpenAccordion !== accordionContent) {
+					currentlyOpenAccordion.style.maxHeight = `0px`;
+				}
 
-        // Toggle the clicked accordion content
-        let accordionMaxHeight = accordionContent.style.maxHeight;
-        if (accordionMaxHeight === "0px" || accordionMaxHeight.length === 0) {
-          accordionContent.style.maxHeight = `${accordionContent.scrollHeight + 32}px`;
-        } else {
-          accordionContent.style.maxHeight = `0px`;
-        }
-      });
+				// Toggle the clicked accordion content
+				let accordionMaxHeight = accordionContent.style.maxHeight;
+				if (accordionMaxHeight === "0px" || accordionMaxHeight.length === 0) {
+					accordionContent.style.maxHeight = `${accordionContent.scrollHeight + 32}px`;
+				} else {
+					accordionContent.style.maxHeight = `0px`;
+				}
+			});
 
-      // Open the first item by default
-      if (index === 0) {
-        header.click();
-      }
-    });
-  });
+			// Open the first item by default
+			if (index === 0) {
+				header.click();
+			}
+		});
+	});
 </script>

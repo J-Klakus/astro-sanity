@@ -7,105 +7,103 @@ import imageHelper from "../utils/imageHelper";
 
 // Define the interface for the button props
 interface ButtonProps {
-  link: string;
-  buttonText: string;
-  type: "filled" | "outline";
-  arrow?: boolean;
+	link: string;
+	buttonText: string;
+	type: "filled" | "outline";
+	arrow?: boolean;
 }
 
 // Define the interface for the component props
 interface CustomSectionProps {
-  tagline: string;
-  first: boolean;
-  largeImage: boolean;
-  imageSide: "left" | "right";
-  background: "none" | "bg center" | "bg bottom";
-  title: string;
-  description: string;
-  buttons?: ButtonProps[];
-  image: ImageRef;
-  imageAlt?: string;
+	tagline: string;
+	first: boolean;
+	largeImage: boolean;
+	imageSide: "left" | "right";
+	background: "none" | "bg center" | "bg bottom";
+	title: string;
+	description: string;
+	buttons?: ButtonProps[];
+	image: ImageRef;
+	imageAlt?: string;
 }
 
 const {
-  tagline = "featured",
-  largeImage = false,
-  imageSide = "left",
-  first = false,
-  background = "none",
-  title,
-  description,
-  buttons = [
-    {
-      link: "#",
-      buttonText: "Request a demo",
-      type: "filled",
-      arrow: true,
-    },
-  ],
-  image,
-  imageAlt = "A prototype of the app.",
+	tagline = "featured",
+	largeImage = false,
+	imageSide = "left",
+	first = false,
+	background = "none",
+	title,
+	description,
+	buttons = [
+		{
+			link: "#",
+			buttonText: "Request a demo",
+			type: "filled",
+			arrow: true,
+		},
+	],
+	image,
+	imageAlt = "A prototype of the app.",
 } = Astro.props as CustomSectionProps;
 
 const styledBackground =
-  background === "bg center"
-    ? "bg-[url('/bg-center-mobile.webp')] sm:bg-[url('/bg-center.webp')] bg-cover lg:bg-contain bg-no-repeat lg:bg-[left_-2rem]"
-    : background === "bg bottom"
-      ? "bg-[url('/bg-bottom-mobile.webp')] sm:bg-[url('/bg-bottom.webp')] bg-cover lg:bg-[center_top_3rem] lg:bg-contain bg-no-repeat"
-      : "";
+	background === "bg center"
+		? "bg-[url('/bg-center-mobile.webp')] sm:bg-[url('/bg-center.webp')] bg-cover lg:bg-contain bg-no-repeat lg:bg-[left_-2rem]"
+		: background === "bg bottom"
+			? "bg-[url('/bg-bottom-mobile.webp')] sm:bg-[url('/bg-bottom.webp')] bg-cover lg:bg-[center_top_3rem] lg:bg-contain bg-no-repeat"
+			: "";
 ---
 
 <section
-  class={`py-8 ${first ? "sm:pt-44 pb-20" : "sm:py-20"} ${background != "none" ? styledBackground : ""}`}
+	class={`py-8 ${first ? "sm:pt-44 pb-20" : "sm:py-20"} ${background != "none" ? styledBackground : ""}`}
 >
-  <div
-    class={`max-w-7xl flex flex-col ${imageSide === "left" ? "lg:flex-row-reverse " : "lg:flex-row "} gap-8 lg:gap-20 items-center justify-center mx-auto px-4`}
-  >
-    <div class={`${largeImage ? "lg:w-2/5" : "lg:w-1/2"} max-w-xl`}>
-      <div class="text-center lg:text-start">
-        <p
-          class="text-highlight bg-verylight rounded-lg w-fit px-2 py-1 uppercase font-medium tracking-wide my-3 mx-auto lg:mx-0"
-        >
-          {tagline}
-        </p>
-        <h1
-          class={`font-heading mt-6 ${first ? "text-3xl sm:text-6xl" : "text-3xl sm:text-4xl"} font-medium leading-10 sm:leading-[4rem] tracking-tight text-black`}
-        >
-          {title}
-        </h1>
-        <p class="mt-6 text-lg leading-relaxed text-slate-500">
-          {description}
-        </p>
-      </div>
+	<div
+		class={`max-w-7xl flex flex-col ${imageSide === "left" ? "lg:flex-row-reverse " : "lg:flex-row "} gap-8 lg:gap-20 items-center justify-center mx-auto px-4`}
+	>
+		<div class={`${largeImage ? "lg:w-2/5" : "lg:w-1/2"} max-w-xl`}>
+			<div class="text-center lg:text-start">
+				<p
+					class="mx-auto my-3 w-fit rounded-lg bg-verylight px-2 py-1 font-medium uppercase tracking-wide text-highlight lg:mx-0"
+				>
+					{tagline}
+				</p>
+				<h1
+					class={`font-heading mt-6 ${first ? "text-3xl sm:text-6xl" : "text-3xl sm:text-4xl"} font-medium leading-10 sm:leading-[4rem] tracking-tight text-black`}
+				>
+					{title}
+				</h1>
+				<p class="mt-6 text-lg leading-relaxed text-slate-500">
+					{description}
+				</p>
+			</div>
 
-      <div class="mt-6 flex items-center justify-center lg:justify-start gap-4">
-        {
-          buttons.map((button) => (
-            <Button
-              link={button.link}
-              buttonText={button.buttonText}
-              type={button.type}
-              arrow={button.arrow}
-            />
-          ))
-        }
-      </div>
-    </div>
-    <div
-      class={`${largeImage ? "lg:h-full 2xl:h-3/4 w-full h-auto" : "lg:w-1/2 h-auto"} `}
-    >
-      <Picture
-        fallbackFormat="jpg"
-        src={imageHelper(image).url()}
-        formats={["avif", "webp"]}
-        alt={imageAlt}
-        sizes={largeImage
-          ? "(max-width: 1024px) 100vw, (max-width: 1152px) 60vw, 624px"
-          : "(max-width: 1024px) 100vw, (max-width: 1152px) 30vw, 624px"}
-        widths={[400, 800, 1200, candidatepipeline.width]}
-        class="h-full w-full object-cover object-left"
-        inferSize={true}
-      />
-    </div>
-  </div>
+			<div class="mt-6 flex items-center justify-center gap-4 lg:justify-start">
+				{
+					buttons.map((button) => (
+						<Button
+							link={button.link}
+							buttonText={button.buttonText}
+							type={button.type}
+							arrow={button.arrow}
+						/>
+					))
+				}
+			</div>
+		</div>
+		<div class={`${largeImage ? "lg:h-full 2xl:h-3/4 w-full h-auto" : "lg:w-1/2 h-auto"} `}>
+			<Picture
+				fallbackFormat="jpg"
+				src={imageHelper(image).url()}
+				formats={["avif", "webp"]}
+				alt={imageAlt}
+				sizes={largeImage
+					? "(max-width: 1024px) 100vw, (max-width: 1152px) 60vw, 624px"
+					: "(max-width: 1024px) 100vw, (max-width: 1152px) 30vw, 624px"}
+				widths={[400, 800, 1200, candidatepipeline.width]}
+				class="h-full w-full object-cover object-left"
+				inferSize={true}
+			/>
+		</div>
+	</div>
 </section>

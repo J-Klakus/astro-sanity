@@ -1,45 +1,41 @@
 ---
 import Image from "astro/components/Image.astro";
 
-const brands = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/brands/*"
-);
+const brands = import.meta.glob<{ default: ImageMetadata }>("/src/assets/brands/*");
 ---
 
 <section
-  class="bg-[url('/mesh-tr-mobile.webp')] sm:bg-[url('/mesh-tr.webp')] bg-cover bg-no-repeat px-4 sm:py-20"
+	class="bg-[url('/mesh-tr-mobile.webp')] bg-cover bg-no-repeat px-4 sm:bg-[url('/mesh-tr.webp')] sm:py-20"
 >
-  <div class="mx-auto max-w-7xl py-8 sm:py-24">
-    <div class="text-center max-w-2xl mx-auto">
-      <h2
-        class="font-heading mt-3 text-3xl sm:text-4xl font-medium leading-10 sm:leading-[4rem] tracking-tight text-black"
-      >
-        You’ll be in good company
-      </h2>
-      <p class="mt-3 text-lg leading-relaxed text-slate-500">
-        Join the community of leading recruitment agencies using our solutions
-        for unmatched results.
-      </p>
-    </div>
-    <ul
-      class="relative w-full p-0 flex flex-wrap justify-between gap-2 px-4 lg:px-0 py-10"
-    >
-      {
-        Object.keys(brands).map(async (image) => {
-          const src = (await brands[image]()).default;
-          return (
-            <li class="w-44">
-              <div class="flex justify-center items-center p-2">
-                <Image
-                  src={src}
-                  alt={image.split("/")[3].split(".")[0] + " logo"}
-                  class="object-contain h-16"
-                />
-              </div>
-            </li>
-          );
-        })
-      }
-    </ul>
-  </div>
+	<div class="mx-auto max-w-7xl py-8 sm:py-24">
+		<div class="mx-auto max-w-2xl text-center">
+			<h2
+				class="mt-3 font-heading text-3xl font-medium leading-10 tracking-tight text-black sm:text-4xl sm:leading-[4rem]"
+			>
+				You’ll be in good company
+			</h2>
+			<p class="mt-3 text-lg leading-relaxed text-slate-500">
+				Join the community of leading recruitment agencies using our solutions for unmatched
+				results.
+			</p>
+		</div>
+		<ul class="relative flex w-full flex-wrap justify-between gap-2 p-0 px-4 py-10 lg:px-0">
+			{
+				Object.keys(brands).map(async (image) => {
+					const src = (await brands[image]()).default;
+					return (
+						<li class="w-44">
+							<div class="flex items-center justify-center p-2">
+								<Image
+									src={src}
+									alt={image.split("/")[3].split(".")[0] + " logo"}
+									class="h-16 object-contain"
+								/>
+							</div>
+						</li>
+					);
+				})
+			}
+		</ul>
+	</div>
 </section>

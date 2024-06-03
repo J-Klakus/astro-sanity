@@ -5,33 +5,28 @@ import Video from "./Video.astro";
 ---
 
 <section
-  class="bg-auto bg-no-repeat bg-[center_top_10rem] bg-[url('/bg-hero-mobile.webp')] sm:bg-[url('/bg-hero.webp')] pt-32 pb-8 md:py-44 flex flex-col gap-8 lg:gap-20 items-center justify-center bg-[#fafafe]"
+	class="flex flex-col items-center justify-center gap-8 bg-[#fafafe] bg-[url('/bg-hero-mobile.webp')] bg-auto bg-[center_top_10rem] bg-no-repeat pb-8 pt-32 sm:bg-[url('/bg-hero.webp')] md:py-44 lg:gap-20"
 >
-  <div class="mx-auto max-w-3xl px-4 lg:px-0">
-    <div class="text-center">
-      <h1
-        class="mt-6 text-4xl sm:text-[54px] font-medium leading-loose sm:leading-[4rem] text-gray-900 font-heading"
-      >
-        AI-driven ATS & CRM developed for recruitment agencies
-      </h1>
-      <p class="mt-6 text-xl leading-relaxed text-slate-500">
-        Airhire unlocks the power of your recruitment team. We automate the
-        busywork, letting you focus on what matters most - finding great
-        candidates. Experience recruitment that's efficient and revolutionary.
-      </p>
-    </div>
+	<div class="mx-auto max-w-3xl px-4 lg:px-0">
+		<div class="text-center">
+			<h1
+				class="mt-6 font-heading text-4xl font-medium leading-loose text-gray-900 sm:text-[54px] sm:leading-[4rem]"
+			>
+				AI-driven ATS & CRM developed for recruitment agencies
+			</h1>
+			<p class="mt-6 text-xl leading-relaxed text-slate-500">
+				Airhire unlocks the power of your recruitment team. We automate the busywork, letting you
+				focus on what matters most - finding great candidates. Experience recruitment that's
+				efficient and revolutionary.
+			</p>
+		</div>
 
-    <div class="mt-6 flex items-center justify-center gap-4 lg:gap-8">
-      <Button link="#" buttonText="Try for free" type="filled" />
-      <Button
-        link="#"
-        buttonText="Request a demo"
-        type="outline"
-        arrow={true}
-      />
-    </div>
-  </div>
-  <div class="max-w-4xl">
-    <Video video="./video.mov" />
-  </div>
+		<div class="mt-6 flex items-center justify-center gap-4 lg:gap-8">
+			<Button link="#" buttonText="Try for free" type="filled" />
+			<Button link="#" buttonText="Request a demo" type="outline" arrow={true} />
+		</div>
+	</div>
+	<div class="max-w-4xl">
+		<Video video="./video.mov" />
+	</div>
 </section>

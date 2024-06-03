@@ -6,67 +6,65 @@ import { Icon } from "astro-icon/components";
 {
 }
 const allBlogPosts = [
-  {
-    date: "March 10, 2024",
-    category: "How To",
-    title: "Automate Your Pipeline",
-    image: cv,
-  },
-  {
-    date: "March 10, 2024",
-    category: "How To",
-    title: "Automate Your Pipeline",
-    image: cv,
-  },
-  {
-    date: "March 10, 2024",
-    category: "How To",
-    title: "Automate Your Pipeline",
-    image: cv,
-  },
-  {
-    date: "March 10, 2024",
-    category: "How To",
-    title: "Automate Your Pipeline",
-    image: cv,
-  },
+	{
+		date: "March 10, 2024",
+		category: "How To",
+		title: "Automate Your Pipeline",
+		image: cv,
+	},
+	{
+		date: "March 10, 2024",
+		category: "How To",
+		title: "Automate Your Pipeline",
+		image: cv,
+	},
+	{
+		date: "March 10, 2024",
+		category: "How To",
+		title: "Automate Your Pipeline",
+		image: cv,
+	},
+	{
+		date: "March 10, 2024",
+		category: "How To",
+		title: "Automate Your Pipeline",
+		image: cv,
+	},
 ];
 
 const generateClassBasedOnIndex = (index: number) => {
-  if (index % 2 != 0) {
-    return "bg-[url('/mesh-card-bg.webp')] bg-no-repeat bg-cover text-white";
-  } else {
-    return "bg-white text-black";
-  }
+	if (index % 2 != 0) {
+		return "bg-[url('/mesh-card-bg.webp')] bg-no-repeat bg-cover text-white";
+	} else {
+		return "bg-white text-black";
+	}
 };
 ---
 
 <section
-  class="bg-[url('/mesh-center-mobile.webp')] sm:bg-[url('/mesh-center.webp')] bg-cover bg-no-repeat bg-[100%_-50%]"
+	class="bg-[url('/mesh-center-mobile.webp')] bg-cover bg-[100%_-50%] bg-no-repeat sm:bg-[url('/mesh-center.webp')]"
 >
-  <div class="pb-10">
-    <div class="flex justify-between items-center py-2 px-4"></div>
-    <div class="relative glide-06">
-      <div
-        class="flex justify-between gap-4 items-center mb-6 md:mb-10 lg:mb-20 px-4"
-      >
-        <div class="text-center max-w-2xl mx-auto px-4">
-          <p
-            class="text-highlight bg-verylight rounded-lg w-fit px-2 py-1 uppercase font-medium tracking-wide mb-3 mx-auto"
-          >
-            Resources
-          </p>
-          <h2
-            class="font-heading mt-3 text-3xl sm:text-4xl font-medium leading-10 sm:leading-[4rem] tracking-tight text-black"
-          >
-            Learn from the best
-          </h2>
-          <p class="my-3 text-lg leading-relaxed text-slate-500">
-            Learn how grow your business with our expert
-          </p>
-          <Button link="#" buttonText="Show More" type="filled" class="w-fit" />
-        </div>
-        <!-- <div
+	<div class="pb-10">
+		<div class="flex items-center justify-between px-4 py-2"></div>
+		<div class="glide-06 relative">
+			<div class="mb-6 flex items-center justify-between gap-4 px-4 md:mb-10 lg:mb-20">
+				<div class="mx-auto max-w-2xl px-4 text-center">
+					<p
+						class="mx-auto mb-3 w-fit rounded-lg bg-verylight px-2 py-1 font-medium uppercase tracking-wide text-highlight"
+					>
+						Resources
+					</p>
+					<h2
+						class="mt-3 font-heading text-3xl font-medium leading-10 tracking-tight text-black sm:text-4xl sm:leading-[4rem]"
+					>
+						Learn from the best
+					</h2>
+					<p class="my-3 text-lg leading-relaxed text-slate-500">
+						Learn how grow your business with our expert
+					</p>
+					<Button link="#" buttonText="Show More" type="filled" class="w-fit" />
+				</div>
+				<!-- <div
           class="hidden md:flex glide__arrows gap-4 items-center"
           data-glide-el="controls"
         >
@@ -110,53 +108,49 @@ const generateClassBasedOnIndex = (index: number) => {
             >
           </button>
         </div> -->
-      </div>
-      <div class="pl-1.5 md:pl-[10vw] relative w-full glide-06">
-        <!-- Slides -->
-        <div class="overflow-hidden" data-glide-el="track">
-          <ul
-            class="relative w-full overflow-hidden p-0 whitespace-no-wrap flex flex-no-wrap gap-6 [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform]"
-          >
-            {
-              allBlogPosts.map((post: any, i) => (
-                <li class="flex justify-center">
-                  <a
-                    href={post.slug + "/"}
-                    class="card w-[90vw] sm:w-full mx-auto shadow-lg group my-4 rounded-md hover:opacity-90"
-                  >
-                    <figure class="relative">
-                      <Image
-                        src={post.image}
-                        alt="Blog"
-                        class="group-hover:cursor-pointer object-cover h-auto w-full rounded-t-xl"
-                      />
-                      <div
-                        class={`${generateClassBasedOnIndex(i)} p-4 sm:p-6 rounded-b-xl w-full flex flex-col justify-start`}
-                      >
-                        <div class="flex w-full justify-between">
-                          <p class="text-sm sm:text-base font-medium mb-3">
-                            {post.category}
-                          </p>
-                          <p class="text-sm sm:text-base font-medium mb-3">
-                            {post.date}
-                          </p>
-                        </div>
-                        <p class="[font-size:_clamp(1em,1.2vw,2.5em)] font-medium tracking-wide leading-tight md:leading-normal">
-                          {post.title}
-                        </p>
-                      </div>
-                      <Icon
-                        name="diagonalArrow"
-                        class="absolute top-2 right-1 sm:top-3 sm:right-3 h-auto w-12"
-                      />
-                    </figure>
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
-        <!-- <div
+			</div>
+			<div class="glide-06 relative w-full pl-1.5 md:pl-[10vw]">
+				<!-- Slides -->
+				<div class="overflow-hidden" data-glide-el="track">
+					<ul
+						class="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full gap-6 overflow-hidden p-0"
+					>
+						{
+							allBlogPosts.map((post: any, i) => (
+								<li class="flex justify-center">
+									<a
+										href={post.slug + "/"}
+										class="card group mx-auto my-4 w-[90vw] rounded-md shadow-lg hover:opacity-90 sm:w-full"
+									>
+										<figure class="relative">
+											<Image
+												src={post.image}
+												alt="Blog"
+												class="h-auto w-full rounded-t-xl object-cover group-hover:cursor-pointer"
+											/>
+											<div
+												class={`${generateClassBasedOnIndex(i)} flex w-full flex-col justify-start rounded-b-xl p-4 sm:p-6`}
+											>
+												<div class="flex w-full justify-between">
+													<p class="mb-3 text-sm font-medium sm:text-base">{post.category}</p>
+													<p class="mb-3 text-sm font-medium sm:text-base">{post.date}</p>
+												</div>
+												<p class="font-medium leading-tight tracking-wide [font-size:_clamp(1em,1.2vw,2.5em)] md:leading-normal">
+													{post.title}
+												</p>
+											</div>
+											<Icon
+												name="diagonalArrow"
+												class="absolute right-1 top-2 h-auto w-12 sm:right-3 sm:top-3"
+											/>
+										</figure>
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+				<!-- <div
           class="md:hidden flex justify-center w-full glide__arrows gap-4 items-center px-4"
           data-glide-el="controls"
         >
@@ -200,33 +194,33 @@ const generateClassBasedOnIndex = (index: number) => {
             >
           </button>
         </div> -->
-      </div>
-    </div>
+			</div>
+		</div>
 
-    <script>
-      import Glide from "@glidejs/glide";
-      var glide06 = new Glide(".glide-06", {
-        type: "carousel",
-        focusAt: "center",
-        breakpoints: {
-          640: {
-            perView: 1,
-          },
-          768: {
-            perView: 2,
-            focusAt: 0,
-          },
-        },
-        startAt: 0,
-        perView: 2.5,
-        autoplay: false,
-        animationDuration: 1000,
-        gap: 0,
-      });
+		<script>
+			import Glide from "@glidejs/glide";
+			var glide06 = new Glide(".glide-06", {
+				type: "carousel",
+				focusAt: "center",
+				breakpoints: {
+					640: {
+						perView: 1,
+					},
+					768: {
+						perView: 2,
+						focusAt: 0,
+					},
+				},
+				startAt: 0,
+				perView: 2.5,
+				autoplay: false,
+				animationDuration: 1000,
+				gap: 0,
+			});
 
-      if (document.querySelector(".glide-06")) {
-        glide06.mount();
-      }
-    </script>
-  </div>
+			if (document.querySelector(".glide-06")) {
+				glide06.mount();
+			}
+		</script>
+	</div>
 </section>

@@ -6,96 +6,88 @@ import type { ImageRef } from "../utils/imageHelper";
 
 // Define the interface for the button props
 interface ButtonProps {
-  link: string;
-  buttonText: string;
-  type: "filled" | "outline";
-  arrow?: boolean;
+	link: string;
+	buttonText: string;
+	type: "filled" | "outline";
+	arrow?: boolean;
 }
 
 // Define the interface for the component props
 interface CustomSectionProps {
-  first: boolean;
-  largeImage: boolean;
-  background: boolean;
-  title: string;
-  description: string;
-  button1?: ButtonProps;
-  button2?: ButtonProps;
-  image: ImageRef;
-  imageAlt: string;
+	first: boolean;
+	largeImage: boolean;
+	background: boolean;
+	title: string;
+	description: string;
+	button1?: ButtonProps;
+	button2?: ButtonProps;
+	image: ImageRef;
+	imageAlt: string;
 }
 
 const {
-  largeImage = false,
-  first = false,
-  background = true,
-  title,
-  description,
-  button1 = {
-    link: "#",
-    buttonText: "Request a demo",
-    type: "filled",
-    arrow: true,
-  },
-  button2 = { link: "#", buttonText: "Contact Sales", type: "outline" },
-  image,
-  imageAlt,
+	largeImage = false,
+	first = false,
+	background = true,
+	title,
+	description,
+	button1 = {
+		link: "#",
+		buttonText: "Request a demo",
+		type: "filled",
+		arrow: true,
+	},
+	button2 = { link: "#", buttonText: "Contact Sales", type: "outline" },
+	image,
+	imageAlt,
 } = Astro.props as CustomSectionProps;
 ---
 
 <section
-  class={`${first ? "pt-32 pb-8 lg:pt-44 lg:pb-20" : "py-8 sm:py-32"} ${background ? "bg-[url('/mesh-center.webp')] sm:bg-[url('/mesh-center.webp')] bg-top bg-cover bg-no-repeat" : ""} p-8`}
+	class={`${first ? "pt-32 pb-8 lg:pt-44 lg:pb-20" : "py-8 sm:py-32"} ${background ? "bg-[url('/mesh-center.webp')] sm:bg-[url('/mesh-center.webp')] bg-top bg-cover bg-no-repeat" : ""} p-8`}
 >
-  <div
-    class={`${background ? "bg-[url('/mesh-center.webp')] bg-cover bg-no-repeat bg-white p-20 rounded-lg" : ""} max-w-7xl mx-auto`}
-  >
-    <div
-      class={`${largeImage ? "lg:gap-2" : "lg:gap-12"} flex flex-col lg:flex-row gap-8 items-center justify-center mx-auto px-4`}
-    >
-      <div class={`${largeImage && "lg:w-2/5"} max-w-xl`}>
-        <div class="text-center lg:text-start">
-          <h1
-            class={`font-heading mt-3 ${first ? "text-3xl sm:text-6xl leading-10 sm:!leading-[4.75rem]" : "text-3xl sm:text-4xl leading-10 sm:leading-normal"} font-medium tracking-tight text-black`}
-          >
-            {title}
-          </h1>
-          <p class="mt-6 text-lg leading-relaxed text-slate-500">
-            {description}
-          </p>
-        </div>
+	<div
+		class={`${background ? "bg-[url('/mesh-center.webp')] bg-cover bg-no-repeat bg-white p-20 rounded-lg" : ""} max-w-7xl mx-auto`}
+	>
+		<div
+			class={`${largeImage ? "lg:gap-2" : "lg:gap-12"} flex flex-col lg:flex-row gap-8 items-center justify-center mx-auto px-4`}
+		>
+			<div class={`${largeImage && "lg:w-2/5"} max-w-xl`}>
+				<div class="text-center lg:text-start">
+					<h1
+						class={`font-heading mt-3 ${first ? "text-3xl sm:text-6xl leading-10 sm:!leading-[4.75rem]" : "text-3xl sm:text-4xl leading-10 sm:leading-normal"} font-medium tracking-tight text-black`}
+					>
+						{title}
+					</h1>
+					<p class="mt-6 text-lg leading-relaxed text-slate-500">
+						{description}
+					</p>
+				</div>
 
-        <div
-          class="mt-6 flex items-center justify-center lg:justify-start gap-4"
-        >
-          <Button
-            link={button1.link}
-            buttonText={button1.buttonText}
-            type={button1.type}
-            arrow={button1.arrow}
-          />
-          <Button
-            link={button2.link}
-            buttonText={button2.buttonText}
-            type={button2.type}
-          />
-        </div>
-      </div>
-      <div
-        class={`${largeImage && "lg:h-full 2xl:h-3/4 lg:w-3/5 w-full h-auto"} `}
-      >
-        <Picture
-          fallbackFormat="jpg"
-          src={imageHelper(image).url()}
-          formats={["avif", "webp"]}
-          alt={imageAlt}
-          sizes={largeImage
-            ? "(max-width: 1024px) 100vw, (max-width: 1152px) 60vw, 624px"
-            : "(max-width: 1024px) 100vw, (max-width: 1152px) 30vw, 624px"}
-          widths={[400, 800, 1200]}
-          class="h-full w-full object-cover object-left"
-          inferSize={true}
-        />
-      </div>
-    </div>
-  </div>
+				<div class="mt-6 flex items-center justify-center gap-4 lg:justify-start">
+					<Button
+						link={button1.link}
+						buttonText={button1.buttonText}
+						type={button1.type}
+						arrow={button1.arrow}
+					/>
+					<Button link={button2.link} buttonText={button2.buttonText} type={button2.type} />
+				</div>
+			</div>
+			<div class={`${largeImage && "lg:h-full 2xl:h-3/4 lg:w-3/5 w-full h-auto"} `}>
+				<Picture
+					fallbackFormat="jpg"
+					src={imageHelper(image).url()}
+					formats={["avif", "webp"]}
+					alt={imageAlt}
+					sizes={largeImage
+						? "(max-width: 1024px) 100vw, (max-width: 1152px) 60vw, 624px"
+						: "(max-width: 1024px) 100vw, (max-width: 1152px) 30vw, 624px"}
+					widths={[400, 800, 1200]}
+					class="h-full w-full object-cover object-left"
+					inferSize={true}
+				/>
+			</div>
+		</div>
+	</div>
 </section>
