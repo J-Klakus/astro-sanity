@@ -44,52 +44,58 @@ const {
 ---
 
 <section
-  class={` ${first ? "pt-32 pb-8 lg:pt-44 lg:pb-20" : "py-8 sm:py-40"}  ${background ? "bg-[url('/mesh-center.webp')] bg-cover bg-no-repeat" : ""}`}
+  class={`${first ? "pt-32 pb-8 lg:pt-44 lg:pb-20" : "py-8 sm:py-32"} ${background ? "bg-[url('/mesh-center.webp')] sm:bg-[url('/mesh-center.webp')] bg-top bg-cover bg-no-repeat" : ""} p-8`}
 >
   <div
-    class="max-w-7xl flex flex-col lg:flex-row gap-8 lg:gap-12 items-center justify-center mx-auto px-4"
+    class={`${background ? "bg-[url('/mesh-center.webp')] bg-cover bg-no-repeat bg-white" : ""} p-20 max-w-7xl mx-auto`}
   >
-    <div class={`${largeImage && "lg:w-2/5"} max-w-xl`}>
-      <div class="text-center lg:text-start">
-        <h1
-          class={`font-heading mt-3 ${first ? "text-3xl sm:text-6xl" : "text-3xl sm:text-4xl"} font-bold leading-10 sm:leading-[4rem] tracking-tight text-black`}
-        >
-          {title}
-        </h1>
-        <p class="mt-6 text-lg leading-relaxed text-slate-500">
-          {description}
-        </p>
-      </div>
-
-      <div class="mt-6 flex items-center justify-center lg:justify-start gap-4">
-        <Button
-          link={button1.link}
-          buttonText={button1.buttonText}
-          type={button1.type}
-          arrow={button1.arrow}
-        />
-        <Button
-          link={button2.link}
-          buttonText={button2.buttonText}
-          type={button2.type}
-        />
-      </div>
-    </div>
     <div
-      class={`${largeImage && "lg:h-full 2xl:h-3/4 lg:w-3/5 w-full h-auto"} `}
+      class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center justify-center mx-auto px-4"
     >
-      <Picture
-        fallbackFormat="jpg"
-        src={imageHelper(image).url()}
-        formats={["avif", "webp"]}
-        alt={imageAlt}
-        sizes={largeImage
-          ? "(max-width: 1024px) 100vw, (max-width: 1152px) 60vw, 624px"
-          : "(max-width: 1024px) 100vw, (max-width: 1152px) 30vw, 624px"}
-        widths={[400, 800, 1200]}
-        class="h-full w-full object-cover object-left"
-        inferSize={true}
-      />
+      <div class={`${largeImage && "lg:w-2/5"} max-w-xl`}>
+        <div class="text-center lg:text-start">
+          <h1
+            class={`font-heading mt-3 ${first ? "text-3xl sm:text-6xl" : "text-3xl sm:text-4xl"} font-bold leading-10 sm:leading-[4rem] tracking-tight text-black`}
+          >
+            {title}
+          </h1>
+          <p class="mt-6 text-lg leading-relaxed text-slate-500">
+            {description}
+          </p>
+        </div>
+
+        <div
+          class="mt-6 flex items-center justify-center lg:justify-start gap-4"
+        >
+          <Button
+            link={button1.link}
+            buttonText={button1.buttonText}
+            type={button1.type}
+            arrow={button1.arrow}
+          />
+          <Button
+            link={button2.link}
+            buttonText={button2.buttonText}
+            type={button2.type}
+          />
+        </div>
+      </div>
+      <div
+        class={`${largeImage && "lg:h-full 2xl:h-3/4 lg:w-3/5 w-full h-auto"} `}
+      >
+        <Picture
+          fallbackFormat="jpg"
+          src={imageHelper(image).url()}
+          formats={["avif", "webp"]}
+          alt={imageAlt}
+          sizes={largeImage
+            ? "(max-width: 1024px) 100vw, (max-width: 1152px) 60vw, 624px"
+            : "(max-width: 1024px) 100vw, (max-width: 1152px) 30vw, 624px"}
+          widths={[400, 800, 1200]}
+          class="h-full w-full object-cover object-left"
+          inferSize={true}
+        />
+      </div>
     </div>
   </div>
 </section>

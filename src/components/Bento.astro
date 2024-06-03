@@ -1,6 +1,6 @@
 ---
 import flexible from "../assets/flexible.webp";
-import chat from "../assets/chat.webp";
+import recruitment from "../assets/chat.webp";
 import learn from "../assets/learn.webp";
 import stage from "../assets/stage.webp";
 import { Picture } from "astro:assets";
@@ -22,7 +22,7 @@ import { Icon } from "astro-icon/components";
     </h2>
   </div>
   <div
-    class="grid grid-cols-10 md:grid-cols-11 md:grid-rows-6 gap-4 mx-auto px-4 xl:px-0 pt-8"
+    class="bg-[url('/bento.webp')] sm:bg-[url('/bento.webp')] bg-cover bg-no-repeat grid grid-cols-10 md:grid-cols-11 md:grid-rows-6 gap-4 mx-auto px-4 xl:px-0 pt-8"
   >
     <div
       class="h-fit lg:h-auto col-span-10 md:col-span-7 md:row-span-2 relative group hover:cursor-pointer"
@@ -70,7 +70,7 @@ import { Icon } from "astro-icon/components";
         widths={[400, 800, learn.width]}
         class="h-auto w-full object-contain group-hover:brightness-75 transition duration-300 ease-in-out"
       />
-      <Pill text="AI" position="top-left" color="purple" />
+      <Pill text="Chat Navigation" position="top-left" color="purple" />
       <p
         class="hover:underline underline-offset-8 opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out absolute bottom-4 right-4 md:bottom-[5%] md:right-[5%] lg:bottom-6 lg:right-4 text-sm sm:text-base md:text-lg text-white"
       >
@@ -83,14 +83,14 @@ import { Icon } from "astro-icon/components";
     >
       <Picture
         fallbackFormat="jpg"
-        src={chat}
+        src={recruitment}
         formats={["avif", "webp"]}
         alt={"infographic"}
         sizes="(max-width: 768px) 100vw, (max-width: 1298px) 60vw, 779px"
-        widths={[400, 800, chat.width]}
-        class="h-auto w-full object-contain group-hover:brightness-75 transition duration-300 ease-in-out"
+        widths={[400, 800, recruitment.width]}
+        class="h-auto w-full object-contain group-hover:brightness-75 transition duration-300 ease-in-out rounded-xl"
       />
-      <Pill text="Chat Navigation" position="top-left" />
+      <Pill text="Recruitment Suite" position="top-left" />
       <p
         class="hover:underline underline-offset-8 opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out absolute bottom-4 right-4 md:bottom-[15%] md:right-[5%] lg:bottom-16 lg:right-4 text-sm sm:text-base md:text-lg text-white"
       >
