@@ -1,6 +1,5 @@
 ---
 import { Picture, getImage } from "astro:assets";
-import myBackground from "../assets/bg-center.webp";
 import candidatepipeline from "../assets/candidate-pipeline.webp";
 import Button from "./reusable/Button.astro";
 import type { ImageRef } from "../utils/imageHelper";
@@ -50,9 +49,9 @@ const {
 
 const styledBackground =
   background === "bg center"
-    ? "bg-[url('/bg-center-mobile.webp')] sm:bg-[url('/bg-center.webp')] bg-cover bg-no-repeat bg-center"
+    ? "bg-[url('/bg-center-mobile.webp')] sm:bg-[url('/bg-center.webp')] bg-cover lg:bg-contain bg-no-repeat lg:bg-[left_-2rem]"
     : background === "bg bottom"
-      ? "bg-[url('/bg-bottom-mobile.webp')] sm:bg-[url('/bg-bottom.webp')] bg-[center_bottom_-7rem] bg-cover bg-no-repeat"
+      ? "bg-[url('/bg-bottom-mobile.webp')] sm:bg-[url('/bg-bottom.webp')] bg-cover lg:bg-[center_top_3rem] lg:bg-contain bg-no-repeat"
       : "";
 ---
 
