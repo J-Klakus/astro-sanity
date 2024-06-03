@@ -1,7 +1,5 @@
 ---
 import Image from "astro/components/Image.astro";
-import { getImage } from "astro:assets";
-import myBackground from "../assets/meshbg.webp";
 
 const brands = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/brands/*"
@@ -9,7 +7,7 @@ const brands = import.meta.glob<{ default: ImageMetadata }>(
 ---
 
 <section
-  class="bg-[url('/mesh-tr-mobile.webp')] sm:bg-[url('/mesh-tr.webp')] bg-no-repeat bg-[length:100%_100%] px-4 before:content-[''] before:bg-white"
+  class="bg-[url('/mesh-tr-mobile.webp')] sm:bg-[url('/mesh-tr.webp')] bg-cover bg-no-repeat px-4 sm:py-20"
 >
   <div class="mx-auto max-w-7xl py-8 sm:py-24">
     <div class="text-center max-w-2xl mx-auto">

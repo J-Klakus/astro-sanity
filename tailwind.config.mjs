@@ -17,8 +17,7 @@ export default {
         verylight: "#f0f0f9",
       },
       backgroundImage: ({ theme }) => ({
-        "text-gradient":
-          "linear-gradient(112.79deg, #4B3AB3 62%, #9FFFF3 96.76%)",
+        "text-gradient": "linear-gradient(112deg, #4B3AB3 78%, #9FFFF3 100%)",
       }),
       animation: {
         text: "text 2s ease-in-out infinite",
