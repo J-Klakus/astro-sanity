@@ -14,12 +14,12 @@ import cardR from "../assets/card-r.webp";
   >
     <div class="max-w-xl mx-auto flex flex-col mb-8 col-span-3">
       <p
-        class="text-highlight bg-verylight rounded-lg w-fit px-2 py-1 uppercase font-semibold tracking-wide my-1"
+        class="text-highlight bg-verylight rounded-lg w-fit px-2 py-1 uppercase font-medium tracking-wide my-1"
       >
         Numbers
       </p>
       <h2
-        class="font-heading mt-3 text-3xl sm:text-4xl font-bold leading-10 sm:leading-[4rem] tracking-tight text-black"
+        class="font-heading mt-3 text-3xl sm:text-4xl font-medium leading-10 sm:leading-[4rem] tracking-tight text-black"
       >
         Proven results, <br /> data-driven insights
       </h2>
@@ -37,7 +37,7 @@ import cardR from "../assets/card-r.webp";
       />
     </div>
     <div class="col-span-4 grid grid-cols-2 max-w-3xl w-full mx-auto gap-4">
-      <div>
+      <div class="relative">
         <Picture
           fallbackFormat="jpg"
           src={cardL}
@@ -47,8 +47,26 @@ import cardR from "../assets/card-r.webp";
           widths={[400, 800, cardL.width]}
           class="h-auto w-full shadow-[rgba(0,_0,_0,_0.1)_0px_24px_30px_-10px]"
         />
+        <div
+          class="bg-[url('/mesh-card-bg.webp')] bg-no-repeat bg-cover p-6 rounded-b-xl absolute bottom-0 w-full h-fit flex flex-col justify-end"
+        >
+          <p
+            class="[font-size:_clamp(2em,4.75vw,6em)] !leading-none text-white mb-1"
+          >
+            41%
+          </p>
+          <div
+            class="w-full h-[2px] bg-gradient-to-r from-[#4B3AB3] to-[#9FFFF3] mb-2"
+          >
+          </div>
+          <p
+            class="[font-size:_clamp(0.875em,1.25vw,2.5em)] leading-tight md:leading-normal text-white"
+          >
+            Increase in team productivity by automating routine tasks.
+          </p>
+        </div>
       </div>
-      <div>
+      <div class="relative">
         <Picture
           fallbackFormat="jpg"
           src={cardR}
@@ -58,6 +76,25 @@ import cardR from "../assets/card-r.webp";
           widths={[400, 800, cardR.width]}
           class="h-auto w-full shadow-[rgba(0,_0,_0,_0.1)_0px_24px_30px_-10px]"
         />
+        <div
+          class="bg-[url('/mesh-card-bg.webp')] bg-no-repeat bg-cover p-6 rounded-t-xl absolute top-0 w-full h-fit flex flex-col justify-end"
+        >
+          <p
+            class="[font-size:_clamp(2em,4.75vw,6em)] !leading-none text-white mb-1"
+          >
+            32%
+          </p>
+          <div
+            class="w-full h-[2px] bg-gradient-to-r from-[#4B3AB3] to-[#9FFFF3] mb-2"
+          >
+          </div>
+          <p
+            class="[font-size:_clamp(0.875em,1.25vw,2.5em)] leading-tight md:leading-normal text-white"
+          >
+            Shorter time-to-hire thanks to AI matchmaking and streamlined
+            processes.
+          </p>
+        </div>
       </div>
     </div>
   </div>

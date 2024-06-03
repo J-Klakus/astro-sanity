@@ -60,7 +60,7 @@ const footerLinks = [
       class="max-w-6xl px-2 py-5 divide-x-2 flex flex-wrap justify-evenly items-center mx-auto text-center font-medium text-gray-700"
     >
       <li
-        class="flex items-center font-bold flex-grow w-full sm:w-auto justify-center sm:justify-start"
+        class="flex items-center font-medium flex-grow w-full sm:w-auto justify-center sm:justify-start"
       >
         <Icon name="logoNoText" class="w-6 h-auto mr-2" />
         Your AI-driven ATS & CRM
@@ -146,7 +146,9 @@ const footerLinks = [
         {
           footerLinks.map((section: any) => (
             <div>
-              <p class="font-bold uppercase text-gray-900">{section.section}</p>
+              <p class="font-medium uppercase text-gray-900">
+                {section.section}
+              </p>
 
               <ul class="mt-6 space-y-4 text-sm">
                 {section.items.map((item: any) => (
