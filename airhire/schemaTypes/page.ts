@@ -29,6 +29,7 @@ export const page = defineType({
           type: 'TestimonialSlider',
         }),
         defineArrayMember({
+          title: 'Bento',
           type: 'Bento',
         }),
         defineArrayMember({
@@ -69,6 +70,9 @@ export const page = defineType({
         }),
         defineArrayMember({
           type: 'SignUpForm',
+        }),
+        defineArrayMember({
+          type: 'ContactForm',
         }),
       ],
     }),

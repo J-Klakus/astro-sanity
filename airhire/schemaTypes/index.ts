@@ -16,6 +16,7 @@ import {page} from './page'
 import {BlogSlider} from './BlogSlider'
 import {SignUpForm} from './SignUpForm'
 import {testimonials} from './testimonials'
+import {ContactForm} from './ContactForm'
 
 export const schemaTypes = [
   Button,
@@ -34,6 +35,7 @@ export const schemaTypes = [
   ThreeImages,
   BlogSlider,
   SignUpForm,
+  ContactForm,
   testimonials,
   page,
 ]

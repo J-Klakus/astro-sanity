@@ -1,1 +1,116 @@
-<div class="text-6xl">SignUp</div>
+---
+import { Icon } from "astro-icon/components";
+import Button from "./reusable/Button.astro";
+---
+
+<section
+	class="bg-[url('/spots-tr-mobile.webp')] bg-cover bg-right bg-no-repeat sm:bg-[url('/spots-tr.webp')]"
+>
+	<div class="mx-auto max-w-7xl">
+		<div
+			class="mx-auto flex flex-col-reverse items-center justify-center gap-8 px-4 lg:flex-row lg:gap-16"
+		>
+			<div class="bg-white md:px-12 md:py-52 lg:w-1/2">
+				<form>
+					<p class="mb-6 font-heading text-lg font-medium text-primary sm:text-2xl">
+						Product Demo Sign Up
+					</p>
+					<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+						<!-- Left Side -->
+						<div>
+							<div class="mb-4">
+								<label class="mb-2 block text-sm font-medium text-primary" for="full-name"
+									>Name</label
+								>
+								<input
+									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border px-3 py-2 leading-tight text-primary focus:outline-none"
+									id="full-name"
+									type="text"
+									placeholder="Full Name"
+								/>
+							</div>
+							<div class="mb-4">
+								<label class="mb-2 block text-sm font-medium text-primary" for="phone">Phone</label>
+								<input
+									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border px-3 py-2 leading-tight text-primary focus:outline-none"
+									id="phone"
+									type="text"
+									placeholder="(000) 000 000 000"
+								/>
+							</div>
+							<div class="mb-4">
+								<label class="mb-2 block text-sm font-medium text-primary" for="website"
+									>Website</label
+								>
+								<input
+									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border px-3 py-2 leading-tight text-primary focus:outline-none"
+									id="website"
+									type="text"
+									placeholder="https://"
+								/>
+							</div>
+						</div>
+						<!-- Right Side -->
+						<div>
+							<div class="mb-4">
+								<label class="mb-2 block text-sm font-medium text-primary" for="email">Email</label>
+								<input
+									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border px-3 py-2 leading-tight text-primary focus:outline-none"
+									id="email"
+									type="email"
+									placeholder="Email address"
+								/>
+							</div>
+							<div class="mb-4">
+								<label class="mb-2 block text-sm font-medium text-primary" for="company"
+									>Company</label
+								>
+								<input
+									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border px-3 py-2 leading-tight text-primary focus:outline-none"
+									id="company"
+									type="text"
+									placeholder="Company name"
+								/>
+							</div>
+							<div class="mb-4">
+								<label class="mb-2 block text-sm font-medium text-primary" for="position"
+									>Position</label
+								>
+								<input
+									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border px-3 py-2 leading-tight text-primary focus:outline-none"
+									id="position"
+									type="text"
+									placeholder="Your job position"
+								/>
+							</div>
+						</div>
+					</div>
+					<div class="mt-6 flex justify-between">
+						<p>
+							You already have an account? <a href="" class="font-medium text-primary"> Sign in</a>
+						</p>
+						<Button buttonText="Start a free trial" link="/" type="filled" />
+					</div>
+				</form>
+			</div>
+			<div class="lg:w-1/2">
+				<Icon name="logo" class="mb-8 h-14 w-auto" />
+				<h2 class="mb-6 font-heading text-lg font-medium text-primary sm:text-3xl">
+					Get a Free Trial
+				</h2>
+				<p class="mb-6 font-heading text-primary">
+					Get full access to Airhire's pioneering features at no cost.
+				</p>
+				<p class="mb-6 font-heading text-primary">
+					Curious to see Airhire in action? <br /> Book a free demo and let us show you the power of
+					AI in recruitment.
+				</p>
+				<ul class="space-y-4 font-heading font-medium text-black">
+					<li><Icon name="tick" class="mb-1 mr-2 inline" size={20} /> Free Trial</li>
+					<li><Icon name="tick" class="mb-1 mr-2 inline" size={20} /> No credit card required</li>
+					<li><Icon name="tick" class="mb-1 mr-2 inline" size={20} /> 20 min free demo</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>

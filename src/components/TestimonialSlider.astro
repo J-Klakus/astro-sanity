@@ -1,10 +1,10 @@
 ---
 import { Picture } from "astro:assets";
 import { sanityClient } from "sanity:client";
-import imageHelper from "../utils/imageHelper";
+import imageHelper, { type ImageRef } from "../utils/imageHelper";
 
 interface Testimonial {
-	image: string;
+	image: ImageRef;
 	testimonial: string;
 	author: string;
 	position: string;
