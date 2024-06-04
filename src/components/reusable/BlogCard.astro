@@ -2,7 +2,7 @@
 import { Picture } from "astro:assets";
 import imageHelper, { type ImageRef } from "../../utils/imageHelper";
 const { blog, index } = Astro.props;
-const { publishedAt, author, categories, mainImage, title } = blog;
+const { publishedAt, author, categories, mainImage, verticalImage, title } = blog;
 
 const isRow = index === 1 || index === 5;
 ---
@@ -12,7 +12,7 @@ const isRow = index === 1 || index === 5;
 >
 	<Picture
 		fallbackFormat="jpg"
-		src={imageHelper(mainImage).url()}
+		src={isRow ? imageHelper(verticalImage).url() : imageHelper(mainImage).url()}
 		formats={["avif", "webp"]}
 		alt={"infographic"}
 		sizes="(max-width: 768px) 100vw, (max-width: 1298px) 40vw, 455px"

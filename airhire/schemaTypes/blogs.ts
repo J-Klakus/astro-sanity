@@ -46,6 +46,21 @@ export const blogs =  defineType({
       ],
     }),
     defineField({
+      name: 'verticalImage',
+      title: 'Vertical image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+        },
+      ],
+    }),
+    defineField({
       name: 'categories',
       title: 'Categories',
       type: 'array',
