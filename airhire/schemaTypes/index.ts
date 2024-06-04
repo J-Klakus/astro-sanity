@@ -17,6 +17,11 @@ import {BlogSlider} from './BlogSlider'
 import {SignUpForm} from './SignUpForm'
 import {testimonials} from './testimonials'
 import {ContactForm} from './ContactForm'
+import {blogs} from './blogs'
+import {blockContent} from './blockContent'
+import {author} from './author'
+import {category} from './category'
+import { BlogsPage } from './BlogsPage'
 
 export const schemaTypes = [
   Button,
@@ -36,6 +41,11 @@ export const schemaTypes = [
   BlogSlider,
   SignUpForm,
   ContactForm,
+  BlogsPage,
   testimonials,
+  blockContent,
+  author,
+  category,
+  blogs,
   page,
 ]

@@ -1,0 +1,53 @@
+---
+import { Picture } from "astro:assets";
+import imageHelper, { type ImageRef } from "../../utils/imageHelper";
+const { blog, index } = Astro.props;
+const { publishedAt, author, categories, mainImage, title } = blog;
+
+const isRow = index === 1 || index === 5;
+---
+
+<article
+	class={`${isRow ? "flex-row-reverse md:col-span-2" : "flex-col"} flex overflow-hidden rounded-lg shadow transition hover:shadow-lg`}
+>
+	<Picture
+		fallbackFormat="jpg"
+		src={imageHelper(mainImage).url()}
+		formats={["avif", "webp"]}
+		alt={"infographic"}
+		sizes="(max-width: 768px) 100vw, (max-width: 1298px) 40vw, 455px"
+		widths={[400, 800, 1200]}
+		inferSize={true}
+		class="h-auto w-full rounded-xl object-contain transition duration-300 ease-in-out md:group-hover:brightness-75"
+	/>
+	<div class="bg-white p-4 sm:p-6">
+		<p class="mb-4 text-sm font-medium uppercase text-primary">{categories}</p>
+		<a href="#">
+			<h2 class="mb-2 mt-0.5 font-heading text-2xl font-semibold text-gray-900">{title}</h2>
+		</a>
+
+		<div class="flex items-center">
+			<Picture
+				class="mr-4 h-16 w-16 rounded-full"
+				src={imageHelper(author.image).url()}
+				formats={["avif", "webp"]}
+				alt={"author image"}
+				sizes="100px"
+				widths={[400, 800, 1200]}
+				inferSize={true}
+			/>
+			<div class="text-sm">
+				<p class="mb-2 font-medium leading-none text-gray-900">{author.name}</p>
+				<p class="mb-2 text-gray-600">
+					{
+						new Date(publishedAt).toLocaleDateString("en-US", {
+							year: "numeric",
+							month: "short",
+							day: "numeric",
+						})
+					} · 16min Read Time
+				</p>
+			</div>
+		</div>
+	</div>
+</article>
