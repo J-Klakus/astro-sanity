@@ -1,8 +1,14 @@
 ---
-import { getImage } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
-const cards = [
+interface Card {
+	name: string;
+	description: string;
+	icon: string;
+	link: string;
+}
+
+const defaultCards = [
 	{
 		name: "Browser Extension",
 		description:
@@ -32,9 +38,15 @@ const cards = [
 		link: "/",
 	},
 ];
+
+let { cards } = Astro.props;
+
+if (!cards) {
+	cards = defaultCards;
+}
 ---
 
-<section class="px-4 lg:px-0">
+<section class="px-4">
 	<div class="mx-auto max-w-2xl px-4 text-center">
 		<p
 			class="mx-auto mb-3 w-fit rounded-lg bg-verylight px-2 py-1 font-medium uppercase tracking-wide text-highlight"
@@ -53,22 +65,24 @@ const cards = [
 	</div>
 	<div class="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-6 sm:grid-cols-2 md:px-0 lg:grid-cols-4">
 		{
-			cards.map((card) => (
+			cards.map((card: Card) => (
 				<div class="group my-2 flex h-[400px] flex-col justify-between rounded-xl bg-primary bg-gradient-to-b from-[#735DF6] to-primary to-[100%] p-6 bg-blend-color transition duration-300 ease-in-out hover:bg-transparent sm:my-14">
 					<Icon name={card.icon} size={30} class="text-white" />
 					<div>
-						<h2 class="text-xl font-medium text-white">{card.name}</h2>
-						<p class="mt-3 text-lg leading-relaxed text-white">{card.description}</p>
+						<h2 class="text-2xl font-medium text-white">{card.name}</h2>
+						<p class="mt-3 text-base leading-relaxed text-white">{card.description}</p>
 					</div>
-					<a href={card.link}>
-						<button class="inline-flex items-center text-white underline-offset-8 transition duration-300 ease-in-out hover:underline">
-							Learn More{" "}
-							<Icon
-								name="arrowRight"
-								class="ml-2 text-white transition-all duration-300 ease-in-out group-hover:ml-4"
-							/>
-						</button>
-					</a>
+					{card.link && (
+						<a href={card.link}>
+							<button class="inline-flex items-center text-white underline-offset-8 transition duration-300 ease-in-out hover:underline">
+								Learn More{" "}
+								<Icon
+									name="arrowRight"
+									class="ml-2 text-white transition-all duration-300 ease-in-out group-hover:ml-4"
+								/>
+							</button>
+						</a>
+					)}
 				</div>
 			))
 		}

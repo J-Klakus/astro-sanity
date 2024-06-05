@@ -86,6 +86,9 @@ export const page = defineType({
         defineArrayMember({
           type: 'Faq',
         }),
+        defineArrayMember({
+          type: 'Terms',
+        }),
       ],
     }),
   ],

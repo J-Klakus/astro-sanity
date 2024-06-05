@@ -25,6 +25,7 @@ import {BlogsPage} from './BlogsPage'
 import {PricingForm} from './PricingForm'
 import {Faq} from './Faq'
 import {PricingFeatures} from './PricingFeatures'
+import { Terms } from './Terms'
 
 export const schemaTypes = [
   Button,
@@ -50,6 +51,7 @@ export const schemaTypes = [
   PricingForm,
   Faq,
   PricingFeatures,
+  Terms,
   author,
   category,
   blogs,

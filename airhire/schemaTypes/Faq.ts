@@ -7,6 +7,27 @@ export const Faq = defineType({
     defineField({
       type: 'string',
       name: 'title',
+      initialValue: 'Faq',
+    }),
+    defineField({
+      type: 'array',
+      name: 'faq',
+      title: 'Faqs',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          fields: [
+            defineField({
+              type: 'string',
+              name: 'title',
+            }),
+            defineField({
+              type: 'string',
+              name: 'text',
+            }),
+          ],
+        }),
+      ],
     }),
   ],
 })

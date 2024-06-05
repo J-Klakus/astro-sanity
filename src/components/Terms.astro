@@ -1,0 +1,69 @@
+---
+import { PortableText } from "astro-portabletext";
+import HeaderId from "./HeaderId.astro";
+
+interface Block {
+	_type: string;
+	style: string;
+	_key: string;
+	markDefs: any[];
+	children: { _type: string; text: string }[];
+}
+
+interface TermsProps {
+	body: Block[];
+}
+
+const { body } = Astro.props as TermsProps;
+
+// Function to extract h2 headings
+function getH2Headings(body: Block[]): string[] {
+	return body
+		.filter((block) => block.style === "h2")
+		.map((block) => block.children.map((child) => child.text).join(""));
+}
+
+const h2Headings = getH2Headings(body);
+
+const components = {
+	type: {
+		map: Map,
+	},
+	block: {
+		h2: HeaderId,
+	},
+};
+---
+
+<div class="py-16">
+	<div class="grid h-44 place-items-center bg-[url('/header.webp')] bg-cover">
+		<h2
+			class="font-heading text-3xl font-medium leading-10 text-white sm:text-4xl md:text-5xl lg:text-6xl"
+		>
+			Terms & Conditions
+		</h2>
+	</div>
+	<div class="mx-auto flex max-w-7xl flex-col sm:flex-row">
+		<div
+			class="sticky top-20 -mt-20 hidden h-96 w-1/4 rounded-xl bg-white p-8 shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] md:block"
+		>
+			<p class="mb-4 border-b border-b-gray-400 py-4 font-heading font-semibold text-gray-900">
+				Table of content
+			</p>
+			<ul class="space-y-2">
+				{
+					h2Headings.map((heading, index) => (
+						<li>
+							<a href={`#${heading.toLowerCase().replaceAll(" ", "")}`}>
+								{index + 1}.{heading}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+		<div class="prose max-w-none p-8 md:w-3/4">
+			<PortableText value={body} components={components} />
+		</div>
+	</div>
+</div>

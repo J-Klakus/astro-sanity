@@ -1,38 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 
-const items = [
-	{
-		title: "Can I use FlowBite in open-source projects?",
-		text: `Generally, it is accepted to use FlowBite in open-source projects, as long as it is not a UI library, a theme, a template, a page-builder that would be considered as an alternative to FlowBite itself.
-With that being said, feel free to use this design kit for your open-source projects.
-Find out more information by reading the license.`,
-	},
-	{
-		title: "Can I use FlowBite in open-source projects?",
-		text: `Generally, it is accepted to use FlowBite in open-source projects, as long as it is not a UI library, a theme, a template, a page-builder that would be considered as an alternative to FlowBite itself.
-With that being said, feel free to use this design kit for your open-source projects.
-Find out more information by reading the license.`,
-	},
-	{
-		title: "Can I use FlowBite in open-source projects?",
-		text: `Generally, it is accepted to use FlowBite in open-source projects, as long as it is not a UI library, a theme, a template, a page-builder that would be considered as an alternative to FlowBite itself.
-With that being said, feel free to use this design kit for your open-source projects.
-Find out more information by reading the license.`,
-	},
-	{
-		title: "Can I use FlowBite in open-source projects?",
-		text: `Generally, it is accepted to use FlowBite in open-source projects, as long as it is not a UI library, a theme, a template, a page-builder that would be considered as an alternative to FlowBite itself.
-With that being said, feel free to use this design kit for your open-source projects.
-Find out more information by reading the license.`,
-	},
-	{
-		title: "Can I use FlowBite in open-source projects?",
-		text: `Generally, it is accepted to use FlowBite in open-source projects, as long as it is not a UI library, a theme, a template, a page-builder that would be considered as an alternative to FlowBite itself.
-With that being said, feel free to use this design kit for your open-source projects.
-Find out more information by reading the license.`,
-	},
-];
+const { faq } = Astro.props;
 ---
 
 <section class="flex flex-col bg-gradient-to-b md:flex-row">
@@ -43,7 +12,7 @@ Find out more information by reading the license.`,
 			</h2>
 			<div class="grid items-start gap-y-10 lg:grid-cols-2">
 				{
-					items.map((item, index) => (
+					faq.map((item: { title: string; text: string }) => (
 						<div class="group h-fit">
 							{/* header */}
 							<div

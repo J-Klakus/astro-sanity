@@ -1,0 +1,7 @@
+---
+const props = Astro.props;
+---
+
+<h2 class="scroll-mt-24" id={props.node.children[0].text.toLowerCase().replaceAll(" ", "")}>
+	<slot />
+</h2>
