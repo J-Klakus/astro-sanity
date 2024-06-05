@@ -89,6 +89,9 @@ export const page = defineType({
         defineArrayMember({
           type: 'Terms',
         }),
+        defineArrayMember({
+          type: 'ThreeVertical',
+        }),
       ],
     }),
   ],

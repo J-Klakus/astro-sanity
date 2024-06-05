@@ -8,19 +8,21 @@ const isRow = index === 1 || index === 5;
 ---
 
 <article
-	class={`${isRow ? "flex-row-reverse md:col-span-2" : "flex-col"} flex overflow-hidden rounded-lg shadow transition hover:shadow-lg`}
+	class={`${isRow ? "flex-row-reverse md:col-span-2" : "flex-col"} h-[550px] flex overflow-hidden rounded-lg shadow transition hover:shadow-lg`}
 >
-	<Picture
-		fallbackFormat="jpg"
-		src={isRow ? imageHelper(verticalImage).url() : imageHelper(mainImage).url()}
-		formats={["avif", "webp"]}
-		alt={"infographic"}
-		sizes="(max-width: 768px) 100vw, (max-width: 1298px) 40vw, 455px"
-		widths={[400, 800, 1200]}
-		inferSize={true}
-		class="h-auto w-full rounded-xl object-contain transition duration-300 ease-in-out md:group-hover:brightness-75"
-	/>
-	<div class="bg-white p-4 sm:p-6">
+	<div class={`${isRow ? "w-1/2" : "h-1/2"}`}>
+		<Picture
+			fallbackFormat="jpg"
+			src={isRow ? imageHelper(verticalImage).url() : imageHelper(mainImage).url()}
+			formats={["avif", "webp"]}
+			alt={"infographic"}
+			sizes="(max-width: 768px) 100vw, (max-width: 1298px) 40vw, 455px"
+			widths={[400, 800, 1200]}
+			inferSize={true}
+			class="h-full w-full rounded-xl object-cover transition duration-300 ease-in-out md:group-hover:brightness-75"
+		/>
+	</div>
+	<div class={`${isRow ? "w-1/2" : "h-1/2"} bg-white p-4 sm:p-6`}>
 		<p class="mb-4 text-sm font-medium uppercase text-primary">{categories}</p>
 		<a href="#">
 			<h2 class="mb-2 mt-0.5 font-heading text-2xl font-semibold text-gray-900">{title}</h2>
