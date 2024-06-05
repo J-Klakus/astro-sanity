@@ -1,0 +1,82 @@
+---
+import Button from "./reusable/Button.astro";
+
+const data = {
+	Recruitment: [
+		"Position postings",
+		"Multi-job posting",
+		"Intelligent Campaigns",
+		"Browser sourcing tool",
+		"Single-page careers portal",
+		"Multi-page careers portal",
+		"Personalized careers site URL",
+		"AI-driven job descriptions",
+	],
+	Collaboration: [
+		"Unlimited team members",
+		"Workflow templates",
+		"Collaborative notes & tasks",
+		"Email and calendar integration",
+		"Hiring approvals",
+		"Candidate databases",
+		"Impartial assessments",
+	],
+	Automation: [
+		"Automated messaging",
+		"Workflow automations",
+		"Resume parsing and searching",
+		"Real-time chat support",
+		"API integration",
+	],
+	"Security & support": [
+		"User access control & 2FA",
+		"New user support",
+		"Regulatory compliance",
+		"Single sign-on integration",
+	],
+};
+---
+
+<section
+	class="bg-[url('/bg-bottom-mobile.webp')] bg-cover bg-[center_bottom_-4rem] sm:bg-[url('/bg-bottom.webp')] lg:py-20"
+>
+	<div class="mx-auto max-w-7xl bg-white/80">
+		<div class="grid grid-cols-1 gap-6 p-8 md:grid-cols-2 lg:grid-cols-4">
+			<div class="lg:col-span-3">
+				<h2
+					class="inline-block bg-text-gradient bg-clip-text pb-1 font-heading text-2xl font-medium text-transparent md:text-4xl/normal"
+				>
+					Get Started Risk-Free
+				</h2>
+				<p class="mt-2 text-lg leading-relaxed text-slate-500">
+					Competitive pricing tailored to recruitment agencies starting at <span
+						class="font-semibold text-primary"
+						>$85 month
+					</span>
+				</p>
+			</div>
+			<div class="lg:col-span-1">
+				<div class="mt-6 flex items-center justify-center gap-4 lg:justify-start">
+					<Button link="/" buttonText="Try Now" type="filled" />
+					<Button link="/" buttonText="Contact Sales" type="outline" />
+				</div>
+			</div>
+		</div>
+		<div class="grid grid-cols-1 gap-6 p-8 md:grid-cols-2 lg:grid-cols-4">
+			{
+				Object.keys(data).map((heading) => (
+					<div>
+						<p class="mb-3 font-heading text-xl font-medium">{heading}</p>
+						<ul class="space-y-3">
+							{data[heading as keyof typeof data].map((item: string) => (
+								<li class="font-medium text-gray-900 before:mr-3 before:font-black before:text-transparent before:content-['✓'] before:[text-shadow:_0_1px_0_#0E9F6E]">
+									{item}
+								</li>
+							))}
+						</ul>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>

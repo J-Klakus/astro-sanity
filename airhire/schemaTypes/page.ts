@@ -77,6 +77,15 @@ export const page = defineType({
         defineArrayMember({
           type: 'BlogsPage',
         }),
+        defineArrayMember({
+          type: 'PricingFeatures',
+        }),
+        defineArrayMember({
+          type: 'PricingForm',
+        }),
+        defineArrayMember({
+          type: 'Faq',
+        }),
       ],
     }),
   ],

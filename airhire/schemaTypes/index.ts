@@ -21,7 +21,10 @@ import {blogs} from './blogs'
 import {blockContent} from './blockContent'
 import {author} from './author'
 import {category} from './category'
-import { BlogsPage } from './BlogsPage'
+import {BlogsPage} from './BlogsPage'
+import {PricingForm} from './PricingForm'
+import {Faq} from './Faq'
+import {PricingFeatures} from './PricingFeatures'
 
 export const schemaTypes = [
   Button,
@@ -44,6 +47,9 @@ export const schemaTypes = [
   BlogsPage,
   testimonials,
   blockContent,
+  PricingForm,
+  Faq,
+  PricingFeatures,
   author,
   category,
   blogs,
