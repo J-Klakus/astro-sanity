@@ -7,7 +7,19 @@ export const CardHolder = defineType({
     defineField({
       type: 'string',
       name: 'title',
-      initialValue: 'Card Holder Component',
+      initialValue: 'Work more efficiently with Airhire',
+    }),
+    defineField({
+      type: 'string',
+      name: 'subTitle',
+    }),
+    defineField({
+      type: 'string',
+      name: 'header',
+    }),
+    defineField({
+      type: 'Button',
+      name: 'button',
     }),
     defineField({
       type: 'array',

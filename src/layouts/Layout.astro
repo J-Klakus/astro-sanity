@@ -11,15 +11,15 @@ import Navbar from "../components/Navbar.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 let path = Astro.url.pathname;
-const { metaTitle, metaDescription, metaImage } = Astro.props;
+const { title, description, metaImage = "" } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" class="!scroll-smooth">
 	<head>
 		<BaseHead
-			metaTitle={metaTitle || SITE_TITLE}
-			metaDescription={metaDescription || SITE_DESCRIPTION}
+			metaTitle={title || SITE_TITLE}
+			metaDescription={description || SITE_DESCRIPTION}
 			metaImage={metaImage}
 		/>
 	</head>

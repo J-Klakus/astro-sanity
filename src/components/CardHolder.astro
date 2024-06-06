@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import Button from "./reusable/Button.astro";
 
 interface Card {
 	name: string;
@@ -39,7 +40,13 @@ const defaultCards = [
 	},
 ];
 
-let { cards } = Astro.props;
+let {
+	cards,
+	title = "Work more efficiently with Airhire",
+	subTitle = "Explore our tailored 360-degree solution to gain speed, boost productivity and match all your agency's unique recruitment needs.",
+	header = "featured",
+	button,
+} = Astro.props;
 
 if (!cards) {
 	cards = defaultCards;
@@ -47,21 +54,21 @@ if (!cards) {
 ---
 
 <section class="px-4">
-	<div class="mx-auto max-w-2xl px-4 text-center">
+	<div class="mx-auto flex max-w-2xl flex-col justify-center px-4 text-center">
 		<p
 			class="mx-auto mb-3 w-fit rounded-lg bg-verylight px-2 py-1 font-medium uppercase tracking-wide text-highlight"
 		>
-			Features
+			{header}
 		</p>
 		<h2
 			class="mt-3 font-heading text-3xl font-medium leading-10 tracking-tight text-black sm:text-4xl sm:leading-[4rem]"
 		>
-			Work more efficiently with Airhire
+			{title}
 		</h2>
 		<p class="mt-3 text-lg leading-relaxed text-slate-500">
-			Explore our tailored 360-degree solution to gain speed, boost productivity and match all your
-			agency’s unique recruitment needs.
+			{subTitle}
 		</p>
+		{button && <Button link={button.link} buttonText={button.buttonText} type={button.type} />}
 	</div>
 	<div class="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-6 sm:grid-cols-2 md:px-0 lg:grid-cols-4">
 		{

@@ -4,6 +4,25 @@ import website from "../assets/website-purple.webp";
 import email from "../assets/email-purple.webp";
 import { Picture } from "astro:assets";
 import Pill from "./Pill.astro";
+
+const {
+	header = "Features",
+	title = "Discover more tools to boost your productivity",
+	descriptions = [
+		{
+			pillText: "Website Widget",
+			text: "This widget seamlessly integrates with your website, allowing you to display open positions. It enables potential candidates to view and apply to jobs directly from your site.",
+		},
+		{
+			pillText: "Email Integration",
+			text: "Our CV parser employs AI to sift through resumes and extract key information. Seamlessly integrated into our system, it scans your inbox for resumes, offering you the option to parse them effortlessly.",
+		},
+		{
+			pillText: "Browser Extension",
+			text: "Airhire automatically syncs with your email for a smoother recruitment experience. Send and receive emails directly from your Airhire dashboard.",
+		},
+	],
+} = Astro.props;
 ---
 
 <section class="mx-auto overflow-hidden pt-8 md:pt-20 lg:max-w-7xl">
@@ -11,16 +30,17 @@ import Pill from "./Pill.astro";
 		<p
 			class="mx-auto mb-3 w-fit rounded-lg bg-verylight px-2 py-1 font-medium uppercase tracking-wide text-highlight"
 		>
-			Features
+			{header}
 		</p>
 		<h2
 			class="mt-3 font-heading text-3xl font-medium leading-10 tracking-tight text-black md:text-4xl md:leading-[4rem]"
 		>
-			Discover more tools to boost your productivity
+			{title}
 		</h2>
 	</div>
 	<div class="mx-auto grid grid-cols-1 gap-4 px-4 py-8 md:grid-cols-3">
-		<div
+		<a
+			href={descriptions[0].pillText.toLowerCase().replaceAll(" ", "-")}
 			class="group relative mx-auto max-w-xs rounded-xl hover:cursor-pointer sm:max-w-2xl md:max-w-none"
 		>
 			<Picture
@@ -32,18 +52,17 @@ import Pill from "./Pill.astro";
 				widths={[400, 800, website.width]}
 				class="h-auto w-full rounded-xl object-contain transition duration-300 ease-in-out md:group-hover:brightness-75"
 			/>
-			<Pill text="Website Widget" position="top-left" />
+			<Pill text={descriptions[0].pillText} position="top-left" />
 			<div
-				class="absolute bottom-0 flex h-fit w-full flex-col justify-end rounded-xl bg-[url('/mesh-card-bg.webp')] bg-cover bg-no-repeat p-6"
+				class="bg-purple-gradient absolute bottom-0 flex h-fit w-full flex-col justify-end rounded-xl p-6"
 			>
-				<p class="leading-tight text-white [font-size:_clamp(0.875em,1vw,2.5em)] md:leading-normal">
-					This widget seamlessly integrates with your website, allowing you to display open
-					positions. It enables potential candidates to view and apply to jobs directly from your
-					site.
+				<p class="text-lg leading-tight text-white md:leading-normal">
+					{descriptions[0].text}
 				</p>
 			</div>
-		</div>
-		<div
+		</a>
+		<a
+			href={descriptions[1].pillText.toLowerCase().replaceAll(" ", "-")}
 			class="group relative mx-auto max-w-xs rounded-xl hover:cursor-pointer sm:max-w-2xl md:max-w-none"
 		>
 			<Picture
@@ -56,17 +75,16 @@ import Pill from "./Pill.astro";
 				class="h-auto w-full rounded-xl object-contain transition duration-300 ease-in-out md:group-hover:brightness-75"
 			/>
 			<div
-				class="absolute bottom-0 flex h-fit w-full flex-col justify-end rounded-xl bg-[url('/mesh-card-bg.webp')] bg-cover bg-no-repeat p-6"
+				class="bg-purple-gradient absolute bottom-0 flex h-fit w-full flex-col justify-end rounded-xl p-6"
 			>
-				<p class="leading-tight text-white [font-size:_clamp(0.875em,1vw,2.5em)] md:leading-normal">
-					Our CV parser employs AI to sift through resumes and extract key information. Seamlessly
-					integrated into our system, it scans your inbox for resumes, offering you the option to
-					parse them effortlessly.
+				<p class="text-lg leading-tight text-white md:leading-normal">
+					{descriptions[1].text}
 				</p>
 			</div>
-			<Pill text="Email Integration" position="top-left" />
-		</div>
-		<div
+			<Pill text={descriptions[1].pillText} position="top-left" />
+		</a>
+		<a
+			href={descriptions[2].pillText.toLowerCase().replaceAll(" ", "-")}
 			class="group relative mx-auto max-w-xs rounded-xl hover:cursor-pointer sm:max-w-2xl md:max-w-none"
 		>
 			<Picture
@@ -79,14 +97,13 @@ import Pill from "./Pill.astro";
 				class="h-auto w-full rounded-xl object-contain transition duration-300 ease-in-out md:group-hover:brightness-75"
 			/>
 			<div
-				class="absolute bottom-0 flex h-fit w-full flex-col justify-end rounded-xl bg-[url('/mesh-card-bg.webp')] bg-cover bg-no-repeat p-6"
+				class="bg-purple-gradient absolute bottom-0 flex h-fit w-full flex-col justify-end rounded-xl p-6"
 			>
-				<p class="leading-tight text-white [font-size:_clamp(0.875em,1vw,2.5em)] md:leading-normal">
-					Airhire automatically syncs with your email for a smoother recruitment experience. Send
-					and receive emails directly from your Airhire dashboard.
+				<p class="text-lg leading-tight text-white md:leading-normal">
+					{descriptions[2].text}
 				</p>
 			</div>
-			<Pill text="Browser Extension" position="top-left" />
-		</div>
+			<Pill text={descriptions[2].pillText} position="top-left" />
+		</a>
 	</div>
 </section>

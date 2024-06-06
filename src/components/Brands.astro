@@ -19,7 +19,9 @@ const brands = import.meta.glob<{ default: ImageMetadata }>("/src/assets/brands/
 				results.
 			</p>
 		</div>
-		<ul class="relative flex w-full flex-wrap justify-between gap-2 p-0 px-4 py-10 lg:px-0">
+		<ul
+			class="relative flex w-full flex-wrap justify-center gap-2 p-0 px-4 py-10 sm:justify-between lg:px-0"
+		>
 			{
 				Object.keys(brands).map(async (image) => {
 					const src = (await brands[image]()).default;

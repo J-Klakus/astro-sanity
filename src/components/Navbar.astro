@@ -188,14 +188,14 @@ const menu = [
 </header>
 
 <script>
-	document.querySelectorAll(".item").forEach((ahref) => {
-		if (window.innerWidth < 1024) {
-			// Add event parameter to the event listener function
-			ahref.addEventListener("click", (e) => {
-				e.preventDefault();
-			});
-		}
-	});
+	// document.querySelectorAll(".item").forEach((ahref) => {
+	// 	if (window.innerWidth < 1024) {
+	// 		// Add event parameter to the event listener function
+	// 		ahref.addEventListener("click", (e) => {
+	// 			e.preventDefault();
+	// 		});
+	// 	}
+	// });
 	document.querySelectorAll(".group.menu").forEach((dropdown) => {
 		dropdown.addEventListener("click", () => {
 			const currentDropdown = dropdown.querySelector(".dropdown");
