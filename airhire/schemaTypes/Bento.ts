@@ -7,6 +7,13 @@ export const Bento = defineType({
   fields: [
     defineField({
       type: 'string',
+      name: 'componentTitle',
+      title: 'Component Title',
+      description: 'Just used to identify the component in the studio',
+      initialValue: 'Bento Box Component',
+    }),
+    defineField({
+      type: 'string',
       name: 'title',
     }),
     defineField({
@@ -147,4 +154,9 @@ export const Bento = defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'componentTitle',
+    },
+  },
 })

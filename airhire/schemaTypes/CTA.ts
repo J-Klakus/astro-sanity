@@ -6,6 +6,13 @@ export const CTA = defineType({
   fields: [
     defineField({
       type: 'string',
+      name: 'componentTitle',
+      title: 'Component Title',
+      description: 'Just used to identify the component in the studio',
+      initialValue: 'Call To Action Component',
+    }),
+    defineField({
+      type: 'string',
       name: 'title',
     }),
     defineField({
@@ -43,4 +50,9 @@ export const CTA = defineType({
       title: 'Make the image larger?',
     }),
   ],
+  preview: {
+    select: {
+      title: 'componentTitle',
+    },
+  },
 })

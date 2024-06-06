@@ -5,8 +5,19 @@ export const LogoBanner = defineType({
   name: 'LogoBanner',
   fields: [
     defineField({
-      type: "string",
-      name: "title",
+      type: 'string',
+      name: 'componentTitle',
+      title: 'Component Title',
+      description: 'Just used to identify the component in the studio',
+      initialValue: 'Big Logo Banner Component',
+    }),
+    defineField({
+      type: 'string',
+      name: 'title',
+    }),
+    defineField({
+      type: 'Button',
+      name: 'button',
     }),
   ],
 })

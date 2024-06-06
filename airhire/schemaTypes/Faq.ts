@@ -6,6 +6,13 @@ export const Faq = defineType({
   fields: [
     defineField({
       type: 'string',
+      name: 'componentTitle',
+      title: 'Component Title',
+      description: 'Just used to identify the component in the studio',
+      initialValue: 'Frequently Ask Questions Component',
+    }),
+    defineField({
+      type: 'string',
       name: 'title',
       initialValue: 'Faq',
     }),
@@ -30,4 +37,9 @@ export const Faq = defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'componentTitle',
+    },
+  },
 })

@@ -2,6 +2,15 @@
 import { Picture } from "astro:assets";
 import logobig from "../assets/logobig.webp";
 import Button from "./reusable/Button.astro";
+
+const {
+	title = "Discover our competitive offer tailored to recruitment agencies.",
+	button = {
+		Link: "/pricing",
+		ButtonText: "Show Pricing",
+		type: "filled",
+	},
+} = Astro.props;
 ---
 
 <section
@@ -14,9 +23,14 @@ import Button from "./reusable/Button.astro";
 			<h2
 				class="inline-block bg-text-gradient to-primary bg-clip-text pb-1 font-heading text-2xl font-medium text-transparent group-hover:to-primary md:w-5/6 md:text-4xl/normal"
 			>
-				Discover our competitive offer tailored to recruitment agencies.
+				{title}
 			</h2>
-			<Button link="#" buttonText="Show Pricing" type="filled" class="mt-8 w-fit" />
+			<Button
+				link={button.Link}
+				buttonText={button.ButtonText}
+				type={button.type}
+				class="mt-8 w-fit"
+			/>
 		</div>
 		<div class="h-full w-auto">
 			<Picture
