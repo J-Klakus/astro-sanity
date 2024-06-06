@@ -3,64 +3,81 @@ import { Picture } from "astro:assets";
 import features from "../assets/features.webp";
 import { Icon } from "astro-icon/components";
 
-const items = [
-	{
-		icon: "ai",
-		title: "Artificial Intelligence",
-		list: [
-			{
-				text: `AI-powered Matchmaking: Forget sifting through countless profiles. Refine your search by simply asking questions using natural language. Airhire identifies and presents the ideal candidates for your open positions, all within seconds.`,
-			},
-			{
-				text: "Generative AI at Your Fingertips: leverage AI to craft compelling candidate briefings, job descriptions, interview questions, email templates and more.",
-			},
-		],
-		link: "/",
-	},
-	{
-		icon: "globe",
-		title: "Recruitment Suite",
-		list: [
-			{
-				text: `Effortlessly manage your entire recruitment pipelines, from attracting talent to closing deals, with our comprehensive ATS and CRM solution. From advanced search to managing opportunities and creating candidate shortlists, Airhire streamlines your entire recruitment process.`,
-			},
-		],
-		link: "/",
-	},
-	{
-		icon: "chat",
-		title: "Chat Navigation",
-		list: [
-			{
-				text: `Experience the first ever ATS with an intuitive navigation guided directly within the chat input field. You can use natural language to command what your ATS should do next, whether it's adding a new job or reviewing the latest applicants.
-Learn more`,
-			},
-		],
-		link: "/",
-	},
-	{
-		icon: "automation",
-		title: "Automation",
-		list: [
-			{
-				text: `Automate actions based on candidate stage or job status changes. Trigger personalised emails, update hiring managers, or schedule interviews instantly. This frees up your team to focus on building relationships with promising talent and closing deals.
-Learn more`,
-			},
-		],
-		link: "/",
-	},
-	{
-		icon: "customization",
-		title: "Customisation",
-		list: [
-			{
-				text: `You can customise everything from candidate profiles and job postings to pipelines and workflows. This means you can tailor the entire recruitment process to your specific needs, add custom fields for unique information, and create detailed views with preferred filters for efficient searching. Ultimately, our ATS empowers you to build a recruitment experience that perfectly reflects your company's unique approach to finding top talent.
-Learn more`,
-			},
-		],
-		link: "/",
-	},
-];
+type ListItem = {
+	text: string;
+};
+
+type FeatureItem = {
+	icon: string;
+	title: string;
+	list: ListItem[];
+	link: string;
+};
+
+type Features = {
+	title: string;
+	header: string;
+	items: FeatureItem[];
+};
+
+// 	{
+// 		icon: "ai",
+// 		title: "Artificial Intelligence",
+// 		list: [
+// 			{
+// 				text: `AI-powered Matchmaking: Forget sifting through countless profiles. Refine your search by simply asking questions using natural language. Airhire identifies and presents the ideal candidates for your open positions, all within seconds.`,
+// 			},
+// 			{
+// 				text: "Generative AI at Your Fingertips: leverage AI to craft compelling candidate briefings, job descriptions, interview questions, email templates and more.",
+// 			},
+// 		],
+// 		link: "/",
+// 	},
+// 	{
+// 		icon: "globe",
+// 		title: "Recruitment Suite",
+// 		list: [
+// 			{
+// 				text: `Effortlessly manage your entire recruitment pipelines, from attracting talent to closing deals, with our comprehensive ATS and CRM solution. From advanced search to managing opportunities and creating candidate shortlists, Airhire streamlines your entire recruitment process.`,
+// 			},
+// 		],
+// 		link: "/",
+// 	},
+// 	{
+// 		icon: "chat",
+// 		title: "Chat Navigation",
+// 		list: [
+// 			{
+// 				text: `Experience the first ever ATS with an intuitive navigation guided directly within the chat input field. You can use natural language to command what your ATS should do next, whether it's adding a new job or reviewing the latest applicants.
+// Learn more`,
+// 			},
+// 		],
+// 		link: "/",
+// 	},
+// 	{
+// 		icon: "automation",
+// 		title: "Automation",
+// 		list: [
+// 			{
+// 				text: `Automate actions based on candidate stage or job status changes. Trigger personalised emails, update hiring managers, or schedule interviews instantly. This frees up your team to focus on building relationships with promising talent and closing deals.
+// Learn more`,
+// 			},
+// 		],
+// 		link: "/",
+// 	},
+// 	{
+// 		icon: "customization",
+// 		title: "Customisation",
+// 		list: [
+// 			{
+// 				text: `You can customise everything from candidate profiles and job postings to pipelines and workflows. This means you can tailor the entire recruitment process to your specific needs, add custom fields for unique information, and create detailed views with preferred filters for efficient searching. Ultimately, our ATS empowers you to build a recruitment experience that perfectly reflects your company's unique approach to finding top talent.
+// Learn more`,
+// 			},
+// 		],
+// 		link: "/",
+// 	},
+// ];
+const { items, title, header } = Astro.props as Features;
 ---
 
 <section class="flex flex-col bg-gradient-to-b from-[#edebf8] via-white to-[#e5fcf8] md:flex-row">
@@ -70,14 +87,14 @@ Learn more`,
 				<p
 					class="my-3 w-fit rounded-lg px-2 py-1 font-medium uppercase tracking-wide text-highlight"
 				>
-					Features
+					{header}
 				</p>
 				<h2 class="font-heading text-4xl font-medium leading-10 sm:text-3xl">
-					Meet our powerhouse features
+					{title}
 				</h2>
 				<div class="mx-auto my-5 h-1 w-full border-b"></div>
 				{
-					items.map((item, index) => (
+					items.map((item: FeatureItem, index: number) => (
 						<div class="group transition">
 							{/* header */}
 							<div class="accordion-header flex h-16 cursor-pointer items-center space-x-5 transition md:px-5">

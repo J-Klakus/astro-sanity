@@ -2,6 +2,8 @@
 import { Picture, getImage } from "astro:assets";
 import Button from "./reusable/Button.astro";
 import Video from "./Video.astro";
+
+const { title, text } = Astro.props;
 ---
 
 <section
@@ -12,13 +14,9 @@ import Video from "./Video.astro";
 			<h1
 				class="mt-6 font-heading text-4xl font-medium leading-loose text-gray-900 sm:text-[54px] sm:leading-[4rem]"
 			>
-				AI-driven ATS & CRM developed for recruitment agencies
+				{title}
 			</h1>
-			<p class="mt-6 text-xl leading-relaxed text-slate-500">
-				Airhire unlocks the power of your recruitment team. We automate the busywork, letting you
-				focus on what matters most - finding great candidates. Experience recruitment that's
-				efficient and revolutionary.
-			</p>
+			<p class="mt-6 text-xl leading-relaxed text-slate-500">{text}</p>
 		</div>
 
 		<div class="mt-6 flex items-center justify-center gap-4 lg:gap-8">

@@ -1,9 +1,9 @@
 ---
 import { Picture } from "astro:assets";
 import Button from "./reusable/Button.astro";
+import imageHelper from "../utils/imageHelper";
 
-import cardL from "../assets/card-l.webp";
-import cardR from "../assets/card-r.webp";
+const { header, title, text, cards } = Astro.props;
 ---
 
 <div
@@ -14,17 +14,15 @@ import cardR from "../assets/card-r.webp";
 			<p
 				class="my-1 w-fit rounded-lg bg-verylight px-2 py-1 font-medium uppercase tracking-wide text-highlight"
 			>
-				Numbers
+				{header}
 			</p>
 			<h2
 				class="mt-3 font-heading text-3xl font-medium leading-10 tracking-tight text-black sm:text-4xl sm:leading-[4rem]"
 			>
-				Proven results, <br /> data-driven insights
+				{title}
 			</h2>
 			<p class="my-6 text-lg leading-relaxed text-slate-500">
-				Harnessing the latest technological advancements, Airhire transforms your recruitment
-				experience. See how our platform delivers measurable improvements in recruitment efficiency
-				and success.
+				{text}
 			</p>
 			<Button link="#" buttonText="Try For Free" type="filled" class="w-fit" arrow={true} />
 		</div>
@@ -32,44 +30,50 @@ import cardR from "../assets/card-r.webp";
 			<div class="relative">
 				<Picture
 					fallbackFormat="jpg"
-					src={cardL}
+					src={imageHelper(cards[0].image).url()}
 					formats={["avif", "webp"]}
-					alt="A prototype of the app."
+					alt={cards[0].imageAlt}
 					sizes="(max-width: 1024px) 50vw, (max-width: 1020px) 50vw, 400px"
-					widths={[400, 800, cardL.width]}
+					widths={[400, 800]}
+					inferSize={true}
 					class="h-auto w-full shadow-[rgba(0,_0,_0,_0.1)_0px_24px_30px_-10px]"
 				/>
 				<div
 					class="absolute bottom-0 flex h-fit w-full flex-col justify-end rounded-b-xl bg-[url('/mesh-card-bg.webp')] bg-cover bg-no-repeat p-6"
 				>
-					<p class="mb-1 !leading-none text-white [font-size:_clamp(2em,4.75vw,6em)]">41%</p>
+					<p class="mb-1 !leading-none text-white [font-size:_clamp(2em,4.75vw,6em)]">
+						{cards[0].percentage}
+					</p>
 					<div class="mb-2 h-[2px] w-full bg-gradient-to-r from-[#4B3AB3] to-[#9FFFF3]"></div>
 					<p
 						class="leading-tight text-white [font-size:_clamp(0.875em,1.25vw,2.5em)] md:leading-normal"
 					>
-						Increase in team productivity by automating routine tasks.
+						{cards[0].description}
 					</p>
 				</div>
 			</div>
 			<div class="relative">
 				<Picture
 					fallbackFormat="jpg"
-					src={cardR}
+					src={imageHelper(cards[1].image).url()}
 					formats={["avif", "webp"]}
-					alt="A prototype of the app."
+					alt={cards[1].imageAlt}
 					sizes="(max-width: 1024px) 50vw, (max-width: 1020px) 50vw, 400px"
-					widths={[400, 800, cardR.width]}
+					widths={[400, 800]}
+					inferSize={true}
 					class="h-auto w-full shadow-[rgba(0,_0,_0,_0.1)_0px_24px_30px_-10px]"
 				/>
 				<div
 					class="absolute top-0 flex h-fit w-full flex-col justify-end rounded-t-xl bg-[url('/mesh-card-bg.webp')] bg-cover bg-no-repeat p-6"
 				>
-					<p class="mb-1 !leading-none text-white [font-size:_clamp(2em,4.75vw,6em)]">32%</p>
+					<p class="mb-1 !leading-none text-white [font-size:_clamp(2em,4.75vw,6em)]">
+						{cards[1].percentage}
+					</p>
 					<div class="mb-2 h-[2px] w-full bg-gradient-to-r from-[#4B3AB3] to-[#9FFFF3]"></div>
 					<p
 						class="leading-tight text-white [font-size:_clamp(0.875em,1.25vw,2.5em)] md:leading-normal"
 					>
-						Shorter time-to-hire thanks to AI matchmaking and streamlined processes.
+						{cards[1].description}
 					</p>
 				</div>
 			</div>
