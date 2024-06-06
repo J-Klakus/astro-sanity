@@ -1,6 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
 import Button from "./reusable/Button.astro";
+import logo from "../icons/iconGradient.svg";
+import { Image } from "astro:assets";
 ---
 
 <section
@@ -76,8 +78,10 @@ import Button from "./reusable/Button.astro";
 				</form>
 			</div>
 			<div class="lg:w-1/2">
-				<Icon name="logo" class="mb-8 h-14 w-auto" />
-				<h2 class="mb-6 font-heading text-lg font-medium text-primary sm:text-3xl">
+				<Image src={logo} class="mb-8 h-12 w-auto" alt="logo" />
+				<h2
+					class="mb-6 bg-[linear-gradient(112deg,#4B3AB3_40%,#9FFFF3_100%)] bg-clip-text font-heading text-lg font-medium text-transparent sm:text-3xl"
+				>
 					Revolutionize your recruitment and achieve unmatched results.
 				</h2>
 				<ul class="space-y-4 font-heading text-xl font-medium text-black">

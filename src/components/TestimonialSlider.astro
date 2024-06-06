@@ -2,6 +2,7 @@
 import { Picture } from "astro:assets";
 import { sanityClient } from "sanity:client";
 import imageHelper, { type ImageRef } from "../utils/imageHelper";
+import Pill from "./Pill.astro";
 
 interface Testimonial {
 	image: ImageRef;
@@ -39,13 +40,14 @@ const testimonials = await sanityClient.fetch(
 								inferSize={true}
 							/>
 							<div class="absolute bottom-0 left-0 p-4 text-white sm:p-10 md:w-1/2">
-								<p class="mb-6 font-heading font-medium leading-normal [font-size:_clamp(0.875em,1.7vw,2.5em)]">
+								<p class="mb-6 font-heading font-medium leading-tight [font-size:_clamp(0.875em,1.6vw,2.5em)]">
 									“{testimonial.testimonial}"
 								</p>
 								<p>
 									<span class="font-medium">{testimonial.author}</span> / {testimonial.position}
 								</p>
 							</div>
+							<Pill position="top-left" text="Testimonials" class="sm:text-xl" />
 						</li>
 					))
 				}

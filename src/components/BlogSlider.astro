@@ -1,5 +1,6 @@
 ---
 import cv from "../assets/cv.webp";
+import blog from "../assets/blog2.png";
 import { Image } from "astro:assets";
 import Button from "./reusable/Button.astro";
 import { Icon } from "astro-icon/components";
@@ -28,7 +29,7 @@ const allBlogPosts = [
 		date: "March 10, 2024",
 		category: "How To",
 		title: "Automate Your Pipeline",
-		image: cv,
+		image: blog,
 	},
 ];
 
@@ -44,7 +45,7 @@ const generateClassBasedOnIndex = (index: number) => {
 <section
 	class="bg-[url('/mesh-center-mobile.webp')] bg-cover bg-[100%_-50%] bg-no-repeat sm:bg-[url('/mesh-center.webp')]"
 >
-	<div class="pb-10">
+	<div class="mx-auto max-w-7xl pb-10">
 		<div class="flex items-center justify-between px-4 py-2"></div>
 		<div class="glide-06 relative">
 			<div class="mb-6 flex items-center justify-between gap-4 px-4 md:mb-10 lg:mb-20">
@@ -109,7 +110,7 @@ const generateClassBasedOnIndex = (index: number) => {
           </button>
         </div> -->
 			</div>
-			<div class="glide-06 relative w-full pl-1.5 md:pl-[10vw]">
+			<div class="glide-06 relative w-full">
 				<!-- Slides -->
 				<div class="overflow-hidden" data-glide-el="track">
 					<ul
@@ -126,7 +127,7 @@ const generateClassBasedOnIndex = (index: number) => {
 											<Image
 												src={post.image}
 												alt="Blog"
-												class="h-auto w-full rounded-t-xl object-cover group-hover:cursor-pointer"
+												class="h-auto max-h-96 w-full rounded-t-xl object-cover group-hover:cursor-pointer"
 											/>
 											<div
 												class={`${generateClassBasedOnIndex(i)} flex w-full flex-col justify-start rounded-b-xl p-4 sm:p-6`}

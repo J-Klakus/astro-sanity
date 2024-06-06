@@ -1,8 +1,16 @@
 ---
-const { text, position, color } = Astro.props as {
+import { twMerge } from "tailwind-merge";
+
+const {
+	text,
+	position,
+	color,
+	class: className,
+} = Astro.props as {
 	text: string;
 	position: "top-left" | "top-right" | "bottom-left" | "bottom-right";
 	color: "white" | "purple";
+	class?: string;
 };
 
 // Function to map position prop to CSS classes
@@ -23,7 +31,7 @@ const colorClasses =
 ---
 
 <div
-	class={`absolute ${positionClasses} ${colorClasses} px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium rounded-full`}
+	class={`${positionClasses} ${colorClasses} ${twMerge("absolute px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium rounded-full", className)}`}
 >
 	{text}
 </div>
