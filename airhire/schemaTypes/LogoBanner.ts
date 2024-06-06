@@ -20,4 +20,9 @@ export const LogoBanner = defineType({
       name: 'button',
     }),
   ],
+  preview: {
+    select: {
+      title: 'componentTitle',
+    },
+  },
 })

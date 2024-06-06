@@ -13,10 +13,6 @@ export const Bento = defineType({
       initialValue: 'Bento Box Component',
     }),
     defineField({
-      type: 'string',
-      name: 'title',
-    }),
-    defineField({
       type: 'object',
       name: 'boxes',
       title: 'Boxes',

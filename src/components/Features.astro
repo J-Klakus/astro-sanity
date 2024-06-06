@@ -81,7 +81,7 @@ const { items, title, header } = Astro.props as Features;
 ---
 
 <section class="flex flex-col bg-gradient-to-b from-[#edebf8] via-white to-[#e5fcf8] md:flex-row">
-	<div class="grid place-items-start md:w-1/2">
+	<div class="grid place-items-start md:w-3/5">
 		<div class="mx-auto md:ml-[12%]">
 			<div class="p-4">
 				<p
@@ -104,9 +104,9 @@ const { items, title, header } = Astro.props as Features;
 								</h2>
 							</div>
 							{/* Content */}
-							<ul class="accordion-content mb-2 ml-4 max-h-0 list-outside list-disc space-y-2 overflow-hidden border-l border-l-neutral-400 px-5 pl-6 pt-0 text-slate-500 md:ml-9 md:pl-9">
+							<ul class="accordion-content mb-2 ml-4 max-h-0 list-outside list-disc space-y-2 overflow-hidden border-l border-l-neutral-400 px-5 pl-6 pt-0 text-xl tracking-normal text-slate-500 md:ml-9 md:pl-9">
 								{item.list.map((listItem, i) => (
-									<li class="py-2 text-justify font-light leading-6">{listItem.text}</li>
+									<li class="py-2">{listItem.text}</li>
 								))}
 								<li class="my-3 list-none text-primary">
 									<a href={item.link}>Learn more</a>
@@ -118,7 +118,7 @@ const { items, title, header } = Astro.props as Features;
 			</div>
 		</div>
 	</div>
-	<div class="max-w-6xl md:w-1/2">
+	<div class="max-w-6xl md:-mt-6 md:w-2/5">
 		<Picture
 			fallbackFormat="jpg"
 			src={features}

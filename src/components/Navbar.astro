@@ -130,17 +130,17 @@ const menu = [
 											class="flex-col bg-white bg-right-top bg-no-repeat text-gray-800 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] lg:w-[60vw] lg:grid-cols-3 lg:p-4 lg:group-focus-within:grid lg:group-hover:grid"
 										>
 											<li class="my-0.5 px-2">
-												<div class="flex h-full flex-col justify-between bg-[#FAFAFE] p-4">
-													<p class="cursor-auto text-xl font-medium text-gray-900">
+												<a
+													href={Object.values(item)[0].headerLink}
+													class="flex h-full flex-col justify-between rounded-lg bg-[#FAFAFE] p-4 transition-colors duration-300 ease-in-out hover:bg-verylight"
+												>
+													<p class="text-xl font-medium text-gray-900">
 														{Object.values(item)[0].header}
 													</p>
-													<a
-														href={Object.values(item)[0].headerLink}
-														class="text-xs text-primary hover:opacity-70 lg:text-sm"
-													>
+													<p class="text-xs text-primary group-hover:opacity-70 lg:text-sm">
 														{Object.values(item)[0].headerLinkText}
-													</a>
-												</div>
+													</p>
+												</a>
 											</li>
 											<li class="lg:grid lg:grid-rows-4 lg:px-6">
 												{Object.values(item)[0]
