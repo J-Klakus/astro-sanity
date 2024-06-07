@@ -13,8 +13,13 @@ export const Features = defineType({
     }),
     defineField({
       type: 'string',
-      name: 'title',
+      name: 'header',
       initialValue: 'Features',
+    }),
+    defineField({
+      type: 'string',
+      name: 'title',
+      initialValue: 'Meet our powerhouse features ',
     }),
     defineField({
       type: 'array',

@@ -81,7 +81,7 @@ const { items, title, header } = Astro.props as Features;
 ---
 
 <section class="flex flex-col bg-gradient-to-b from-[#edebf8] via-white to-[#e5fcf8] md:flex-row">
-	<div class="grid place-items-start md:w-3/5">
+	<div class="grid place-items-start md:w-[55%]">
 		<div class="mx-auto md:ml-[12%]">
 			<div class="p-4">
 				<p
@@ -89,10 +89,9 @@ const { items, title, header } = Astro.props as Features;
 				>
 					{header}
 				</p>
-				<h2 class="font-heading text-4xl font-medium leading-10 sm:text-3xl">
+				<h2 class="mb-5 font-heading text-4xl font-medium leading-10 sm:text-3xl">
 					{title}
 				</h2>
-				<div class="mx-auto my-5 h-1 w-full border-b"></div>
 				{
 					items.map((item: FeatureItem, index: number) => (
 						<div class="group transition">
@@ -104,7 +103,7 @@ const { items, title, header } = Astro.props as Features;
 								</h2>
 							</div>
 							{/* Content */}
-							<ul class="accordion-content mb-2 ml-4 max-h-0 list-outside list-disc space-y-2 overflow-hidden border-l border-l-neutral-400 px-5 pl-6 pt-0 tracking-normal text-slate-500 sm:text-xl md:ml-9 md:pl-9">
+							<ul class="accordion-content mb-2 ml-4 max-h-0 max-w-xl list-outside list-disc space-y-2 overflow-hidden border-l border-l-neutral-400 px-5 pl-6 pt-0 tracking-normal text-slate-500 sm:text-xl md:ml-9 md:pl-9">
 								{item.list.map((listItem, i) => (
 									<li class="py-2">{listItem.text}</li>
 								))}
@@ -118,7 +117,7 @@ const { items, title, header } = Astro.props as Features;
 			</div>
 		</div>
 	</div>
-	<div class="max-w-7xl md:-mt-6 md:w-2/5">
+	<div class="max-w-7xl md:-mt-6 md:w-[45%]">
 		<Picture
 			fallbackFormat="jpg"
 			src={features}
