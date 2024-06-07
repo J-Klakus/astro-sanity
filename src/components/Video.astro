@@ -4,22 +4,22 @@ import { YouTube } from "@astro-community/astro-embed-youtube";
 ---
 
 <div
-  class="video aspect-video w-full md:min-h-[500px] shadow-[0px_20px_50px_10px_rgba(209,249,244,1)] px-4 sm:px-0"
+	class="video aspect-video w-full px-4 shadow-[0px_20px_50px_10px_rgba(209,249,244,1)] sm:px-0 md:min-h-[500px]"
 >
-  <div class="max-w-6xl mx-auto">
-    <div class="w-full overflow-hidden rounded-lg">
-      {
-        video.includes("youtu.be") ? (
-          <>
-            <YouTube id={video} />
-            <p class="text-center mt-2 text-lg">{text}</p>
-          </>
-        ) : (
-          <video autoplay={true} loop={true} muted={true}>
-            <source src={video} />
-          </video>
-        )
-      }
-    </div>
-  </div>
+	<div class="mx-auto max-w-7xl">
+		<div class="w-full overflow-hidden rounded-lg">
+			{
+				video.includes("youtu.be") ? (
+					<>
+						<YouTube id={video} />
+						<p class="mt-2 text-center text-lg">{text}</p>
+					</>
+				) : (
+					<video autoplay={true} loop={true} muted={true}>
+						<source src={video} />
+					</video>
+				)
+			}
+		</div>
+	</div>
 </div>

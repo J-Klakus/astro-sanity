@@ -1,6 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
+import logo from "../icons/iconGradient.svg";
 import Button from "./reusable/Button.astro";
+import { Image } from "astro:assets";
 ---
 
 <section
@@ -89,12 +91,12 @@ import Button from "./reusable/Button.astro";
 						<p>
 							You already have an account? <a href="" class="font-medium text-primary"> Sign in</a>
 						</p>
-						<Button buttonText="Start a free trial" link="/" type="filled" />
+						<Button buttonText="Start a free trial" link="/sign-up" type="filled" />
 					</div>
 				</form>
 			</div>
 			<div class="lg:w-1/2">
-				<Icon name="logo" class="mb-8 h-14 w-auto" />
+				<Image src={logo} class="mb-8 h-12 w-auto" alt="logo" />
 				<h2 class="mb-6 font-heading text-lg font-medium text-primary sm:text-3xl">
 					Get a Free Trial
 				</h2>
