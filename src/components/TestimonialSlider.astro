@@ -20,55 +20,56 @@ const testimonials = await sanityClient.fetch(
 );
 ---
 
-<div class="glide-05 relative mx-auto max-w-7xl px-4 py-14">
-	<div class="glide-05 relative w-full">
-		<!-- Slides -->
-		<div class="overflow-hidden" data-glide-el="track">
-			<ul
-				class="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0"
+<section class="bg-gradient-to-b from-transparent to-white lg:pb-14 lg:pt-32">
+	<div class="glide-05 relative mx-auto max-w-7xl px-4">
+		<div class="glide-05 relative w-full">
+			<!-- Slides -->
+			<div class="overflow-hidden" data-glide-el="track">
+				<ul
+					class="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0"
+				>
+					{
+						testimonials.map((testimonial: any, index: number) => (
+							<li class="relative">
+								<Picture
+									fallbackFormat="jpg"
+									src={imageHelper(testimonial.image).url()}
+									formats={["avif", "webp"]}
+									alt="A prototype of the app."
+									widths={[400, 800, 1200]}
+									class="aspect-square h-full w-auto rounded-xl object-cover md:aspect-auto"
+									inferSize={true}
+								/>
+								<div class="absolute bottom-0 left-0 p-4 text-white sm:p-10 md:w-full lg:w-3/5">
+									<p class="mb-6 font-heading leading-tight [font-size:_clamp(1.2em,1.6vw,2.5em)]">
+										“{testimonial.testimonial}"
+									</p>
+									<p>
+										<span class="font-medium">{testimonial.author}</span> / {testimonial.position}
+									</p>
+								</div>
+								<Pill position="top-left" text="Testimonials" class="sm:text-xl" />
+							</li>
+						))
+					}
+				</ul>
+			</div>
+			<!-- Indicators -->
+			<div
+				class="glide-bullets 3xl:pt-16 flex w-full items-center justify-center gap-1 pt-8"
+				data-glide-el="controls[nav]"
 			>
 				{
-					testimonials.map((testimonial: any, index: number) => (
-						<li class="relative">
-							<Picture
-								fallbackFormat="jpg"
-								src={imageHelper(testimonial.image).url()}
-								formats={["avif", "webp"]}
-								alt="A prototype of the app."
-								widths={[400, 800, 1200]}
-								class="aspect-square h-full w-auto rounded-xl object-cover md:aspect-auto"
-								inferSize={true}
-							/>
-							<div class="absolute bottom-0 left-0 p-4 text-white sm:p-10 md:w-1/2">
-								<p class="mb-6 font-heading font-medium leading-tight [font-size:_clamp(0.875em,1.6vw,2.5em)]">
-									“{testimonial.testimonial}"
-								</p>
-								<p>
-									<span class="font-medium">{testimonial.author}</span> / {testimonial.position}
-								</p>
-							</div>
-							<Pill position="top-left" text="Testimonials" class="sm:text-xl" />
-						</li>
+					testimonials.map((_: any, index: number) => (
+						<button class="group p-1" data-glide-dir={`=${index}`} aria-label="goto slide 1">
+							<span class="block h-3 w-3 rounded-full bg-neutral-400/40 transition-colors duration-300 focus:outline-none" />
+						</button>
 					))
 				}
-			</ul>
-		</div>
-		<!-- Indicators -->
-		<div
-			class="glide-bullets 3xl:pt-16 flex w-full items-center justify-center gap-1 pt-8"
-			data-glide-el="controls[nav]"
-		>
-			{
-				testimonials.map((_: any, index: number) => (
-					<button class="group p-1" data-glide-dir={`=${index}`} aria-label="goto slide 1">
-						<span class="block h-3 w-3 rounded-full bg-neutral-400/40 transition-colors duration-300 focus:outline-none" />
-					</button>
-				))
-			}
+			</div>
 		</div>
 	</div>
-</div>
-
+</section>
 <script>
 	import Glide from "@glidejs/glide";
 	import { CustomActiveClass } from "./SliderUtils.js";
