@@ -21,7 +21,7 @@ const { header, title, text, cards } = Astro.props;
 			>
 				{title}
 			</h2>
-			<p class="my-6 text-lg leading-relaxed text-slate-500">
+			<p class="my-6 leading-relaxed text-slate-500 sm:text-lg">
 				{text}
 			</p>
 			<Button link="/sign-up" buttonText="Try For Free" type="filled" class="w-fit" arrow={true} />
@@ -46,7 +46,7 @@ const { header, title, text, cards } = Astro.props;
 					</p>
 					<div class="mb-2 h-[2px] w-full bg-gradient-to-r from-[#4B3AB3] to-[#9FFFF3]"></div>
 					<p
-						class="leading-tight text-white [font-size:_clamp(0.875em,1.25vw,1.125em)] md:leading-normal"
+						class="leading-tight text-white [font-size:_clamp(1.25em,1.25vw,1.125em)] md:leading-normal"
 					>
 						{cards[0].description}
 					</p>
@@ -71,7 +71,7 @@ const { header, title, text, cards } = Astro.props;
 					</p>
 					<div class="mb-2 h-[2px] w-full bg-gradient-to-r from-[#4B3AB3] to-[#9FFFF3]"></div>
 					<p
-						class="leading-tight text-white [font-size:_clamp(0.875em,1.25vw,1.125em)] md:leading-normal"
+						class="leading-tight text-white [font-size:_clamp(1.25em,1.25vw,1.125em)] md:leading-normal"
 					>
 						{cards[1].description}
 					</p>

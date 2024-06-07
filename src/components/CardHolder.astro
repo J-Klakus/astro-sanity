@@ -54,7 +54,7 @@ if (!cards) {
 ---
 
 <section class="px-4">
-	<div class="mx-auto flex max-w-2xl flex-col justify-center px-4 text-center">
+	<div class="mx-auto flex max-w-2xl flex-col justify-center text-center">
 		<p
 			class="mx-auto mb-3 w-fit rounded-lg bg-verylight px-2 py-1 font-medium uppercase tracking-wide text-highlight"
 		>
@@ -65,12 +65,12 @@ if (!cards) {
 		>
 			{title}
 		</h2>
-		<p class="mt-3 text-lg leading-relaxed text-slate-500">
+		<p class="mt-3 leading-relaxed text-slate-500 sm:text-lg">
 			{subTitle}
 		</p>
 		{button && <Button link={button.link} buttonText={button.buttonText} type={button.type} />}
 	</div>
-	<div class="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-6 sm:grid-cols-2 lg:grid-cols-4">
+	<div class="mx-auto grid max-w-7xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 		{
 			cards.map((card: Card) => (
 				<div class="group my-2 flex h-[400px] flex-col justify-between rounded-xl bg-primary bg-gradient-to-b from-[#735DF6] to-primary to-[100%] p-6 bg-blend-color transition duration-300 ease-in-out hover:bg-transparent sm:my-14">

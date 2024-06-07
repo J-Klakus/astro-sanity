@@ -48,7 +48,7 @@ const data = {
 				>
 					Get Started Risk-Free
 				</h2>
-				<p class="mt-2 text-lg leading-relaxed text-slate-500">
+				<p class="mt-2 leading-relaxed text-slate-500 sm:text-lg">
 					Competitive pricing tailored to recruitment agencies starting at <span
 						class="font-semibold text-primary"
 						>$85 month
@@ -66,7 +66,7 @@ const data = {
 			{
 				Object.keys(data).map((heading) => (
 					<div>
-						<p class="mb-3 font-heading text-xl font-medium">{heading}</p>
+						<p class="mb-3 font-heading font-medium sm:text-xl">{heading}</p>
 						<ul class="space-y-3">
 							{data[heading as keyof typeof data].map((item: string) => (
 								<li class="font-medium text-gray-900 before:mr-3 before:font-black before:text-transparent before:content-['✓'] before:[text-shadow:_0_1px_0_#0E9F6E]">

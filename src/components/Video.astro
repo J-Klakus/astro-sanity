@@ -12,7 +12,7 @@ import { YouTube } from "@astro-community/astro-embed-youtube";
 				video.includes("youtu.be") ? (
 					<>
 						<YouTube id={video} />
-						<p class="mt-2 text-center text-lg">{text}</p>
+						<p class="mt-2 text-center sm:text-lg">{text}</p>
 					</>
 				) : (
 					<video autoplay={true} loop={true} muted={true}>
