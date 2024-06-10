@@ -96,11 +96,14 @@ const { items, title, header } = Astro.props as Features;
 				</h2>
 				{
 					items.map((item: FeatureItem, index: number) => (
-						<div class="group transition">
+						<div>
 							{/* header */}
-							<div class="accordion-header flex h-16 cursor-pointer items-center space-x-5 transition md:px-5">
+							<div
+								tabindex="0"
+								class="accordion-header group flex h-16 cursor-pointer items-center space-x-5 transition md:px-5"
+							>
 								<Icon name={item.icon} size={30} />
-								<h2 class="inline-block bg-text-gradient bg-[length:200%_200%] bg-clip-text font-heading text-2xl font-medium text-transparent group-hover:animate-text group-hover:text-[rgba(0,0,0,0)]">
+								<h2 class="inline-block bg-text-gradient bg-[length:200%_200%] bg-clip-text font-heading text-2xl font-medium text-transparent group-aria-expanded:animate-text group-aria-expanded:text-[rgba(0,0,0,0)]">
 									{item.title}
 								</h2>
 							</div>
@@ -157,16 +160,23 @@ const { items, title, header } = Astro.props as Features;
 				// Close the currently open accordion content if it exists and is not the one being clicked
 				if (currentlyOpenAccordion && currentlyOpenAccordion !== accordionContent) {
 					currentlyOpenAccordion.style.maxHeight = `0px`;
+					const openHeader = currentlyOpenAccordion.previousElementSibling as HTMLElement;
+					if (openHeader) openHeader.setAttribute("aria-expanded", "false");
 				}
 
 				// Toggle the clicked accordion content
 				let accordionMaxHeight = accordionContent.style.maxHeight;
 				if (accordionMaxHeight === "0px" || accordionMaxHeight.length === 0) {
 					accordionContent.style.maxHeight = `${accordionContent.scrollHeight + 32}px`;
+					header.setAttribute("aria-expanded", "true");
 				} else {
 					accordionContent.style.maxHeight = `0px`;
+					header.setAttribute("aria-expanded", "false");
 				}
 			});
+
+			// Set initial ARIA attributes
+			header.setAttribute("aria-expanded", "false");
 
 			// Open the first item by default
 			if (index === 0) {
