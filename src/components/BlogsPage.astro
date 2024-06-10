@@ -21,7 +21,7 @@ const blogs = await sanityClient.fetch(
 ---
 
 <section
-	class="flex flex-col items-center justify-center gap-8 bg-[url('/bg-slider-mobile.webp')] bg-cover bg-top bg-no-repeat px-6 pb-8 pt-32 sm:bg-[url('/bg-spots-center.webp')] md:pb-52 lg:pb-20 lg:pt-44"
+	class="flex flex-col items-center justify-center gap-8 bg-[url('/bg-slider-mobile.webp')] bg-cover bg-top bg-no-repeat px-6 pb-8 pt-32 sm:bg-[url('/mesh-big.webp')] md:pb-52 lg:pb-20 lg:pt-44"
 >
 	<div class="mx-auto flex max-w-7xl flex-col items-center justify-center gap-8 px-4 lg:flex-row">
 		<div class="max-w-xl">
@@ -39,9 +39,7 @@ const blogs = await sanityClient.fetch(
 		<BlogCard blog={blogs[0]} />
 	</div>
 	<div class="mx-auto flex w-full max-w-7xl justify-between pt-20">
-		<h2 class="mb-6 font-heading font-medium text-gray-900 sm:text-3xl sm:text-lg">
-			Blogs & Resources
-		</h2>
+		<h2 class="mb-6 font-heading font-medium text-gray-900 sm:text-3xl">Blogs & Resources</h2>
 		<div class="h-fit divide-x rounded-lg border border-[#E3E0F3] font-medium">
 			<button class="px-4 py-3">Recent</button>
 			<button class="bg-[#E3E0F3] px-2 py-3 text-primary">Popular</button>

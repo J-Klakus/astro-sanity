@@ -22,7 +22,7 @@ interface CustomSectionProps {
 	background: "none" | "bg center" | "bg bottom";
 	title: string;
 	description: string;
-	buttons?: ButtonProps[];
+	button?: ButtonProps[];
 	image: ImageRef;
 	imageAlt?: string;
 }
@@ -35,7 +35,7 @@ const {
 	background = "none",
 	title,
 	description,
-	buttons = [
+	button = [
 		{
 			link: "#",
 			buttonText: "Request a demo",
@@ -80,7 +80,7 @@ const styledBackground =
 
 			<div class="mt-6 flex items-center justify-center gap-4 lg:justify-start">
 				{
-					buttons.map((button) => (
+					button.map((button) => (
 						<Button
 							link={button.link}
 							buttonText={button.buttonText}

@@ -107,12 +107,18 @@ const menu = [
 					menu.map((item) => (
 						<li class="menu group relative cursor-pointer py-2">
 							<div class="group flex items-center justify-center space-x-2 px-2 lg:justify-between xl:px-4">
-								<a
-									href={Object.values(item)[0].link}
-									class="item my-2 py-2 font-medium text-sky-950 transition duration-300 ease-in-out hover:text-primary group-hover:text-primary"
-								>
-									{Object.keys(item)}
-								</a>
+								{!Object.values(item)[0].values ? (
+									<a
+										href={Object.values(item)[0].link}
+										class="item my-2 py-2 font-medium text-sky-950 transition duration-300 ease-in-out hover:text-primary group-hover:text-primary"
+									>
+										{Object.keys(item)}
+									</a>
+								) : (
+									<p class="item my-2 py-2 font-medium text-sky-950 transition duration-300 ease-in-out hover:text-primary group-hover:text-primary">
+										{Object.keys(item)}
+									</p>
+								)}
 								{Object.values(item)[0].values && (
 									<span>
 										<Icon
