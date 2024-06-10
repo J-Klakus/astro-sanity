@@ -20,12 +20,12 @@ const { title, text, images } = Astro.props;
 			</p>
 		</div>
 		<ul
-			class="relative flex w-full flex-wrap justify-center gap-2 p-0 px-4 py-10 sm:justify-between lg:px-0"
+			class="relative flex w-full flex-wrap justify-center gap-2 p-0 px-4 py-10 lg:justify-between lg:px-0"
 		>
 			{
 				images.map((image: { image: ImageRef; alt: string }) => {
 					return (
-						<li class="w-44">
+						<li class="w-28 md:w-44">
 							<div class="flex items-center justify-center p-2">
 								<Image
 									src={imageHelper(image.image).url()}
