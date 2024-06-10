@@ -106,9 +106,15 @@ const items = [
 		<button class="prev-button z-50">
 			<Icon name="prev" class="h-auto w-12 rounded-full border border-[#E3E0F3] p-4 lg:w-16" />
 		</button>
-		<div
-			class="absolute left-0 top-0 h-full w-full before:absolute before:z-20 before:h-full before:w-[20%] before:bg-gradient-to-r before:from-white before:from-[40%] before:to-transparent before:content-[''] after:absolute after:right-0 after:top-0 after:z-20 after:h-full after:w-[20%] after:bg-gradient-to-l after:from-white after:from-[40%] after:to-transparent after:content-['']"
-		>
+		<div class="absolute left-0 top-0 h-full w-full">
+			<div
+				class="prev-button absolute z-20 h-full w-[20%] bg-gradient-to-r from-white from-[40%] to-transparent"
+			>
+			</div>
+			<div
+				class="next-button absolute right-0 top-0 z-20 h-full w-[20%] bg-gradient-to-l from-white from-[40%] to-transparent"
+			>
+			</div>
 		</div>
 		<ul class="scroll flex flex-grow snap-x snap-mandatory overflow-x-auto">
 			{
@@ -328,21 +334,23 @@ const items = [
 		};
 	}
 
-	const prevButton = document.querySelector(".prev-button") as HTMLButtonElement;
-	const nextButton = document.querySelector(".next-button") as HTMLButtonElement;
+	const prevButton = document.querySelectorAll<HTMLButtonElement>(".prev-button");
+	const nextButton = document.querySelectorAll<HTMLButtonElement>(".next-button");
 	const scroller = document.querySelector(".scroll") as HTMLElement;
 
 	function setAriaLabels() {
 		if (prevButton && nextButton) {
-			prevButton.setAttribute("aria-label", "Scroll to previous item");
-			nextButton.setAttribute("aria-label", "Scroll to next item");
+			prevButton.forEach((button) => button.setAttribute("aria-label", "Scroll to previous item"));
+			nextButton.forEach((button) => button.setAttribute("aria-label", "Scroll to next item"));
 		}
 	}
 
 	function setAriaPressed(index: number) {
 		if (prevButton && nextButton) {
-			prevButton.setAttribute("aria-pressed", (index === 0).toString());
-			nextButton.setAttribute("aria-pressed", (index === elementsPerPage).toString());
+			prevButton.forEach((button) => button.setAttribute("aria-pressed", (index === 0).toString()));
+			nextButton.forEach((button) =>
+				button.setAttribute("aria-pressed", (index === elementsPerPage).toString()),
+			);
 		}
 	}
 
@@ -372,32 +380,36 @@ const items = [
 		smoothScroll(scroller, scrollLeft, true);
 	}
 
-	if (prevButton || nextButton || scroller) {
-		prevButton.addEventListener("click", (e) => {
-			e.preventDefault();
-			e.stopPropagation();
-			handleScroll("prev");
+	if (prevButton && nextButton && scroller) {
+		prevButton.forEach((button) => {
+			button.addEventListener("click", (e) => {
+				e.preventDefault();
+				e.stopPropagation();
+				handleScroll("prev");
+			});
 		});
 
-		nextButton.addEventListener("click", (e) => {
-			e.preventDefault();
-			e.stopPropagation();
-			handleScroll("next");
-		});
-
-		scroller.addEventListener(
-			"scroll",
-			debounce(() => {
-				setAriaPressed(getIndex());
-			}, 200),
-		);
-
-		setAriaLabels();
-
-		window.addEventListener("load", () => {
-			const elementWidth = scroller.scrollWidth / totalElements;
-			const initialScrollLeft = elementWidth * 1; // Index 1 for the second element
-			smoothScroll(scroller, initialScrollLeft, true);
+		nextButton.forEach((button) => {
+			button.addEventListener("click", (e) => {
+				e.preventDefault();
+				e.stopPropagation();
+				handleScroll("next");
+			});
 		});
 	}
+
+	scroller.addEventListener(
+		"scroll",
+		debounce(() => {
+			setAriaPressed(getIndex());
+		}, 200),
+	);
+
+	setAriaLabels();
+
+	window.addEventListener("load", () => {
+		const elementWidth = scroller.scrollWidth / totalElements;
+		const initialScrollLeft = elementWidth * 1; // Index 1 for the second element
+		smoothScroll(scroller, initialScrollLeft, true);
+	});
 </script>
