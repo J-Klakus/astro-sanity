@@ -14,16 +14,19 @@ export const Features = defineType({
     defineField({
       type: 'string',
       name: 'header',
+      validation: (rule) => [rule.required()],
       initialValue: 'Features',
     }),
     defineField({
       type: 'string',
       name: 'title',
+      validation: (rule) => [rule.required()],
       initialValue: 'Meet our powerhouse features ',
     }),
     defineField({
       type: 'array',
       name: 'items',
+      validation: (rule) => [rule.required()],
       of: [
         defineArrayMember({
           type: 'object',

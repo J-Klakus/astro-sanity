@@ -7,10 +7,12 @@ export const Button = defineType({
   fields: [
     defineField({
       type: 'string',
+      validation: rule => [rule.required()],
       name: 'buttonText',
     }),
     defineField({
       type: 'string',
+      validation: rule => [rule.required()],
       name: 'link',
     }),
     defineField({
@@ -19,6 +21,7 @@ export const Button = defineType({
     }),
     defineField({
       type: 'string',
+      validation: rule => [rule.required()],
       name: 'type',
       options: {
         list: ['filled', 'outline'],
@@ -26,6 +29,8 @@ export const Button = defineType({
     }),
     defineField({
       type: 'boolean',
+      initialValue: false,
+      validation: rule => [rule.required()],
       name: 'arrow',
     }),
   ],

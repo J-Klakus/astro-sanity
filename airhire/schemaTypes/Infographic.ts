@@ -13,26 +13,32 @@ export const Infographic = defineType({
     }),
     defineField({
       type: 'string',
+      validation: (rule) => [rule.required()],
       name: 'title',
     }),
     defineField({
       type: 'string',
+      validation: (rule) => [rule.required()],
       name: 'header',
     }),
     defineField({
       type: 'string',
+      validation: (rule) => [rule.required()],
       name: 'text',
     }),
     defineField({
       type: 'image',
+      validation: (rule) => [rule.required()],
       name: 'image',
     }),
     defineField({
       type: 'string',
+      validation: (rule) => [rule.required()],
       name: 'imageAlt',
     }),
     defineField({
       type: 'Button',
+      validation: (rule) => [rule.required()],
       name: 'button',
     }),
   ],

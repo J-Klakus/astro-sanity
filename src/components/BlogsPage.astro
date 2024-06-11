@@ -1,8 +1,16 @@
 ---
-import { Icon } from "astro-icon/components";
-import { Picture, getImage } from "astro:assets";
 import { sanityClient } from "sanity:client";
 import BlogCard from "./reusable/BlogCard.astro";
+import { type ImageRef } from "../utils/imageHelper";
+
+type Blog = {
+	title: string;
+	slug: { current: string };
+	categories: string[];
+	publishedAt: string;
+	mainImage: ImageRef;
+	verticalImage: ImageRef;
+};
 
 const blogs = await sanityClient.fetch(
 	`*[_type == "blogs" && defined(author)] | order(publishedAt desc) {
@@ -47,5 +55,5 @@ const blogs = await sanityClient.fetch(
 	</div>
 </section>
 <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 pb-20 md:grid-cols-3">
-	{[1, 2, 3, 4, 5, 6, 7].map((blog, index) => <BlogCard index={index} blog={blogs[0]} />)}
+	{blogs.map((blog: Blog, index: number) => <BlogCard index={index} blog={blog} />)}
 </div>

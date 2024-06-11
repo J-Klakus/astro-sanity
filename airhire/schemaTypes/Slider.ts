@@ -15,6 +15,7 @@ export const Slider = defineType({
     defineField({
       type: 'array',
       name: 'items',
+      validation: (rule) => [rule.required()],
       title: 'Items',
       of: [
         defineArrayMember({
@@ -23,6 +24,7 @@ export const Slider = defineType({
             defineField({
               type: 'string',
               name: 'id',
+              validation: (rule) => [rule.required()],
               options: {
                 list: [
                   'opportunities',
@@ -42,10 +44,12 @@ export const Slider = defineType({
             }),
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               name: 'description',
             }),
             defineField({
               type: 'image',
+              validation: (rule) => [rule.required()],
               name: 'image',
             }),
           ],

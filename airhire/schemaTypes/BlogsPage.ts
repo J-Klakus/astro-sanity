@@ -6,7 +6,15 @@ export const BlogsPage = defineType({
   fields: [
     defineField({
       type: 'string',
-      name: 'title',
+      name: 'componentTitle',
+      title: 'Component Title',
+      description: 'Just used to identify the component in the studio',
+      initialValue: 'BlogsPage Component',
     }),
   ],
+  preview: {
+    select: {
+      title: 'componentTitle',
+    },
+  },
 })

@@ -24,16 +24,19 @@ export const Bento = defineType({
           fields: [
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               name: 'title',
               title: 'Title',
             }),
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               name: 'text',
               title: 'Text',
             }),
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               options: {
                 list: ['purple', 'white'],
               },
@@ -42,6 +45,7 @@ export const Bento = defineType({
             }),
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               name: 'pillText',
               title: 'Pill Text',
             }),
@@ -52,6 +56,7 @@ export const Bento = defineType({
             }),
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               name: 'link',
               title: 'Link',
             }),
@@ -64,6 +69,7 @@ export const Bento = defineType({
           fields: [
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               options: {
                 list: ['purple', 'white'],
               },
@@ -72,6 +78,7 @@ export const Bento = defineType({
             }),
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               name: 'pillText',
               title: 'Pill Text',
             }),
@@ -82,6 +89,7 @@ export const Bento = defineType({
             }),
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               name: 'link',
               title: 'Link',
             }),
@@ -94,6 +102,7 @@ export const Bento = defineType({
           fields: [
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               options: {
                 list: ['purple', 'white'],
               },
@@ -102,6 +111,7 @@ export const Bento = defineType({
             }),
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               name: 'pillText',
               title: 'Pill Text',
             }),
@@ -112,6 +122,7 @@ export const Bento = defineType({
             }),
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               name: 'link',
               title: 'Link',
             }),
@@ -124,6 +135,7 @@ export const Bento = defineType({
           fields: [
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               options: {
                 list: ['purple', 'white'],
               },
@@ -132,6 +144,7 @@ export const Bento = defineType({
             }),
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               name: 'pillText',
               title: 'Pill Text',
             }),
@@ -142,6 +155,7 @@ export const Bento = defineType({
             }),
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               name: 'link',
               title: 'Link',
             }),

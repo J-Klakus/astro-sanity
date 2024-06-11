@@ -5,8 +5,16 @@ export const BlogSlider = defineType({
   name: 'BlogSlider',
   fields: [
     defineField({
-      type: "string",
-      name: "title",
+      type: 'string',
+      name: 'componentTitle',
+      title: 'Component Title',
+      description: 'Just used to identify the component in the studio',
+      initialValue: 'BlogSlider Component',
     }),
   ],
+  preview: {
+    select: {
+      title: 'componentTitle',
+    },
+  },
 })

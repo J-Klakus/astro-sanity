@@ -13,11 +13,13 @@ export const Brands = defineType({
     }),
     defineField({
       type: 'string',
+      validation: (rule) => [rule.required()],
       name: 'title',
       title: 'Title',
     }),
     defineField({
       type: 'text',
+      validation: (rule) => [rule.required()],
       name: 'text',
       title: 'Text',
     }),
@@ -29,9 +31,11 @@ export const Brands = defineType({
         defineArrayMember({
           type: 'object',
           name: 'imageObject',
+          validation: (rule) => [rule.required()],
           fields: [
             defineField({
               type: 'image',
+              validation: (rule) => [rule.required()],
               name: 'image',
               title: 'Image',
               options: {
@@ -40,6 +44,7 @@ export const Brands = defineType({
             }),
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               name: 'alt',
               title: 'Alt Text',
             }),

@@ -19,6 +19,7 @@ export const Faq = defineType({
     defineField({
       type: 'array',
       name: 'faq',
+      validation: (rule) => [rule.required()],
       title: 'Faqs',
       of: [
         defineArrayMember({

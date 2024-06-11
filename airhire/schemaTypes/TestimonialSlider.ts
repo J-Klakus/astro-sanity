@@ -6,7 +6,16 @@ export const TestimonialSlider = defineType({
   fields: [
     defineField({
       type: 'string',
-      name: 'title',
+      name: 'componentTitle',
+      title: 'Component Title',
+      validation: (rule) => [rule.required()],
+      description: 'Just used to identify the component in the studio',
+      initialValue: 'Testimonial Slider Component',
     }),
   ],
+  preview: {
+    select: {
+      title: 'componentTitle',
+    },
+  },
 })

@@ -2,7 +2,7 @@
 import { Picture } from "astro:assets";
 import imageHelper, { type ImageRef } from "../../utils/imageHelper";
 const { blog, index } = Astro.props;
-const { publishedAt, author, categories, mainImage, verticalImage, title } = blog;
+const { publishedAt, author, categories, mainImage, verticalImage, title, slug } = blog;
 
 const isRow = index === 1 || index === 5;
 ---
@@ -24,7 +24,7 @@ const isRow = index === 1 || index === 5;
 	</div>
 	<div class={`${isRow ? "w-1/2" : "h-1/2"} bg-white p-4 sm:p-6`}>
 		<p class="mb-4 text-sm font-medium uppercase text-primary">{categories}</p>
-		<a href="#">
+		<a href={"blogs/" + slug.current}>
 			<h2 class="mb-2 mt-0.5 font-heading text-2xl font-semibold text-gray-900">{title}</h2>
 		</a>
 

@@ -14,22 +14,26 @@ export const PricingFeatures = defineType({
     defineField({
       type: 'string',
       name: 'title',
+      validation: (rule) => [rule.required()],
       initialValue: 'Pricing Features',
     }),
     defineField({
       type: 'string',
       name: 'subtitle',
+      validation: (rule) => [rule.required()],
       initialValue: 'Pricing Features',
     }),
     defineField({
       type: 'string',
       name: 'price',
+      validation: (rule) => [rule.required()],
       initialValue: 'Pricing Features',
     }),
     defineField({
       type: 'array',
       name: 'categories',
       title: 'Categories',
+      validation: (rule) => [rule.required()],
       of: [
         defineArrayMember({
           type: 'object',
@@ -37,16 +41,19 @@ export const PricingFeatures = defineType({
             defineField({
               type: 'string',
               name: 'category',
+              validation: (rule) => [rule.required()],
               title: 'Category',
             }),
             defineField({
               type: 'array',
               name: 'features',
+              validation: (rule) => [rule.required()],
               title: 'Features',
               of: [
                 defineArrayMember({
                   type: 'string',
                   name: 'feature',
+                  validation: (rule) => [rule.required()],
                   title: 'Feature',
                 }),
               ],

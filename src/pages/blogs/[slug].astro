@@ -1,0 +1,67 @@
+---
+import { sanityClient } from "sanity:client";
+import Layout from "../../layouts/Layout.astro";
+import imageHelper, { type ImageRef } from "../../utils/imageHelper";
+import { Image } from "astro:assets";
+import { PortableText } from "astro-portabletext";
+
+type Blog = {
+	title: string;
+	slug: { current: string };
+	categories: string[];
+	publishedAt: string;
+	mainImage: ImageRef;
+	verticalImage: ImageRef;
+	body: any;
+};
+
+export async function getStaticPaths() {
+	const blogs: Blog[] = await sanityClient.fetch(
+		`*[_type == "blogs" && defined(author)] | order(publishedAt desc) {
+        title,
+        slug,
+        "categories": categories[]->title,
+        publishedAt,
+        mainImage,
+        verticalImage,
+        body,
+        "author": author->{
+            name,
+            image
+        }
+    }`,
+	);
+	return blogs.map((blog) => {
+		return {
+			params: { slug: blog.slug.current },
+			props: blog,
+		};
+	});
+}
+
+const { slug } = Astro.params;
+const { title, mainImage, categories, body } = Astro.props;
+---
+
+<Layout>
+	<div class="relative mx-auto mb-4 w-full max-w-7xl pt-32 md:mb-0">
+		<div class="px-4 lg:px-0">
+			<h1 class="text-4xl font-semibold leading-tight text-gray-800">
+				{title}
+			</h1>
+			<p class="mb-2 inline-flex items-center justify-center py-2 text-green-700">
+				{categories[0]}
+			</p>
+		</div>
+		<Image
+			src={imageHelper(mainImage).url()}
+			class="w-full object-cover lg:rounded"
+			style="height: 28em;"
+			alt="Blog Image"
+			inferSize={true}
+		/>
+		<div class="prose prose-stone my-8 max-w-none">
+			<PortableText value={body} />
+		</div>
+	</div>
+</Layout>

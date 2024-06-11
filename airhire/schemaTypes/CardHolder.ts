@@ -14,6 +14,7 @@ export const CardHolder = defineType({
     defineField({
       type: 'string',
       name: 'title',
+      validation: (rule) => [rule.required()],
       initialValue: 'Work more efficiently with Airhire',
     }),
     defineField({
@@ -38,14 +39,17 @@ export const CardHolder = defineType({
           fields: [
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               name: 'name',
             }),
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               name: 'description',
             }),
             defineField({
               type: 'string',
+              validation: (rule) => [rule.required()],
               name: 'icon',
               options: {
                 list: ['browser', 'website', 'cv', 'email', 'checkBadge', 'clock', 'gear', 'stack'],

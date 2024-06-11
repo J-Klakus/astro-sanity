@@ -14,6 +14,7 @@ export const imageCarousel = defineType({
     }),
     defineField({
       type: 'array',
+      validation: (rule) => [rule.required()],
       name: 'images',
       of: [
         defineArrayMember({

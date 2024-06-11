@@ -14,10 +14,12 @@ export const HeroVideo = defineType({
     defineField({
       type: 'string',
       name: 'title',
+      validation: (rule) => [rule.required()],
       initialValue: 'AI-driven ATS & CRM developed for recruitment agencies',
     }),
     defineField({
       type: 'string',
+      validation: (rule) => [rule.required()],
       name: 'text',
     }),
   ],
