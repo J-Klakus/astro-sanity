@@ -1,7 +1,9 @@
 ---
-import { Picture } from "astro:assets";
 import features from "../assets/features.webp";
 import { Icon } from "astro-icon/components";
+import { Image, Picture, getImage } from "astro:assets";
+import imageHelper from "../utils/imageHelper";
+import type { ImageRef } from "../utils/imageHelper";
 
 type ListItem = {
 	text: string;
@@ -12,6 +14,7 @@ type FeatureItem = {
 	title: string;
 	list: ListItem[];
 	link: string;
+	image: ImageRef;
 };
 
 type Features = {
@@ -95,11 +98,22 @@ const { items, title, header } = Astro.props as Features;
 					{title}
 				</h2>
 				{
-					items.map((item: FeatureItem, index: number) => (
+					items.map(async (item: FeatureItem, index: number) => (
 						<div>
 							{/* header */}
 							<div
 								tabindex="0"
+								data-image={
+									item.image
+										? await (
+												await getImage({
+													src: imageHelper(item.image).url(),
+													format: "webp",
+													inferSize: true,
+												})
+											).src
+										: features.src
+								}
 								class="accordion-header group flex h-16 cursor-pointer items-center space-x-5 transition md:px-5"
 							>
 								<Icon name={item.icon} size={30} />
@@ -123,14 +137,12 @@ const { items, title, header } = Astro.props as Features;
 		</div>
 	</div>
 	<div class="max-w-7xl md:-mt-6 md:w-[45%]">
-		<Picture
-			fallbackFormat="jpg"
+		<Image
+			id="featuresImage"
 			src={features}
-			formats={["avif", "webp"]}
 			alt="A prototype of the app."
-			sizes="(max-width: 768px) 100vw, 50vw"
-			widths={[400, 800, 1200, features.width]}
-			class="h-auto w-full object-cover object-left shadow-[rgba(0,_0,_0,_0.1)_0px_24px_30px_-10px]"
+			loading="eager"
+			class="h-auto w-full object-cover object-left"
 		/>
 	</div>
 
@@ -144,6 +156,7 @@ const { items, title, header } = Astro.props as Features;
 </section>
 <script>
 	document.addEventListener("DOMContentLoaded", function () {
+		const image = document.getElementById("featuresImage") as HTMLImageElement;
 		const accordionHeaders = document.querySelectorAll(
 			".accordion-header",
 		) as NodeListOf<HTMLElement>;
@@ -162,6 +175,9 @@ const { items, title, header } = Astro.props as Features;
 					currentlyOpenAccordion.style.maxHeight = `0px`;
 					const openHeader = currentlyOpenAccordion.previousElementSibling as HTMLElement;
 					if (openHeader) openHeader.setAttribute("aria-expanded", "false");
+				}
+				if (header) {
+					image.src = header.getAttribute("data-image") as string;
 				}
 
 				// Toggle the clicked accordion content
