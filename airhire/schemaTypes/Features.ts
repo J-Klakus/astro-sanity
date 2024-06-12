@@ -43,6 +43,11 @@ export const Features = defineType({
               title: 'Title',
             }),
             defineField({
+              type: 'image',
+              name: 'image',
+              title: 'Image',
+            }),
+            defineField({
               type: 'array',
               name: 'list',
               title: 'List',
