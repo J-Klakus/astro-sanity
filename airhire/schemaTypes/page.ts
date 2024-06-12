@@ -72,6 +72,9 @@ export const page = defineType({
           type: 'SignUpForm',
         }),
         defineArrayMember({
+          type: 'SignInForm',
+        }),
+        defineArrayMember({
           type: 'ContactForm',
         }),
         defineArrayMember({

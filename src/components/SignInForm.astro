@@ -1,0 +1,122 @@
+---
+import { Icon } from "astro-icon/components";
+import logo from "../icons/iconGradient.svg";
+import Button from "./reusable/Button.astro";
+import { Image } from "astro:assets";
+---
+
+<section
+	class="bg-[url('/spots-tl-mobile.webp')] bg-cover bg-right bg-no-repeat sm:bg-[url('/spots-tr.webp')]"
+>
+	<div class="mx-auto max-w-7xl">
+		<div
+			class="mx-auto flex flex-col-reverse items-center justify-center gap-8 px-4 lg:flex-row lg:gap-16"
+		>
+			<div class="w-full max-w-sm bg-white p-2 lg:w-1/2 lg:max-w-none lg:px-12 lg:py-52">
+				<form>
+					<p
+						class="mb-6 bg-[linear-gradient(112deg,#4B3AB3_20%,#9FFFF3_100%)] bg-clip-text font-heading text-xl font-medium text-transparent sm:text-3xl"
+					>
+						Welcome Back
+					</p>
+					<div class="flex">
+						<button
+							type="button"
+							class="mb-2 mr-2 inline-flex w-full items-center justify-between rounded-lg border-2 border-gray-200 px-5 py-2.5 text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-4 focus:ring-[#4285F4]/50"
+							><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"
+								><path
+									fill="#ffc107"
+									d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8c-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C12.955 4 4 12.955 4 24s8.955 20 20 20s20-8.955 20-20c0-1.341-.138-2.65-.389-3.917"
+								></path><path
+									fill="#ff3d00"
+									d="m6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4C16.318 4 9.656 8.337 6.306 14.691"
+								></path><path
+									fill="#4caf50"
+									d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44"
+								></path><path
+									fill="#1976d2"
+									d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917"
+								></path></svg
+							>Sign in with Google<div></div></button
+						>
+						<button
+							type="button"
+							class="mb-2 mr-2 inline-flex w-full items-center justify-between rounded-lg border-2 border-gray-200 px-5 py-2.5 text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-4 focus:ring-[#4285F4]/50"
+							><svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="1em"
+								height="1em"
+								viewBox="0 0 256 256"
+								><path fill="#f1511b" d="M121.666 121.666H0V0h121.666z"></path><path
+									fill="#80cc28"
+									d="M256 121.666H134.335V0H256z"></path><path
+									fill="#00adef"
+									d="M121.663 256.002H0V134.336h121.663z"></path><path
+									fill="#fbbc09"
+									d="M256 256.002H134.335V134.336H256z"></path></svg
+							>Sign in with Microsoft<div></div></button
+						>
+					</div>
+					<div class="flex w-full items-center justify-center">
+						<hr class="my-8 h-px w-64 border-0 bg-gray-200" />
+						<span class="bg-white px-3 font-medium text-gray-900">or</span>
+						<hr class="my-8 h-px w-64 border-0 bg-gray-200" />
+					</div>
+					<div class="grid grid-cols-1 gap-6">
+						<!-- Left Side -->
+						<div>
+							<div class="mb-4">
+								<label class="mb-2 block text-sm font-medium text-primary" for="full-name"
+									>Email</label
+								>
+								<input
+									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
+									id="email"
+									type="email"
+									placeholder="Email Address"
+								/>
+							</div>
+							<div class="mb-4">
+								<label class="mb-2 block text-sm font-medium text-primary" for="password"
+									>Password</label
+								>
+								<input
+									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
+									id="password"
+									type="text"
+									placeholder="**********"
+								/>
+							</div>
+							<div class="mb-6 md:flex md:items-start">
+								<label class="block font-bold text-gray-500 md:w-2/3">
+									<input class="mr-2 leading-tight" type="checkbox" />
+									<span class="text-sm"> Remember Me </span>
+								</label>
+								<a href="/forgot" class="font-medium text-primary"> Forgot Password</a>
+							</div>
+						</div>
+					</div>
+					<div class="mt-6 flex flex-col justify-between gap-4 md:flex-row md:gap-0">
+						<p>
+							Don’t have an account yet? <a href="/sign-up" class="font-medium text-primary">
+								Sign In</a
+							>
+						</p>
+						<Button buttonText="Start a free trial" link="/sign-up" type="filled" />
+					</div>
+				</form>
+			</div>
+			<div class="lg:w-1/2">
+				<Image src={logo} class="mb-8 mt-6 h-12 w-auto md:mt-0" alt="logo" />
+				<h2 class="mb-6 font-heading text-3xl font-medium text-primary lg:text-4xl">
+					Start Your Journey with Airhire Today
+				</h2>
+				<p class="mb-6 font-heading text-primary">
+					Sign up to access our comprehensive recruitment tools designed for efficiency and
+					collaboration. Enhance your hiring process with AI-driven insights and seamless
+					integration.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>

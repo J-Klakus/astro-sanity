@@ -25,14 +25,27 @@ const {
 			>
 				{title}
 			</h2>
-			<Button
-				link={button.Link}
-				buttonText={button.ButtonText}
-				type={button.type}
-				class="mt-8 w-fit"
-			/>
+			<div class="flex justify-between">
+				<Button
+					link={button.Link}
+					buttonText={button.ButtonText}
+					type={button.type}
+					class="mt-8 w-fit"
+				/>
+				<div class="block h-full w-1/2 p-2 md:hidden md:w-auto">
+					<Picture
+						fallbackFormat="jpg"
+						src={logobig}
+						formats={["avif", "webp"]}
+						alt="A prototype of the app."
+						widths={[400, 800, 1200, logobig.width]}
+						loading="eager"
+						class="h-auto max-h-72 w-10/12 object-contain pt-2 md:pt-0"
+					/>
+				</div>
+			</div>
 		</div>
-		<div class="h-full w-auto">
+		<div class="hidden h-full w-auto md:block">
 			<Picture
 				fallbackFormat="jpg"
 				src={logobig}

@@ -7,10 +7,10 @@ const { header, title, text, cards } = Astro.props;
 ---
 
 <div
-	class="bg-[url('/bg-center-mobile.webp')] bg-cover bg-[center_bottom_-10rem] bg-no-repeat pb-8 sm:bg-[url('/bg-center.webp')] sm:pb-40"
+	class="bg-[url('/bg-center-mobile.webp')] bg-cover bg-[center_bottom_-10rem] bg-no-repeat pb-8 sm:bg-[url('/bg-center.webp')] sm:pb-20"
 >
 	<div class="mx-auto grid max-w-7xl place-items-center gap-4 px-4 lg:grid-cols-7">
-		<div class="col-span-3 mx-auto mb-8 flex max-w-xl flex-col">
+		<div class="order-last col-span-3 mx-auto mb-8 flex max-w-xl flex-col sm:-order-none">
 			<p
 				class="my-1 w-fit rounded-lg bg-verylight px-2 py-1 font-medium uppercase tracking-wide text-highlight"
 			>
@@ -26,8 +26,10 @@ const { header, title, text, cards } = Astro.props;
 			</p>
 			<Button link="/sign-up" buttonText="Try For Free" type="filled" class="w-fit" arrow={true} />
 		</div>
-		<div class="col-span-4 mx-auto grid w-full max-w-3xl grid-cols-1 gap-4 sm:grid-cols-2">
-			<div class="relative">
+		<div
+			class="col-span-4 mx-auto grid w-full max-w-3xl snap-x snap-mandatory grid-cols-2 gap-4 overflow-y-scroll sm:overflow-y-auto"
+		>
+			<div class="relative flex flex-col sm:block">
 				<Picture
 					fallbackFormat="jpg"
 					src={imageHelper(cards[0].image).url()}
@@ -36,23 +38,21 @@ const { header, title, text, cards } = Astro.props;
 					sizes="(max-width: 1024px) 50vw, (max-width: 1020px) 50vw, 400px"
 					widths={[400, 800]}
 					inferSize={true}
-					class="h-auto w-full shadow-[rgba(0,_0,_0,_0.1)_0px_24px_30px_-10px]"
+					class="h-auto w-full rounded-t-xl shadow-[rgba(0,_0,_0,_0.1)_0px_24px_30px_-10px]"
 				/>
 				<div
-					class="absolute bottom-0 flex h-fit w-full flex-col justify-end rounded-b-xl bg-[url('/mesh-card-bg.webp')] bg-cover bg-no-repeat p-6"
+					class="bottom-0 flex h-fit w-full flex-col justify-end rounded-b-xl bg-[url('/mesh-card-bg.webp')] bg-cover bg-no-repeat p-4 sm:absolute sm:p-6"
 				>
 					<p class="mb-1 !leading-none text-white [font-size:_clamp(2em,4.75vw,4.5em)]">
 						{cards[0].percentage}
 					</p>
 					<div class="mb-2 h-[2px] w-full bg-gradient-to-r from-[#4B3AB3] to-[#9FFFF3]"></div>
-					<p
-						class="leading-tight text-white [font-size:_clamp(1.25em,1.25vw,1.125em)] md:leading-normal"
-					>
+					<p class="h-16 text-xs leading-tight text-white sm:h-auto sm:text-xl md:leading-normal">
 						{cards[0].description}
 					</p>
 				</div>
 			</div>
-			<div class="relative">
+			<div class="relative flex flex-col-reverse sm:block">
 				<Picture
 					fallbackFormat="jpg"
 					src={imageHelper(cards[1].image).url()}
@@ -61,18 +61,16 @@ const { header, title, text, cards } = Astro.props;
 					sizes="(max-width: 1024px) 50vw, (max-width: 1020px) 50vw, 400px"
 					widths={[400, 800]}
 					inferSize={true}
-					class="h-auto w-full shadow-[rgba(0,_0,_0,_0.1)_0px_24px_30px_-10px]"
+					class="h-auto w-full rounded-b-xl shadow-[rgba(0,_0,_0,_0.1)_0px_24px_30px_-10px]"
 				/>
 				<div
-					class="absolute bottom-0 flex h-fit w-full flex-col justify-end rounded-b-xl bg-[url('/mesh-card-bg.webp')] bg-cover bg-center bg-no-repeat p-6 md:top-0 md:rounded-t-xl"
+					class="top-0 flex h-fit w-full flex-col justify-end rounded-t-xl bg-[url('/mesh-card-bg.webp')] bg-cover bg-center bg-no-repeat p-4 sm:absolute sm:p-6"
 				>
 					<p class="mb-1 !leading-none text-white [font-size:_clamp(2em,4.75vw,4.5em)]">
 						{cards[1].percentage}
 					</p>
 					<div class="mb-2 h-[2px] w-full bg-gradient-to-r from-[#4B3AB3] to-[#9FFFF3]"></div>
-					<p
-						class="leading-tight text-white [font-size:_clamp(1.25em,1.25vw,1.125em)] md:leading-normal"
-					>
+					<p class="h-16 text-xs leading-tight text-white sm:h-auto sm:text-xl md:leading-normal">
 						{cards[1].description}
 					</p>
 				</div>

@@ -27,6 +27,7 @@ import {Faq} from './Faq'
 import {PricingFeatures} from './PricingFeatures'
 import {Terms} from './Terms'
 import {ThreeVertical} from './ThreeVertical'
+import {SignInForm} from './SignInForm'
 
 export const schemaTypes = [
   Button,
@@ -45,6 +46,7 @@ export const schemaTypes = [
   ThreeImages,
   BlogSlider,
   SignUpForm,
+  SignInForm,
   ContactForm,
   BlogsPage,
   testimonials,
