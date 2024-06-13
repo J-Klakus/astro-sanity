@@ -8,7 +8,7 @@ const isRow = index === 1 || index === 5;
 ---
 
 <article
-	class={`${isRow ? "flex-row-reverse md:col-span-2" : "flex-col"} h-[550px] flex overflow-hidden rounded-lg shadow transition hover:shadow-lg`}
+	class={`${isRow ? "flex-row-reverse md:col-span-2" : "flex-col"} h-[480px] flex overflow-hidden rounded-lg shadow transition hover:shadow-lg`}
 >
 	<div class={`${isRow ? "w-1/2" : "h-1/2"}`}>
 		<Picture
@@ -28,7 +28,7 @@ const isRow = index === 1 || index === 5;
 			<h2 class="mb-2 mt-0.5 font-heading text-2xl font-semibold text-gray-900">{title}</h2>
 		</a>
 
-		<div class="flex items-center">
+		<div class="mt-6 flex items-center">
 			<Picture
 				class="mr-4 h-16 w-16 rounded-full"
 				src={imageHelper(author.image).url()}

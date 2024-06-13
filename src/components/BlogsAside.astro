@@ -1,0 +1,35 @@
+---
+import { sanityClient } from "sanity:client";
+import BlogCard from "./reusable/BlogCard.astro";
+import { type ImageRef } from "../utils/imageHelper";
+
+type Blog = {
+	title: string;
+	slug: { current: string };
+	categories: string[];
+	publishedAt: string;
+	mainImage: ImageRef;
+	verticalImage: ImageRef;
+};
+
+const blogs = await sanityClient.fetch(
+	`*[_type == "blogs" && defined(author)] | order(publishedAt desc) {
+        title,
+        slug,
+        "categories": categories[]->title,
+        publishedAt,
+        mainImage,
+        verticalImage,
+        "author": author->{
+            name,
+            image
+        }
+    }`,
+);
+---
+
+<div class="flex flex-col gap-4 px-4 lg:w-2/6">
+	<h2 class="text-xl font-medium text-gray-600">Related Articles</h2>
+	<BlogCard blog={blogs[0]} />
+	<BlogCard blog={blogs[0]} />
+</div>
