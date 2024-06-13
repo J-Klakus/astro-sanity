@@ -6,49 +6,38 @@ const footerLinks = [
 		section: "COMPANY",
 		items: [
 			{ name: "About", link: "/about" },
-			{ name: "Premium Support", link: "/premium" },
-			{ name: "Blog", link: "/blog" },
+			{ name: "Solutions", link: "/solutions" },
+			{ name: "Pricing", link: "/pricing" },
 			{
-				name: "Affiliate Program",
-				link: "/affiliate-program",
+				name: "Careers",
+				link: "/careers",
 			},
-			{ name: "Get Coupon", link: "/get-coupon" },
+			{ name: "Resources", link: "/resources" },
 		],
 	},
 	{
-		section: "Help and Support",
+		section: "PRODUCT",
+		items: [
+			{ name: "Recruitment Suite", link: "/recruitment-suite" },
+			{
+				name: "AI",
+				link: "/ai",
+			},
+			{ name: "Chat Navigation", link: "/chat" },
+			{ name: "Automation", link: "/automation" },
+			{ name: "Customization", link: "/customization" },
+		],
+	},
+	{
+		section: "CONTACT & LEGAL",
 		items: [
 			{ name: "Contact Us", link: "/contact" },
-			{
-				name: "Knowledge Center",
-				link: "/knowledge-center",
-			},
-			{ name: "Premium Support", link: "/premium" },
-			{ name: "Sponsorships", link: "/sponsorships" },
-		],
-	},
-	{
-		section: "RESOURCES",
-		items: [
-			{
-				name: "Third-Party Tools",
-				link: "/third-party-tools",
-			},
-			{ name: "Illustrations", link: "/illustrations" },
-			{ name: "Themesberg", link: "/themesberg" },
-			{ name: "Bluehost", link: "/bluehost" },
-			{ name: "Stock Photos", link: "/stock-photos" },
-		],
-	},
-	{
-		section: "LEGAL",
-		items: [
 			{ name: "Privacy Policy", link: "/privacy-policy" },
 			{
 				name: "Terms & Conditions",
 				link: "/terms-and-conditions",
 			},
-			{ name: "EULA", link: "/eula" },
+			{ name: "Imprint", link: "/imprint" },
 		],
 	},
 ];
@@ -136,7 +125,7 @@ const footerLinks = [
 				</ul>
 			</div>
 
-			<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-4">
+			<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-3">
 				{
 					footerLinks.map((section: any) => (
 						<div>

@@ -12,9 +12,10 @@ interface Block {
 
 interface TermsProps {
 	body: Block[];
+	title: string;
 }
 
-const { body } = Astro.props as TermsProps;
+const { body, title } = Astro.props as TermsProps;
 
 // Function to extract h2 headings
 function getH2Headings(body: Block[]): string[] {
@@ -38,9 +39,9 @@ const components: any = {
 <div class="py-16">
 	<div class="grid h-44 place-items-center bg-[url('/header.webp')] bg-cover">
 		<h2
-			class="font-heading text-3xl font-medium leading-10 text-white sm:text-4xl md:text-5xl lg:text-6xl"
+			class="pl-6 text-center font-heading text-3xl font-medium leading-10 text-white sm:text-4xl md:text-5xl lg:text-6xl"
 		>
-			Terms & Conditions
+			{title}
 		</h2>
 	</div>
 	<div class="mx-auto flex max-w-7xl flex-col sm:flex-row">
