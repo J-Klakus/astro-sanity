@@ -18,6 +18,7 @@ interface Props {
 const testimonials = await sanityClient.fetch(
 	`*[_type == "testimonials" && defined(author)] | order(publishedAt desc)`,
 );
+
 ---
 
 <section class="bg-gradient-to-b from-transparent to-white lg:pb-14 lg:pt-32">
@@ -36,7 +37,7 @@ const testimonials = await sanityClient.fetch(
 									src={imageHelper(testimonial.image).url()}
 									formats={["avif", "webp"]}
 									alt="A prototype of the app."
-									widths={[400, 800, 1200]}
+									widths={[400, 800, 1200, 1400]}
 									class="aspect-square h-full w-auto rounded-xl object-cover md:aspect-auto"
 									inferSize={true}
 								/>

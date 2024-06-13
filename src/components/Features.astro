@@ -22,137 +22,81 @@ type Features = {
 	header: string;
 	items: FeatureItem[];
 };
-
-// 	{
-// 		icon: "ai",
-// 		title: "Artificial Intelligence",
-// 		list: [
-// 			{
-// 				text: `AI-powered Matchmaking: Forget sifting through countless profiles. Refine your search by simply asking questions using natural language. Airhire identifies and presents the ideal candidates for your open positions, all within seconds.`,
-// 			},
-// 			{
-// 				text: "Generative AI at Your Fingertips: leverage AI to craft compelling candidate briefings, job descriptions, interview questions, email templates and more.",
-// 			},
-// 		],
-// 		link: "/",
-// 	},
-// 	{
-// 		icon: "globe",
-// 		title: "Recruitment Suite",
-// 		list: [
-// 			{
-// 				text: `Effortlessly manage your entire recruitment pipelines, from attracting talent to closing deals, with our comprehensive ATS and CRM solution. From advanced search to managing opportunities and creating candidate shortlists, Airhire streamlines your entire recruitment process.`,
-// 			},
-// 		],
-// 		link: "/",
-// 	},
-// 	{
-// 		icon: "chat",
-// 		title: "Chat Navigation",
-// 		list: [
-// 			{
-// 				text: `Experience the first ever ATS with an intuitive navigation guided directly within the chat input field. You can use natural language to command what your ATS should do next, whether it's adding a new job or reviewing the latest applicants.
-// Learn more`,
-// 			},
-// 		],
-// 		link: "/",
-// 	},
-// 	{
-// 		icon: "automation",
-// 		title: "Automation",
-// 		list: [
-// 			{
-// 				text: `Automate actions based on candidate stage or job status changes. Trigger personalised emails, update hiring managers, or schedule interviews instantly. This frees up your team to focus on building relationships with promising talent and closing deals.
-// Learn more`,
-// 			},
-// 		],
-// 		link: "/",
-// 	},
-// 	{
-// 		icon: "customization",
-// 		title: "Customisation",
-// 		list: [
-// 			{
-// 				text: `You can customise everything from candidate profiles and job postings to pipelines and workflows. This means you can tailor the entire recruitment process to your specific needs, add custom fields for unique information, and create detailed views with preferred filters for efficient searching. Ultimately, our ATS empowers you to build a recruitment experience that perfectly reflects your company's unique approach to finding top talent.
-// Learn more`,
-// 			},
-// 		],
-// 		link: "/",
-// 	},
-// ];
 const { items, title, header } = Astro.props as Features;
 ---
 
 <section
-	class="flex flex-col bg-gradient-to-b from-[#f9f8fd] via-white to-[#e5fcf8] md:flex-row lg:from-[#f2f2fb] lg:to-[#f2f2fb]"
+	class="bg-gradient-to-b from-[#f9f8fd] via-white to-[#e5fcf8] md:flex-row lg:from-[#f2f2fb] lg:to-[#ebfafa]"
 >
-	<div class="grid place-items-start md:w-[55%]">
-		<div class="mx-auto md:ml-[12%]">
-			<div class="p-4">
-				<p
-					class="my-3 w-fit rounded-lg px-2 py-1 font-medium uppercase tracking-wide text-highlight"
-				>
-					{header}
-				</p>
-				<h2 class="mb-5 font-heading text-4xl font-medium leading-10 sm:text-3xl">
-					{title}
-				</h2>
-				{
-					items.map(async (item: FeatureItem, index: number) => (
-						<div>
-							{/* header */}
-							<div
-								tabindex="0"
-								data-image={
-									item.image
-										? await (
-												await getImage({
-													src: imageHelper(item.image).url(),
-													format: "webp",
-													inferSize: true,
-												})
-											).src
-										: features.src
-								}
-								class="accordion-header group flex h-16 cursor-pointer items-center space-x-5 transition md:px-5"
-							>
-								<Icon name={item.icon} size={30} />
-								<h2 class="inline-block bg-text-gradient bg-[length:200%_200%] bg-clip-text font-heading text-2xl font-medium text-transparent group-aria-expanded:animate-text group-aria-expanded:text-[rgba(0,0,0,0)]">
-									{item.title}
-								</h2>
+	<div class="ml-auto flex max-w-7xl flex-col md:flex-row md:justify-between">
+		<div class="grid place-items-start md:w-1/2">
+			<div class="mx-auto">
+				<div class="p-4">
+					<p
+						class="my-3 w-fit rounded-lg px-2 py-1 font-medium uppercase tracking-wide text-highlight"
+					>
+						{header}
+					</p>
+					<h2 class="mb-5 font-heading text-4xl font-medium leading-10 sm:text-3xl">
+						{title}
+					</h2>
+					{
+						items.map(async (item: FeatureItem, index: number) => (
+							<div>
+								{/* header */}
+								<div
+									tabindex="0"
+									data-image={
+										item.image
+											? await (
+													await getImage({
+														src: imageHelper(item.image).url(),
+														format: "webp",
+														inferSize: true,
+													})
+												).src
+											: features.src
+									}
+									class="accordion-header group flex h-16 cursor-pointer items-center space-x-5 transition md:px-5"
+								>
+									<Icon name={item.icon} size={30} />
+									<h2 class="inline-block bg-text-gradient bg-[length:200%_200%] bg-clip-text font-heading text-2xl font-medium text-transparent hover:bg-right group-aria-expanded:bg-right group-aria-expanded:text-[rgba(0,0,0,0)]">
+										{item.title}
+									</h2>
+								</div>
+								{/* Content */}
+								<ul class="accordion-content mb-2 ml-4 max-h-0 max-w-xl list-outside list-disc space-y-2 overflow-hidden border-l border-l-neutral-400 px-5 pl-6 pt-0 tracking-normal text-slate-500 sm:text-xl md:ml-9 md:pl-9">
+									{item.list.map((listItem, i) => (
+										<li class="py-2">{listItem.text}</li>
+									))}
+									<li class="my-3 list-none text-primary">
+										<a href={item.link}>Learn more</a>
+									</li>
+								</ul>
 							</div>
-							{/* Content */}
-							<ul class="accordion-content mb-2 ml-4 max-h-0 max-w-xl list-outside list-disc space-y-2 overflow-hidden border-l border-l-neutral-400 px-5 pl-6 pt-0 tracking-normal text-slate-500 sm:text-xl md:ml-9 md:pl-9">
-								{item.list.map((listItem, i) => (
-									<li class="py-2">{listItem.text}</li>
-								))}
-								<li class="my-3 list-none text-primary">
-									<a href={item.link}>Learn more</a>
-								</li>
-							</ul>
-						</div>
-					))
-				}
+						))
+					}
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="max-w-7xl md:-mt-6 md:w-[45%]">
-		<Image
-			id="featuresImage"
-			src={features}
-			alt="A prototype of the app."
-			loading="eager"
-			class="h-auto w-full object-cover object-left"
-		/>
-	</div>
+		<div class="md:h-screen md:w-1/2">
+			<Image
+				id="featuresImage"
+				src={features}
+				alt="A prototype of the app."
+				loading="eager"
+				class="top-20 h-auto w-full object-cover object-left md:sticky"
+			/>
+		</div>
 
-	<style>
-		.accordion-content {
-			transition:
-				max-height 0.3s ease-out,
-				padding 0.3s ease;
-		}
-	</style>
+		<style>
+			.accordion-content {
+				transition:
+					max-height 0.3s ease-out,
+					padding 0.3s ease;
+			}
+		</style>
+	</div>
 </section>
 <script>
 	document.addEventListener("DOMContentLoaded", function () {
