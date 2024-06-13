@@ -6,7 +6,7 @@ import { Image } from "astro:assets";
 ---
 
 <section
-	class="bg-[url('/spots-tl-mobile.webp')] bg-contain bg-no-repeat sm:bg-[url('/spots-tl.webp')] sm:bg-cover"
+	class="bg-[url('/spots-tl-mobile.webp')] bg-contain bg-no-repeat sm:bg-cover lg:bg-[url('/spots-tl.webp')]"
 >
 	<div class="mx-auto max-w-7xl py-32 md:py-0">
 		<div
@@ -75,7 +75,7 @@ import { Image } from "astro:assets";
 					</div>
 				</form>
 			</div>
-			<div class="max-w-xl lg:w-1/2">
+			<div class="max-w-xl px-4 lg:w-1/2">
 				<Image src={logo} class="mb-8 h-12 w-auto" alt="logo" />
 				<h2
 					class="mb-6 bg-[linear-gradient(112deg,#4B3AB3_40%,#9FFFF3_100%)] bg-clip-text font-heading text-xl font-medium text-transparent sm:text-3xl"
