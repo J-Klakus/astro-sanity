@@ -143,5 +143,22 @@ const { items, title, header } = Astro.props as Features;
 				header.click();
 			}
 		});
+
+		const imageSources: string[] = Array.from(accordionHeaders)
+			.map((header) => header.getAttribute("data-image"))
+			.filter((src): src is string => src !== null);
+		const preload = async () => {
+			await Promise.all(
+				imageSources.map(
+					(a) =>
+						new Promise((res) => {
+							const preloadImage = new Image();
+							preloadImage.onload = res;
+							preloadImage.src = a;
+						}),
+				),
+			);
+		};
+		preload();
 	});
 </script>

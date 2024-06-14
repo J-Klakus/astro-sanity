@@ -28,6 +28,7 @@ import FormButton from "./reusable/FormButton.astro";
 									name="full-name"
 									type="text"
 									placeholder="Full Name"
+									required
 								/>
 							</div>
 							<div class="mb-4">
@@ -51,6 +52,7 @@ import FormButton from "./reusable/FormButton.astro";
 									name="email"
 									type="email"
 									placeholder="Email address"
+									required
 								/>
 							</div>
 							<div class="mb-4">
@@ -74,7 +76,8 @@ import FormButton from "./reusable/FormButton.astro";
 								rows={6}
 								class="focus:shadow-outline w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
 								id="message"
-								name="message"></textarea>
+								name="message"
+								required></textarea>
 						</div>
 					</div>
 					<div class="mt-6 flex justify-end">
