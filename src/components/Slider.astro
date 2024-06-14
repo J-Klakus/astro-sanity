@@ -164,14 +164,19 @@ items = [
 	items.forEach((item) => {
 		const button = document.getElementById(`${item}Button`);
 		const image = document.getElementById("specialImage") as HTMLImageElement;
+
 		if (button) {
 			button.addEventListener("click", () => {
-				// Hide all elements and remove button background class
+				const element = document.getElementById(item);
+				if (element && !element.classList.contains("hidden")) {
+					return;
+				}
+
 				items.forEach((i) => {
-					const element = document.getElementById(i);
+					const el = document.getElementById(i);
 					const btn = document.getElementById(`${i}Button`);
-					if (element) {
-						element.classList.add("hidden");
+					if (el) {
+						el.classList.add("hidden");
 					}
 					if (btn) {
 						(btn.firstElementChild?.firstElementChild as HTMLElement)?.classList.remove(
@@ -179,21 +184,23 @@ items = [
 						);
 					}
 				});
-				const element = document.getElementById(item);
+
 				if (element) {
 					image.style.opacity = "0";
 					setTimeout(() => {
-						// Change the image src
 						image.src = button.getAttribute("data-image") as string;
-						// Fade in the new image
 						image.style.opacity = "1";
-					}, 300); // Ensure this delay matches the transition duration in CSS
+					}, 300);
+
 					element.classList.remove("hidden");
+					(button.firstElementChild?.firstElementChild as HTMLElement)?.classList.add(
+						"bg-verylight",
+					);
 				}
-				(button.firstElementChild?.firstElementChild as HTMLElement)?.classList.add("bg-verylight");
 			});
 		}
 	});
+
 	const totalElements = 14;
 	let elementsPerPage = 2;
 	if (window.innerWidth > 1024) {
@@ -371,7 +378,7 @@ items = [
 
 		window.addEventListener("load", () => {
 			const elementWidth = scroller.scrollWidth / totalElements;
-			const initialScrollLeft = elementWidth * 1; // Index 1 for the second element
+			const initialScrollLeft = elementWidth * 1;
 			smoothScroll(scroller, initialScrollLeft, true);
 
 			const elementsWithButtonId = document.querySelectorAll('[id*="Button"]');

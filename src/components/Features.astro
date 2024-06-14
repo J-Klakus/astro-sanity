@@ -105,48 +105,42 @@ const { items, title, header } = Astro.props as Features;
 		const accordionHeaders = document.querySelectorAll(
 			".accordion-header",
 		) as NodeListOf<HTMLElement>;
+		let currentlyOpenAccordion: HTMLElement | null = null;
 
 		accordionHeaders.forEach((header, index) => {
 			header.addEventListener("click", function () {
 				const accordionContent = header.parentElement?.querySelector(
 					".accordion-content",
 				) as HTMLElement;
-				const currentlyOpenAccordion = document.querySelector(
-					".accordion-content[style*='max-height']:not([style*='max-height: 0px'])",
-				) as HTMLElement;
 
-				// Close the currently open accordion content if it exists and is not the one being clicked
+				const isOpening =
+					!accordionContent.style.maxHeight || accordionContent.style.maxHeight === "0px";
+
 				if (currentlyOpenAccordion && currentlyOpenAccordion !== accordionContent) {
 					currentlyOpenAccordion.style.maxHeight = `0px`;
 					const openHeader = currentlyOpenAccordion.previousElementSibling as HTMLElement;
 					if (openHeader) openHeader.setAttribute("aria-expanded", "false");
 				}
-				if (header) {
-					// Fade out the current image
+
+				if (isOpening) {
 					image.style.opacity = "0";
 					setTimeout(() => {
-						// Change the image src
 						image.src = header.getAttribute("data-image") as string;
-						// Fade in the new image
 						image.style.opacity = "1";
-					}, 300); // Ensure this delay matches the transition duration in CSS
-				}
+					}, 300); 
 
-				// Toggle the clicked accordion content
-				let accordionMaxHeight = accordionContent.style.maxHeight;
-				if (accordionMaxHeight === "0px" || accordionMaxHeight.length === 0) {
 					accordionContent.style.maxHeight = `${accordionContent.scrollHeight + 32}px`;
 					header.setAttribute("aria-expanded", "true");
+
+					currentlyOpenAccordion = accordionContent;
 				} else {
 					accordionContent.style.maxHeight = `0px`;
 					header.setAttribute("aria-expanded", "false");
+					currentlyOpenAccordion = null;
 				}
 			});
 
-			// Set initial ARIA attributes
 			header.setAttribute("aria-expanded", "false");
-
-			// Open the first item by default
 			if (index === 0) {
 				header.click();
 			}
@@ -155,6 +149,7 @@ const { items, title, header } = Astro.props as Features;
 		const imageSources: string[] = Array.from(accordionHeaders)
 			.map((header) => header.getAttribute("data-image"))
 			.filter((src): src is string => src !== null);
+
 		const preload = async () => {
 			await Promise.all(
 				imageSources.map(
@@ -167,6 +162,8 @@ const { items, title, header } = Astro.props as Features;
 				),
 			);
 		};
+
 		preload();
 	});
+
 </script>
