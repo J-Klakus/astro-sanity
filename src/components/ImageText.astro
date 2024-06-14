@@ -96,6 +96,8 @@ const styledBackground =
 				fallbackFormat="jpg"
 				src={imageHelper(image).url()}
 				formats={["avif", "webp"]}
+				loading={first ? "eager" : "lazy"}
+				decoding={first ? "auto" : "async"}
 				alt={imageAlt}
 				sizes={largeImage
 					? "(max-width: 1024px) 100vw, (max-width: 1152px) 60vw, 624px"

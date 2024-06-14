@@ -80,6 +80,8 @@ const {
 					src={imageHelper(image).url()}
 					formats={["avif", "webp"]}
 					alt={imageAlt}
+					loading={first ? "eager" : "lazy"}
+					decoding={first ? "auto" : "async"}
 					sizes={largeImage
 						? "(max-width: 1024px) 100vw, (max-width: 1152px) 60vw, 624px"
 						: "(max-width: 1024px) 100vw, (max-width: 1152px) 30vw, 624px"}
