@@ -65,7 +65,7 @@ const { items, title, header } = Astro.props as Features;
 									</h2>
 								</div>
 								{/* Content */}
-								<ul class="accordion-content mb-2 ml-4 max-h-0 max-w-xl list-outside list-disc space-y-2 overflow-hidden border-l border-l-neutral-400 px-5 pl-6 pt-0 tracking-normal text-slate-500 sm:text-xl md:ml-9 md:pl-9">
+								<ul class="accordion-content mb-2 ml-4 max-h-0 max-w-lg list-outside list-disc space-y-2 overflow-hidden border-l border-l-neutral-400 px-5 pl-6 pt-0 tracking-normal text-slate-500 sm:text-lg md:ml-9 md:pl-9">
 									{item.list.map((listItem, i) => (
 										<li class="py-2">{listItem.text}</li>
 									))}
@@ -85,7 +85,7 @@ const { items, title, header } = Astro.props as Features;
 				src={features}
 				alt="A prototype of the app."
 				loading="eager"
-				class="top-20 h-auto w-full object-cover object-left md:sticky"
+				class="top-20 h-auto w-full object-cover object-left transition-opacity duration-300 ease-in-out md:sticky"
 			/>
 		</div>
 
@@ -121,7 +121,14 @@ const { items, title, header } = Astro.props as Features;
 					if (openHeader) openHeader.setAttribute("aria-expanded", "false");
 				}
 				if (header) {
-					image.src = header.getAttribute("data-image") as string;
+					// Fade out the current image
+					image.style.opacity = "0";
+					setTimeout(() => {
+						// Change the image src
+						image.src = header.getAttribute("data-image") as string;
+						// Fade in the new image
+						image.style.opacity = "1";
+					}, 300); // Ensure this delay matches the transition duration in CSS
 				}
 
 				// Toggle the clicked accordion content

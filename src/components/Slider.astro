@@ -110,7 +110,7 @@ items = [
 			src={hero}
 			alt="A prototype of the app."
 			loading="eager"
-			class="h-full w-auto rounded-xl pt-2 shadow-[0px_-20px_100px_50px_rgba(229,248,249,0.5)] lg:pt-0"
+			class="h-full w-auto rounded-xl pt-2 shadow-[0px_-20px_100px_50px_rgba(229,248,249,0.5)] transition-opacity duration-300 ease-in-out lg:pt-0"
 		/>
 		<div
 			style={`background-image: url(${optimizedCardBackground.src})`}
@@ -181,7 +181,13 @@ items = [
 				});
 				const element = document.getElementById(item);
 				if (element) {
-					image.src = button.getAttribute("data-image") as string;
+					image.style.opacity = "0";
+					setTimeout(() => {
+						// Change the image src
+						image.src = button.getAttribute("data-image") as string;
+						// Fade in the new image
+						image.style.opacity = "1";
+					}, 300); // Ensure this delay matches the transition duration in CSS
 					element.classList.remove("hidden");
 				}
 				(button.firstElementChild?.firstElementChild as HTMLElement)?.classList.add("bg-verylight");
@@ -367,6 +373,25 @@ items = [
 			const elementWidth = scroller.scrollWidth / totalElements;
 			const initialScrollLeft = elementWidth * 1; // Index 1 for the second element
 			smoothScroll(scroller, initialScrollLeft, true);
+
+			const elementsWithButtonId = document.querySelectorAll('[id*="Button"]');
+
+			const imageSources: string[] = Array.from(elementsWithButtonId)
+				.map((button) => button.getAttribute("data-image"))
+				.filter((src): src is string => src !== null);
+			const preload = async () => {
+				await Promise.all(
+					imageSources.map(
+						(a) =>
+							new Promise((res) => {
+								const preloadImage = new Image();
+								preloadImage.onload = res;
+								preloadImage.src = a;
+							}),
+					),
+				);
+			};
+			preload();
 		});
 	}
 </script>
