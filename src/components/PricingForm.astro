@@ -1,6 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
-import Button from "./reusable/Button.astro";
+import FormButton from "./reusable/FormButton.astro";
 ---
 
 <section
@@ -11,7 +10,10 @@ import Button from "./reusable/Button.astro";
 			class="mx-auto flex flex-col-reverse items-center justify-center px-4 md:gap-8 lg:flex-row lg:gap-16"
 		>
 			<div class="bg-white p-2 md:my-8 md:px-12 md:py-8 lg:w-1/2">
-				<form>
+				<form action="https://submit-form.com/MTMFENfyt">
+					<input type="hidden" name="_redirect" value={Astro.site + "success"} />
+					<input type="hidden" name="_error" value={Astro.site + "error"} />
+					<input type="hidden" name="_append" value="false" />
 					<p class="mb-6 font-heading text-2xl font-medium text-primary md:text-3xl">Lets Talk!</p>
 					<div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-y-0">
 						<!-- Left Side -->
@@ -23,6 +25,7 @@ import Button from "./reusable/Button.astro";
 								<input
 									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
 									id="full-name"
+									name="full-name"
 									type="text"
 									placeholder="Full Name"
 								/>
@@ -32,6 +35,7 @@ import Button from "./reusable/Button.astro";
 								<input
 									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
 									id="phone"
+									name="phone"
 									type="text"
 									placeholder="(000) 000 000 000"
 								/>
@@ -44,6 +48,7 @@ import Button from "./reusable/Button.astro";
 								<input
 									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
 									id="email"
+									name="email"
 									type="email"
 									placeholder="Email address"
 								/>
@@ -55,6 +60,7 @@ import Button from "./reusable/Button.astro";
 								<input
 									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
 									id="company"
+									name="company"
 									type="text"
 									placeholder="Company name"
 								/>
@@ -67,11 +73,12 @@ import Button from "./reusable/Button.astro";
 							<textarea
 								rows={6}
 								class="focus:shadow-outline w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
-								id="website"></textarea>
+								id="message"
+								name="message"></textarea>
 						</div>
 					</div>
 					<div class="mt-6 flex justify-end">
-						<Button buttonText="Submit" link="/" type="filled" />
+						<FormButton buttonText="Submit" link="/" type="filled" />
 					</div>
 				</form>
 			</div>

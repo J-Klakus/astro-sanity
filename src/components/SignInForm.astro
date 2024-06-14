@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components";
 import logo from "../icons/iconGradient.svg";
 import Button from "./reusable/Button.astro";
 import { Image } from "astro:assets";
+import FormButton from "./reusable/FormButton.astro";
 ---
 
 <section
@@ -13,12 +14,15 @@ import { Image } from "astro:assets";
 			class="mx-auto flex flex-col-reverse items-center justify-center gap-8 px-4 lg:flex-row lg:gap-16"
 		>
 			<div class="w-full max-w-sm bg-white p-2 lg:w-1/2 lg:max-w-none lg:px-12 lg:py-52">
-				<form>
+				<form action="https://submit-form.com/MTMFENfyt">
 					<p
 						class="mb-6 bg-[linear-gradient(112deg,#4B3AB3_20%,#9FFFF3_100%)] bg-clip-text font-heading text-xl font-medium text-transparent sm:text-3xl"
 					>
 						Welcome Back
 					</p>
+					<input type="hidden" name="_redirect" value={Astro.site + "success"} />
+					<input type="hidden" name="_error" value={Astro.site + "error"} />
+					<input type="hidden" name="_append" value="false" />
 					<div class="flex">
 						<button
 							type="button"
@@ -72,6 +76,7 @@ import { Image } from "astro:assets";
 								<input
 									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
 									id="email"
+									name="email"
 									type="email"
 									placeholder="Email Address"
 								/>
@@ -99,10 +104,10 @@ import { Image } from "astro:assets";
 					<div class="mt-6 flex flex-col justify-between gap-4 md:flex-row md:gap-0">
 						<p>
 							Don’t have an account yet? <a href="/sign-up" class="font-medium text-primary">
-								Sign In</a
+								Sign Up</a
 							>
 						</p>
-						<Button buttonText="Start a free trial" link="/sign-up" type="filled" />
+						<FormButton buttonText="Start a free trial" link="/" type="filled" />
 					</div>
 				</form>
 			</div>

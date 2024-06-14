@@ -20,7 +20,7 @@ const isRow = index === 1 || index === 5;
 	href={"/blogs/" + slug.current}
 >
 	<article
-		class={`${isRow ? "flex-row-reverse md:col-span-2" : "flex-col"} h-[480px] flex overflow-hidden rounded-lg shadow transition hover:shadow-lg`}
+		class={`${isRow ? "flex-row-reverse md:col-span-2" : "flex-col"} h-[480px] w-full flex overflow-hidden rounded-lg shadow transition hover:shadow-lg`}
 	>
 		<div class={`${isRow ? "w-1/2" : "h-1/2"}`}>
 			<Picture

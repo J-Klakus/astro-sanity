@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import Button from "./reusable/Button.astro";
+import FormButton from "./reusable/FormButton.astro";
 import logo from "../icons/iconGradient.svg";
 import { Image } from "astro:assets";
 ---
@@ -13,11 +13,14 @@ import { Image } from "astro:assets";
 			class="mx-auto flex flex-col-reverse items-center justify-center gap-8 px-4 lg:flex-row-reverse"
 		>
 			<div class="w-full max-w-sm bg-white p-2 lg:w-1/2 lg:max-w-none lg:px-12 lg:py-52">
-				<form>
+				<form action="https://submit-form.com/MTMFENfyt">
 					<p class="mb-6 font-heading font-medium text-primary sm:text-2xl">Lets Talk!</p>
 					<div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-y-0">
 						<div class="col-span-1">
 							<div class="mb-4">
+								<input type="hidden" name="_redirect" value={Astro.site + "success"} />
+								<input type="hidden" name="_error" value={Astro.site + "error"} />
+								<input type="hidden" name="_append" value="false" />
 								<label class="mb-2 block text-sm font-medium text-primary" for="full-name"
 									>Name</label
 								>
@@ -25,7 +28,9 @@ import { Image } from "astro:assets";
 									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
 									id="full-name"
 									type="text"
+									name="full-name"
 									placeholder="Full Name"
+									required
 								/>
 							</div>
 							<div class="mb-4">
@@ -45,7 +50,9 @@ import { Image } from "astro:assets";
 									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
 									id="email"
 									type="email"
+									name="email"
 									placeholder="Email address"
+									required
 								/>
 							</div>
 							<div class="mb-4">
@@ -55,6 +62,7 @@ import { Image } from "astro:assets";
 								<input
 									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
 									id="company"
+									name="company"
 									type="text"
 									placeholder="Company name"
 								/>
@@ -66,12 +74,14 @@ import { Image } from "astro:assets";
 							>
 							<textarea
 								rows={6}
+								name="message"
 								class="focus:shadow-outline w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
-								id="website"></textarea>
+								id="message"
+								required></textarea>
 						</div>
 					</div>
 					<div class="mt-6 flex justify-start md:justify-end">
-						<Button buttonText="Submit" link="/" type="filled" />
+						<FormButton buttonText="Submit" link="/" type="filled" />
 					</div>
 				</form>
 			</div>

@@ -1,0 +1,30 @@
+---
+const { class: className, type, buttonText, link, arrow } = Astro.props as Props;
+import { Icon } from "astro-icon/components";
+import { twMerge } from "tailwind-merge";
+
+interface Props {
+	buttonText: string;
+	link: string;
+	class?: string;
+	type: "filled" | "outline";
+	arrow?: boolean;
+}
+const filledClasses = `
+  bg-text-gradient bg-[position:_100%_100%] hover:bg-[position:_0%_0%] bg-[size:_200%] relative inline-flex items-center justify-center p-4 px-5 py-3 lg:max-h-12 overflow-hidden font-medium text-white rounded-xl transition-all duration-500 ease-in-out
+`;
+const outlineClasses = `
+  bg-[#F3F3FB] inline-flex items-center justify-center px-4 py-3 font-medium leading-6 text-primary hover:shadow-[0_0_10px_2px_rgba(75,58,179,0.3)] rounded-xl transition duration-500 ease-in-out
+`;
+
+const typeClasses = type === "filled" ? filledClasses : outlineClasses;
+
+const combinedClasses = twMerge(typeClasses, className);
+---
+
+<button class={combinedClasses} type="submit">
+	<span class="inline-flex items-center text-center">
+		{buttonText}
+		{arrow && <Icon name="arrowRight" class="ml-2 text-inherit" />}
+	</span>
+</button>

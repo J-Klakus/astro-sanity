@@ -1,8 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
 import logo from "../icons/iconGradient.svg";
-import Button from "./reusable/Button.astro";
 import { Image } from "astro:assets";
+import FormButton from "./reusable/FormButton.astro";
 ---
 
 <section
@@ -13,10 +13,13 @@ import { Image } from "astro:assets";
 			class="mx-auto flex flex-col-reverse items-center justify-center gap-8 px-4 lg:flex-row lg:gap-16"
 		>
 			<div class="w-full max-w-sm bg-white p-2 lg:w-1/2 lg:max-w-none lg:px-12 lg:py-52">
-				<form>
+				<form action="https://submit-form.com/MTMFENfyt">
 					<p class="mb-6 font-heading font-medium text-primary sm:text-lg lg:text-2xl">
 						Product Demo Sign Up
 					</p>
+					<input type="hidden" name="_redirect" value={Astro.site + "success"} />
+					<input type="hidden" name="_error" value={Astro.site + "error"} />
+					<input type="hidden" name="_append" value="false" />
 					<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
 						<!-- Left Side -->
 						<div>
@@ -27,6 +30,7 @@ import { Image } from "astro:assets";
 								<input
 									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
 									id="full-name"
+									name="full-name"
 									type="text"
 									placeholder="Full Name"
 								/>
@@ -36,6 +40,7 @@ import { Image } from "astro:assets";
 								<input
 									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
 									id="phone"
+									name="phone"
 									type="text"
 									placeholder="(000) 000 000 000"
 								/>
@@ -47,6 +52,7 @@ import { Image } from "astro:assets";
 								<input
 									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
 									id="website"
+									name="website"
 									type="text"
 									placeholder="https://"
 								/>
@@ -60,6 +66,7 @@ import { Image } from "astro:assets";
 									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
 									id="email"
 									type="email"
+									name="email"
 									placeholder="Email address"
 								/>
 							</div>
@@ -81,6 +88,7 @@ import { Image } from "astro:assets";
 								<input
 									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
 									id="position"
+									name="position"
 									type="text"
 									placeholder="Your job position"
 								/>
@@ -93,7 +101,7 @@ import { Image } from "astro:assets";
 								Sign in</a
 							>
 						</p>
-						<Button buttonText="Start a free trial" link="/sign-up" type="filled" />
+						<FormButton buttonText="Start a free trial" link="/" type="filled" />
 					</div>
 				</form>
 			</div>
