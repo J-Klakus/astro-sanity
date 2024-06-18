@@ -28,8 +28,8 @@ const { items, title, header } = Astro.props as Features;
 <section
 	class="bg-gradient-to-b from-[#f9f8fd] via-white to-[#e5fcf8] md:flex-row lg:from-[#f2f2fb] lg:to-[#ebfafa]"
 >
-	<div class="ml-auto flex max-w-7xl flex-col md:flex-row md:justify-between">
-		<div class="grid place-items-start md:w-1/2">
+	<div class="mx-auto flex max-w-7xl flex-col md:flex-row md:justify-between md:gap-4">
+		<div class="grid place-items-start md:w-[55%]">
 			<div class="mx-auto">
 				<div class="p-4">
 					<p
@@ -66,7 +66,7 @@ const { items, title, header } = Astro.props as Features;
 									</h2>
 								</div>
 								{/* Content */}
-								<ul class="accordion-content mb-2 ml-4 max-h-0 max-w-lg list-outside list-disc space-y-2 overflow-hidden border-l border-l-neutral-400 px-5 pl-6 pt-0 tracking-normal text-slate-500 sm:text-lg md:ml-9 md:pl-9">
+								<ul class="accordion-content mb-2 ml-4 max-h-0 max-w-2xl list-outside list-disc space-y-2 overflow-hidden border-l border-l-neutral-400 px-5 pl-6 pt-0 tracking-normal text-slate-500 sm:text-xl md:ml-9 md:pl-9">
 									{item.list.map((listItem, i) => (
 										<li class="py-2">{listItem.text}</li>
 									))}
@@ -80,7 +80,7 @@ const { items, title, header } = Astro.props as Features;
 				</div>
 			</div>
 		</div>
-		<div class="md:h-screen md:w-1/2">
+		<div class="md:-mr-[8vw] md:h-[800px] md:w-1/2">
 			<Image
 				id="featuresImage"
 				src={features}
@@ -127,7 +127,7 @@ const { items, title, header } = Astro.props as Features;
 					setTimeout(() => {
 						image.src = header.getAttribute("data-image") as string;
 						image.style.opacity = "1";
-					}, 300); 
+					}, 300);
 
 					accordionContent.style.maxHeight = `${accordionContent.scrollHeight + 32}px`;
 					header.setAttribute("aria-expanded", "true");
@@ -165,5 +165,4 @@ const { items, title, header } = Astro.props as Features;
 
 		preload();
 	});
-
 </script>

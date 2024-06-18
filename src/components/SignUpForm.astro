@@ -15,6 +15,7 @@ const { title, text, text2, formTitle, list } = Astro.props;
 		>
 			<div class="w-full max-w-sm bg-white p-2 lg:w-1/2 lg:max-w-none lg:px-12 lg:py-52">
 				<form action="https://submit-form.com/MTMFENfyt">
+					<input type="hidden" name="form-type" value="sign up form" />
 					{
 						formTitle && (
 							<p class="mb-6 bg-[linear-gradient(112deg,#4B3AB3_20%,#9FFFF3_100%)] bg-clip-text font-heading text-xl font-medium text-transparent sm:text-3xl">

@@ -1,46 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
+import { sanityClient } from "sanity:client";
 
-const footerLinks = [
-	{
-		section: "COMPANY",
-		items: [
-			{ name: "About", link: "/about" },
-			{ name: "Solutions", link: "/solutions" },
-			{ name: "Pricing", link: "/pricing" },
-			{
-				name: "Careers",
-				link: "/careers",
-			},
-			{ name: "Resources", link: "/resources" },
-		],
-	},
-	{
-		section: "PRODUCT",
-		items: [
-			{ name: "Recruitment Suite", link: "/recruitment-suite" },
-			{
-				name: "AI",
-				link: "/ai",
-			},
-			{ name: "Chat Navigation", link: "/chat" },
-			{ name: "Automation", link: "/automation" },
-			{ name: "Customization", link: "/customization" },
-		],
-	},
-	{
-		section: "CONTACT & LEGAL",
-		items: [
-			{ name: "Contact Us", link: "/contact" },
-			{ name: "Privacy Policy", link: "/privacy-policy" },
-			{
-				name: "Terms & Conditions",
-				link: "/terms-and-conditions",
-			},
-			{ name: "Imprint", link: "/imprint" },
-		],
-	},
-];
+const footer = await sanityClient.fetch(`*[_type == "footer"][0]`);
+const { points, pointTitle, description, sections, socialLinks } = footer;
 ---
 
 <footer class="bg-white">
@@ -50,12 +13,13 @@ const footerLinks = [
 		>
 			<li class="hidden w-full flex-grow items-center justify-start font-medium sm:w-auto lg:flex">
 				<Icon name="logoNoText" class="mr-2 h-auto w-6" />
-				Your AI-driven ATS & CRM
+				{pointTitle}
 			</li>
-			<li class="w-1/2 sm:w-auto sm:flex-grow">24/7 Support</li>
-			<li class="w-1/2 sm:w-auto sm:flex-grow">Weekly updates</li>
-			<li class="w-1/2 sm:w-auto sm:flex-grow">Secure and compliant</li>
-			<li class="w-1/2 sm:w-auto sm:flex-grow">99,99% uptime</li>
+			{
+				points
+					.slice(0, 4)
+					.map((point: any) => <li class="w-1/2 sm:w-auto sm:flex-grow">{point}</li>)
+			}
 		</ul>
 	</div>
 	<div class="mx-auto max-w-screen-xl space-y-8 px-8 py-4 sm:px-6 sm:py-16 lg:space-y-16 lg:px-8">
@@ -63,71 +27,37 @@ const footerLinks = [
 			<div>
 				<div>
 					<a href="/" aria-label="Home Page">
-						<Icon name="logoCapital" class="h-auto w-28" />
+						<Icon name="logo" class="h-auto w-28" />
 					</a>
 				</div>
 
 				<p class="mt-4 max-w-xs text-gray-500">
-					Airhire has been developed by seasoned recruiters together with AI experts to combine
-					industry expertise and finally create an ATS & CRM that is intuitive, customisable,
-					powerful and revolutionary.
+					{description}
 				</p>
 
 				<ul class="mt-8 flex gap-6">
-					<li>
-						<a
-							href="#"
-							rel="noreferrer"
-							target="_blank"
-							class="text-gray-700 transition hover:opacity-75"
-						>
-							<span class="sr-only">GitHub</span>
+					{
+						socialLinks.map((link: { link: string; platform: string; icon: string }) => (
+							<li>
+								<a
+									href={link.link}
+									rel="noreferrer"
+									target="_blank"
+									class="text-gray-700 transition duration-300 hover:text-primary"
+								>
+									<span class="sr-only">{link.platform}</span>
 
-							<Icon name="github" size={28} />
-						</a>
-					</li>
-					<li>
-						<a
-							href="#"
-							rel="noreferrer"
-							target="_blank"
-							class="text-gray-700 transition hover:opacity-75"
-						>
-							<span class="sr-only">Twitter</span>
-
-							<Icon name="twitter" size={28} />
-						</a>
-					</li>
-					<li>
-						<a
-							href="#"
-							rel="noreferrer"
-							target="_blank"
-							class="text-gray-700 transition hover:opacity-75"
-						>
-							<span class="sr-only">Dribble</span>
-
-							<Icon name="dribbble" size={28} />
-						</a>
-					</li>
-					<li>
-						<a
-							href="#"
-							rel="noreferrer"
-							target="_blank"
-							class="text-gray-700 transition hover:opacity-75"
-						>
-							<span class="sr-only">Facebook</span>
-
-							<Icon name="facebook" size={28} />
-						</a>
-					</li>
+									<Icon name={link.icon} size={28} />
+								</a>
+							</li>
+						))
+					}
 				</ul>
 			</div>
 
 			<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 lg:grid-cols-3">
 				{
-					footerLinks.map((section: any) => (
+					sections.map((section: any) => (
 						<div>
 							<p class="font-medium uppercase text-gray-900">{section.section}</p>
 

@@ -16,6 +16,7 @@ const { title, text, text2, formTitle, list } = Astro.props;
 		>
 			<div class="w-full max-w-sm bg-white p-2 lg:w-1/2 lg:max-w-none lg:px-12 lg:py-52">
 				<form action="https://submit-form.com/MTMFENfyt">
+					<input type="hidden" name="form-type" value="contact form" />
 					{
 						formTitle && (
 							<p class="mb-6 font-heading font-medium text-primary sm:text-2xl">{formTitle}</p>

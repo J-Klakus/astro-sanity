@@ -5,36 +5,32 @@ let path = Astro.url.pathname;
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
 interface Props {
-  metaTitle: string;
-  metaDescription: string;
-  metaImage?: string;
+	metaTitle: string;
+	metaDescription: string;
+	metaImage?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const {
-  metaTitle,
-  metaDescription,
-  metaImage = "/blog-placeholder-1.jpg",
-} = Astro.props;
+const { metaTitle, metaDescription, metaImage = "/blog-placeholder-1.jpg" } = Astro.props;
 
 let title = "";
 if (path === "/") {
-  title = `Home | ${SITE_TITLE}`;
+	title = `Home | ${SITE_TITLE}`;
 } else {
-  title = metaTitle
-    ? `${metaTitle} | ${SITE_TITLE}`.trim()
-    : path
-        .split("-")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ")
-        .split("/")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .filter((p) => p !== "")
-        .join(" | ")
-        .replaceAll("%20", " ") +
-      " | " +
-      SITE_TITLE.trim();
+	title = metaTitle
+		? `${metaTitle} | ${SITE_TITLE}`.trim()
+		: path
+				.split("-")
+				.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+				.join(" ")
+				.split("/")
+				.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+				.filter((p) => p !== "")
+				.join(" | ")
+				.replaceAll("%20", " ") +
+			" | " +
+			SITE_TITLE.trim();
 }
 ---
 
@@ -44,21 +40,25 @@ if (path === "/") {
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Font preloads -->
-<!-- <link
-  rel="preload"
-  href="/fonts/atkinson-regular.woff"
-  as="font"
-  type="font/woff"
-  crossorigin
-/>
-<link
-  rel="preload"
-  href="/fonts/atkinson-bold.woff"
-  as="font"
-  type="font/woff"
-  crossorigin
-/> -->
+<!-- Google Analytics -->
+<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-V9QPK6MZCX"></script>
+
+<script>
+	declare global {
+		interface Window {
+			dataLayer: any[];
+		}
+	}
+
+	window.dataLayer = window.dataLayer || [];
+
+	function gtag(...args: any[]) {
+		window.dataLayer.push(args);
+	}
+
+	gtag("js", new Date());
+	gtag("config", "G-V9QPK6MZCX");
+</script>
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
