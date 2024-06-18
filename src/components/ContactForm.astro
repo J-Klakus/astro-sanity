@@ -3,6 +3,8 @@ import { Icon } from "astro-icon/components";
 import FormButton from "./reusable/FormButton.astro";
 import logo from "../icons/iconGradient.svg";
 import { Image } from "astro:assets";
+
+const { title, text, text2, formTitle, list } = Astro.props;
 ---
 
 <section
@@ -14,7 +16,11 @@ import { Image } from "astro:assets";
 		>
 			<div class="w-full max-w-sm bg-white p-2 lg:w-1/2 lg:max-w-none lg:px-12 lg:py-52">
 				<form action="https://submit-form.com/MTMFENfyt">
-					<p class="mb-6 font-heading font-medium text-primary sm:text-2xl">Lets Talk!</p>
+					{
+						formTitle && (
+							<p class="mb-6 font-heading font-medium text-primary sm:text-2xl">{formTitle}</p>
+						)
+					}
 					<div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-y-0">
 						<div class="col-span-1">
 							<div class="mb-4">
@@ -90,34 +96,26 @@ import { Image } from "astro:assets";
 				<h2
 					class="mb-6 bg-[linear-gradient(112deg,#4B3AB3_40%,#9FFFF3_100%)] bg-clip-text font-heading text-xl font-medium text-transparent sm:text-3xl"
 				>
-					Revolutionize your recruitment and achieve unmatched results.
+					{title}
 				</h2>
-				<ul class="space-y-4 font-heading font-medium text-black sm:text-xl">
-					<li>
-						<Icon name="tick" class="mb-0.5 mr-2 inline" size={20} /> Tap into expertise <p
-							class="mb-6 ml-8 font-heading text-base font-normal text-gray-900"
-						>
-							Connect with a product consultant to learn how Airhire can transform your recruitment
-							strategy globally.
-						</p>
-					</li>
-					<li>
-						<Icon name="tick" class="mb-0.5 mr-2 inline" size={20} /> Proven Success <p
-							class="mb-6 ml-8 font-heading text-base font-normal text-gray-900"
-						>
-							Join our growing community of satisfied clients and find a pricing plan that matches
-							your business objectives.
-						</p>
-					</li>
-					<li>
-						<Icon name="tick" class="mb-0.5 mr-2 inline" size={20} /> Flexibility <p
-							class="mb-6 ml-8 font-heading text-base font-normal text-gray-900"
-						>
-							Boost productivity from day one by customizing workflows that fit your team’s unique
-							recruitment processes.
-						</p>
-					</li>
-				</ul>
+				{text && <p class="mb-6 font-heading font-normal text-gray-500">{text}</p>}
+				{text2 && <p class="mb-6 font-heading font-normal text-gray-500">{text2}</p>}
+				{
+					list && (
+						<ul class="space-y-4 font-heading font-medium text-black sm:text-xl">
+							{list.map((item: { title: string; text: string }) => (
+								<li>
+									<Icon name="tick" class="mb-0.5 mr-2 inline" size={20} /> {item.title}{" "}
+									{item.text &&
+																		<p class="mb-6 ml-8 font-heading text-base font-normal text-gray-900">
+										{item.text}
+									</p>
+									}
+								</li>
+							))}
+						</ul>
+					)
+				}
 			</div>
 		</div>
 	</div>

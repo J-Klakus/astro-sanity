@@ -28,6 +28,8 @@ import {PricingFeatures} from './PricingFeatures'
 import {Terms} from './Terms'
 import {ThreeVertical} from './ThreeVertical'
 import {SignInForm} from './SignInForm'
+import {Footer} from './Footer'
+import {Navbar} from './Navbar'
 
 export const schemaTypes = [
   Button,
@@ -55,6 +57,8 @@ export const schemaTypes = [
   Faq,
   PricingFeatures,
   ThreeVertical,
+  Footer,
+  Navbar,
   Terms,
   author,
   category,

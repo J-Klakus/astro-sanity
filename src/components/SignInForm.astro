@@ -1,9 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
 import logo from "../icons/iconGradient.svg";
-import Button from "./reusable/Button.astro";
 import { Image } from "astro:assets";
 import FormButton from "./reusable/FormButton.astro";
+const { title, text, text2, formTitle, list } = Astro.props;
 ---
 
 <section
@@ -15,11 +15,13 @@ import FormButton from "./reusable/FormButton.astro";
 		>
 			<div class="w-full max-w-sm bg-white p-2 lg:w-1/2 lg:max-w-none lg:px-12 lg:py-52">
 				<form action="https://submit-form.com/MTMFENfyt">
-					<p
-						class="mb-6 bg-[linear-gradient(112deg,#4B3AB3_20%,#9FFFF3_100%)] bg-clip-text font-heading text-xl font-medium text-transparent sm:text-3xl"
-					>
-						Welcome Back
-					</p>
+					{
+						formTitle && (
+							<p class="mb-6 bg-[linear-gradient(112deg,#4B3AB3_20%,#9FFFF3_100%)] bg-clip-text font-heading text-xl font-medium text-transparent sm:text-3xl">
+								{formTitle}
+							</p>
+						)
+					}
 					<input type="hidden" name="_redirect" value={Astro.site + "success"} />
 					<input type="hidden" name="_error" value={Astro.site + "error"} />
 					<input type="hidden" name="_append" value="false" />
@@ -114,14 +116,29 @@ import FormButton from "./reusable/FormButton.astro";
 			</div>
 			<div class="lg:w-1/2">
 				<Image src={logo} class="mb-8 mt-6 h-12 w-auto md:mt-0" alt="logo" />
-				<h2 class="mb-6 font-heading text-3xl font-medium text-primary lg:text-4xl">
-					Start Your Journey with Airhire Today
+				<h2
+					class="mb-6 bg-[linear-gradient(112deg,#4B3AB3_40%,#9FFFF3_100%)] bg-clip-text font-heading text-xl font-medium text-transparent sm:text-3xl"
+				>
+					{title}
 				</h2>
-				<p class="mb-6 font-heading text-primary">
-					Sign up to access our comprehensive recruitment tools designed for efficiency and
-					collaboration. Enhance your hiring process with AI-driven insights and seamless
-					integration.
-				</p>
+				{text && <p class="mb-6 font-heading font-normal text-gray-500">{text}</p>}
+				{text2 && <p class="mb-6 font-heading font-normal text-gray-500">{text2}</p>}
+				{
+					list && (
+						<ul class="space-y-4 font-heading font-medium text-black sm:text-xl">
+							{list.map((item: { title: string; text: string }) => (
+								<li>
+									<Icon name="tick" class="mb-0.5 mr-2 inline" size={20} /> {item.title}{" "}
+									{item.text &&
+																		<p class="mb-6 ml-8 font-heading text-base font-normal text-gray-900">
+										{item.text}
+									</p>
+									}
+								</li>
+							))}
+						</ul>
+					)
+				}
 			</div>
 		</div>
 	</div>
