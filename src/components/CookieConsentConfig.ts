@@ -1,9 +1,74 @@
+import type CookieConsent from "vanilla-cookieconsent";
 import type { CookieConsentConfig } from "vanilla-cookieconsent";
 
 declare global {
 	interface Window {
 		dataLayer: any[];
+		gtag: (...args: any[]) => void;
 	}
+}
+
+function updatePreferences(cookie: CookieConsent.CookieValue) {
+	console.log("update");
+	let preferences = {
+		ad_storage: "denied",
+		ad_user_data: "denied",
+		ad_personalization: "denied",
+		analytics_storage: "denied",
+		functionality_storage: "denied",
+		personalization_storage: "denied",
+	};
+
+	cookie.categories.forEach((category) => {
+		if (category === "analytics") {
+			preferences.analytics_storage = "granted";
+		}
+		if (category === "advertising") {
+			preferences.ad_storage = "granted";
+			preferences.ad_user_data = "granted";
+			preferences.ad_personalization = "granted";
+		}
+	});
+
+	if (preferences) {
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag(...args: any[]) {
+			window.dataLayer.push(args);
+		}
+
+		window.gtag = gtag;
+		gtag("consent", "update", preferences);
+
+		if (preferences.analytics_storage === "granted") {
+			loadGoogleAnalytics(cookie);
+		}
+
+		setTimeout(() => {
+			window.location.reload();
+		}, 1000);
+	}
+}
+
+function loadGoogleAnalytics(cookie: CookieConsent.CookieValue) {
+	cookie.categories.forEach((category) => {
+		if (category === "analytics") {
+			const script = document.createElement("script");
+			script.async = true;
+			script.src = "https://www.googletagmanager.com/gtag/js?id=G-V9QPK6MZCX";
+			document.head.appendChild(script);
+
+			script.onload = () => {
+				window.dataLayer = window.dataLayer || [];
+				function gtag(...args: any[]) {
+					window.dataLayer.push(args);
+				}
+				window.gtag = gtag;
+				gtag("js", new Date());
+				gtag("config", "G-V9QPK6MZCX");
+			};
+		}
+	});
 }
 
 export const config: CookieConsentConfig = {
@@ -19,89 +84,106 @@ export const config: CookieConsentConfig = {
 			flipButtons: false,
 		},
 	},
+	onConsent: ({ cookie }) => loadGoogleAnalytics(cookie),
+	onChange: ({ cookie }) => updatePreferences(cookie),
 	categories: {
 		necessary: {
+			enabled: true,
 			readOnly: true,
 		},
-		functionality: {},
 		analytics: {
-			services: {
-				ga4: {
-					label:
-						'<a href="https://marketingplatform.google.com/about/analytics/terms/us/" target="_blank">Google Analytics 4 (dummy)</a>',
-					onAccept: () => {
-						window.dataLayer = window.dataLayer || [];
-
-						function gtag(...args: any[]) {
-							window.dataLayer.push(args);
-						}
-
-						gtag("js", new Date());
-						gtag("config", "G-V9QPK6MZCX");
+			autoClear: {
+				cookies: [
+					{
+						name: /^_ga/,
 					},
-					onReject: () => {},
+					{
+						name: "_gid",
+					},
+				],
+			},
+			services: {
+				ga: {
+					label: "Google Analytics",
 					cookies: [
 						{
-							name: /^_ga/,
+							name: /^(_ga|_gid)/,
 						},
 					],
 				},
-				another: {
-					label: "Another one (dummy)",
-				},
 			},
 		},
+		targeting: {},
 	},
+
 	language: {
 		default: "en",
-		autoDetect: "browser",
 		translations: {
 			en: {
 				consentModal: {
-					title: "We use cookies, including third party cookies",
+					title: "We use cookies",
 					description:
-						"These are for operational purposes, statistical analyses, to personalize your experience, provide you with targeted content tailored to your interests and to analyze the performance of our advertising campaigns. ",
+						"We use cookies, including third party cookies, for operational purposes, statistical analyses, to personalize your experience, provide you with targeted content tailored to your interests and to analyze the performance of our advertising campaigns.",
 					acceptAllBtn: "Accept all",
 					acceptNecessaryBtn: "Reject all",
-					showPreferencesBtn: "Personalize my choices",
-					footer:
-						'<a href="/privacy-policy">Privacy Policy</a>\n<a href="/terms-and-conditions">Terms and conditions</a>',
+					showPreferencesBtn: "Manage Individual preferences",
 				},
 				preferencesModal: {
-					title: "Consent Preferences Center",
+					title: "Manage cookie preferences",
 					acceptAllBtn: "Accept all",
 					acceptNecessaryBtn: "Reject all",
-					savePreferencesBtn: "Save preferences",
+					savePreferencesBtn: "Accept current selection",
 					closeIconLabel: "Close modal",
-					serviceCounterLabel: "Service|Services",
 					sections: [
 						{
-							title: "Cookie Usage",
+							title: "Cookie usage",
 							description:
-								"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+								"We use cookies to ensure the basic functionalities of the website and to enhance your online experience ...",
 						},
 						{
-							title: 'Strictly Necessary Cookies <span class="pm__badge">Always Enabled</span>',
+							title: "Strictly necessary cookies",
 							description:
-								"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+								"These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly",
 							linkedCategory: "necessary",
 						},
 						{
-							title: "Functionality Cookies",
+							title: "Performance and Analytics cookies",
 							description:
-								"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-							linkedCategory: "functionality",
-						},
-						{
-							title: "Analytics Cookies",
-							description:
-								"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+								"These cookies allow the website to remember the choices you have made in the past",
 							linkedCategory: "analytics",
+							cookieTable: {
+								headers: {
+									name: "Name",
+									domain: "Service",
+									description: "Description",
+									expiration: "Expiration",
+								},
+								body: [
+									{
+										name: "_ga",
+										domain: "Google Analytics",
+										description: 'Cookie set by <a href="#das">Google Analytics</a>',
+										expiration: "Expires after 12 days",
+									},
+									{
+										name: "_gid",
+										domain: "Google Analytics",
+										description: 'Cookie set by <a href="#das">Google Analytics</a>',
+										expiration: "Session",
+									},
+								],
+							},
 						},
+						// {
+						// 	title: "Targeting and Advertising",
+						// 	description:
+						// 		"These cookies are used to make advertising messages more relevant to you and your interests. The intention is to display ads that are relevant and engaging for the individual user and thereby more valuable for publishers and third party advertisers.",
+						// 	linkedCategory: "targeting",
+						// },
 						{
 							title: "More information",
 							description:
-								'For any query in relation to my policy on cookies and your choices, please <a class="cc__link" href="#yourdomain.com">contact me</a>.',
+								'For any queries in relation to my policy on cookies and your choices, please <a href="#contact-page">contact us</a>',
 						},
 					],
 				},

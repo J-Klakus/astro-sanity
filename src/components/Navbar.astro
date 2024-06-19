@@ -164,14 +164,16 @@ const { buttonLinkText, buttonLink, buttonTitle, menuItems } = navbar;
 			const currentDropdown = dropdown.querySelector(".dropdown");
 			const allDropdowns = document.querySelectorAll(".dropdown");
 
-			allDropdowns.forEach((dropdown) => {
-				if (dropdown !== currentDropdown) {
-					dropdown.classList.remove("max-h-[450px]");
-					arrow!.classList.remove("rotate-180");
+				allDropdowns.forEach((dropdown) => {
+					if (dropdown !== currentDropdown) {
+						dropdown.classList.remove("max-h-[450px]");
+						arrow!.classList.remove("rotate-180");
+					}
+				});
+				if (currentDropdown && currentDropdown.classList) {
+					currentDropdown.classList.toggle("max-h-[450px]");
 				}
-			});
-			currentDropdown!.classList.toggle("max-h-[450px]");
-			arrow!.classList.toggle("rotate-180");
+				arrow!.classList.toggle("rotate-180");
 		});
 	});
 
