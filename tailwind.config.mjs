@@ -16,7 +16,7 @@ export default {
 				highlight: "#6F61C2",
 				verylight: "#f0f0f9",
 			},
-			backgroundImage: ({ theme }) => ({
+			backgroundImage: () => ({
 				"text-gradient": "linear-gradient(112deg, #4B3AB3 78%, #9FFFF3 100%)",
 				"purple-gradient":
 					"linear-gradient(180deg, rgba(139, 84, 255, 0.4) 0%, rgba(75, 58, 179, 0.4) 100%)",

@@ -1,0 +1,28 @@
+---
+interface TermsProps {
+	abouts: { title: string; text: string }[];
+	title: string;
+}
+
+const { abouts, title } = Astro.props as TermsProps;
+---
+
+<div class="py-16">
+	<div class="grid h-44 place-items-center bg-[url('/header.webp')] bg-cover">
+		<h2
+			class="pl-6 text-center font-heading text-3xl font-medium leading-10 text-white sm:text-4xl md:text-5xl lg:text-6xl"
+		>
+			{title}
+		</h2>
+	</div>
+	<div class="mx-auto flex max-w-4xl flex-col py-8">
+		{
+			abouts.map((about) => (
+				<div class="py-6">
+					<h3 class="text-2xl font-medium text-gray-900">{about.title}</h3>
+					<p class="mt-4 text-gray-600">{about.text}</p>
+				</div>
+			))
+		}
+	</div>
+</div>

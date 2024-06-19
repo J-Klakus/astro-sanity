@@ -53,7 +53,7 @@ const { faq } = Astro.props;
 	document.addEventListener("DOMContentLoaded", function () {
 		const faqHeaders = document.querySelectorAll(".faq-header") as NodeListOf<HTMLElement>;
 
-		faqHeaders.forEach((header, index) => {
+		faqHeaders.forEach((header) => {
 			const faqContent = header.parentElement?.querySelector(".faq-content") as HTMLElement;
 			header.setAttribute("aria-expanded", "false");
 			faqContent.style.maxHeight = "0px"; // Ensure content is initially hidden

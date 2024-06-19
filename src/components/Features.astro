@@ -41,7 +41,7 @@ const { items, title, header } = Astro.props as Features;
 						{title}
 					</h2>
 					{
-						items.map(async (item: FeatureItem, index: number) => (
+						items.map(async (item: FeatureItem) => (
 							<div>
 								{/* header */}
 								<div
@@ -67,7 +67,7 @@ const { items, title, header } = Astro.props as Features;
 								</div>
 								{/* Content */}
 								<ul class="accordion-content mb-2 ml-4 max-h-0 max-w-2xl list-outside list-disc space-y-2 overflow-hidden border-l border-l-neutral-400 px-5 pl-6 pt-0 tracking-normal text-slate-500 sm:text-xl md:ml-9 md:pl-9">
-									{item.list.map((listItem, i) => (
+									{item.list.map((listItem) => (
 										<li class="py-2">{listItem.text}</li>
 									))}
 									<li class="my-3 list-none text-primary">
@@ -80,7 +80,7 @@ const { items, title, header } = Astro.props as Features;
 				</div>
 			</div>
 		</div>
-		<div class="md:-mr-[8vw] md:h-[800px] md:w-1/2">
+		<div class="md:-mr-[7vw] md:h-[800px] md:w-1/2">
 			<Image
 				id="featuresImage"
 				src={features}

@@ -30,6 +30,7 @@ import {ThreeVertical} from './ThreeVertical'
 import {SignInForm} from './SignInForm'
 import {Footer} from './Footer'
 import {Navbar} from './Navbar'
+import {About} from './About'
 
 export const schemaTypes = [
   Button,
@@ -59,6 +60,7 @@ export const schemaTypes = [
   ThreeVertical,
   Footer,
   Navbar,
+  About,
   Terms,
   author,
   category,

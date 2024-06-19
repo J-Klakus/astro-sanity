@@ -2,7 +2,8 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 let path = Astro.url.pathname;
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { SITE_TITLE } from "../consts";
+import CookieConsent from "./CookieConsent.astro";
 
 interface Props {
 	metaTitle: string;
@@ -42,23 +43,7 @@ if (path === "/") {
 
 <!-- Google Analytics -->
 <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-V9QPK6MZCX"></script>
-
-<script>
-	declare global {
-		interface Window {
-			dataLayer: any[];
-		}
-	}
-
-	window.dataLayer = window.dataLayer || [];
-
-	function gtag(...args: any[]) {
-		window.dataLayer.push(args);
-	}
-
-	gtag("js", new Date());
-	gtag("config", "G-V9QPK6MZCX");
-</script>
+<CookieConsent />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
