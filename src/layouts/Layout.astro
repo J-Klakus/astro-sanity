@@ -4,6 +4,7 @@ import "@fontsource/poppins/400.css";
 import "@fontsource/poppins/500.css";
 import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
+import logo from "../assets/logobig.webp";
 
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
@@ -11,7 +12,7 @@ import Navbar from "../components/Navbar.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 let path = Astro.url.pathname;
-const { title, description, metaImage = "" } = Astro.props;
+const { title, description, metaImage = logo.src } = Astro.props;
 ---
 
 <!doctype html>

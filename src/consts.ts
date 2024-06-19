@@ -1,5 +1,6 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = "Airhire";
-export const SITE_DESCRIPTION = "Very Descritive Title";
+export const SITE_TITLE = "AI-driven ATS & CRM developed for recruitment agencies";
+export const SITE_DESCRIPTION =
+	"Airhire unlocks the power of your recruitment team. We automate the busywork, letting youf ocus on what matters most - finding great candidates. Experience recruitment that's efficient and revolutionary.";
