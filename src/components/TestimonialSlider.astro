@@ -18,10 +18,9 @@ interface Props {
 const testimonials = await sanityClient.fetch(
 	`*[_type == "testimonials" && defined(author)] | order(publishedAt desc)`,
 );
-
 ---
 
-<section class="bg-gradient-to-b from-transparent to-white lg:pb-14 lg:pt-32">
+<section class="bg-gradient-to-b from-transparent to-white md:pb-14 md:pt-32">
 	<div class="glide-05 relative mx-auto max-w-7xl px-4">
 		<div class="glide-05 relative w-full">
 			<!-- Slides -->
@@ -30,19 +29,19 @@ const testimonials = await sanityClient.fetch(
 					class="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0"
 				>
 					{
-						testimonials.map((testimonial: any, index: number) => (
-							<li class="relative">
+						testimonials.map((testimonial: any) => (
+							<li class="relative flex h-fit flex-col md:h-auto md:flex-row-reverse md:pb-12">
 								<Picture
 									fallbackFormat="jpg"
 									src={imageHelper(testimonial.image).url()}
 									formats={["avif", "webp"]}
 									alt="A prototype of the app."
 									widths={[400, 800, 1200, 1400]}
-									class="aspect-square h-full w-auto rounded-xl object-cover md:aspect-auto"
+									class="aspect-square h-full w-auto rounded-t-xl object-cover sm:rounded-b-xl md:ml-auto md:aspect-auto md:w-3/4"
 									inferSize={true}
 								/>
-								<div class="absolute bottom-0 left-0 rounded-b-xl bg-primary/40 p-4 text-white backdrop-blur-lg sm:p-10 md:w-full md:rounded-b-none md:bg-transparent md:backdrop-blur-none lg:w-1/2">
-									<p class="mb-6 font-heading text-base leading-normal">
+								<div class="static bottom-0 left-0 w-auto rounded-b-xl bg-primary/60 p-4 text-white backdrop-blur-lg sm:absolute sm:p-10 md:static md:-mb-12 md:-mr-[25vw] md:mt-auto md:w-3/5 md:rounded-xl">
+									<p class="mb-6 font-heading text-base leading-normal sm:text-lg md:text-base lg:text-xl">
 										“{testimonial.testimonial}"
 									</p>
 									<p>
@@ -96,6 +95,6 @@ const testimonials = await sanityClient.fetch(
 
 <style>
 	.is-active span {
-		background-color: rgb(163 163 163 / 0.8);
+		background-color: rgb(75 58 179 / 0.6);
 	}
 </style>
