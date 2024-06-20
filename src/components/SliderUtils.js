@@ -46,3 +46,4 @@ export const CustomActiveClass = (Glide, Components, Events) => {
 
   return Component;
 };
+
