@@ -9,8 +9,7 @@ declare global {
 }
 
 function updatePreferences(cookie: CookieConsent.CookieValue) {
-	console.log("update");
-	let preferences = {
+	const preferences = {
 		ad_storage: "denied",
 		ad_user_data: "denied",
 		ad_personalization: "denied",
@@ -18,7 +17,6 @@ function updatePreferences(cookie: CookieConsent.CookieValue) {
 		functionality_storage: "denied",
 		personalization_storage: "denied",
 	};
-
 	cookie.categories.forEach((category) => {
 		if (category === "analytics") {
 			preferences.analytics_storage = "granted";
@@ -37,7 +35,6 @@ function updatePreferences(cookie: CookieConsent.CookieValue) {
 			window.dataLayer.push(args);
 		}
 
-		window.gtag = gtag;
 		gtag("consent", "update", preferences);
 
 		if (preferences.analytics_storage === "granted") {
@@ -59,13 +56,14 @@ function loadGoogleAnalytics(cookie: CookieConsent.CookieValue) {
 			document.head.appendChild(script);
 
 			script.onload = () => {
-				window.dataLayer = window.dataLayer || [];
-				function gtag(...args: any[]) {
-					window.dataLayer.push(args);
-				}
-				window.gtag = gtag;
-				gtag("js", new Date());
-				gtag("config", "G-V9QPK6MZCX");
+				const trackingCode = document.createElement("script");
+				trackingCode.innerHTML = `
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){window.dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', 'G-V9QPK6MZCX');
+				`;
+				document.head.appendChild(trackingCode);
 			};
 		}
 	});
@@ -145,11 +143,27 @@ export const config: CookieConsentConfig = {
 							description:
 								"These cookies are essential for the proper functioning of my website. Without these cookies, the website would not work properly",
 							linkedCategory: "necessary",
+							cookieTable: {
+								headers: {
+									name: "Name",
+									domain: "Service",
+									description: "Description",
+									expiration: "Expiration",
+								},
+								body: [
+									{
+										name: "cc_cookie",
+										domain: "Airhire",
+										description: "Cookie set to remember your cookie preferences",
+										expiration: "Expires after 182 days",
+									},
+								],
+							},
 						},
 						{
 							title: "Performance and Analytics cookies",
 							description:
-								"These cookies allow the website to remember the choices you have made in the past",
+								"These cookies allow the website to report to us on how the website is used and improve the user experience.",
 							linkedCategory: "analytics",
 							cookieTable: {
 								headers: {
@@ -174,12 +188,6 @@ export const config: CookieConsentConfig = {
 								],
 							},
 						},
-						// {
-						// 	title: "Targeting and Advertising",
-						// 	description:
-						// 		"These cookies are used to make advertising messages more relevant to you and your interests. The intention is to display ads that are relevant and engaging for the individual user and thereby more valuable for publishers and third party advertisers.",
-						// 	linkedCategory: "targeting",
-						// },
 						{
 							title: "More information",
 							description:

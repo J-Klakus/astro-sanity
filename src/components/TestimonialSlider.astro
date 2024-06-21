@@ -64,18 +64,18 @@ const testimonials = await sanityClient.fetch(
 				data-glide-el="controls"
 			>
 				<button
-					class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-light bg-white/20 text-primary transition duration-300 hover:border-slate-900 hover:text-slate-900 focus-visible:outline-none lg:h-12 lg:w-12"
+					class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#beb8e4] text-primary transition duration-300 hover:border-primary focus-visible:outline-none lg:h-16 lg:w-16"
 					data-glide-dir="<"
 					aria-label="prev slide"
 				>
-					<Icon name="chevronRight" class="rotate-180" size={72} />
+					<Icon name="chevronRight" class="mr-1 rotate-180" size={72} />
 				</button>
 				<button
-					class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-light bg-white/20 text-primary transition duration-300 hover:border-slate-900 hover:text-slate-900 focus-visible:outline-none lg:h-12 lg:w-12"
+					class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#beb8e4] text-primary transition duration-300 hover:border-primary focus-visible:outline-none lg:h-16 lg:w-16"
 					data-glide-dir=">"
 					aria-label="next slide"
 				>
-					<Icon name="chevronRight" size={72} />
+					<Icon name="chevronRight" size={72} class="ml-1" />
 				</button>
 			</div>
 			<!-- Indicators -->
@@ -112,23 +112,24 @@ const testimonials = await sanityClient.fetch(
 	});
 
 	const slider = document.querySelector(".glide-05") as HTMLDivElement;
-	const activeBullet = "glide__bullet--active";
-	const bulletsContainerElement = slider.querySelector(".glide-bullets") as HTMLButtonElement;
+	if (slider) {
+		const activeBullet = "glide__bullet--active";
+		const bulletsContainerElement = slider.querySelector(".glide-bullets") as HTMLButtonElement;
+		const changeActiveBullet = (newIndex: number, containerElement: HTMLButtonElement) => {
+			console.log(newIndex, containerElement);
+			const glideDir = containerElement.querySelector(`[data-glide-dir="=${newIndex}"]`);
+			console.log(containerElement.querySelector(`.${activeBullet}`));
+			containerElement.querySelector(`.${activeBullet}`)!.classList.remove(activeBullet);
 
-	const changeActiveBullet = (newIndex: number, containerElement: HTMLButtonElement) => {
-		console.log(newIndex, containerElement);
-		const glideDir = containerElement.querySelector(`[data-glide-dir="=${newIndex}"]`);
-		console.log(containerElement.querySelector(`.${activeBullet}`));
-		containerElement.querySelector(`.${activeBullet}`)!.classList.remove(activeBullet);
+			if (glideDir) glideDir.classList.add(activeBullet);
+		};
 
-		if (glideDir) glideDir.classList.add(activeBullet);
-	};
-
-	if (document.querySelector(".glide-05")) {
-		glide05.mount();
-		glide05.on("run", () => {
-			requestAnimationFrame(() => changeActiveBullet(glide05.index, bulletsContainerElement));
-		});
+		if (document.querySelector(".glide-05")) {
+			glide05.mount();
+			glide05.on("run", () => {
+				requestAnimationFrame(() => changeActiveBullet(glide05.index, bulletsContainerElement));
+			});
+		}
 	}
 </script>
 

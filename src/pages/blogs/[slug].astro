@@ -50,7 +50,7 @@ const { title, mainImage, categories, author, publishedAt, body } = Astro.props;
 	<div
 		class="relative mx-auto mb-4 flex w-full max-w-7xl flex-col gap-4 px-4 pt-32 md:mb-0 lg:flex-row xl:px-0"
 	>
-		<div class="lg:w-4/6">
+		<div class="lg:w-3/4">
 			<nav aria-label="Breadcrumb">
 				<ol class="flex items-center gap-2 py-4 text-sm font-medium text-gray-600">
 					<li>
@@ -115,6 +115,6 @@ const { title, mainImage, categories, author, publishedAt, body } = Astro.props;
 				<PortableText value={body} />
 			</div>
 		</div>
-		<BlogsAside />
+		<BlogsAside slug={slug} />
 	</div>
 </Layout>

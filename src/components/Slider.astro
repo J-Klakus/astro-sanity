@@ -47,7 +47,10 @@ items = [
 		class="relative mx-auto flex w-[90vw] max-w-[1400px] items-center justify-between pb-6 xl:w-[90vw]"
 	>
 		<button class="prev-button z-50">
-			<Icon name="prev" class="h-auto w-12 rounded-full border border-[#E3E0F3] p-4 lg:w-16" />
+			<Icon
+				name="prev"
+				class="h-auto w-12 rounded-full border border-[#E3E0F3] p-4 transition duration-300 hover:border-primary lg:w-16"
+			/>
 		</button>
 		<div class="absolute left-0 top-0 h-full w-full">
 			<button
@@ -100,7 +103,7 @@ items = [
 		<button class="next-button z-50">
 			<Icon
 				name="next"
-				class="h-auto w-12 rounded-full border border-[#E3E0F3] p-4 lg:w-16"
+				class="h-auto w-12 rounded-full border border-[#E3E0F3] p-4 transition duration-300 hover:border-primary lg:w-16"
 			/></button
 		>
 	</div>
@@ -114,7 +117,7 @@ items = [
 		/>
 		<div
 			style={`background-image: url(${optimizedCardBackground.src})`}
-			class="group rounded-xl border-2 border-[#E3E0F3] bg-cover bg-no-repeat backdrop-blur-sm lg:absolute lg:-bottom-[20%] lg:-right-[10%] lg:h-96 lg:w-[272px]"
+			class="group rounded-xl border-2 border-[#E3E0F3] bg-cover bg-no-repeat backdrop-blur-sm transition duration-300 hover:border-primary lg:absolute lg:-bottom-[20%] lg:-right-[10%] lg:h-96 lg:w-[272px]"
 		>
 			{
 				items
