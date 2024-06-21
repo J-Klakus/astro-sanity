@@ -6,6 +6,8 @@ import { Picture } from "astro:assets";
 import Pill from "./Pill.astro";
 import { Icon } from "astro-icon/components";
 
+const images = [website.src, email.src, browser.src];
+
 const {
 	header = "Features",
 	title = "Discover more tools to boost your productivity",
@@ -39,90 +41,26 @@ const {
 			{title}
 		</h2>
 	</div>
-	<div class="mx-auto grid grid-cols-1 gap-4 px-4 py-8 md:grid-cols-3">
-		<a
-			href={descriptions[0].pillText.toLowerCase().replaceAll(" ", "-")}
-			class="group relative mx-auto max-w-xs rounded-xl hover:cursor-pointer sm:max-w-2xl md:max-w-none"
-		>
-			<Picture
-				fallbackFormat="jpg"
-				src={website}
-				formats={["avif", "webp"]}
-				alt={"infographic"}
-				sizes="(max-width: 768px) 100vw, (max-width: 1298px) 30vw, 455px"
-				widths={[400, 800, website.width]}
-				class="h-auto w-full rounded-xl object-contain transition duration-300 ease-in-out md:group-hover:brightness-75"
-			/>
-			<Pill text={descriptions[0].pillText} position="top-left" />
-			<div
-				class="absolute bottom-0 flex h-full w-full flex-col justify-end rounded-xl bg-purple-gradient p-6 sm:h-fit"
-			>
-				<p class="text-lg leading-tight text-white md:leading-normal">
-					{descriptions[0].text}
-				</p>
-				<p
-					class="mt-4 text-sm text-white underline-offset-4 opacity-0 duration-200 ease-in-out hover:underline group-hover:opacity-100 sm:text-base"
+	<div class="mx-auto grid grid-cols-1 justify-center gap-4 px-4 py-8 md:grid-cols-3">
+		{
+			descriptions.map((description: { pillText: string; text: string }, index: number) => (
+				<a
+					href={description.pillText.toLowerCase().replaceAll(" ", "-")}
+					style={`background-image: url(${images[index]})`}
+					class="group relative h-[420px] w-full max-w-sm place-self-center rounded-xl bg-cover bg-no-repeat hover:cursor-pointer sm:max-w-2xl md:max-w-96"
 				>
-					Learn More
-					<Icon name="arrowRight" class="ml-2 inline-block text-inherit" />
-				</p>
-			</div>
-		</a>
-		<a
-			href={descriptions[1].pillText.toLowerCase().replaceAll(" ", "-")}
-			class="group relative mx-auto max-w-xs rounded-xl hover:cursor-pointer sm:max-w-2xl md:max-w-none"
-		>
-			<Picture
-				fallbackFormat="jpg"
-				src={email}
-				formats={["avif", "webp"]}
-				alt={"infographic"}
-				sizes="(max-width: 768px) 100vw, (max-width: 1298px) 30vw, 455px"
-				widths={[400, 800, email.width]}
-				class="h-auto w-full rounded-xl object-contain transition duration-300 ease-in-out md:group-hover:brightness-75"
-			/>
-			<div
-				class="absolute bottom-0 flex h-full w-full flex-col justify-end rounded-xl bg-purple-gradient p-6 sm:h-fit"
-			>
-				<p class="text-lg leading-tight text-white md:leading-normal">
-					{descriptions[1].text}
-				</p>
-				<p
-					class="mt-4 text-sm text-white underline-offset-4 opacity-0 duration-200 ease-in-out hover:underline group-hover:opacity-100 sm:text-base"
-				>
-					Learn More
-					<Icon name="arrowRight" class="ml-2 inline-block text-inherit" />
-				</p>
-			</div>
-			<Pill text={descriptions[1].pillText} position="top-left" />
-		</a>
-		<a
-			href={descriptions[2].pillText.toLowerCase().replaceAll(" ", "-")}
-			class="group relative mx-auto max-w-xs rounded-xl hover:cursor-pointer sm:max-w-2xl md:max-w-none"
-		>
-			<Picture
-				fallbackFormat="jpg"
-				src={browser}
-				formats={["avif", "webp"]}
-				alt={"infographic"}
-				sizes="(max-width: 768px) 100vw, (max-width: 1298px) 30vw, 455px"
-				widths={[400, 800, browser.width]}
-				class="h-auto w-full rounded-xl object-contain transition duration-300 ease-in-out md:group-hover:brightness-75"
-			/>
-			<div
-				class="absolute bottom-0 flex h-full w-full flex-col justify-end rounded-xl bg-purple-gradient p-6 sm:h-fit"
-			>
-				<p class="text-lg leading-tight text-white md:leading-normal">
-					{descriptions[2].text}
-				</p>
-				<p
-					class="mt-4 text-sm text-white underline-offset-4 opacity-0 duration-200 ease-in-out hover:underline group-hover:opacity-100 sm:text-base"
-				>
-					Learn More
-					<Icon name="arrowRight" class="ml-2 inline-block text-inherit" />
-				</p>
-			</div>
-			<Pill text={descriptions[2].pillText} position="top-left" />
-		</a>
+					<Pill text={description.pillText} position="top-left" />
+					<div class="absolute bottom-0 left-0 flex h-fit w-full max-w-sm flex-col justify-end rounded-xl bg-purple-gradient p-6 sm:h-fit sm:max-w-2xl md:max-w-96">
+						<p class="text-base leading-tight text-white sm:text-lg md:text-sm md:leading-normal lg:text-base xl:text-lg">
+							{description.text}
+						</p>
+						<p class="mt-4 text-sm text-white underline-offset-4 opacity-0 duration-200 ease-in-out hover:underline group-hover:opacity-100 sm:text-base">
+							Learn More
+							<Icon name="arrowRight" class="ml-2 inline-block text-inherit" />
+						</p>
+					</div>
+				</a>
+			))
+		}
 	</div>
 </section>
