@@ -55,6 +55,6 @@ const blogs = await sanityClient.fetch(
 		</div>
 	</div>
 	<div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 pb-20 md:grid-cols-3">
-		{blogs.slice(1, -1).map((blog: Blog, index: number) => <BlogCard index={index} blog={blog} />)}
+		{blogs.slice(1).map((blog: Blog, index: number) => <BlogCard index={index} blog={blog} />)}
 	</div>
 </section>
