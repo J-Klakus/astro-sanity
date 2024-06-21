@@ -31,7 +31,7 @@ const blogs = await sanityClient.fetch(
 
 const generateClassBasedOnIndex = (index: number) => {
 	if (index % 2 != 0) {
-		return "absolute left-0 bottom-0 backdrop-blur-lg bg-[linear-gradient(91.31deg,rgba(139,84,255,0.6)0%,rgba(159,255,243,0.6)99.86%)] text-white";
+		return "absolute left-0 bottom-0 backdrop-blur-lg bg-gradient-to-r from-[#8b54ff99]/60 to-[#9ffff3]/60 bg-opacity-70 text-white";
 	} else {
 		return "bg-white text-black";
 	}
@@ -99,7 +99,7 @@ const generateClassBasedOnIndex = (index: number) => {
 														})}
 													</p>
 												</div>
-												<p class="font-medium leading-tight tracking-wide [font-size:_clamp(1em,1.2vw,2.5em)] md:leading-normal">
+												<p class="font-heading text-lg font-medium leading-tight tracking-wide sm:text-xl md:leading-normal">
 													{post.title}
 												</p>
 											</div>
