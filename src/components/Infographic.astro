@@ -9,10 +9,11 @@ type Props = {
 	header: string;
 	text: string;
 	image: ImageRef;
+	mobileImage: ImageRef;
 	button: { Link: string; buttonText: string; type: "filled" | "outline"; arrow: boolean };
 };
 
-const { title, header, text, image, button } = Astro.props;
+const { title, header, text, image, button, mobileImage } = Astro.props;
 ---
 
 <div class="px-4 py-8 sm:pb-20">
@@ -47,7 +48,17 @@ const { title, header, text, image, button } = Astro.props;
 			sizes="(max-width: 1280px) 100vw, 1400px"
 			widths={[400, 800, 1400, 1800]}
 			inferSize={true}
-			class="my-4 h-full w-auto"
+			class="my-4 hidden h-full w-auto sm:block"
+		/>
+		<Picture
+			fallbackFormat="jpg"
+			src={imageHelper(mobileImage).url()}
+			formats={["avif", "webp"]}
+			alt="A prototype of the app."
+			sizes="(max-width: 1280px) 100vw, 1400px"
+			widths={[400, 800, 1400, 1800]}
+			inferSize={true}
+			class="my-4 h-full w-auto sm:hidden"
 		/>
 	</div>
 </div>

@@ -32,6 +32,11 @@ export const Infographic = defineType({
       name: 'image',
     }),
     defineField({
+      type: 'image',
+      validation: (rule) => [rule.required()],
+      name: 'mobileImage',
+    }),
+    defineField({
       type: 'string',
       validation: (rule) => [rule.required()],
       name: 'imageAlt',
