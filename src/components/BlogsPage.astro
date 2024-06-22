@@ -66,7 +66,7 @@ const blogs = await sanityClient.fetch(
 		</div>
 	</div>
 </section>
-<div class="direction mx-auto grid max-w-7xl grid-cols-1 gap-8 pb-20 md:grid-cols-3">
+<div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 pb-20 md:grid-cols-3 xl:px-0">
 	{blogs.slice(1).map((blog: Blog, index: number) => <BlogCard index={index} blog={blog} />)}
 </div>
 

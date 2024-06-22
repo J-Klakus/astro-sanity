@@ -108,13 +108,15 @@ items = [
 		>
 	</div>
 	<div class="relative flex max-w-3xl flex-col-reverse px-4 sm:py-10 lg:block lg:px-0">
-		<Image
-			id="specialImage"
-			src={hero}
-			alt="A prototype of the app."
-			loading="eager"
-			class="h-full w-auto rounded-xl pt-2 shadow-[0px_-20px_100px_50px_rgba(229,248,249,0.5)] transition-opacity duration-300 ease-in-out lg:pt-0"
-		/>
+		<div>
+			<Image
+				id="specialImage"
+				src={hero}
+				alt="A prototype of the app."
+				loading="eager"
+				class="h-auto max-w-full rounded-xl pt-2 shadow-[0px_-20px_100px_50px_rgba(229,248,249,0.5)] transition-opacity duration-300 ease-in-out lg:pt-0"
+			/>
+		</div>
 		<div
 			style={`background-image: url(${optimizedCardBackground.src})`}
 			class="group rounded-xl border-2 border-[#E3E0F3] bg-cover bg-no-repeat backdrop-blur-sm transition duration-300 hover:border-primary lg:absolute lg:-bottom-[20%] lg:-right-[10%] lg:h-96 lg:w-[272px]"

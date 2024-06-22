@@ -24,8 +24,9 @@ const { buttonLinkText, buttonLink, buttonTitle, menuItems } = navbar;
 		class="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between bg-white px-4 py-2 text-gray-700 lg:px-4 lg:py-0"
 	>
 		<div class="z-[50]">
-			<a href="/" aria-label="Home Page">
-				<Icon name="logo2" size={90} />
+			<a href="/" aria-label="Home Page" class="flex items-center gap-2">
+				<Icon name="logoNoText" size={40} />
+				<p class="font-heading text-[28px] font-bold text-primary">airhire</p>
 			</a>
 		</div>
 		<div class="lg:hidden">
@@ -103,7 +104,7 @@ const { buttonLinkText, buttonLink, buttonTitle, menuItems } = navbar;
 							</div>
 							<div>
 								{item.values && (
-									<div class="dropdown -left-32 top-[48px] z-50 h-fit max-h-0 max-w-6xl overflow-scroll transition-all duration-500 ease-in-out lg:absolute lg:hidden lg:max-h-fit lg:w-[824px] lg:overflow-visible lg:p-6 lg:group-focus-within:grid lg:group-hover:grid">
+									<div class="dropdown -left-32 top-[48px] z-50 h-auto max-h-0 max-w-6xl overflow-scroll transition-all duration-500 ease-in-out lg:absolute lg:hidden lg:max-h-fit lg:w-[824px] lg:overflow-visible lg:p-6 lg:group-focus-within:grid lg:group-hover:grid">
 										<ul class="grid grid-cols-2 bg-white bg-right-top bg-no-repeat text-gray-800 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] lg:w-[824px] lg:grid-cols-3 lg:bg-[url('/nav-bg.webp')] lg:p-4 lg:group-focus-within:grid lg:group-hover:grid">
 											<li class="col-span-2 my-0.5 px-2 lg:col-span-1">
 												<a
