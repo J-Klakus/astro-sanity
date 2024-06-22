@@ -11,12 +11,14 @@ const {
 	title,
 	slug,
 	estimatedReadingTime,
+	isPopular,
 } = blog;
 const isRow = index === 1 || index === 5;
 ---
 
 <a
-	class={`${isRow ? "flex-row-reverse md:col-span-2" : "flex-col"} ${isAside ? "h-fit" : "h-[480px]"} flex overflow-hidden rounded-lg shadow transition hover:shadow-lg`}
+	data-popular={isPopular}
+	class={`${isRow ? "flex-row-reverse md:col-span-2" : "flex-col"} ${isAside ? "h-fit" : "h-[480px]"} blog-card flex overflow-hidden rounded-lg shadow transition hover:shadow-lg`}
 	href={"/blogs/" + slug.current}
 >
 	<article

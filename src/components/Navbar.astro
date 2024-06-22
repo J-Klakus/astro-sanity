@@ -25,7 +25,7 @@ const { buttonLinkText, buttonLink, buttonTitle, menuItems } = navbar;
 	>
 		<div class="z-[50]">
 			<a href="/" aria-label="Home Page">
-				<Icon name="logo" class="h-auto w-28" />
+				<Icon name="logo2" size={90} />
 			</a>
 		</div>
 		<div class="lg:hidden">
@@ -164,16 +164,16 @@ const { buttonLinkText, buttonLink, buttonTitle, menuItems } = navbar;
 			const currentDropdown = dropdown.querySelector(".dropdown");
 			const allDropdowns = document.querySelectorAll(".dropdown");
 
-				allDropdowns.forEach((dropdown) => {
-					if (dropdown !== currentDropdown) {
-						dropdown.classList.remove("max-h-[450px]");
-						arrow!.classList.remove("rotate-180");
-					}
-				});
-				if (currentDropdown && currentDropdown.classList) {
-					currentDropdown.classList.toggle("max-h-[450px]");
+			allDropdowns.forEach((dropdown) => {
+				if (dropdown !== currentDropdown) {
+					dropdown.classList.remove("max-h-[450px]");
+					arrow!.classList.remove("rotate-180");
 				}
-				arrow!.classList.toggle("rotate-180");
+			});
+			if (currentDropdown && currentDropdown.classList) {
+				currentDropdown.classList.toggle("max-h-[450px]");
+			}
+			arrow!.classList.toggle("rotate-180");
 		});
 	});
 

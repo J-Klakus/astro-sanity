@@ -1,6 +1,6 @@
 import {defineField, defineType} from 'sanity'
 
-export const blogs =  defineType({
+export const blogs = defineType({
   name: 'blogs',
   title: 'Blogs',
   type: 'document',
@@ -70,6 +70,11 @@ export const blogs =  defineType({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
+    }),
+    defineField({
+      name: 'isPopular',
+      title: 'Is Popular',
+      type: 'boolean',
     }),
     defineField({
       name: 'body',

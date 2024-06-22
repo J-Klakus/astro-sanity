@@ -11,6 +11,21 @@ export const BlogSlider = defineType({
       description: 'Just used to identify the component in the studio',
       initialValue: 'BlogSlider Component',
     }),
+    defineField({
+      type: 'string',
+      validation: (rule) => [rule.required()],
+      name: 'title',
+    }),
+    defineField({
+      type: 'string',
+      validation: (rule) => [rule.required()],
+      name: 'header',
+    }),
+    defineField({
+      type: 'string',
+      validation: (rule) => [rule.required()],
+      name: 'text',
+    }),
   ],
   preview: {
     select: {

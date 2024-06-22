@@ -24,6 +24,7 @@
 		"astro": "^4.10.2",
 		"astro-icon": "^1.1.0",
 		"astro-portabletext": "^0.10.0",
+		"isotope-layout": "^3.0.6",
 		"prettier-plugin-astro": "^0.14.0",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1",
@@ -36,6 +37,7 @@
 	"devDependencies": {
 		"@tailwindcss/typography": "^0.5.13",
 		"@types/glidejs__glide": "^3.6.5",
+		"@types/isotope-layout": "^3.0.13",
 		"prettier": "^3.3.2",
 		"prettier-plugin-tailwindcss": "^0.6.4"
 	}
