@@ -25,11 +25,13 @@ const { title, text, images } = Astro.props;
 			{
 				images.map((image: { image: ImageRef; alt: string }) => {
 					return (
-						<li class="w-28 md:w-44">
-							<div class="flex items-center justify-center p-2">
+						<li class="w-36 md:w-44">
+							<div class="flex items-center justify-center">
 								<Image
 									src={imageHelper(image.image).url()}
 									alt={image.alt}
+									sizes={"(max-width: 768px) 144px, 176px"}
+									widths={[150, 200, 352]}
 									class="h-16 object-contain"
 									inferSize={true}
 								/>

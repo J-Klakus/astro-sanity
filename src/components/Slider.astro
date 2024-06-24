@@ -91,7 +91,7 @@ items = [
 								<div class="rounded-full border-[1px] border-verylight p-4 group-hover:bg-[#F3F3FB]">
 									<Icon name={item.id} size={24} class="m-1" />
 								</div>
-								<p class="text-xs font-medium capitalize group-hover:text-primary sm:text-base">
+								<p class="slide-item text-xs font-medium capitalize group-hover:text-primary sm:text-base">
 									{item.id}
 								</p>
 							</div>
@@ -151,20 +151,10 @@ items = [
 </style>
 
 <script>
-	const items = [
-		"opportunities",
-		"companies",
-		"candidates",
-		"reports",
-		"shortlist",
-		"jobs",
-		"settings",
-		"leads",
-		"contacts",
-		"notes",
-		"task",
-		"meetings",
-	];
+	const items = Array.from(document.querySelectorAll(".slide-item")).map((item: Element) =>
+		(item as HTMLParagraphElement).innerText.toLowerCase(),
+	);
+	console.log(items);
 
 	items.forEach((item) => {
 		const button = document.getElementById(`${item}Button`);
