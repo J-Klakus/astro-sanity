@@ -68,11 +68,21 @@ const styledBackground =
 				>
 					{tagline}
 				</p>
-				<h1
-					class={`font-heading mt-6 ${first ? "text-3xl sm:text-6xl" : "text-3xl sm:text-4xl"} font-medium leading-10 sm:leading-[4rem] tracking-tight text-black`}
-				>
-					{title}
-				</h1>
+				{
+					first ? (
+						<h1
+							class={`mt-6 font-heading ${first ? "text-3xl sm:text-6xl" : "text-3xl sm:text-4xl"} font-medium leading-10 tracking-tight text-black sm:leading-[4rem]`}
+						>
+							{title}
+						</h1>
+					) : (
+						<h2
+							class={`mt-6 font-heading ${first ? "text-3xl sm:text-6xl" : "text-3xl sm:text-4xl"} font-medium leading-10 tracking-tight text-black sm:leading-[4rem]`}
+						>
+							{title}
+						</h2>
+					)
+				}
 				<p class="mt-6 leading-relaxed text-slate-500 sm:text-lg">
 					{description}
 				</p>
