@@ -6,7 +6,7 @@ import Button from "./reusable/Button.astro";
 const {
 	title = "Discover our competitive offer tailored to recruitment agencies.",
 	button = {
-		Link: "/pricing",
+		link: "/pricing",
 		ButtonText: "Show Pricing",
 		type: "filled",
 	},
@@ -27,7 +27,7 @@ const {
 			</h2>
 			<div class="flex justify-between">
 				<Button
-					link={button.Link}
+					link={button.link}
 					buttonText={button.ButtonText}
 					type={button.type}
 					class="mt-8 w-fit"

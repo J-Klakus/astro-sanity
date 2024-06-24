@@ -15,7 +15,7 @@ const { faq } = Astro.props;
 					faq.map((item: { title: string; text: string }) => (
 						<div class="group h-fit">
 							{/* header */}
-							<div
+							<button
 								aria-expanded="false"
 								class="faq-header group flex h-16 cursor-pointer items-center justify-between pb-2 transition md:px-5 md:pb-4"
 							>
@@ -28,7 +28,7 @@ const { faq } = Astro.props;
 									class="w-2/12 transition-transform duration-300 ease-in-out group-aria-expanded:rotate-180"
 									size={20}
 								/>
-							</div>
+							</button>
 							{/* Content */}
 							<div class="faq-content mb-2 ml-4 h-fit max-h-0 w-11/12 overflow-hidden border-y border-y-neutral-200 px-5 pl-6 pt-0 text-slate-500 md:ml-4 md:pl-9">
 								<p class="py-6 text-justify font-light leading-6">{item.text}</p>
