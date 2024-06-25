@@ -159,24 +159,26 @@ const { buttonLinkText, buttonLink, buttonTitle, menuItems } = navbar;
 </header>
 
 <script>
-	document.querySelectorAll(".group.menu").forEach((dropdown) => {
-		const arrow = dropdown.getElementById("chevronDown");
-		dropdown.addEventListener("click", () => {
-			const currentDropdown = dropdown.querySelector(".dropdown");
-			const allDropdowns = document.querySelectorAll(".dropdown");
+	if (window.innerWidth <= 640) {
+		document.querySelectorAll(".group.menu").forEach((dropdown) => {
+			const arrow = dropdown.querySelector<HTMLElement>("#chevronDown");
+			dropdown.addEventListener("click", () => {
+				const currentDropdown = dropdown.querySelector(".dropdown");
+				const allDropdowns = document.querySelectorAll(".dropdown");
 
-			allDropdowns.forEach((dropdown) => {
-				if (dropdown !== currentDropdown) {
-					dropdown.classList.remove("max-h-[450px]");
-					arrow!.classList.remove("rotate-180");
+				allDropdowns.forEach((dropdown) => {
+					if (dropdown !== currentDropdown) {
+						dropdown.classList.remove("max-h-[450px]");
+						arrow!.classList.remove("rotate-180");
+					}
+				});
+				if (currentDropdown && currentDropdown.classList) {
+					currentDropdown.classList.toggle("max-h-[450px]");
 				}
+				arrow!.classList.toggle("rotate-180");
 			});
-			if (currentDropdown && currentDropdown.classList) {
-				currentDropdown.classList.toggle("max-h-[450px]");
-			}
-			arrow!.classList.toggle("rotate-180");
 		});
-	});
+	}
 
 	document.getElementById("hamburgerToggle")!.addEventListener("click", () => {
 		const hamburgerToggle = document.getElementById("hamburgerToggle")!;
