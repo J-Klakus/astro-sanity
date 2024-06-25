@@ -159,8 +159,8 @@ const { buttonLinkText, buttonLink, buttonTitle, menuItems } = navbar;
 </header>
 
 <script>
-	const arrow = document.getElementById("chevronDown");
 	document.querySelectorAll(".group.menu").forEach((dropdown) => {
+		const arrow = dropdown.getElementById("chevronDown");
 		dropdown.addEventListener("click", () => {
 			const currentDropdown = dropdown.querySelector(".dropdown");
 			const allDropdowns = document.querySelectorAll(".dropdown");
