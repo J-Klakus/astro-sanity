@@ -5,9 +5,9 @@ import {schemaTypes} from './schemaTypes'
 
 export default defineConfig({
   name: 'default',
-  title: 'airhire',
+  title: 'boilerplate',
 
-  projectId: 'h2i1t4m1',
+  projectId: 'cbebllo4',
   dataset: 'production',
 
   plugins: [

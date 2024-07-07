@@ -15,7 +15,7 @@ export default defineConfig({
 		sitemap(),
 		tailwind(),
 		sanity({
-			projectId: "h2i1t4m1",
+			projectId: "cbebllo4",
 			dataset: "production",
 			// Set useCdn to false if you're building statically.
 			useCdn: false,

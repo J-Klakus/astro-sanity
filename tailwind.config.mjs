@@ -1,4 +1,5 @@
 import defaultTheme from "tailwindcss/defaultTheme";
+const colors = require("tailwindcss/colors");
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -10,7 +11,7 @@ export default {
 				heading: ["Poppins", "Inter", ...defaultTheme.fontFamily.sans],
 			},
 			colors: {
-				primary: "#4B3AB3",
+				primary: colors.teal[500],
 				secondary: "#9FFFF3",
 				light: "#6e59ee",
 				highlight: "#6F61C2",

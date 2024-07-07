@@ -3,7 +3,7 @@ import { Icon } from "astro-icon/components";
 import { sanityClient } from "sanity:client";
 
 const footer = await sanityClient.fetch(`*[_type == "footer"][0]`);
-const { points, pointTitle, description, sections, socialLinks } = footer;
+const { points, description, sections, socialLinks } = footer;
 ---
 
 <footer class="bg-white">
@@ -12,8 +12,7 @@ const { points, pointTitle, description, sections, socialLinks } = footer;
 			class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-y-2 px-8 py-5 text-start font-medium text-gray-700 sm:justify-evenly sm:divide-x-2 sm:px-6 sm:text-center"
 		>
 			<li class="hidden w-full flex-grow items-center justify-start font-medium sm:w-auto lg:flex">
-				<Icon name="logoNoText" class="mr-2 h-auto w-6" />
-				{pointTitle}
+				<Icon name="logo" class="mr-2 h-8 w-auto" />
 			</li>
 			{
 				points
@@ -27,8 +26,7 @@ const { points, pointTitle, description, sections, socialLinks } = footer;
 			<div>
 				<div>
 					<a href="/" aria-label="Home Page" class="flex items-center gap-2">
-						<Icon name="logoNoText" size={32} />
-						<p class="font-heading text-xl font-bold text-primary">airhire</p>
+						<Icon name="logo" class="mr-2 h-8 w-auto" />
 					</a>
 				</div>
 
