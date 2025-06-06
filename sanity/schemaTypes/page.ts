@@ -3,14 +3,17 @@ import {defineType, defineField, defineArrayMember} from 'sanity'
 export const page = defineType({
   type: 'document',
   name: 'page',
+  title: 'Pages',
   fields: [
     defineField({
       type: 'string',
       name: 'title',
+      description: 'The title of the page, displayed in the browser tab and used for SEO.',
     }),
     defineField({
       type: 'string',
       name: 'description',
+      description: 'A short description of the page, used for SEO purposes.',
     }),
     defineField({
       type: 'slug',

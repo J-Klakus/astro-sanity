@@ -31,6 +31,7 @@ import {SignInForm} from './SignInForm'
 import {Footer} from './Footer'
 import {Navbar} from './Navbar'
 import {About} from './About'
+import {SiteSettings} from './SiteSettings'
 
 export const schemaTypes = [
   Button,
@@ -66,4 +67,5 @@ export const schemaTypes = [
   category,
   blogs,
   page,
+  SiteSettings,
 ]
