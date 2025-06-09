@@ -37,9 +37,7 @@ interface Page {
 }
 
 export async function getStaticPaths() {
-	const pages = await sanityClient.fetch(
-		`*[_type == "page" && defined(slug)] | order(publishedAt desc)`,
-	);
+	const pages = await sanityClient.fetch(`*[_type == "page"]`);
 	return pages.map((page: Page) => {
 		const slug = page.slug.current.replace(/index$/, "");
 		if (slug.length === 0) return { params: { slug: undefined }, props: { page } };

@@ -2,14 +2,12 @@ import { defineConfig } from "astro/config";
 import icon from "astro-icon";
 import sitemap from "@astrojs/sitemap";
 import sanity from "@sanity/astro";
-import tailwindcss from '@tailwindcss/vite'
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
 	vite: {
-		plugins: [
-			tailwindcss(),
-		  ],
+		plugins: [tailwindcss()],
 	},
 	site: "https://example.com",
 	image: {
@@ -21,8 +19,8 @@ export default defineConfig({
 		sanity({
 			projectId: "cbebllo4",
 			dataset: "production",
-			// Set useCdn to false if you're building statically.
 			useCdn: false,
+			perspective: process.env.NODE_ENV === "development" ? "drafts" : "published",
 		}),
 	],
 });

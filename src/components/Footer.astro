@@ -7,20 +7,6 @@ const { points, description, sections, socialLinks } = footer;
 ---
 
 <footer class="bg-white">
-	<div class="border-y-2 border-purple-100">
-		<ul
-			class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-y-2 px-8 py-5 text-start font-medium text-gray-700 sm:justify-evenly sm:divide-x-2 sm:px-6 sm:text-center"
-		>
-			<li class="hidden w-full flex-grow items-center justify-start font-medium sm:w-auto lg:flex">
-				<Icon name="logo" class="mr-2 h-8 w-auto" />
-			</li>
-			{
-				points
-					.slice(0, 4)
-					.map((point: any) => <li class="w-1/2 px-2 sm:w-auto sm:flex-grow">{point}</li>)
-			}
-		</ul>
-	</div>
 	<div class="mx-auto max-w-screen-xl space-y-8 px-8 py-4 sm:px-6 sm:py-16 lg:space-y-16 lg:px-8">
 		<div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
 			<div>
@@ -42,7 +28,7 @@ const { points, description, sections, socialLinks } = footer;
 									href={link.link}
 									rel="noreferrer"
 									target="_blank"
-									class="text-gray-700 transition duration-300 hover:text-primary"
+									class="hover:text-primary text-gray-700 transition duration-300"
 								>
 									<span class="sr-only">{link.platform}</span>
 
@@ -58,7 +44,7 @@ const { points, description, sections, socialLinks } = footer;
 				{
 					sections.map((section: any, index: number) => (
 						<div>
-							<p class="font-medium uppercase text-gray-900">{section.section}</p>
+							<p class="font-medium text-gray-900 uppercase">{section.section}</p>
 
 							<ul class="mt-6 space-y-4 text-sm">
 								{section.items.map((item: any) => (
@@ -71,7 +57,7 @@ const { points, description, sections, socialLinks } = footer;
 								{index === sections.length - 1 && (
 									<li>
 										<button
-											class="text-gray-700 transition duration-300 hover:text-primary"
+											class="hover:text-primary text-gray-700 transition duration-300"
 											type="button"
 											data-cc="show-preferencesModal"
 										>

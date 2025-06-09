@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import logo from "../icons/iconGradient.svg";
+import logo from "../icons/logo.svg";
 import { Image } from "astro:assets";
 import FormButton from "./reusable/FormButton.astro";
 const { title, text, text2, formTitle, list } = Astro.props;
@@ -18,7 +18,7 @@ const { title, text, text2, formTitle, list } = Astro.props;
 					<input type="hidden" name="form-type" value="sign up form" />
 					{
 						formTitle && (
-							<p class="mb-6 bg-[linear-gradient(112deg,#4B3AB3_20%,#9FFFF3_100%)] bg-clip-text font-heading text-xl font-medium text-transparent sm:text-3xl">
+							<p class="font-heading mb-6 bg-[linear-gradient(112deg,#4B3AB3_20%,#9FFFF3_100%)] bg-clip-text text-xl font-medium text-transparent sm:text-3xl">
 								{formTitle}
 							</p>
 						)
@@ -30,11 +30,11 @@ const { title, text, text2, formTitle, list } = Astro.props;
 						<!-- Left Side -->
 						<div>
 							<div class="mb-4">
-								<label class="mb-2 block text-sm font-medium text-primary" for="full-name"
+								<label class="text-primary mb-2 block text-sm font-medium" for="full-name"
 									>Name</label
 								>
 								<input
-									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
+									class="focus:shadow-outline text-primary h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight focus:outline-none"
 									id="full-name"
 									name="full-name"
 									type="text"
@@ -43,9 +43,9 @@ const { title, text, text2, formTitle, list } = Astro.props;
 								/>
 							</div>
 							<div class="mb-4">
-								<label class="mb-2 block text-sm font-medium text-primary" for="phone">Phone</label>
+								<label class="text-primary mb-2 block text-sm font-medium" for="phone">Phone</label>
 								<input
-									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
+									class="focus:shadow-outline text-primary h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight focus:outline-none"
 									id="phone"
 									name="phone"
 									type="text"
@@ -53,11 +53,11 @@ const { title, text, text2, formTitle, list } = Astro.props;
 								/>
 							</div>
 							<div class="mb-4">
-								<label class="mb-2 block text-sm font-medium text-primary" for="website"
+								<label class="text-primary mb-2 block text-sm font-medium" for="website"
 									>Website</label
 								>
 								<input
-									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
+									class="focus:shadow-outline text-primary h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight focus:outline-none"
 									id="website"
 									name="website"
 									type="text"
@@ -68,9 +68,9 @@ const { title, text, text2, formTitle, list } = Astro.props;
 						<!-- Right Side -->
 						<div>
 							<div class="mb-4">
-								<label class="mb-2 block text-sm font-medium text-primary" for="email">Email</label>
+								<label class="text-primary mb-2 block text-sm font-medium" for="email">Email</label>
 								<input
-									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
+									class="focus:shadow-outline text-primary h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight focus:outline-none"
 									id="email"
 									type="email"
 									name="email"
@@ -79,22 +79,22 @@ const { title, text, text2, formTitle, list } = Astro.props;
 								/>
 							</div>
 							<div class="mb-4">
-								<label class="mb-2 block text-sm font-medium text-primary" for="company"
+								<label class="text-primary mb-2 block text-sm font-medium" for="company"
 									>Company</label
 								>
 								<input
-									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
+									class="focus:shadow-outline text-primary h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight focus:outline-none"
 									id="company"
 									type="text"
 									placeholder="Company name"
 								/>
 							</div>
 							<div class="mb-4">
-								<label class="mb-2 block text-sm font-medium text-primary" for="position"
+								<label class="text-primary mb-2 block text-sm font-medium" for="position"
 									>Position</label
 								>
 								<input
-									class="focus:shadow-outline h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight text-primary focus:outline-none"
+									class="focus:shadow-outline text-primary h-10 w-full appearance-none rounded-lg border border-gray-400 px-3 py-2 leading-tight focus:outline-none"
 									id="position"
 									name="position"
 									type="text"
@@ -105,7 +105,7 @@ const { title, text, text2, formTitle, list } = Astro.props;
 					</div>
 					<div class="mt-6 flex flex-col justify-between gap-4 md:flex-row md:gap-0">
 						<p>
-							You already have an account? <a href="/sign-in" class="font-medium text-primary">
+							You already have an account? <a href="/sign-in" class="text-primary font-medium">
 								Sign in</a
 							>
 						</p>
@@ -114,25 +114,25 @@ const { title, text, text2, formTitle, list } = Astro.props;
 				</form>
 			</div>
 			<div class="lg:w-1/2">
-				<Image src={logo} class="mb-8 mt-6 h-12 w-auto md:mt-0" alt="logo" />
+				<Image src={logo} class="mt-6 mb-8 h-12 w-auto md:mt-0" alt="logo" />
 				<h2
-					class="mb-6 bg-[linear-gradient(112deg,#4B3AB3_40%,#9FFFF3_100%)] bg-clip-text font-heading text-xl font-medium text-transparent sm:text-3xl"
+					class="font-heading mb-6 bg-[linear-gradient(112deg,#4B3AB3_40%,#9FFFF3_100%)] bg-clip-text text-xl font-medium text-transparent sm:text-3xl"
 				>
 					{title}
 				</h2>
-				{text && <p class="mb-6 font-heading font-normal text-gray-500">{text}</p>}
-				{text2 && <p class="mb-6 font-heading font-normal text-gray-500">{text2}</p>}
+				{text && <p class="font-heading mb-6 font-normal text-gray-500">{text}</p>}
+				{text2 && <p class="font-heading mb-6 font-normal text-gray-500">{text2}</p>}
 				{
 					list && (
-						<ul class="space-y-4 font-heading font-medium text-black sm:text-xl">
+						<ul class="font-heading space-y-4 font-medium text-black sm:text-xl">
 							{list.map((item: { title: string; text: string }) => (
 								<li>
-									<Icon name="tick" class="mb-0.5 mr-2 inline" size={20} /> {item.title}{" "}
-									{item.text &&
-																		<p class="mb-6 ml-8 font-heading text-base font-normal text-gray-900">
-										{item.text}
-									</p>
-									}
+									<Icon name="tick" class="mr-2 mb-0.5 inline" size={20} /> {item.title}{" "}
+									{item.text && (
+										<p class="font-heading mb-6 ml-8 text-base font-normal text-gray-900">
+											{item.text}
+										</p>
+									)}
 								</li>
 							))}
 						</ul>

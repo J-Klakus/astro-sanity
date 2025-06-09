@@ -1,8 +1,8 @@
 import {defineType, defineField, defineArrayMember} from 'sanity'
 
-export const Terms = defineType({
+export const Legal = defineType({
   type: 'object',
-  name: 'Terms',
+  name: 'Legal',
   fields: [
     defineField({
       type: 'string',
@@ -10,7 +10,7 @@ export const Terms = defineType({
       title: 'Component Title',
       validation: (rule) => [rule.required()],
       description: 'Just used to identify the component in the studio',
-      initialValue: 'Terms and Conditions Component',
+      initialValue: 'Legal Component',
     }),
     defineField({
       type: 'string',

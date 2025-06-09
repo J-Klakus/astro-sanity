@@ -15,3 +15,37 @@
 
     --animate-text: text 2s ease-in-out infinite;
 }
+
+button:hover {
+    cursor: pointer;
+}
+
+:root {
+    /* this has to be set to switch between light or dark */
+    color-scheme: light dark;
+
+    --light-bg: ghostwhite;
+    --light-color: darkslategray;
+    --light-code: tomato;
+
+    --dark-bg: black;
+    --dark-color: ghostwhite;
+    --dark-code: gold;
+
+    &[data-theme="dark"] {
+        color-scheme: dark;
+    }
+
+    &[data-theme="light"] {
+        color-scheme: light;
+    }
+}
+
+* {
+    background-color: light-dark(var(--light-bg), var(--dark-bg));
+    color: light-dark(var(--light-color), var(--dark-color));
+}
+
+code {
+    color: light-dark(var(--light-code), var(--dark-code));
+}

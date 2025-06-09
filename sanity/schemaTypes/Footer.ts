@@ -18,26 +18,6 @@ export const Footer = defineType({
       type: 'text',
     }),
     defineField({
-      name: 'pointTitle',
-      title: 'Point Title',
-      validation: (rule) => [rule.required()],
-      type: 'text',
-    }),
-    defineField({
-      name: 'points',
-      title: 'Points',
-      validation: (rule) => [rule.required()],
-      type: 'array',
-      of: [
-        defineField({
-          name: 'point',
-          title: 'Point',
-          validation: (rule) => [rule.required()],
-          type: 'text',
-        }),
-      ],
-    }),
-    defineField({
       name: 'sections',
       title: 'Sections',
       type: 'array',

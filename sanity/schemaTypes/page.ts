@@ -19,9 +19,17 @@ export const page = defineType({
       type: 'slug',
       name: 'slug',
       options: {
-        source: 'title',
-        maxLength: 96,
+        source: 'title', 
+        maxLength: 96,  
       },
+      validation: (Rule) =>
+        Rule.required() 
+          .custom((value, context) => {
+            if (value?.current && /\s/.test(value.current)) {
+              return 'The slug cannot contain any whitespace characters.';
+            }
+            return true;
+          }),
     }),
     defineField({
       type: 'array',
@@ -93,7 +101,7 @@ export const page = defineType({
           type: 'Faq',
         }),
         defineArrayMember({
-          type: 'Terms',
+          type: 'Legal',
         }),
         defineArrayMember({
           type: 'ThreeVertical',

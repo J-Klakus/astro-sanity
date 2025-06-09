@@ -25,7 +25,7 @@ import {BlogsPage} from './BlogsPage'
 import {PricingForm} from './PricingForm'
 import {Faq} from './Faq'
 import {PricingFeatures} from './PricingFeatures'
-import {Terms} from './Terms'
+import {Legal} from './Legal'
 import {ThreeVertical} from './ThreeVertical'
 import {SignInForm} from './SignInForm'
 import {Footer} from './Footer'
@@ -62,7 +62,7 @@ export const schemaTypes = [
   Footer,
   Navbar,
   About,
-  Terms,
+  Legal,
   author,
   category,
   blogs,

@@ -6,7 +6,6 @@ import {schemaTypes} from './schemaTypes'
 export default defineConfig({
   name: 'default',
   title: 'boilerplate',
-
   projectId: 'cbebllo4',
   dataset: 'production',
 
@@ -44,10 +43,10 @@ export default defineConfig({
                       .child(S.document().schemaType('blogs').documentId('blogs')),
                     S.listItem()
                       .title('Blog Authors')
-                      .child(S.document().schemaType('authors').documentId('authors')),
+                      .child(S.document().schemaType('author').documentId('author')),
                     S.listItem()
                       .title('Blog Categories')
-                      .child(S.document().schemaType('categories').documentId('categories')),
+                      .child(S.document().schemaType('category').documentId('category')),
                   ]),
               ),
             ...S.documentTypeListItems().filter(
