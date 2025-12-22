@@ -1,9 +1,8 @@
 ---
-
 let path = Astro.url.pathname;
-const {tagline} = await sanityClient.fetch(`*[_type == "siteSettings"][0]`);
+import { Font } from "astro:assets";
+const { tagline } = await sanityClient.fetch(`*[_type == "siteSettings"][0]`);
 import { sanityClient } from "sanity:client";
-import CookieConsent from "./CookieConsent.astro";
 
 interface Props {
 	metaTitle: string;
@@ -13,7 +12,11 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { metaTitle, metaDescription, metaImage = "/blog-placeholder-1.jpg" } = Astro.props;
+const {
+	metaTitle,
+	metaDescription,
+	metaImage = "/blog-placeholder-1.jpg",
+} = Astro.props;
 
 let title = "";
 if (path === "/") {
@@ -41,17 +44,27 @@ if (path === "/") {
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 
+<Font cssVariable='--font-poppins' preload />
+
 <!-- Favicons -->
-<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
-<link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+<link
+	rel="icon"
+	type="image/png"
+	sizes="192x192"
+	href="/android-chrome-192x192.png"
+/>
+<link
+	rel="icon"
+	type="image/png"
+	sizes="512x512"
+	href="/android-chrome-512x512.png"
+/>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
 <!-- Meta tags -->
 <meta name="theme-color" content="#4B3AB3" />
 <meta name="background-color" content="#ffffff" />
 <meta name="display" content="standalone" />
-
-<!-- <CookieConsent /> -->
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />

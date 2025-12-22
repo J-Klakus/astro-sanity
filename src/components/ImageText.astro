@@ -1,7 +1,8 @@
 ---
 import { Picture, getImage } from "astro:assets";
 import candidatepipeline from "../assets/candidate-pipeline.webp";
-import Button from "./reusable/Button.astro";
+import Button from "@components/reusable/Button.astro";
+import Heading from "@components/reusable/Heading.astro";
 import type { ImageRef } from "../utils/imageHelper";
 import imageHelper from "../utils/imageHelper";
 
@@ -19,8 +20,8 @@ interface CustomSectionProps {
 	first: boolean;
 	largeImage: boolean;
 	imageSide: "left" | "right";
-	background: "none" | "bg center" | "bg bottom";
 	title: string;
+	titleTag: string;
 	description: string;
 	button?: ButtonProps[];
 	image: ImageRef;
@@ -34,32 +35,18 @@ const {
 	first = false,
 	background = "none",
 	title,
+	titleTag,
 	description,
-	button = [
-		{
-			link: "#",
-			buttonText: "Request a demo",
-			type: "filled",
-			arrow: true,
-		},
-	],
+	button,
 	image,
 	imageAlt = "A prototype of the app.",
 } = Astro.props as CustomSectionProps;
-
-const styledBackground =
-	background === "bg center"
-		? "bg-[url('/bg-center-mobile.webp')] sm:bg-[url('/bg-center.webp')] bg-cover lg:bg-contain bg-no-repeat lg:bg-[left_-2rem]"
-		: background === "bg bottom"
-			? "bg-[url('/bg-bottom-mobile.webp')] sm:bg-[url('/bg-bottom.webp')] bg-cover lg:bg-[center_top_3rem] lg:bg-contain bg-no-repeat"
-			: "";
 ---
 
-<section
-	class={`py-8 ${first ? "sm:pt-44 pb-20" : "sm:py-20"} ${background != "none" ? styledBackground : ""}`}
->
+<section class=`w-screen vertical-p`>
+	>
 	<div
-		class={`max-w-7xl flex flex-col ${imageSide === "left" ? "lg:flex-row-reverse " : "lg:flex-row "} gap-8 lg:gap-20 items-center justify-center mx-auto px-4`}
+		class={`site-container flex flex-col ${imageSide === "left" ? "lg:flex-row-reverse " : "lg:flex-row "} gap-8 lg:gap-20 items-center justify-center mx-auto px-4`}
 	>
 		<div class={`${largeImage ? "lg:w-2/5" : "lg:w-1/2"} max-w-xl`}>
 			<div class="text-center lg:text-start">
@@ -69,18 +56,11 @@ const styledBackground =
 					{tagline}
 				</p>
 				{
-					first ? (
-						<h1
-							class={`mt-6 font-heading ${first ? "text-3xl sm:text-6xl" : "text-3xl sm:text-4xl"} font-medium leading-10 tracking-tight text-black sm:leading-[4rem]`}
-						>
-							{title}
-						</h1>
-					) : (
-						<h2
-							class={`mt-6 font-heading ${first ? "text-3xl sm:text-6xl" : "text-3xl sm:text-4xl"} font-medium leading-10 tracking-tight text-black sm:leading-[4rem]`}
-						>
-							{title}
-						</h2>
+					(
+						<Heading
+							title={title}
+							tag={titleTag ? titleTag : first ? "h1" : "h2"}
+						/>
 					)
 				}
 				<p class="mt-6 leading-relaxed text-slate-500 sm:text-lg">
@@ -88,20 +68,26 @@ const styledBackground =
 				</p>
 			</div>
 
-			<div class="mt-6 flex items-center justify-center gap-4 lg:justify-start">
+			<div
+				class="mt-6 flex items-center justify-center gap-4 lg:justify-start"
+			>
 				{
-					button.map((button) => (
-						<Button
-							link={button.link}
-							buttonText={button.buttonText}
-							type={button.type}
-							arrow={button.arrow}
-						/>
-					))
+					button &&
+						button.length &&
+						button.map((button) => (
+							<Button
+								link={button.link}
+								buttonText={button.buttonText}
+								type={button.type}
+								arrow={button.arrow}
+							/>
+						))
 				}
 			</div>
 		</div>
-		<div class={`${largeImage ? "lg:h-full 2xl:h-3/4 w-full h-auto" : "lg:w-1/2 h-auto"} `}>
+		<div
+			class={`${largeImage ? "lg:h-full 2xl:h-3/4 w-full h-auto" : "lg:w-1/2 h-auto"} `}
+		>
 			<Picture
 				fallbackFormat="jpg"
 				src={imageHelper(image).url()}

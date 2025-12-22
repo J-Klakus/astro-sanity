@@ -1,6 +1,5 @@
 ---
 import { Icon } from "astro-icon/components";
-import Theme from "./Theme.astro";
 
 const items = [
 	{ label: "About", href: "#" },
@@ -25,14 +24,18 @@ const items = [
 				id="mobile-menu"
 				class="h-screen w-screen translate-y-[5vh] transform overflow-visible rounded-xl bg-transparent opacity-0 backdrop-blur-lg transition-all transition-discrete duration-500 backdrop:bg-black/0 backdrop:backdrop-blur-lg backdrop:transition-[overlay,display,opacity,transform] backdrop:transition-discrete backdrop:duration-300 open:block open:translate-y-0 open:opacity-100 open:backdrop:bg-white/20 md:h-auto md:w-auto md:translate-y-0 md:opacity-100 md:duration-0 open:starting:-translate-y-[5vh] open:starting:opacity-0"
 			>
-				<nav class="relative grid h-screen place-items-center md:block md:h-auto">
+				<nav
+					class="relative grid h-screen place-items-center md:block md:h-auto"
+				>
 					<button
 						popovertarget="mobile-menu"
 						class="absolute top-2 right-4 m-3 flex-shrink-0 md:hidden"
 					>
 						<Icon name="close" size={32} />
 					</button>
-					<ul class="flex flex-col items-center justify-center gap-6 text-sm md:flex-row">
+					<ul
+						class="flex flex-col items-center justify-center gap-6 text-sm md:flex-row"
+					>
 						{
 							items.map((item) => (
 								<li>
@@ -49,17 +52,16 @@ const items = [
 				</nav>
 			</div>
 			<div class="items-center gap-4 md:flex">
-				<div class="sm:flex sm:gap-4">
-					<div class="hidden sm:flex">
-						<Theme />
-					</div>
-				</div>
 				<div class="block md:hidden">
 					<button
 						popovertarget="mobile-menu"
 						class="rounded-sm bg-gray-100 p-2 text-gray-800 transition hover:text-gray-800/75"
 					>
-						<Icon name="hamburger-menu" class="flex-shrink-0" size={32} />
+						<Icon
+							name="hamburger-menu"
+							class="flex-shrink-0"
+							size={32}
+						/>
 					</button>
 				</div>
 			</div>
