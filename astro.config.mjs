@@ -4,6 +4,9 @@ import sitemap from "@astrojs/sitemap";
 import sanity from "@sanity/astro";
 import tailwindcss from "@tailwindcss/vite";
 
+
+
+
 // https://astro.build/config
 export default defineConfig({
 	site: "https://example.com",
